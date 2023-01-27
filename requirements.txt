@@ -1,0 +1,6 @@
+jupyter-book
+numpy
+datascience
+sphinx-proof
+matplotlib
+sympy

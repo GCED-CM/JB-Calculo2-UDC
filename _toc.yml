@@ -1,0 +1,46 @@
+format: jb-book
+root: capitulos/README
+title: Introducción
+options:
+ numbered: true
+chapters:
+
+- file: capitulos/01/README
+  title: Vectores y geometría del espacio
+  sections:
+   - file: capitulos/01/01.VectoresPlano
+     title: Vectores en el plano
+   - file: capitulos/01/02.VectoresEspacio
+     title: Vectores en el espacio
+   - file: capitulos/01/03.ProductoEscalar
+     title: El producto escalar
+   - file: capitulos/01/04.ProductoVectorial
+     title: El producto vectorial
+   - file: capitulos/01/05.ProductoTriple
+     title: El producto triple
+   - file: capitulos/01/06.RectasPlanos
+     title: Rectas y planos en el espacio
+   - file: capitulos/01/07.SuperficiesEspacio
+     title: Superficies en el espacio
+  
+- file: capitulos/02/README
+  title: Límites y continuidad
+  
+- file: capitulos/03/README
+  title: Derivación
+  
+- file: capitulos/04/README
+  title: Extremos relativos y absolutos
+  
+- file: capitulos/05/README
+  title: Integración
+  
+- file: capitulos/06/README
+  title: Pyhton para cálculo de varias variables
+  sections:
+   - file: capitulos/06/01.IntroduccionSympy
+     title: Introducción a SymPy
+   - file: capitulos/06/02.IntroduccionNumpy
+     title: Introducción a NumPy
+   - file: capitulos/06/03.RepresentacionGraficaMatplotlib
+     title: Representación Gráfica con Matplotlib
