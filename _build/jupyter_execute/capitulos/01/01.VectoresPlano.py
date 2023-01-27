@@ -5,8 +5,8 @@
 # 
 # ## Definición de vector en el plano
 # 
-# Muchas cantidades en geometría y física (área, volumen, temperatura, masa, tiempo,...) se pueden caracterizar por un único número real que se escala a las unidades de medida adecuadas ($m^2$, $m^3$, $^\text{o}$ C,...). 
-# Se llaman **magnitudes escalares**, y al número real asociado con ellas se llama **escalar**. 
+# Muchas cantidades en geometría y física (área, volumen, temperatura, masa, tiempo,...) se pueden caracterizar por un único número real que se escala a las unidades de medida adecuadas ($m^2$, $m^3$, $^\text{o}$C,...). 
+# Se llaman **magnitudes escalares**, y al número real asociado con ellas se le llama **escalar**. 
 # 
 # Sin embargo, otras cantidades (fuerza, velocidad, aceleración,...) implican magnitud y dirección y no pueden caracterizarse completamente por un solo número real: 
 # necesitaremos los vectores (y, más adelante, en algunos casos, las matrices).
@@ -24,7 +24,7 @@
 # <img src="../../images/01_vector_plano.png" width="250"/>
 # ````
 # 
-# A lo largo del presente libro denotaremos con letras minúscula y en negrita a los vectores ($\mathbf{n}$, $\mathbf{u}$, $\mathbf{v}$,... ), aunque cuando se escriben a mano suelen denotarse con una flecha ($\vec{n}$, $\vec{u}$, ...).
+# A lo largo del presente libro denotaremos los vectores mediante letras minúscula y en negrita ($\mathbf{n}$, $\mathbf{u}$, $\mathbf{v}$,... ), aunque cuando se escriben a mano suelen denotarse con una flecha ($\vec{n}$, $\vec{u}$, ...).
 # 
 # Vamos a ver un ejemplo para que nos quede claro que dos segmentos con la misma dirección y longitud definen el mismo vector.
 # 
@@ -46,8 +46,8 @@
 # ````
 # 
 # Una vez aclarado que hay muchos segmentos que representan al mismo vector, conviene unificar esto. 
-# Por ello, suele elegirse el vector que tiene como punto de inicio el origen de coordenadas, $(0,0)$. 
-# Entonces, si entendemos que el punto inicial será el origen de coordenadas, basta dar el punto final, $Q=\left(v_{1}, v_{2}\right)$, 
+# Por ello, entre todos los vectores con la misma longitud y dirección, suele elegirse el que tiene como punto de inicio el origen de coordenadas, $(0,0)$. 
+# Entonces, si entendemos que el punto inicial será el $(0,0)$, basta dar el punto final, $Q=\left(v_{1}, v_{2}\right)$, 
 # para tener totalmente identificado un vector $\mathbf{v}$. 
 # 
 # ````{prf:definition} Definición de un vector mediante sus componentes 
@@ -84,11 +84,11 @@
 # ````
 # Veamos algunas consideraciones geométricas para estas operaciones:
 # 
-# El **múltiplo escalar**, $c\mathbf{u}$, de un vector, $\mathbf{u}$, es un vector que tiene módulo $|c|$ veces $\|\|\mathbf{u}\|$ y, si $c$ es positivo la misma dirección y, para $c$ un número negativo, direcciones opuestas, como mostramos en la siguiente figura.
+# El **múltiplo escalar**, $c\mathbf{u}$, de un vector, $\mathbf{u}$, es un vector que tiene módulo $|c|$ veces $\|\mathbf{u}\|$ y la misma dirección si $c$ es positivo mientras que, para $c$ un número negativo, direcciones opuestas. Lo ilustramos en la siguiente figura:
 # 
 # <img src="../../images/01_multiplicacion_escalar.png" width="250"/>
 # 
-# La **suma de vectores**, $\mathbf{u}+\mathbf{v}$, puede entenderse gráficamente como la diagonal del paralelogramo que tiene como lados adyacentes $\mathbf{u}$ y $\mathbf{v}$, o, equivalentemente, como el resultado de colocar uno de los vectores *en la punta* del primero.
+# La **suma de vectores**, $\mathbf{u}+\mathbf{v}$, puede entenderse gráficamente como la diagonal del paralelogramo que tiene como lados adyacentes $\mathbf{u}$ y $\mathbf{v}$, o, equivalentemente, como el resultado de colocar el segundo de los vectores *en la punta* del primero.
 # 
 # <img src="../../images/01_suma_vectores.png" width="400"/>
 # 
@@ -170,7 +170,7 @@
 
 # ## Jugando con vectores en Sympy y Numpy
 # 
-# Ahora deberías leerte las secciónes {ref}`sec:introduccion_Simpy` y {ref}`sec:introduccion_Numpy` para poder jugar un poco con las propiedades que acabas de aprender de vectores y con las librerías Sympy y Numpy, que utilizaremos a lo largo del presente curso. Te damos alguna pista:
+# Ahora deberías leerte las secciónes {ref}`sec:introduccion_Sympy` y {ref}`sec:introduccion_Numpy` para poder jugar un poco con las propiedades que acabas de aprender de vectores y con las librerías Sympy y Numpy, que utilizaremos a lo largo del presente curso. Te damos alguna pista:
 
 # In[17]:
 

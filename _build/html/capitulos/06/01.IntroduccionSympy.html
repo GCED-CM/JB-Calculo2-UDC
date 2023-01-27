@@ -453,8 +453,13 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-definidas-a-trozos">
+     6.1.5.1. Funciones definidas a trozos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     6.1.5.1.
+     6.1.5.2.
      <strong>
       Ejercicio
      </strong>
@@ -560,8 +565,13 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-definidas-a-trozos">
+     6.1.5.1. Funciones definidas a trozos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     6.1.5.1.
+     6.1.5.2.
      <strong>
       Ejercicio
      </strong>
@@ -975,8 +985,43 @@ True
 </div>
 </div>
 </div>
+<section id="funciones-definidas-a-trozos">
+<h3><span class="section-number">6.1.5.1. </span>Funciones definidas a trozos<a class="headerlink" href="#funciones-definidas-a-trozos" title="Permalink to this headline">#</a></h3>
+<p>Las funciones también pueden venir definidas a partir de expresiones <strong>a trozos</strong>. Para definir estas expresiones, condicionadas por el valor que toman las variables, utilizaremos la orden <code class="docutils literal notranslate"><span class="pre">sp.Piecewise</span></code>. Por ejemplo, veamos como definir la siguiente función:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+g(x,y)=
+\begin{cases}
+\dfrac{1}{xy} &amp; \text{si } x&gt;0 \text{ e }y&gt;0,\\
+1 &amp; \text{en otro caso}.
+\end{cases}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x:y&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">g_exp</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">g_exp</span><span class="p">)</span> <span class="c1"># Creamos la función</span>
+<span class="n">display</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(2,2) =&#39;</span><span class="p">,</span><span class="n">g</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Evaluamos la función en el punto (2,2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(-2,2) =&#39;</span><span class="p">,</span><span class="n">g</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Evaluamos la función en el punto (-2,2)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{cases} \frac{1}{x y} &amp; \text{for}\: x &gt; 0 \wedge y &gt; 0 \\1 &amp; \text{otherwise} \end{cases}\end{split}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>g(2,2) = 1/4
+g(-2,2) = 1
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>NOTA</strong>: Debido a un error actual en <strong>SymPy</strong>, si queremos calcular límites de funciones a trozos definidas a partir de la orden <code class="docutils literal notranslate"><span class="pre">sp.Piecewise</span></code>, podemos obtener información errónea.</p>
+</div></blockquote>
+</section>
 <section id="id3">
-<h3><span class="section-number">6.1.5.1. </span><strong>Ejercicio</strong><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.5.2. </span><strong>Ejercicio</strong><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>Calcula <span class="math notranslate nohighlight">\(f(3,3)\)</span> y <span class="math notranslate nohighlight">\(g(1,0,0)\)</span>, donde las funciones <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(g\)</span> vienen dadas por las siguientes expresiones:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{\sqrt{x^2+y^2-9}}{x}\)</span>.</p></li>

@@ -287,6 +287,31 @@ print('f(2,0) =',f(2,0)) # Evaluamos la función en el punto (2,0)
 print(f(x,y)==f_exp)
 
 
+# ### Funciones definidas a trozos
+# 
+# Las funciones también pueden venir definidas a partir de expresiones **a trozos**. Para definir estas expresiones, condicionadas por el valor que toman las variables, utilizaremos la orden `sp.Piecewise`. Por ejemplo, veamos como definir la siguiente función:
+# 
+# $$
+# g(x,y)=
+# \begin{cases}
+# \dfrac{1}{xy} & \text{si } x>0 \text{ e }y>0,\\
+# 1 & \text{en otro caso}.
+# \end{cases}
+# $$
+
+# In[19]:
+
+
+x, y = sp.symbols('x:y',real=True)
+g_exp = sp.Piecewise((1/(x*y), (x>0) & (y>0)), (1, True))
+g = sp.Lambda((x,y), g_exp) # Creamos la función
+display(g(x,y))
+print('g(2,2) =',g(2,2)) # Evaluamos la función en el punto (2,2)
+print('g(-2,2) =',g(-2,2)) # Evaluamos la función en el punto (-2,2)
+
+
+# > **NOTA**: Debido a un error actual en **SymPy**, si queremos calcular límites de funciones a trozos definidas a partir de la orden `sp.Piecewise`, podemos obtener información errónea. 
+
 # ### **Ejercicio** 
 # 
 # Calcula $f(3,3)$ y $g(1,0,0)$, donde las funciones $f$ y $g$ vienen dadas por las siguientes expresiones:
@@ -294,7 +319,7 @@ print(f(x,y)==f_exp)
 # - $\displaystyle f(x,y) = \frac{\sqrt{x^2+y^2-9}}{x}$.
 # - $\displaystyle g(x,y,z) = \frac{x}{\cos(y^2+z^2)}$.
 
-# In[19]:
+# In[20]:
 
 
 # ESCRIBE AQUÍ TU CÓDIGO

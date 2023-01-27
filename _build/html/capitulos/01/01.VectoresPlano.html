@@ -173,22 +173,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03/README.html">
-   3. Derivación
+   3. Derivación y extremos
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04/README.html">
-   4. Extremos relativos y absolutos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05/README.html">
-   5. Integración
+   4. Integración
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06/README.html">
-   6. Pyhton para cálculo de varias variables
+  <a class="reference internal" href="../05/README.html">
+   5. Pyhton para cálculo de varias variables
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -197,18 +192,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/01.IntroduccionSympy.html">
-     6.1. Introducción a SymPy
+    <a class="reference internal" href="../05/01.IntroduccionSympy.html">
+     5.1. Introducción a SymPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/02.IntroduccionNumpy.html">
-     6.2. Introducción a NumPy
+    <a class="reference internal" href="../05/02.IntroduccionNumpy.html">
+     5.2. Introducción a NumPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/03.RepresentacionGraficaMatplotlib.html">
-     6.3. Representación Gráfica con Matplotlib
+    <a class="reference internal" href="../05/03.RepresentacionGraficaMatplotlib.html">
+     5.3. Representación Gráfica con Matplotlib
     </a>
    </li>
   </ul>
@@ -447,8 +442,8 @@ title="Print to PDF"
 <h1><span class="section-number">1.1. </span>Vectores en el plano<a class="headerlink" href="#vectores-en-el-plano" title="Permalink to this headline">#</a></h1>
 <section id="definicion-de-vector-en-el-plano">
 <h2><span class="section-number">1.1.1. </span>Definición de vector en el plano<a class="headerlink" href="#definicion-de-vector-en-el-plano" title="Permalink to this headline">#</a></h2>
-<p>Muchas cantidades en geometría y física (área, volumen, temperatura, masa, tiempo,…) se pueden caracterizar por un único número real que se escala a las unidades de medida adecuadas (<span class="math notranslate nohighlight">\(m^2\)</span>, <span class="math notranslate nohighlight">\(m^3\)</span>, <span class="math notranslate nohighlight">\(^\text{o}\)</span> C,…).
-Se llaman <strong>magnitudes escalares</strong>, y al número real asociado con ellas se llama <strong>escalar</strong>.</p>
+<p>Muchas cantidades en geometría y física (área, volumen, temperatura, masa, tiempo,…) se pueden caracterizar por un único número real que se escala a las unidades de medida adecuadas (<span class="math notranslate nohighlight">\(m^2\)</span>, <span class="math notranslate nohighlight">\(m^3\)</span>, <span class="math notranslate nohighlight">\(^\text{o}\)</span>C,…).
+Se llaman <strong>magnitudes escalares</strong>, y al número real asociado con ellas se le llama <strong>escalar</strong>.</p>
 <p>Sin embargo, otras cantidades (fuerza, velocidad, aceleración,…) implican magnitud y dirección y no pueden caracterizarse completamente por un solo número real:
 necesitaremos los vectores (y, más adelante, en algunos casos, las matrices).</p>
 <p>De momento, vamos a centrarnos en dar una correcta definición para estas cantidades en el plano, <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
@@ -459,7 +454,7 @@ necesitaremos los vectores (y, más adelante, en algunos casos, las matrices).</
 <p>Suele representarse con una flecha con un punto inicial y un punto final en el plano, aunque esta representación puede dar lugar a confusiones, ya que dos segmentos con la misma longitud y dirección, aunque partan de puntos diferentes, definen el mismo vector.</p>
 <a class="reference internal image-reference" href="../../_images/01_vector_plano.png"><img alt="../../_images/01_vector_plano.png" src="../../_images/01_vector_plano.png" style="width: 250px;" /></a>
 </section>
-</div><p>A lo largo del presente libro denotaremos con letras minúscula y en negrita a los vectores (<span class="math notranslate nohighlight">\(\mathbf{n}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>,… ), aunque cuando se escriben a mano suelen denotarse con una flecha (<span class="math notranslate nohighlight">\(\vec{n}\)</span>, <span class="math notranslate nohighlight">\(\vec{u}\)</span>, …).</p>
+</div><p>A lo largo del presente libro denotaremos los vectores mediante letras minúscula y en negrita (<span class="math notranslate nohighlight">\(\mathbf{n}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>,… ), aunque cuando se escriben a mano suelen denotarse con una flecha (<span class="math notranslate nohighlight">\(\vec{n}\)</span>, <span class="math notranslate nohighlight">\(\vec{u}\)</span>, …).</p>
 <p>Vamos a ver un ejemplo para que nos quede claro que dos segmentos con la misma dirección y longitud definen el mismo vector.</p>
 <div class="proof example admonition" id="ex_01_vector">
 <p class="admonition-title"><span>Example </span></p>
@@ -475,8 +470,8 @@ necesitaremos los vectores (y, más adelante, en algunos casos, las matrices).</
 <a class="reference internal image-reference" href="../../_images/01_ejemplo1.png"><img alt="../../_images/01_ejemplo1.png" src="../../_images/01_ejemplo1.png" style="width: 250px;" /></a>
 </section>
 </div><p>Una vez aclarado que hay muchos segmentos que representan al mismo vector, conviene unificar esto.
-Por ello, suele elegirse el vector que tiene como punto de inicio el origen de coordenadas, <span class="math notranslate nohighlight">\((0,0)\)</span>.
-Entonces, si entendemos que el punto inicial será el origen de coordenadas, basta dar el punto final, <span class="math notranslate nohighlight">\(Q=\left(v_{1}, v_{2}\right)\)</span>,
+Por ello, entre todos los vectores con la misma longitud y dirección, suele elegirse el que tiene como punto de inicio el origen de coordenadas, <span class="math notranslate nohighlight">\((0,0)\)</span>.
+Entonces, si entendemos que el punto inicial será el <span class="math notranslate nohighlight">\((0,0)\)</span>, basta dar el punto final, <span class="math notranslate nohighlight">\(Q=\left(v_{1}, v_{2}\right)\)</span>,
 para tener totalmente identificado un vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
 <div class="proof definition admonition" id="def_01_vector2">
 <p class="admonition-title"><span>Definition </span> (Definición de un vector mediante sus componentes )</p>
@@ -506,9 +501,9 @@ En este sentido, <strong>identificaremos vectores en el plano con elementos del 
 </ol>
 </section>
 </div><p>Veamos algunas consideraciones geométricas para estas operaciones:</p>
-<p>El <strong>múltiplo escalar</strong>, <span class="math notranslate nohighlight">\(c\mathbf{u}\)</span>, de un vector, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, es un vector que tiene módulo <span class="math notranslate nohighlight">\(|c|\)</span> veces <span class="math notranslate nohighlight">\(\|\|\mathbf{u}\|\)</span> y, si <span class="math notranslate nohighlight">\(c\)</span> es positivo la misma dirección y, para <span class="math notranslate nohighlight">\(c\)</span> un número negativo, direcciones opuestas, como mostramos en la siguiente figura.</p>
+<p>El <strong>múltiplo escalar</strong>, <span class="math notranslate nohighlight">\(c\mathbf{u}\)</span>, de un vector, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, es un vector que tiene módulo <span class="math notranslate nohighlight">\(|c|\)</span> veces <span class="math notranslate nohighlight">\(\|\mathbf{u}\|\)</span> y la misma dirección si <span class="math notranslate nohighlight">\(c\)</span> es positivo mientras que, para <span class="math notranslate nohighlight">\(c\)</span> un número negativo, direcciones opuestas. Lo ilustramos en la siguiente figura:</p>
 <a class="reference internal image-reference" href="../../_images/01_multiplicacion_escalar.png"><img alt="../../_images/01_multiplicacion_escalar.png" src="../../_images/01_multiplicacion_escalar.png" style="width: 250px;" /></a>
-<p>La <strong>suma de vectores</strong>, <span class="math notranslate nohighlight">\(\mathbf{u}+\mathbf{v}\)</span>, puede entenderse gráficamente como la diagonal del paralelogramo que tiene como lados adyacentes <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, o, equivalentemente, como el resultado de colocar uno de los vectores <em>en la punta</em> del primero.</p>
+<p>La <strong>suma de vectores</strong>, <span class="math notranslate nohighlight">\(\mathbf{u}+\mathbf{v}\)</span>, puede entenderse gráficamente como la diagonal del paralelogramo que tiene como lados adyacentes <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, o, equivalentemente, como el resultado de colocar el segundo de los vectores <em>en la punta</em> del primero.</p>
 <a class="reference internal image-reference" href="../../_images/01_suma_vectores.png"><img alt="../../_images/01_suma_vectores.png" src="../../_images/01_suma_vectores.png" style="width: 400px;" /></a>
 <p>En consecuencia, podemos también interpretar gráficamente la resta de vectores jugando con el paralelogramo resultante.</p>
 <a class="reference internal image-reference" href="../../_images/01_resta_vectores.png"><img alt="../../_images/01_resta_vectores.png" src="../../_images/01_resta_vectores.png" style="width: 200px;" /></a>
@@ -576,7 +571,7 @@ Vamos a definir a continuación los vectores unitarios en estas direcciones:</p>
 </section>
 <section id="jugando-con-vectores-en-sympy-y-numpy">
 <h2><span class="section-number">1.1.4. </span>Jugando con vectores en Sympy y Numpy<a class="headerlink" href="#jugando-con-vectores-en-sympy-y-numpy" title="Permalink to this headline">#</a></h2>
-<p>Ahora deberías leerte las secciónes <span class="xref std std-ref">sec:introduccion_Simpy</span> y <a class="reference internal" href="../06/02.IntroduccionNumpy_OLD.html#sec-introduccion-numpy"><span class="std std-ref">Introducción a Numpy</span></a> para poder jugar un poco con las propiedades que acabas de aprender de vectores y con las librerías Sympy y Numpy, que utilizaremos a lo largo del presente curso. Te damos alguna pista:</p>
+<p>Ahora deberías leerte las secciónes <a class="reference internal" href="../05/01.IntroduccionSympy.html#sec-introduccion-sympy"><span class="std std-ref">Introducción a SymPy</span></a> y <a class="reference internal" href="../05/02.IntroduccionNumpy.html#sec-introduccion-numpy"><span class="std std-ref">Introducción a Numpy</span></a> para poder jugar un poco con las propiedades que acabas de aprender de vectores y con las librerías Sympy y Numpy, que utilizaremos a lo largo del presente curso. Te damos alguna pista:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

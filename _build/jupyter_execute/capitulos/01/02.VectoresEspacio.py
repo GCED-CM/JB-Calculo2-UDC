@@ -14,7 +14,7 @@
 # 
 # Puedes consultar más información sobre esto en la Wiki (página de la que hemos sacado la figura anterior): https://es.wikipedia.org/wiki/Sistema_de_coordenadas. 
 # 
-# Con el sistema que estamos eligiendo se separa el espacio en ocho octantes (fíjate que en 2D hay cuatro cuartos): el primero de estos octantes corresponde a la zona en la que las tres coordenadas son positivas.
+# Con el sistema que estamos eligiendo, se separa el espacio en ocho octantes (fíjate que en 2D hay cuatro cuartos): el primero de estos octantes corresponde a la zona en la que las tres coordenadas son positivas.
 # 
 # Entonces, un punto, $P$, en el espacio se caracteriza por un triple ordenado, $(x,y,z)$, donde:
 # 
@@ -22,7 +22,7 @@
 # * $y$ es la distancia desde el plano $XZ$ a $P$,
 # * $z$ es la distancia desde el plano $XY$ a $P$.
 # 
-# <img src="../../images/01_coordenadas_cartesianas_3D.jpg" width="250"/>
+# <img src="../../images/01_coordenadas_cartesianas_3D.jpg" width="350"/>
 # 
 # **NOTA:** Elegiremos siempre un sistema de coordenadas dextrógiro: el giro corto desde la parte positiva del eje $X$ hacia la parte positiva del eje $Y$ iría en el sentido contrario a las agujas del reloj (como en 2D). Puedes ver más detalles aquí, jugando con la conocida *regla de la mano derecha o regla del sacacorchos*: https://en.wikipedia.org/wiki/Right-hand_rule.
 # 
@@ -95,7 +95,7 @@
 # * $\theta$ en la proyección del vector en el plano $XY$,
 # * $\phi$ para indicar el ángulo que forma el vector con el eje $Z$.
 # 
-# <img src="../../images/01_coordenadas_esfericas.png" width="250"/>
+# <img src="../../images/1.2.coordenadas_esfericas.png" width="250"/>
 # 
 # Profundizaremos más en esto cuando hablemos de coordenadas esféricas y polares.
 # 

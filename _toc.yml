@@ -27,20 +27,17 @@ chapters:
   title: Límites y continuidad
   
 - file: capitulos/03/README
-  title: Derivación
+  title: Derivación y extremos
   
 - file: capitulos/04/README
-  title: Extremos relativos y absolutos
-  
-- file: capitulos/05/README
   title: Integración
   
-- file: capitulos/06/README
+- file: capitulos/05/README
   title: Pyhton para cálculo de varias variables
   sections:
-   - file: capitulos/06/01.IntroduccionSympy
+   - file: capitulos/05/01.IntroduccionSympy
      title: Introducción a SymPy
-   - file: capitulos/06/02.IntroduccionNumpy
+   - file: capitulos/05/02.IntroduccionNumpy
      title: Introducción a NumPy
-   - file: capitulos/06/03.RepresentacionGraficaMatplotlib
+   - file: capitulos/05/03.RepresentacionGraficaMatplotlib
      title: Representación Gráfica con Matplotlib
