@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.1. Vectores en el plano &#8212; Calculo en varias variables</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2. Vectores en el espacio" href="02.VectoresEspacio.html" />
+    <link rel="prev" title="1. Vectores y geometría del espacio" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-148221575-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/udc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculo en varias variables</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   1. Vectores y geometría del espacio
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.1. Vectores en el plano
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.VectoresEspacio.html">
+     1.2. Vectores en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.ProductoEscalar.html">
+     1.3. El producto escalar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.ProductoVectorial.html">
+     1.4. El producto vectorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.ProductoTriple.html">
+     1.5. El producto triple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.RectasPlanos.html">
+     1.6. Rectas y planos en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.SuperficiesEspacio.html">
+     1.7. Superficies en el espacio
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02/README.html">
+   2. Límites y continuidad
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/README.html">
+   3. Derivación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/README.html">
+   4. Extremos relativos y absolutos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/README.html">
+   5. Integración
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06/README.html">
+   6. Pyhton para cálculo de varias variables
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/01.IntroduccionSympy.html">
+     6.1. Introducción a SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/02.IntroduccionNumpy.html">
+     6.2. Introducción a NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/03.RepresentacionGraficaMatplotlib.html">
+     6.3. Representación Gráfica con Matplotlib
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/01/01.VectoresPlano.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/capitulos/01/01.VectoresPlano.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-vector-en-el-plano">
+   1.1.1. Definición de vector en el plano
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operaciones-vectoriales">
+   1.1.2. Operaciones vectoriales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectores-unitarios">
+   1.1.3. Vectores unitarios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jugando-con-vectores-en-sympy-y-numpy">
+   1.1.4. Jugando con vectores en Sympy y Numpy
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Vectores en el plano</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-vector-en-el-plano">
+   1.1.1. Definición de vector en el plano
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operaciones-vectoriales">
+   1.1.2. Operaciones vectoriales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectores-unitarios">
+   1.1.3. Vectores unitarios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jugando-con-vectores-en-sympy-y-numpy">
+   1.1.4. Jugando con vectores en Sympy y Numpy
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="vectores-en-el-plano">
+<h1><span class="section-number">1.1. </span>Vectores en el plano<a class="headerlink" href="#vectores-en-el-plano" title="Permalink to this headline">#</a></h1>
+<section id="definicion-de-vector-en-el-plano">
+<h2><span class="section-number">1.1.1. </span>Definición de vector en el plano<a class="headerlink" href="#definicion-de-vector-en-el-plano" title="Permalink to this headline">#</a></h2>
+<p>Muchas cantidades en geometría y física (área, volumen, temperatura, masa, tiempo,…) se pueden caracterizar por un único número real que se escala a las unidades de medida adecuadas (<span class="math notranslate nohighlight">\(m^2\)</span>, <span class="math notranslate nohighlight">\(m^3\)</span>, <span class="math notranslate nohighlight">\(^\text{o}\)</span> C,…).
+Se llaman <strong>magnitudes escalares</strong>, y al número real asociado con ellas se llama <strong>escalar</strong>.</p>
+<p>Sin embargo, otras cantidades (fuerza, velocidad, aceleración,…) implican magnitud y dirección y no pueden caracterizarse completamente por un solo número real:
+necesitaremos los vectores (y, más adelante, en algunos casos, las matrices).</p>
+<p>De momento, vamos a centrarnos en dar una correcta definición para estas cantidades en el plano, <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
+<div class="proof definition admonition" id="def_01_vector">
+<p class="admonition-title"><span>Definition </span></p>
+<section class="definition-content" id="proof-content">
+<p>Llamaremos <strong>vector</strong> a un segmento en el plano, que estará caracterizado por el ángulo que forma con el eje <span class="math notranslate nohighlight">\(OX\)</span> (dirección) y por su longitud (o magnitud).</p>
+<p>Suele representarse con una flecha con un punto inicial y un punto final en el plano, aunque esta representación puede dar lugar a confusiones, ya que dos segmentos con la misma longitud y dirección, aunque partan de puntos diferentes, definen el mismo vector.</p>
+<a class="reference internal image-reference" href="../../_images/01_vector_plano.png"><img alt="../../_images/01_vector_plano.png" src="../../_images/01_vector_plano.png" style="width: 250px;" /></a>
+</section>
+</div><p>A lo largo del presente libro denotaremos con letras minúscula y en negrita a los vectores (<span class="math notranslate nohighlight">\(\mathbf{n}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>,… ), aunque cuando se escriben a mano suelen denotarse con una flecha (<span class="math notranslate nohighlight">\(\vec{n}\)</span>, <span class="math notranslate nohighlight">\(\vec{u}\)</span>, …).</p>
+<p>Vamos a ver un ejemplo para que nos quede claro que dos segmentos con la misma dirección y longitud definen el mismo vector.</p>
+<div class="proof example admonition" id="ex_01_vector">
+<p class="admonition-title"><span>Example </span></p>
+<section class="example-content" id="proof-content">
+<p>Comprueba que, para los puntos <span class="math notranslate nohighlight">\(P=(0,0)\)</span>, <span class="math notranslate nohighlight">\(Q=(3,2)\)</span>, <span class="math notranslate nohighlight">\(R=(1,2)\)</span> y <span class="math notranslate nohighlight">\(S=(4,4)\)</span>, los segmentos <span class="math notranslate nohighlight">\(\vec{PQ}\)</span> y <span class="math notranslate nohighlight">\(\vec{SR}\)</span> definen el mismo vector.</p>
+<p>Vamos a comprobar que tienen la misma longitud y la misma pendiente (lo que implica que tendrán la misma dirección):</p>
+<ul class="simple">
+<li><p>Longitud <span class="math notranslate nohighlight">\(\vec{PQ}\)</span>: <span class="math notranslate nohighlight">\(\sqrt{(3-0)^2+(2-0)^2} = \sqrt{13}\)</span>.</p></li>
+<li><p>Longitud <span class="math notranslate nohighlight">\(\vec{RS}\)</span>: <span class="math notranslate nohighlight">\(\sqrt{(4-1)^2 + (4-2)^2} = \sqrt{13}\)</span>.</p></li>
+<li><p>Pendiente que forma <span class="math notranslate nohighlight">\(\vec{PQ}\)</span> con la recta <span class="math notranslate nohighlight">\(OX\)</span>: <span class="math notranslate nohighlight">\(\frac{2-0}{3-0} = \frac{2}{3}\)</span>.</p></li>
+<li><p>Pendiente que forma <span class="math notranslate nohighlight">\(\vec{RS}\)</span> con la recta <span class="math notranslate nohighlight">\(OX\)</span>: <span class="math notranslate nohighlight">\(\frac{4-2}{4-1} = \frac{2}{3}\)</span>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/01_ejemplo1.png"><img alt="../../_images/01_ejemplo1.png" src="../../_images/01_ejemplo1.png" style="width: 250px;" /></a>
+</section>
+</div><p>Una vez aclarado que hay muchos segmentos que representan al mismo vector, conviene unificar esto.
+Por ello, suele elegirse el vector que tiene como punto de inicio el origen de coordenadas, <span class="math notranslate nohighlight">\((0,0)\)</span>.
+Entonces, si entendemos que el punto inicial será el origen de coordenadas, basta dar el punto final, <span class="math notranslate nohighlight">\(Q=\left(v_{1}, v_{2}\right)\)</span>,
+para tener totalmente identificado un vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
+<div class="proof definition admonition" id="def_01_vector2">
+<p class="admonition-title"><span>Definition </span> (Definición de un vector mediante sus componentes )</p>
+<section class="definition-content" id="proof-content">
+<p>Definiremos <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> como un vector en el plano mediante las coordenadas, <span class="math notranslate nohighlight">\(\left( v_{1}, v_{2}\right)\)</span>, de su punto final, entendiendo que el punto inicial es el origen <span class="math notranslate nohighlight">\((0,0)\)</span>.
+En este sentido, <strong>identificaremos vectores en el plano con elementos del espacio <span class="math notranslate nohighlight">\(\mathbb{R} \times \mathbb{R} = \mathbb{R}^2\)</span></strong>.</p>
+<p>Las componentes <span class="math notranslate nohighlight">\(v_{1}\)</span> y <span class="math notranslate nohighlight">\(v_{2}\)</span> son las <strong>componentes de <span class="math notranslate nohighlight">\(\mathbf{v}\)</span></strong>.</p>
+<p>Si el punto inicial y el punto final están ambos en el origen, entonces decimos que <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> es el <strong>vector cero</strong> (o <strong>vector nulo</strong>) y se denota por <span class="math notranslate nohighlight">\(\mathbf{0}= (0,0)\)</span>.</p>
+<p>La longitud de <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> se llama <strong>norma de <span class="math notranslate nohighlight">\(\mathbf{v}\)</span></strong>,</p>
+<div class="math notranslate nohighlight">
+\[
+\|\mathbf{v}\| = \sqrt{v_{1}^2+v_{2}^2}.
+\]</div>
+<p>Si <span class="math notranslate nohighlight">\(\|\mathbf{v}\| = 1\)</span> diremos que <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> es un <strong>vector unitario</strong>.</p>
+<p>Además, <span class="math notranslate nohighlight">\(\|\mathbf{v}\| = 0\)</span> si y sólo si <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{0}\)</span>.</p>
+</section>
+</div></section>
+<section id="operaciones-vectoriales">
+<h2><span class="section-number">1.1.2. </span>Operaciones vectoriales<a class="headerlink" href="#operaciones-vectoriales" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_01_suma">
+<p class="admonition-title"><span>Definition </span> (Suma de vectores y multiplicación por un escalar )</p>
+<section class="definition-content" id="proof-content">
+<p>Sean <span class="math notranslate nohighlight">\(\mathbf{u}=\left( u_{1}, u_{2}\right)\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}=\left( v_{1}, v_{2}\right)\)</span> vectores y sea <span class="math notranslate nohighlight">\(c\in\mathbb{R}\)</span> un escalar.</p>
+<ol class="simple">
+<li><p>El <strong>múltiplo escalar</strong> de <span class="math notranslate nohighlight">\(c\)</span> y <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> es el vector <span class="math notranslate nohighlight">\(c\mathbf{u} := \left( cu_{1}, cu_{2}\right)\)</span>.</p></li>
+<li><p>La <strong>suma vectorial</strong> de <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> es el vector <span class="math notranslate nohighlight">\(\mathbf{u}+\mathbf{v} := \left( u_{1} + v_{1}, u_{2} + v_{2}\right)\)</span>.</p></li>
+</ol>
+</section>
+</div><p>Veamos algunas consideraciones geométricas para estas operaciones:</p>
+<p>El <strong>múltiplo escalar</strong>, <span class="math notranslate nohighlight">\(c\mathbf{u}\)</span>, de un vector, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, es un vector que tiene módulo <span class="math notranslate nohighlight">\(|c|\)</span> veces <span class="math notranslate nohighlight">\(\|\|\mathbf{u}\|\)</span> y, si <span class="math notranslate nohighlight">\(c\)</span> es positivo la misma dirección y, para <span class="math notranslate nohighlight">\(c\)</span> un número negativo, direcciones opuestas, como mostramos en la siguiente figura.</p>
+<a class="reference internal image-reference" href="../../_images/01_multiplicacion_escalar.png"><img alt="../../_images/01_multiplicacion_escalar.png" src="../../_images/01_multiplicacion_escalar.png" style="width: 250px;" /></a>
+<p>La <strong>suma de vectores</strong>, <span class="math notranslate nohighlight">\(\mathbf{u}+\mathbf{v}\)</span>, puede entenderse gráficamente como la diagonal del paralelogramo que tiene como lados adyacentes <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, o, equivalentemente, como el resultado de colocar uno de los vectores <em>en la punta</em> del primero.</p>
+<a class="reference internal image-reference" href="../../_images/01_suma_vectores.png"><img alt="../../_images/01_suma_vectores.png" src="../../_images/01_suma_vectores.png" style="width: 400px;" /></a>
+<p>En consecuencia, podemos también interpretar gráficamente la resta de vectores jugando con el paralelogramo resultante.</p>
+<a class="reference internal image-reference" href="../../_images/01_resta_vectores.png"><img alt="../../_images/01_resta_vectores.png" src="../../_images/01_resta_vectores.png" style="width: 200px;" /></a>
+<div class="proof theorem admonition" id="th_01_desigualdad_triangular">
+<p class="admonition-title"><span>Theorem </span> (Desigualdad triangular )</p>
+<section class="theorem-content" id="proof-content">
+<p>Sean <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}\in\mathbb{R}^2\)</span>. Entonces</p>
+<div class="math notranslate nohighlight">
+\[
+\|\mathbf{u}+\mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|. 
+\]</div>
+<p>La igualdad sólo se cumplirá si <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> tienen la misma dirección.</p>
+</section>
+</div><div class="proof theorem admonition" id="th_01_prop_suma">
+<p class="admonition-title"><span>Theorem </span> (Propiedades de la suma de vectores y multiplicación por escalar )</p>
+<section class="theorem-content" id="proof-content">
+<p>Sean <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{w}\in\mathbb{R}^2\)</span> y <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\in\mathbb{R}\)</span>. Entonces:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ll}
+\textrm{1.}\; \mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u} &amp; \textrm{(propiedad conmutativa).} \\
+\textrm{2.}\; (\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w}) &amp; \textrm{(propiedad asociativa).} \\
+\textrm{3.}\; \mathbf{u} + \mathbf{0} = \mathbf{u} &amp; \textrm{(elemento neutro para la suma).} \\
+\textrm{4.}\; \mathbf{u} + (-\mathbf{u}) = \mathbf{0} &amp; \textrm{(elemento inverso para la suma).} \\
+\textrm{5.}\; c(d\mathbf{u}) = (cd)\mathbf{u} &amp; \textrm{(pseudo-asociativa).} \\
+\textrm{6.}\; (c+d)\mathbf{u} = c\mathbf{u} + d\mathbf{u} &amp; \textrm{(distributiva (1) ).} \\
+\textrm{7.}\; c(\mathbf{u}+\mathbf{v}) = c\mathbf{u} + c\mathbf{v} &amp; \textrm{(distributiva (2)).} \\
+\textrm{8.}\; 1(\mathbf{u}) = \mathbf{u} &amp; \textrm{(elemento neutro de la multiplicación por escalares).} \\
+\textrm{9.}\; 0\mathbf{u} = \mathbf{0} &amp; \textrm{(elemento 0 en la multiplicación por escalares).}
+\end{array}
+\end{split}\]</div>
+<p>Al cumplirse estas nueve propiedades podemos afirmar que el espacio de vectores, con la suma y la multiplicación por escalares así definidas, forman un <strong>espacio vectorial</strong>.</p>
+</section>
+</div></section>
+<section id="vectores-unitarios">
+<h2><span class="section-number">1.1.3. </span>Vectores unitarios<a class="headerlink" href="#vectores-unitarios" title="Permalink to this headline">#</a></h2>
+<p>Dado un vector <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, muchas veces es importante calcular otro vector en la misma dirección y que tenga módulo <span class="math notranslate nohighlight">\(1\)</span> (es decir, que sea <strong>unitario</strong>). Lo definimos a continuación:</p>
+<div class="proof definition admonition" id="def_01_vector_unitario">
+<p class="admonition-title"><span>Definition </span> (Vector unitario )</p>
+<section class="definition-content" id="proof-content">
+<p>Sean <span class="math notranslate nohighlight">\(\mathbf{u}\in\mathbb{R}^{2}\)</span>. Definimos <span class="math notranslate nohighlight">\(\mathbf{u}_{1}\in\mathbb{R}^{2}\)</span>, el vector unitario en la dirección de <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> como</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u}_{1} = \frac{\mathbf{u}}{\|\mathbf{u}\|} = \frac{1}{\|\mathbf{u}\|} \mathbf{u}.
+\]</div>
+<p>Por su definición, es evidente que <span class="math notranslate nohighlight">\(\|\mathbf{u}_{1}\| = 1\)</span>.</p>
+</section>
+</div><p>Dentro de todas las infinitas direcciones que existen en <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> vamos a destacar dos de ellas, las llamadas <strong>direcciones canónicas</strong>, que nos permitirán utilizar una representación cartesiana del plano.
+Vamos a definir a continuación los vectores unitarios en estas direcciones:</p>
+<div class="proof definition admonition" id="def_01_vectores_canonicos">
+<p class="admonition-title"><span>Definition </span> (Vectores unitarios canónicos )</p>
+<section class="definition-content" id="proof-content">
+<p>Llamaremos vectores unitarios canónicos a</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{i} = (1,0)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{j} = (0,1)\)</span>.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/01_vectores_canonicos.png"><img alt="../../_images/01_vectores_canonicos.png" src="../../_images/01_vectores_canonicos.png" style="width: 250px;" /></a>
+</section>
+</div><p>Una vez que ya hemos definido los evctores canónicos unitarios, podemos escribir cualquier vector, utilizando sus coordenadas, en función de éstos:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u} = \left(u_{1}, u_{2}\right) = u_{1} (1,0) + u_{2} (0,1) = u_{1}\mathbf{i} + u_{2}\mathbf{j}.
+\]</div>
+</section>
+<section id="jugando-con-vectores-en-sympy-y-numpy">
+<h2><span class="section-number">1.1.4. </span>Jugando con vectores en Sympy y Numpy<a class="headerlink" href="#jugando-con-vectores-en-sympy-y-numpy" title="Permalink to this headline">#</a></h2>
+<p>Ahora deberías leerte las secciónes <span class="xref std std-ref">sec:introduccion_Simpy</span> y <a class="reference internal" href="../06/02.IntroduccionNumpy_OLD.html#sec-introduccion-numpy"><span class="std std-ref">Introducción a Numpy</span></a> para poder jugar un poco con las propiedades que acabas de aprender de vectores y con las librerías Sympy y Numpy, que utilizaremos a lo largo del presente curso. Te damos alguna pista:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Definimos los vectores u y v</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="c1"># Imprimimos en pantalla estos vectores</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u: &#39;</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;v: &#39;</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Sumamos los vectores, almacenando el resultado en w1</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u+v: &#39;</span><span class="p">,</span> <span class="n">w1</span><span class="p">)</span>
+
+<span class="c1"># Multiplicamos u por 3, v por -2 y los sumamos en w2</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">u</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">v</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3u - 2v: &#39;</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u:  [1 2]
+v:  [3 4]
+u+v:  [4 6]
+3u - 2v:  [-3 -2]
+</pre></div>
+</div>
+</div>
+</div>
+<p>En Sympy hay que definir los vectores como matrices unidimensionales. En general, será útil si queremos mantener fracciones o queremos realizar cálculos simbólicos sobre los vectores:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Definimos los vectores u y v</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">sp</span><span class="o">.</span><span class="n">frac</span><span class="p">(</span><span class="s1">&#39;1/2&#39;</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">frac</span><span class="p">(</span><span class="s1">&#39;1/3&#39;</span><span class="p">)])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">sp</span><span class="o">.</span><span class="n">frac</span><span class="p">(</span><span class="s1">&#39;1/5&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Sumamos los vectores, almacenando el resultado en w1</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u+v: &#39;</span><span class="p">,</span> <span class="n">w1</span><span class="p">)</span>
+<span class="c1"># Queda más chulo con display:</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
+
+<span class="c1"># Multiplicamos w por 3</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;3w:&#39;</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u+v:  Matrix([[7/10], [4/3]])
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\frac{7}{10}\\\frac{4}{3}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;3w:&#39;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\frac{3}{x}\\3 x^{2}\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Ahora puedes aprovechar la potencia de cualquiera de estas librerías (tampoco es que sea muy necesaria para lo que se avecina, pero…) y resolver el siguiente problema:</p>
+<div class="proof example admonition" id="example-8">
+<p class="admonition-title"><span class="caption-number">Example 1.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Si dos remolcadores empujan un petrolero, el primero con una fuerza de módulo 8000 HP en la dirección <span class="math notranslate nohighlight">\((1,-1)\)</span> y el segundo con una fuerza de 10000 HP en la dirección <span class="math notranslate nohighlight">\((1,1)\)</span>.</p>
+<ol class="simple">
+<li><p>¿Cuál es la magnitud y la dirección resultante del empuje de los 2 remolcadores?</p></li>
+<li><p>Si el primer remolcador aumentara su empuje un 50 %, manteniendo la misma dirección, ¿cuál sería la fuerza resultante?</p></li>
+</ol>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./capitulos/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Vectores y geometría del espacio</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02.VectoresEspacio.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Vectores en el espacio</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By M. Benítez, L. Hervella, A. Prieto and J. Ráfales<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+Esta obra está bajo una <a href="https://creativecommons.org/licenses/by/4.0/deed.es"> Licencia Creative Commons Atribución 4.0 Internacional </a>
+<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.es_ES"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

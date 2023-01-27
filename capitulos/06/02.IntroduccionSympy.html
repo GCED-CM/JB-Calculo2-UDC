@@ -1,0 +1,1097 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6.7. Introducción a Sympy &#8212; Calculo en varias variables</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.8. Introducción" href="03.RepresentacionGrafica.html" />
+    <link rel="prev" title="6.1. Introducción" href="01.IntroduccionNumpy.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-148221575-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/udc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculo en varias variables</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/README.html">
+   1. Vectores y geometría del espacio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02/README.html">
+   2. Límites y continuidad
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03/README.html">
+   3. Derivación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/README.html">
+   4. Extremos relativos y absolutos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05/README.html">
+   5. Integración
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   6. Pyhton para cálculo de varias variables
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.IntroduccionNumpy.html">
+     6.1. Introducción
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.7. Introducción a SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.RepresentacionGrafica.html">
+     6.8. Introducción
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/06/02.IntroduccionSympy.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/capitulos/06/02.IntroduccionSympy.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obxectivos">
+   6.7.1. Obxectivos:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacion-e-carga-do-modulo">
+   6.7.2. Instalación e carga do módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables-simbolicas">
+   6.7.3. Variables simbólicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suposicions-sobre-as-variables">
+   6.7.4. Suposicións sobre as variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulacion-de-expresions-simbolicas">
+   6.7.5. Manipulación de expresións simbólicas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercicio-2-1">
+     6.7.5.1.
+     <strong>
+      Exercicio 2.1
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercicio-2-2">
+     6.7.5.2.
+     <strong>
+      Exercicio 2.2
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducción a Sympy</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obxectivos">
+   6.7.1. Obxectivos:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacion-e-carga-do-modulo">
+   6.7.2. Instalación e carga do módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables-simbolicas">
+   6.7.3. Variables simbólicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suposicions-sobre-as-variables">
+   6.7.4. Suposicións sobre as variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulacion-de-expresions-simbolicas">
+   6.7.5. Manipulación de expresións simbólicas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercicio-2-1">
+     6.7.5.1.
+     <strong>
+      Exercicio 2.1
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercicio-2-2">
+     6.7.5.2.
+     <strong>
+      Exercicio 2.2
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-sympy">
+<h1><span class="section-number">6.7. </span>Introducción a Sympy<a class="headerlink" href="#introduccion-a-sympy" title="Permalink to this headline">#</a></h1>
+<p>Ademais das variables numéricas existen as variables simbólicas que permiten calcular
+límites, derivadas, integrais etc., como se fai habitualmente nas clases de matemáticas.
+Para poder facer estas operacións, habituais nun curso de Cálculo, é preciso ter instalada a libraría <strong>Sympy</strong>.</p>
+<p>Ao contrario que o módulo <strong>Math</strong> ou o módulo <strong>Numpy</strong> que acabamos de revisar na práctica anterior, o módulo <strong>Sympy</strong> non traballa cunha estrutura de datos baseado en números (xa sexan de tipo enteiro ou dobre) senón que traballa con obxectos que posúen atributos e métodos que tratan de reproducir o comportamento matemático de variables, funcións, rexións, ecuacións, etc. coas que se traballa habitualmente nas disciplinas da álxebra e o cálculo diferencial e integral.</p>
+<p>Para empregar directamente este guión de prácticas dende unha instalación de Python con <em>Anaconda</em>, basta con facer clic na aplicación ‘Jupyter notebook’ que xa está instalada por defecto (para máis detalles: <a class="reference external" href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html">https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html</a>).</p>
+<section id="obxectivos">
+<h2><span class="section-number">6.7.1. </span>Obxectivos:<a class="headerlink" href="#obxectivos" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Uso de variables simbólicas</p></li>
+<li><p>Suposicións e requerimentos das variables</p></li>
+<li><p>Manipulación de expresións sinxelas en varias variables</p></li>
+</ul>
+</section>
+<section id="instalacion-e-carga-do-modulo">
+<h2><span class="section-number">6.7.2. </span>Instalación e carga do módulo<a class="headerlink" href="#instalacion-e-carga-do-modulo" title="Permalink to this headline">#</a></h2>
+<p>Para facer que estea dispoñible o módulo <strong>Sympy</strong>, hai que instalalo usando a ferramente <code class="docutils literal notranslate"><span class="pre">pip</span></code> (ou <code class="docutils literal notranslate"><span class="pre">conda</span></code> se estades a usar entornos de traballo diferenciados). No caso do uso de <em>Microsoft Azute Notebooks</em> (<a class="reference external" href="https://notebooks.azure.com/">https://notebooks.azure.com/</a>), empregaríase a seguinte instalación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip -q install sympy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: You are using pip version 21.1.1; however, version 21.3.1 is available.
+You should consider upgrading via the &#39;c:\users\luis hervella\appdata\local\programs\python\python39\python.exe -m pip install --upgrade pip&#39; command.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para dispoñer do módulo <strong>Sympy</strong> e importalo para o resto do guión de prácticas, usaremos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variables-simbolicas">
+<h2><span class="section-number">6.7.3. </span>Variables simbólicas<a class="headerlink" href="#variables-simbolicas" title="Permalink to this headline">#</a></h2>
+<p>Para traballar en modo simbólico é necesario definir variables simbólicas e para facer
+isto usaremos o función <code class="docutils literal notranslate"><span class="pre">sp.Symbol</span></code>. Vexamos algúns exemplos do seu uso:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="c1"># define a variable simbólica x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="c1"># define a variable simbólica y</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="c1"># agora temos definida a expresion simbólica f</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a:c&#39;</span><span class="p">)</span> <span class="c1"># define como simbólicas as variables a, b, c.</span>
+<span class="n">expresion</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">expresion</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3*x + 5*y
+a**3 + b**2 + c
+</pre></div>
+</div>
+</div>
+</div>
+<p>Por claridade na implementación e nos cálculos, será habitual que o nome da variable simbólica e o nome do obxecto <strong>Sympy</strong> no que se alamacena coincidan, pero isto non ter porque ser así:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;x&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Debemos ter claso que agora as variables <code class="docutils literal notranslate"><span class="pre">x</span></code> ou <code class="docutils literal notranslate"><span class="pre">y</span></code> definidas antes non son números, nin tampouco pertencen aos obxectos definidos co módulo <strong>Numpy</strong> revisado na práctica anterior. Todas as variables simbólicas son obxectos da clase <code class="docutils literal notranslate"><span class="pre">sp.Symbol</span></code> e os seus atributos e métodos son completamente diferentes aos que aparecían ás variables numéricas e vectores de <strong>Numpy</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sympy.core.symbol.Symbol&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;_Symbol__xnew_cached_&#39;,
+ &#39;__abs__&#39;,
+ &#39;__add__&#39;,
+ &#39;__and__&#39;,
+ &#39;__call__&#39;,
+ &#39;__class__&#39;,
+ &#39;__complex__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__div__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__float__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__getnewargs__&#39;,
+ &#39;__getstate__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__int__&#39;,
+ &#39;__invert__&#39;,
+ &#39;__le__&#39;,
+ &#39;__long__&#39;,
+ &#39;__lshift__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__mod__&#39;,
+ &#39;__module__&#39;,
+ &#39;__mul__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__neg__&#39;,
+ &#39;__new__&#39;,
+ &#39;__new_stage2__&#39;,
+ &#39;__or__&#39;,
+ &#39;__pos__&#39;,
+ &#39;__pow__&#39;,
+ &#39;__radd__&#39;,
+ &#39;__rand__&#39;,
+ &#39;__rdiv__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__rlshift__&#39;,
+ &#39;__rmod__&#39;,
+ &#39;__rmul__&#39;,
+ &#39;__ror__&#39;,
+ &#39;__rpow__&#39;,
+ &#39;__rrshift__&#39;,
+ &#39;__rshift__&#39;,
+ &#39;__rsub__&#39;,
+ &#39;__rtruediv__&#39;,
+ &#39;__rxor__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__setstate__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__slots__&#39;,
+ &#39;__str__&#39;,
+ &#39;__sub__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;__truediv__&#39;,
+ &#39;__xnew__&#39;,
+ &#39;__xor__&#39;,
+ &#39;_args&#39;,
+ &#39;_assumptions&#39;,
+ &#39;_compare_pretty&#39;,
+ &#39;_diff_wrt&#39;,
+ &#39;_eval_adjoint&#39;,
+ &#39;_eval_as_leading_term&#39;,
+ &#39;_eval_conjugate&#39;,
+ &#39;_eval_derivative&#39;,
+ &#39;_eval_evalf&#39;,
+ &#39;_eval_expand_complex&#39;,
+ &#39;_eval_interval&#39;,
+ &#39;_eval_is_algebraic_expr&#39;,
+ &#39;_eval_is_negative&#39;,
+ &#39;_eval_is_polynomial&#39;,
+ &#39;_eval_is_positive&#39;,
+ &#39;_eval_is_rational_function&#39;,
+ &#39;_eval_lseries&#39;,
+ &#39;_eval_nseries&#39;,
+ &#39;_eval_power&#39;,
+ &#39;_eval_rewrite&#39;,
+ &#39;_eval_simplify&#39;,
+ &#39;_eval_subs&#39;,
+ &#39;_eval_transpose&#39;,
+ &#39;_evalf&#39;,
+ &#39;_expand_hint&#39;,
+ &#39;_explicit_class_assumptions&#39;,
+ &#39;_from_mpmath&#39;,
+ &#39;_has&#39;,
+ &#39;_has_matcher&#39;,
+ &#39;_hashable_content&#39;,
+ &#39;_mhash&#39;,
+ &#39;_op_priority&#39;,
+ &#39;_parse_order&#39;,
+ &#39;_prop_handler&#39;,
+ &#39;_random&#39;,
+ &#39;_recursive_call&#39;,
+ &#39;_sage_&#39;,
+ &#39;_sanitize&#39;,
+ &#39;_sorted_args&#39;,
+ &#39;_subs&#39;,
+ &#39;_to_mpmath&#39;,
+ &#39;adjoint&#39;,
+ &#39;apart&#39;,
+ &#39;args&#39;,
+ &#39;args_cnc&#39;,
+ &#39;as_base_exp&#39;,
+ &#39;as_coeff_Add&#39;,
+ &#39;as_coeff_Mul&#39;,
+ &#39;as_coeff_add&#39;,
+ &#39;as_coeff_exponent&#39;,
+ &#39;as_coeff_mul&#39;,
+ &#39;as_coefficient&#39;,
+ &#39;as_coefficients_dict&#39;,
+ &#39;as_content_primitive&#39;,
+ &#39;as_dummy&#39;,
+ &#39;as_expr&#39;,
+ &#39;as_independent&#39;,
+ &#39;as_leading_term&#39;,
+ &#39;as_numer_denom&#39;,
+ &#39;as_ordered_factors&#39;,
+ &#39;as_ordered_terms&#39;,
+ &#39;as_poly&#39;,
+ &#39;as_powers_dict&#39;,
+ &#39;as_real_imag&#39;,
+ &#39;as_terms&#39;,
+ &#39;assumptions0&#39;,
+ &#39;atoms&#39;,
+ &#39;cancel&#39;,
+ &#39;canonical_variables&#39;,
+ &#39;class_key&#39;,
+ &#39;coeff&#39;,
+ &#39;collect&#39;,
+ &#39;combsimp&#39;,
+ &#39;compare&#39;,
+ &#39;compute_leading_term&#39;,
+ &#39;conjugate&#39;,
+ &#39;copy&#39;,
+ &#39;could_extract_minus_sign&#39;,
+ &#39;count&#39;,
+ &#39;count_ops&#39;,
+ &#39;default_assumptions&#39;,
+ &#39;diff&#39;,
+ &#39;doit&#39;,
+ &#39;dummy_eq&#39;,
+ &#39;equals&#39;,
+ &#39;evalf&#39;,
+ &#39;expand&#39;,
+ &#39;extract_additively&#39;,
+ &#39;extract_branch_factor&#39;,
+ &#39;extract_multiplicatively&#39;,
+ &#39;factor&#39;,
+ &#39;find&#39;,
+ &#39;free_symbols&#39;,
+ &#39;fromiter&#39;,
+ &#39;func&#39;,
+ &#39;getO&#39;,
+ &#39;getn&#39;,
+ &#39;has&#39;,
+ &#39;integrate&#39;,
+ &#39;invert&#39;,
+ &#39;is_Add&#39;,
+ &#39;is_AlgebraicNumber&#39;,
+ &#39;is_Atom&#39;,
+ &#39;is_Boolean&#39;,
+ &#39;is_Derivative&#39;,
+ &#39;is_Dummy&#39;,
+ &#39;is_Equality&#39;,
+ &#39;is_Float&#39;,
+ &#39;is_Function&#39;,
+ &#39;is_Integer&#39;,
+ &#39;is_Matrix&#39;,
+ &#39;is_Mul&#39;,
+ &#39;is_Not&#39;,
+ &#39;is_Number&#39;,
+ &#39;is_NumberSymbol&#39;,
+ &#39;is_Order&#39;,
+ &#39;is_Piecewise&#39;,
+ &#39;is_Poly&#39;,
+ &#39;is_Pow&#39;,
+ &#39;is_Rational&#39;,
+ &#39;is_Relational&#39;,
+ &#39;is_Symbol&#39;,
+ &#39;is_Vector&#39;,
+ &#39;is_Wild&#39;,
+ &#39;is_algebraic&#39;,
+ &#39;is_algebraic_expr&#39;,
+ &#39;is_antihermitian&#39;,
+ &#39;is_bounded&#39;,
+ &#39;is_commutative&#39;,
+ &#39;is_comparable&#39;,
+ &#39;is_complex&#39;,
+ &#39;is_composite&#39;,
+ &#39;is_constant&#39;,
+ &#39;is_even&#39;,
+ &#39;is_finite&#39;,
+ &#39;is_hermitian&#39;,
+ &#39;is_hypergeometric&#39;,
+ &#39;is_imaginary&#39;,
+ &#39;is_infinite&#39;,
+ &#39;is_infinitesimal&#39;,
+ &#39;is_integer&#39;,
+ &#39;is_irrational&#39;,
+ &#39;is_negative&#39;,
+ &#39;is_noninteger&#39;,
+ &#39;is_nonnegative&#39;,
+ &#39;is_nonpositive&#39;,
+ &#39;is_nonzero&#39;,
+ &#39;is_number&#39;,
+ &#39;is_odd&#39;,
+ &#39;is_polar&#39;,
+ &#39;is_polynomial&#39;,
+ &#39;is_positive&#39;,
+ &#39;is_prime&#39;,
+ &#39;is_rational&#39;,
+ &#39;is_rational_function&#39;,
+ &#39;is_real&#39;,
+ &#39;is_transcendental&#39;,
+ &#39;is_unbounded&#39;,
+ &#39;is_zero&#39;,
+ &#39;iter_basic_args&#39;,
+ &#39;leadterm&#39;,
+ &#39;limit&#39;,
+ &#39;lseries&#39;,
+ &#39;match&#39;,
+ &#39;matches&#39;,
+ &#39;n&#39;,
+ &#39;name&#39;,
+ &#39;normal&#39;,
+ &#39;nseries&#39;,
+ &#39;nsimplify&#39;,
+ &#39;powsimp&#39;,
+ &#39;primitive&#39;,
+ &#39;radsimp&#39;,
+ &#39;ratsimp&#39;,
+ &#39;rcall&#39;,
+ &#39;refine&#39;,
+ &#39;removeO&#39;,
+ &#39;replace&#39;,
+ &#39;rewrite&#39;,
+ &#39;round&#39;,
+ &#39;separate&#39;,
+ &#39;series&#39;,
+ &#39;simplify&#39;,
+ &#39;sort_key&#39;,
+ &#39;subs&#39;,
+ &#39;taylor_term&#39;,
+ &#39;together&#39;,
+ &#39;transpose&#39;,
+ &#39;trigsimp&#39;,
+ &#39;xreplace&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con <strong>Sympy</strong> pódense definir constantes enteiras ou números racioanais (todas de forma simbólica) de xeito doado usando o comando <code class="docutils literal notranslate"><span class="pre">sp.Integer</span></code> ou <code class="docutils literal notranslate"><span class="pre">sp.Rational</span></code>. Por exemplo, podemos definir a constante simbólica <span class="math notranslate nohighlight">\(1/3\)</span>. Se fixeramos o mesmo con números representados por defecto en Python, obteríamos resultados moi diferentes. Observa tamén a diferenza que existe entre o tipo
+de dato asignado no espazo de traballo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="s1">&#39;1/3&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/3
+1/3
+0
+0.333333333333
+&lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
+&lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
+&lt;type &#39;int&#39;&gt;
+&lt;type &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Outra forma sinxela de manexar valores constante mediante obxectos do módulo <strong>Sympy</strong> é usar a función <code class="docutils literal notranslate"><span class="pre">sp.S</span></code>. Unha vez feitos todos os cálculos simbólicos, se precisamos obter o valor numérico, empregaríase a función <code class="docutils literal notranslate"><span class="pre">sp.N</span></code> ou ben directamente <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.15f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sympy.core.numbers.Integer&#39;&gt;
+&lt;class &#39;sympy.core.numbers.Integer&#39;&gt;
+&lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
+&lt;class &#39;sympy.core.numbers.Float&#39;&gt;
+&lt;type &#39;float&#39;&gt;
+1/3
+0.333333333333333
+0.333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ao longo do curso usaremos asiduamente dous números reais que podes definir como constantes simbólicas: <span class="math notranslate nohighlight">\(\pi\)</span> e o numéro <span class="math notranslate nohighlight">\(e\)</span>. Do mesmo xeito, para operar con variables ou constantes simbólicas, debemos empregar funcións que sexan capaces de manipular este tipo de obxectos, todas elas implementadas no módulo <strong>Sympy</strong> (por exemplo, <code class="docutils literal notranslate"><span class="pre">sp.sin</span></code>, <code class="docutils literal notranslate"><span class="pre">sp.cos</span></code>, <code class="docutils literal notranslate"><span class="pre">sp.log</span></code>, etc)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># definición da constante pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">E</span> <span class="c1"># definición do número e</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1
+1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="suposicions-sobre-as-variables">
+<h2><span class="section-number">6.7.4. </span>Suposicións sobre as variables<a class="headerlink" href="#suposicions-sobre-as-variables" title="Permalink to this headline">#</a></h2>
+<p>Cando se define unha variable simbólica se lle pode asignar certa información adicional sobre o tipo de valores que pode acadar, ou as suposicións que se lle van a aplicar. Por exemplo, podemos decidir antes de facer calquera cálculo se a variable toma valores enteiros ou reais, se é positiva ou negativa, maior que un certo número, etc. Este tipo de información engádese no momento da definición da variable simbólica como un argumento opcional.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">nonnegative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># A raíz cadrada dun número non negativo é real</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># A potencia dun número enteiro é enteira</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">is_integer</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">is_integer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+True
+None
+None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Posto que os cálculos simbólicos son consistentes en <strong>Sympy</strong>, se poden tamén facer comprobacións sobre se algunhas desigualdades son certas ou non, sempre e cando se teña coidado nas suposicións que se fagan ao definir as variables simbólicas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">positive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span> <span class="c1"># O valor absoluto</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">q</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+q + Abs(x) &gt; 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manipulacion-de-expresions-simbolicas">
+<h2><span class="section-number">6.7.5. </span>Manipulación de expresións simbólicas<a class="headerlink" href="#manipulacion-de-expresions-simbolicas" title="Permalink to this headline">#</a></h2>
+<p>Do mesmo xeito que o módulo <strong>Sympy</strong> nos permite definir variables simbólicas, tamén podemos definir expresións matemáticas a partir destas e manipulalas, factorizándoas, expandíndoas, simplificalas, ou mesmo imprimilas dun xeito similar a como o faríamos con lápiz e papel</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x,y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">expr_long</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="c1"># Expandir expresión</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">expr_long</span><span class="p">)</span> <span class="c1"># Imprimir de forma estándar</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr_long</span><span class="p">)</span> <span class="c1"># Imprimir de forma semellante a con lápiz e papel</span>
+
+<span class="n">expr_short</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">expr_short</span><span class="p">)</span> <span class="c1"># Factorizar expresión</span>
+
+<span class="n">expr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">9</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">expr_simple</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="c1"># Simplificar expresión</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">expr_simple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x**3*y - 2*x**3 - 9*x**2*y + 18*x**2 + 27*x*y - 54*x - 27*y + 54
+ 3        3      2         2                            
+x ⋅y - 2⋅x  - 9⋅x ⋅y + 18⋅x  + 27⋅x⋅y - 54⋅x - 27⋅y + 54
+(x - 3)**3*(y - 2)
+      2          
+     x  - 6⋅x + 9
+-3 + ────────────
+        x - 3    
+x - 6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dada unha expresión en <strong>Sympy</strong> tamén se pode manipulala, substituindo unhas variables simbólica por outras ou mesmo reemprazando as variables simbólicas por constantes. Para facer este tipo de substitucións emprégase a función <code class="docutils literal notranslate"><span class="pre">subs</span></code> e os valores a utilizar na substitución veñen definidos por un diccionario de Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x,y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span> <span class="c1"># Substitutición das variables simbólicas por constantes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="n">expr_sub</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">})</span> <span class="c1"># Subsitución de variable simbólica por unha expresión</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr_sub</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr_sub</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+ 2                          2
+y  + 2⋅y⋅(-y + 1) + (-y + 1) 
+1
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercicio-2-1">
+<h3><span class="section-number">6.7.5.1. </span><strong>Exercicio 2.1</strong><a class="headerlink" href="#exercicio-2-1" title="Permalink to this headline">#</a></h3>
+<p>Define a expresión dada pola suma dos termos seguintes:
+$<span class="math notranslate nohighlight">\(
+a+a^2+a^3+\ldots+a^N,
+\)</span><span class="math notranslate nohighlight">\(
+onde \)</span>a<span class="math notranslate nohighlight">\( é unha variable real arbitraria e \)</span>N$ e un valor enteiro positivo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># O TEU CÓDIGO AQUÍ</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercicio-2-2">
+<h3><span class="section-number">6.7.5.2. </span><strong>Exercicio 2.2</strong><a class="headerlink" href="#exercicio-2-2" title="Permalink to this headline">#</a></h3>
+<p>Cal é o valor exacto da anterior expresión cando <span class="math notranslate nohighlight">\(N=15\)</span> e <span class="math notranslate nohighlight">\(a=5/6\)</span>? Cal é valor numérico en coma flotante?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># O TEU CÓDIGO AQUÍ</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./capitulos/06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="01.IntroduccionNumpy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.1. </span>Introducción</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03.RepresentacionGrafica.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.8. </span>Introducción</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By M. Benítez, L. Hervella, A. Prieto and J. Ráfales<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+Esta obra está bajo una <a href="https://creativecommons.org/licenses/by/4.0/deed.es"> Licencia Creative Commons Atribución 4.0 Internacional </a>
+<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.es_ES"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
