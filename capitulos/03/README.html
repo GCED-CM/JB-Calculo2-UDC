@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Derivación de una función de varias variables reales &#8212; Calculo en varias variables</title>
+    <title>3. Derivación y extremos de funciones de varias variables reales &#8212; Calculo en varias variables</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Extremos relativos y absolutos" href="../04/README.html" />
+    <link rel="next" title="4. Integración" href="../04/README.html" />
     <link rel="prev" title="2. Límites y continuidad" href="../02/README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -171,22 +171,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Derivación
+   3. Derivación y extremos
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04/README.html">
-   4. Extremos relativos y absolutos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05/README.html">
-   5. Integración
+   4. Integración
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06/README.html">
-   6. Pyhton para cálculo de varias variables
+  <a class="reference internal" href="../05/README.html">
+   5. Pyhton para cálculo de varias variables
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -195,18 +190,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/01.IntroduccionSympy.html">
-     6.1. Introducción a SymPy
+    <a class="reference internal" href="../05/01.IntroduccionSympy.html">
+     5.1. Introducción a SymPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/02.IntroduccionNumpy.html">
-     6.2. Introducción a NumPy
+    <a class="reference internal" href="../05/02.IntroduccionNumpy.html">
+     5.2. Introducción a NumPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/03.RepresentacionGraficaMatplotlib.html">
-     6.3. Representación Gráfica con Matplotlib
+    <a class="reference internal" href="../05/03.RepresentacionGraficaMatplotlib.html">
+     5.3. Representación Gráfica con Matplotlib
     </a>
    </li>
   </ul>
@@ -333,7 +328,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Derivación de una función de varias variables reales</h1>
+                <h1>Derivación y extremos de funciones de varias variables reales</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -345,9 +340,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="derivacion-de-una-funcion-de-varias-variables-reales">
-<h1><span class="section-number">3. </span>Derivación de una función de varias variables reales<a class="headerlink" href="#derivacion-de-una-funcion-de-varias-variables-reales" title="Permalink to this headline">#</a></h1>
-<p>En este capítulo introduciremos la derivación para funciones reales de varias variables reales y estudiaremos sus propiedades y algunas aplicaciones.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="derivacion-y-extremos-de-funciones-de-varias-variables-reales">
+<h1><span class="section-number">3. </span>Derivación y extremos de funciones de varias variables reales<a class="headerlink" href="#derivacion-y-extremos-de-funciones-de-varias-variables-reales" title="Permalink to this headline">#</a></h1>
+<p>En este capítulo introduciremos la derivación para funciones reales de varias variables reales y estudiaremos sus propiedades y algunas aplicaciones.
+También abordaremos el cálculo de extremos (máximos y mínimos) relativos y absolutos.</p>
 <p>Lo dividimos en n secciones:</p>
 </section>
 
@@ -388,7 +384,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="../04/README.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Extremos relativos y absolutos</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Integración</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

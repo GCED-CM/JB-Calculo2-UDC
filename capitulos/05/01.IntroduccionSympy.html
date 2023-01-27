@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6.1. Introducción a SymPy &#8212; Calculo en varias variables</title>
+    <title>5.1. Introducción a SymPy &#8212; Calculo en varias variables</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.2. Introducción a Numpy" href="02.IntroduccionNumpy.html" />
-    <link rel="prev" title="6. Python para cálculo de varias variables" href="README.html" />
+    <link rel="next" title="5.2. Introducción a Numpy" href="02.IntroduccionNumpy.html" />
+    <link rel="prev" title="5. Python para cálculo de varias variables" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -173,22 +173,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03/README.html">
-   3. Derivación
+   3. Derivación y extremos
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04/README.html">
-   4. Extremos relativos y absolutos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05/README.html">
-   5. Integración
+   4. Integración
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="README.html">
-   6. Pyhton para cálculo de varias variables
+   5. Pyhton para cálculo de varias variables
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -198,17 +193,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.1. Introducción a SymPy
+     5.1. Introducción a SymPy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.IntroduccionNumpy.html">
-     6.2. Introducción a NumPy
+     5.2. Introducción a NumPy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.RepresentacionGraficaMatplotlib.html">
-     6.3. Representación Gráfica con Matplotlib
+     5.3. Representación Gráfica con Matplotlib
     </a>
    </li>
   </ul>
@@ -272,7 +267,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/06/01.IntroduccionSympy.ipynb"
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/05/01.IntroduccionSympy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -315,7 +310,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/capitulos/06/01.IntroduccionSympy.ipynb"
+        <a href="../../_sources/capitulos/05/01.IntroduccionSympy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -376,42 +371,42 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objetivos">
-   6.1.1. Objetivos:
+   5.1.1. Objetivos:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#instalacion-y-carga-del-modulo">
-   6.1.2. Instalación y carga del módulo
+   5.1.2. Instalación y carga del módulo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variables-y-expresiones-simbolicas">
-   6.1.3. Variables y expresiones simbólicas
+   5.1.3. Variables y expresiones simbólicas
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variables-simbolicas">
-     6.1.3.1. Variables simbólicas
+     5.1.3.1. Variables simbólicas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#suposiciones-sobre-las-variables">
-     6.1.3.2. Suposiciones sobre las variables
+     5.1.3.2. Suposiciones sobre las variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#expresiones-simbolicas">
-     6.1.3.3. Expresiones simbólicas
+     5.1.3.3. Expresiones simbólicas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#resolucion-de-ecuaciones">
-     6.1.3.4. Resolución de ecuaciones
+     5.1.3.4. Resolución de ecuaciones
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ejercicio">
-     6.1.3.5.
+     5.1.3.5.
      <strong>
       Ejercicio
      </strong>
@@ -419,7 +414,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     6.1.3.6.
+     5.1.3.6.
      <strong>
       Ejercicio
      </strong>
@@ -429,17 +424,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#representacion-grafica">
-   6.1.4. Representación gráfica
+   5.1.4. Representación gráfica
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regiones-en-el-plano">
-     6.1.4.1. Regiones en el plano
+     5.1.4.1. Regiones en el plano
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     6.1.4.2.
+     5.1.4.2.
      <strong>
       Ejercicio
      </strong>
@@ -449,17 +444,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#funciones-de-varias-variables">
-   6.1.5. Funciones de varias variables
+   5.1.5. Funciones de varias variables
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#funciones-definidas-a-trozos">
-     6.1.5.1. Funciones definidas a trozos
+     5.1.5.1. Funciones definidas a trozos
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     6.1.5.2.
+     5.1.5.2.
      <strong>
       Ejercicio
      </strong>
@@ -488,42 +483,42 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objetivos">
-   6.1.1. Objetivos:
+   5.1.1. Objetivos:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#instalacion-y-carga-del-modulo">
-   6.1.2. Instalación y carga del módulo
+   5.1.2. Instalación y carga del módulo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variables-y-expresiones-simbolicas">
-   6.1.3. Variables y expresiones simbólicas
+   5.1.3. Variables y expresiones simbólicas
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#variables-simbolicas">
-     6.1.3.1. Variables simbólicas
+     5.1.3.1. Variables simbólicas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#suposiciones-sobre-las-variables">
-     6.1.3.2. Suposiciones sobre las variables
+     5.1.3.2. Suposiciones sobre las variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#expresiones-simbolicas">
-     6.1.3.3. Expresiones simbólicas
+     5.1.3.3. Expresiones simbólicas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#resolucion-de-ecuaciones">
-     6.1.3.4. Resolución de ecuaciones
+     5.1.3.4. Resolución de ecuaciones
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ejercicio">
-     6.1.3.5.
+     5.1.3.5.
      <strong>
       Ejercicio
      </strong>
@@ -531,7 +526,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     6.1.3.6.
+     5.1.3.6.
      <strong>
       Ejercicio
      </strong>
@@ -541,17 +536,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#representacion-grafica">
-   6.1.4. Representación gráfica
+   5.1.4. Representación gráfica
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regiones-en-el-plano">
-     6.1.4.1. Regiones en el plano
+     5.1.4.1. Regiones en el plano
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     6.1.4.2.
+     5.1.4.2.
      <strong>
       Ejercicio
      </strong>
@@ -561,17 +556,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#funciones-de-varias-variables">
-   6.1.5. Funciones de varias variables
+   5.1.5. Funciones de varias variables
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#funciones-definidas-a-trozos">
-     6.1.5.1. Funciones definidas a trozos
+     5.1.5.1. Funciones definidas a trozos
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     6.1.5.2.
+     5.1.5.2.
      <strong>
       Ejercicio
      </strong>
@@ -590,12 +585,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-sympy">
-<span id="sec-introduccion-sympy"></span><h1><span class="section-number">6.1. </span>Introducción a SymPy<a class="headerlink" href="#introduccion-a-sympy" title="Permalink to this headline">#</a></h1>
+<span id="sec-introduccion-sympy"></span><h1><span class="section-number">5.1. </span>Introducción a SymPy<a class="headerlink" href="#introduccion-a-sympy" title="Permalink to this headline">#</a></h1>
 <p>Las variables simbólicas son aquellas que permiten calcular límites, derivadas, integrales, etc., como se hace habitualmente en las clases de matemáticas. Para poder hacer estas operaciones, habituales en un curso de Cálculo, es preciso tener instalada la libraría <strong>SymPy</strong>.</p>
 <p>Este módulo no trabaja con una estructura de datos basada en números (ya sean de tipo entero o doble) sino que trabaja con objetos que poseen atributos y métodos que tratan de reproducir el comportamiento matemático de variables, funciones, regiones, ecuaciones, etc., con las que se trabaja habitualmente en las disciplinas de álgebra y cálculo diferencial e integral.</p>
 <p>Para emplear directamente este guión de prácticas desde una instalación de Python con <em>Anaconda</em>, basta con hacer clic en la aplicación ‘Jupyter notebook’ que ya está instalada por defecto (para más detalles: <a class="reference external" href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html">https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html</a>). Para instalar <em>Anaconda</em> en vuestro sistema operativo, entrad en el siguiente link: <a class="reference external" href="https://docs.anaconda.com/anaconda/install">https://docs.anaconda.com/anaconda/install</a>.</p>
 <section id="objetivos">
-<h2><span class="section-number">6.1.1. </span>Objetivos:<a class="headerlink" href="#objetivos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.1. </span>Objetivos:<a class="headerlink" href="#objetivos" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Usar variables y expresiones simbólicas.</p></li>
 <li><p>Representar gráficamente regiones en el plano.</p></li>
@@ -603,7 +598,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="instalacion-y-carga-del-modulo">
-<h2><span class="section-number">6.1.2. </span>Instalación y carga del módulo<a class="headerlink" href="#instalacion-y-carga-del-modulo" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.2. </span>Instalación y carga del módulo<a class="headerlink" href="#instalacion-y-carga-del-modulo" title="Permalink to this headline">#</a></h2>
 <p>Para tener disponible el módulo <strong>SymPy</strong>, hay que instalarlo usando la herramienta <code class="docutils literal notranslate"><span class="pre">pip</span></code> (o <code class="docutils literal notranslate"><span class="pre">conda</span></code> si utilizáis entornos de trabajo diferenciados). En el caso de usar <em>Microsoft Azute Notebooks</em> (<a class="reference external" href="https://notebooks.azure.com">https://notebooks.azure.com</a>), se requiere la siguiente instalación:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,9 +617,9 @@ title="Print to PDF"
 </div>
 </section>
 <section id="variables-y-expresiones-simbolicas">
-<h2><span class="section-number">6.1.3. </span>Variables y expresiones simbólicas<a class="headerlink" href="#variables-y-expresiones-simbolicas" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.3. </span>Variables y expresiones simbólicas<a class="headerlink" href="#variables-y-expresiones-simbolicas" title="Permalink to this headline">#</a></h2>
 <section id="variables-simbolicas">
-<h3><span class="section-number">6.1.3.1. </span>Variables simbólicas<a class="headerlink" href="#variables-simbolicas" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.3.1. </span>Variables simbólicas<a class="headerlink" href="#variables-simbolicas" title="Permalink to this headline">#</a></h3>
 <p>Para trabajar en modo simbólico es necesario definir variables simbólicas y para hacer esto usaremos la función <code class="docutils literal notranslate"><span class="pre">sp.Symbol</span></code>. Veamos algunos ejemplos de su uso:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,7 +743,7 @@ a**3 + b**2 + c
 </div>
 </section>
 <section id="suposiciones-sobre-las-variables">
-<h3><span class="section-number">6.1.3.2. </span>Suposiciones sobre las variables<a class="headerlink" href="#suposiciones-sobre-las-variables" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.3.2. </span>Suposiciones sobre las variables<a class="headerlink" href="#suposiciones-sobre-las-variables" title="Permalink to this headline">#</a></h3>
 <p>Cuando se define una variable simbólica se le puede asignar cierta información adicional sobre el tipo de valores que puede alcanzar, o las suposiciones que se le van a aplicar. Por ejemplo, podemos decidir antes de hacer cualquier cálculo si la variable toma valores enteros o reales, si es positiva o negativa, mayor que un cierto número, etc. Este tipo de información se añade en el momento de la definición de la variable simbólica como un argumento opcional.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,7 +796,7 @@ q + Abs(x) &gt; 0
 </div>
 </section>
 <section id="expresiones-simbolicas">
-<h3><span class="section-number">6.1.3.3. </span>Expresiones simbólicas<a class="headerlink" href="#expresiones-simbolicas" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.3.3. </span>Expresiones simbólicas<a class="headerlink" href="#expresiones-simbolicas" title="Permalink to this headline">#</a></h3>
 <p>De la misma manera que el módulo <strong>SymPy</strong> nos permite definir variables simbólicas, también podemos definir expresiones matemáticas a partir de estas, así como factorizarlas, expandirlas, simplificarlas, o incluso imprimirlas de una forma similar a como lo haríamos con lápiz y papel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -861,7 +856,7 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </div>
 </section>
 <section id="resolucion-de-ecuaciones">
-<h3><span class="section-number">6.1.3.4. </span>Resolución de ecuaciones<a class="headerlink" href="#resolucion-de-ecuaciones" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.3.4. </span>Resolución de ecuaciones<a class="headerlink" href="#resolucion-de-ecuaciones" title="Permalink to this headline">#</a></h3>
 <p>Dada una expresión en <strong>SymPy</strong>, podemos resolver ecuaciones de forma sencilla. Para ello, utilizaremos la función <code class="docutils literal notranslate"><span class="pre">solve</span></code>. Por ejemplo, veamos como resolver la ecuación <span class="math notranslate nohighlight">\(x^2 = 1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,7 +894,7 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </div>
 </section>
 <section id="ejercicio">
-<h3><span class="section-number">6.1.3.5. </span><strong>Ejercicio</strong><a class="headerlink" href="#ejercicio" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.3.5. </span><strong>Ejercicio</strong><a class="headerlink" href="#ejercicio" title="Permalink to this headline">#</a></h3>
 <p>Convierte en coordenadas cilíndricas y esféricas las siguientes ecuaciones:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x^2 + y^2 + z^2 = 4\)</span> (esfera).</p></li>
@@ -914,7 +909,7 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </div>
 </section>
 <section id="id1">
-<h3><span class="section-number">6.1.3.6. </span><strong>Ejercicio</strong><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.3.6. </span><strong>Ejercicio</strong><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>Dada la ecuación implícita o general del plano <span class="math notranslate nohighlight">\(3x + 8y - 2z = 19\)</span>, obten la expresión de la función <span class="math notranslate nohighlight">\(f(x,y)\)</span> tal que <span class="math notranslate nohighlight">\(z = f(x,y)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -926,10 +921,10 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </section>
 </section>
 <section id="representacion-grafica">
-<h2><span class="section-number">6.1.4. </span>Representación gráfica<a class="headerlink" href="#representacion-grafica" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.4. </span>Representación gráfica<a class="headerlink" href="#representacion-grafica" title="Permalink to this headline">#</a></h2>
 <p>La representación gráfica es una de las herramientas más potentes para explorar datos. Hoy en día, es una de las tareas más importantes tanto para ingenieros como científicos. De hecho, los gráficos se utilizan tanto para exponer como para entender datos y comprobar visualmente resultados calculados.</p>
 <section id="regiones-en-el-plano">
-<h3><span class="section-number">6.1.4.1. </span>Regiones en el plano<a class="headerlink" href="#regiones-en-el-plano" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.4.1. </span>Regiones en el plano<a class="headerlink" href="#regiones-en-el-plano" title="Permalink to this headline">#</a></h3>
 <p>Para representar gráficamente un conjunto de puntos o bien una región, utilizaremos la instrucción <code class="docutils literal notranslate"><span class="pre">plot_implicit</span></code>. Para ello, podemos utilizar como argumento una igualdad o una desigualdad. Además, también podemos incluir los operadores lógicos <code class="docutils literal notranslate"><span class="pre">sp.And</span></code> o <code class="docutils literal notranslate"><span class="pre">sp.Or</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -948,7 +943,7 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">6.1.4.2. </span><strong>Ejercicio</strong><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.4.2. </span><strong>Ejercicio</strong><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>Representa gráficamente las siguientes regiones o conjuntos en el plano:</p>
 <ul class="simple">
 <li><p>El conjunto de puntos que satisfacen <span class="math notranslate nohighlight">\(x^2+y^2-4x-6y = -9\)</span>.</p></li>
@@ -966,7 +961,7 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </section>
 </section>
 <section id="funciones-de-varias-variables">
-<h2><span class="section-number">6.1.5. </span>Funciones de varias variables<a class="headerlink" href="#funciones-de-varias-variables" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.5. </span>Funciones de varias variables<a class="headerlink" href="#funciones-de-varias-variables" title="Permalink to this headline">#</a></h2>
 <p>Para definir funciones en <strong>SymPy</strong>, tenemos que utilizar la función <code class="docutils literal notranslate"><span class="pre">sp.Lambda</span></code>. Además, para evaluar la función en un punto, procedemos como en cualquier otra función predefinida (seno, coseno, exponencial, etc.).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -986,7 +981,7 @@ True
 </div>
 </div>
 <section id="funciones-definidas-a-trozos">
-<h3><span class="section-number">6.1.5.1. </span>Funciones definidas a trozos<a class="headerlink" href="#funciones-definidas-a-trozos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.5.1. </span>Funciones definidas a trozos<a class="headerlink" href="#funciones-definidas-a-trozos" title="Permalink to this headline">#</a></h3>
 <p>Las funciones también pueden venir definidas a partir de expresiones <strong>a trozos</strong>. Para definir estas expresiones, condicionadas por el valor que toman las variables, utilizaremos la orden <code class="docutils literal notranslate"><span class="pre">sp.Piecewise</span></code>. Por ejemplo, veamos como definir la siguiente función:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1021,7 +1016,7 @@ g(-2,2) = 1
 </div></blockquote>
 </section>
 <section id="id3">
-<h3><span class="section-number">6.1.5.2. </span><strong>Ejercicio</strong><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.1.5.2. </span><strong>Ejercicio</strong><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>Calcula <span class="math notranslate nohighlight">\(f(3,3)\)</span> y <span class="math notranslate nohighlight">\(g(1,0,0)\)</span>, donde las funciones <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(g\)</span> vienen dadas por las siguientes expresiones:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{\sqrt{x^2+y^2-9}}{x}\)</span>.</p></li>
@@ -1051,7 +1046,7 @@ g(-2,2) = 1
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./capitulos/06"
+            path: "./capitulos/05"
         },
         predefinedOutput: true
     }
@@ -1069,13 +1064,13 @@ g(-2,2) = 1
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>Python para cálculo de varias variables</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Python para cálculo de varias variables</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02.IntroduccionNumpy.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.2. </span>Introducción a Numpy</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Introducción a Numpy</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -173,22 +173,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03/README.html">
-   3. Derivación
+   3. Derivación y extremos
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../04/README.html">
-   4. Extremos relativos y absolutos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05/README.html">
-   5. Integración
+   4. Integración
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06/README.html">
-   6. Pyhton para cálculo de varias variables
+  <a class="reference internal" href="../05/README.html">
+   5. Pyhton para cálculo de varias variables
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -197,18 +192,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/01.IntroduccionSympy.html">
-     6.1. Introducción a SymPy
+    <a class="reference internal" href="../05/01.IntroduccionSympy.html">
+     5.1. Introducción a SymPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/02.IntroduccionNumpy.html">
-     6.2. Introducción a NumPy
+    <a class="reference internal" href="../05/02.IntroduccionNumpy.html">
+     5.2. Introducción a NumPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/03.RepresentacionGraficaMatplotlib.html">
-     6.3. Representación Gráfica con Matplotlib
+    <a class="reference internal" href="../05/03.RepresentacionGraficaMatplotlib.html">
+     5.3. Representación Gráfica con Matplotlib
     </a>
    </li>
   </ul>
@@ -462,14 +457,14 @@ title="Print to PDF"
 Para ello consideramos un eje <span class="math notranslate nohighlight">\(Z\)</span> perpendicular a los dos ejes, <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span>, como se muestra en la siguiente figura:</p>
 <a class="reference internal image-reference" href="../../_images/01_3D_coordinate_system.png"><img alt="../../_images/01_3D_coordinate_system.png" src="../../_images/01_3D_coordinate_system.png" style="width: 250px;" /></a>
 <p>Puedes consultar más información sobre esto en la Wiki (página de la que hemos sacado la figura anterior): <a class="reference external" href="https://es.wikipedia.org/wiki/Sistema_de_coordenadas">https://es.wikipedia.org/wiki/Sistema_de_coordenadas</a>.</p>
-<p>Con el sistema que estamos eligiendo se separa el espacio en ocho octantes (fíjate que en 2D hay cuatro cuartos): el primero de estos octantes corresponde a la zona en la que las tres coordenadas son positivas.</p>
+<p>Con el sistema que estamos eligiendo, se separa el espacio en ocho octantes (fíjate que en 2D hay cuatro cuartos): el primero de estos octantes corresponde a la zona en la que las tres coordenadas son positivas.</p>
 <p>Entonces, un punto, <span class="math notranslate nohighlight">\(P\)</span>, en el espacio se caracteriza por un triple ordenado, <span class="math notranslate nohighlight">\((x,y,z)\)</span>, donde:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x\)</span> es la distancia desde el plano <span class="math notranslate nohighlight">\(YZ\)</span> a <span class="math notranslate nohighlight">\(P\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(y\)</span> es la distancia desde el plano <span class="math notranslate nohighlight">\(XZ\)</span> a <span class="math notranslate nohighlight">\(P\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(z\)</span> es la distancia desde el plano <span class="math notranslate nohighlight">\(XY\)</span> a <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/01_coordenadas_cartesianas_3D.jpg"><img alt="../../_images/01_coordenadas_cartesianas_3D.jpg" src="../../_images/01_coordenadas_cartesianas_3D.jpg" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../../_images/01_coordenadas_cartesianas_3D.jpg"><img alt="../../_images/01_coordenadas_cartesianas_3D.jpg" src="../../_images/01_coordenadas_cartesianas_3D.jpg" style="width: 350px;" /></a>
 <p><strong>NOTA:</strong> Elegiremos siempre un sistema de coordenadas dextrógiro: el giro corto desde la parte positiva del eje <span class="math notranslate nohighlight">\(X\)</span> hacia la parte positiva del eje <span class="math notranslate nohighlight">\(Y\)</span> iría en el sentido contrario a las agujas del reloj (como en 2D). Puedes ver más detalles aquí, jugando con la conocida <em>regla de la mano derecha o regla del sacacorchos</em>: <a class="reference external" href="https://en.wikipedia.org/wiki/Right-hand_rule">https://en.wikipedia.org/wiki/Right-hand_rule</a>.</p>
 </section>
 <section id="distancia-en-el-espacio">
@@ -529,7 +524,7 @@ y lo abreviaremos con una letra en negrita, <span class="math notranslate nohigh
 <li><p><span class="math notranslate nohighlight">\(\theta\)</span> en la proyección del vector en el plano <span class="math notranslate nohighlight">\(XY\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\phi\)</span> para indicar el ángulo que forma el vector con el eje <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/01_coordenadas_esfericas.png"><img alt="../../_images/01_coordenadas_esfericas.png" src="../../_images/01_coordenadas_esfericas.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../../_images/1.2.coordenadas_esfericas.png"><img alt="../../_images/1.2.coordenadas_esfericas.png" src="../../_images/1.2.coordenadas_esfericas.png" style="width: 250px;" /></a>
 <p>Profundizaremos más en esto cuando hablemos de coordenadas esféricas y polares.</p>
 <p>Ahora podemos definir el <strong>vector unitario en la dirección de <span class="math notranslate nohighlight">\(\mathbf{v}\)</span></strong> como</p>
 <div class="math notranslate nohighlight">
@@ -554,7 +549,7 @@ y lo abreviaremos con una letra en negrita, <span class="math notranslate nohigh
 </section>
 <section id="jugando-con-vectores-3d-en-numpy">
 <h2><span class="section-number">1.2.5. </span>Jugando con vectores 3D en Numpy<a class="headerlink" href="#jugando-con-vectores-3d-en-numpy" title="Permalink to this headline">#</a></h2>
-<p>¡Venga! Vuelve a leer la Sección <a class="reference internal" href="../06/02.IntroduccionNumpy_OLD.html#sec-introduccion-numpy"><span class="std std-ref">Introducción a Numpy</span></a> y vamos a jugar un poco…</p>
+<p>¡Venga! Vuelve a leer la Sección <a class="reference internal" href="../05/02.IntroduccionNumpy.html#sec-introduccion-numpy"><span class="std std-ref">Introducción a Numpy</span></a> y vamos a jugar un poco…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
