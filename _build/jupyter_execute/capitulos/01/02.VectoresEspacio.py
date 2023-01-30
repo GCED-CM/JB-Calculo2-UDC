@@ -97,7 +97,7 @@
 # 
 # <img src="../../images/1.2.coordenadas_esfericas.png" width="250"/>
 # 
-# Profundizaremos más en esto cuando hablemos de coordenadas esféricas y polares.
+# Profundizaremos más en esto cuando hablemos de coordenadas esféricas, hacia el final de este capítulo.
 # 
 # Ahora podemos definir el **vector unitario en la dirección de $\mathbf{v}$** como
 # 

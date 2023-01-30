@@ -22,6 +22,8 @@ chapters:
      title: Rectas y planos en el espacio
    - file: capitulos/01/07.SuperficiesEspacio
      title: Superficies en el espacio
+   - file: capitulos/01/08.Coordenadas
+     title: Coordenadas cilíndricas y esféricas
   
 - file: capitulos/02/README
   title: Límites y continuidad

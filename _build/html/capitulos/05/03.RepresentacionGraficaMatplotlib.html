@@ -163,6 +163,11 @@ const thebe_selector_output = ".output, .cell_output"
      1.7. Superficies en el espacio
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/08.Coordenadas.html">
+     1.8. Coordenadas cilíndricas y esféricas
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -841,9 +846,9 @@ Como en la representación gráfica de curvas, las gráficas de superficies se c
 </div>
 </div>
 <blockquote>
-<div><p><strong>NOTA</strong>: Si introducimos <code class="docutils literal notranslate"><span class="pre">f</span></code> como una función o expresión de <strong>Sympy</strong>, tendríamos previamente que convertirla en <strong>Numpy</strong> a través del método <code class="docutils literal notranslate"><span class="pre">sp.lambdify</span></code> para así poder evaluarla en objetos pertenecientes al módulo <strong>Numpy</strong>, como lo son los elementos de la nube de puntos.</p>
+<div><p><strong>NOTA</strong>: Si introducimos <code class="docutils literal notranslate"><span class="pre">f</span></code> como una función o expresión de <strong>Sympy</strong>, tendríamos previamente que convertirla en <strong>Numpy</strong> a través del método <code class="docutils literal notranslate"><span class="pre">sp.lambdify</span></code> para así poder evaluarla de forma vectorial en objetos pertenecientes al módulo <strong>Numpy</strong>, como lo son los elementos de la nube de puntos.</p>
 </div></blockquote>
-<p>Por ejemplo, para representar el cono de ecuación <span class="math notranslate nohighlight">\(x^2+y^2-z^2=0\)</span> podemos usar el siguiente código:</p>
+<p>A continuación, tenemos en cuenta esta observación para representar el cono de ecuación <span class="math notranslate nohighlight">\(x^2+y^2-z^2=0\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas x, y, z</span>

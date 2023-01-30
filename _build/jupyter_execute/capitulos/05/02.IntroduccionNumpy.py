@@ -14,8 +14,8 @@
 # 
 # - Trabajar con objetos y métodos.
 # - Introducción a los vectores unidimensionales de números (`numpy.array`). 
-# - Aplicar operaciones numéricas elementales.
 # - Manipulación de vectores numéricos (indexado, troceado, etc.).
+# - Aplicar operaciones numéricas elementales.
 # - Ejercicio: eficiencia de **Numpy** en funciones vectorizadas y no vectorizadas.
 
 # ## Importar el módulo **NumPy**
@@ -78,13 +78,8 @@ print(np.int(a))
 # 
 # En Python existen multitud de formas de guardar datos numéricos (o no) como pueden ser la estructura lista o tupla. Las listas en Python presentan una gran flexibilidad (pudiendo contener datos de diferente naturaleza) lo que hace que su rendimiento computacional sea muy limitado. En la mayoría de aplicaciones científicas en matemáticas e ingeniería de datos, los problemas reales involucran operaciones sobre enormes conjuntos de datos y por lo tanto la velocidad computacional es muy importante para estos grandes problemas. Para trabajar de forma eficiente con estos problemas, **Numpy** proporciona funciones especializadas y estructuras de datos para el cálculo numérico eficiente. En particular, para el caso de conjuntos de números de un mismo tipo (perdiendo parte de la flexibilidad de las listas pero ganando eficiencia computacional).
 
-# ## Vectores unidimensionales
-# 
-# Un vector unidimensional es una colección ordenada de números a los que se puede acceder mediante el índice correspondiente (en el caso de Python, empezando a contar en cero). Por defecto, los vectores en **Numpy** son vectores fila.
-
-# ## Creación de vectores e indexado 
-# 
-# Para crear un vector **Numpy** que contiene solamente 'ceros' o 'unos', se pueden utilizar, respectivamente, las funciones `np.zeros()` o `np.ones()`. También podemos hacer uso de la función `np.random.rand()` para crear un vector con valores aleatorios:
+# ## Creación de vectores unidimensionales e indexado
+# Un vector unidimensional es una colección ordenada de números a los que se puede acceder mediante el índice correspondiente (en el caso de Python, empezando a contar en cero). Por defecto, los vectores en **Numpy** son vectores fila. Para crear un vector **Numpy** que contiene solamente 'ceros' o solamente 'unos', se pueden utilizar, respectivamente, las funciones `np.zeros()` o `np.ones()`. También podemos hacer uso de la función `np.random.rand()` para crear un vector con valores aleatorios:
 
 # In[82]:
 
@@ -191,80 +186,6 @@ print(A)
 print(A.shape)
 
 
-# ## Aritmética y funciones sobre vectores
-# 
-# Los vectores en **NumPy** soportan las operaciones aritméticas básicas (sumas, restas, productos, etc.):
-
-# In[89]:
-
-
-a = np.array([1.0, 0.2, 1.2])
-b = np.array([2.0, 0.1, 2.1])
-print(a)
-print(b)
-
-# Suma de a y b
-c = a + b
-print(c)
-
-
-# y en el caso del producto de sus elementos por un valor escalar,
-
-# In[90]:
-
-
-c = 10.0*a
-print(c)
-
-
-# y de elevar todas sus componentes a una potencia:
-
-# In[91]:
-
-
-a = np.array([2, 3, 4])
-print(a**2)
-
-
-# También se pueden aplicar las funciones de cálculo de **Numpy** a cada una de sus componentes:
-
-# In[104]:
-
-
-# Crear el vector [0, π/2, π, 3π/2]
-a = np.array([0.0, np.pi/2, np.pi, 3*np.pi/2])
-print(a)
-
-# Calcular el seno de cada componente del vector
-b = np.sin(a)
-print(b)
-
-
-# El código aterior calcula el seno de cada componente del vector `a`. Debemos remarcar que la función que se está utilizando es `np.sin`, que depende directamente del módulo **Numpy**. El uso de cualquier otra implementación de la función en otros módulos (por ejemplo, en el módulo **Sympy**), podría dar lugar a error. Sin embargo, se pueden traducir objetos que dependen del módulo **Sympy** a objetos del módulo **Numpy** a través del método `sp.lambdify`:
-
-# In[116]:
-
-
-x = sp.Symbol('x', real=True) # definimos la variable simbólica x
-f = sp.lambdify(x,sp.sin(x),"numpy") # función numpy con la expresión del seno
-b = f(a) # Calcular el seno de cada componente del vector
-print(b)
-
-
-# Evidentemente, también se podría calcular el seno de cada componente del vector, accediendo a cada uno de los elementos mediante su índice y haciendo los cálculos en el interior de un bucle `for`:
-
-# In[93]:
-
-
-b = np.zeros(len(a)) #inicializamos el vector resultante
-for i in range(len(a)):
-    b[i] = np.sin(a[i])
-
-print(b)
-
-
-# En este caso el programa es más largo y difícil de leer. Además, en muchos casos será más lento. A la manipulación de vectores y cualquiera de los cálculos realizados entre ellos sin acceder a sus índices suele conocerse como 'vectorización'. Cuando sea posible emplearla, la vectorización incrementará el rendimiento y velocidad de los códigos de cálculo. En el ejercicio final de este guión, se analizará el rendimiento de este tipo de técnicas.
-
 # ## Troceado de vectores
 # 
 # Cuando se trabaja con vectores de números, es habitual tener que extraer un subconjunto de estos para crear un nuevo vector. Por ejemplo, obtener los tres primeros coeficientes de un vector o, en el caso de matrices, restringir los cálculos a su segunda columna. A este tipo de operaciones se le denomina troceado de vectores (o, en inglés, *array slicing*). 
@@ -322,6 +243,89 @@ print(col)
 
 
 # Existen muchas otras estrategias y sintaxis relacionadas con el troceado de vectores, que quedan fuera del alcance de esta  breve introducción a **Numpy**. Para una información más detallada, se puede consultar: https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html
+
+# ## Aritmética y funciones sobre vectores
+# 
+# Los vectores en **NumPy** soportan las operaciones aritméticas básicas (sumas, restas, productos, etc.):
+
+# In[89]:
+
+
+a = np.array([1.0, 0.2, 1.2])
+b = np.array([2.0, 0.1, 2.1])
+print(a)
+print(b)
+
+# Suma de a y b
+c = a + b
+print(c)
+
+
+# y en el caso del producto de sus elementos por un valor escalar,
+
+# In[90]:
+
+
+c = 10.0*a
+print(c)
+
+
+# y de elevar todas sus componentes a una potencia:
+
+# In[91]:
+
+
+a = np.array([2, 3, 4])
+print(a**2)
+
+
+# También se pueden aplicar las funciones de cálculo de **Numpy** a cada una de sus componentes:
+
+# In[104]:
+
+
+# Crear el vector [0, π/2, π, 3π/2]
+a = np.array([0.0, np.pi/2, np.pi, 3*np.pi/2])
+print(a)
+
+# Calcular el seno de cada componente del vector
+b = np.sin(a)
+print(b)
+
+
+# Evidentemente, también se podría calcular el seno de cada componente del vector, accediendo a cada uno de los elementos mediante su índice y haciendo los cálculos en el interior de un bucle `for`:
+
+# In[93]:
+
+
+b = np.zeros(len(a)) #inicializamos el vector resultante
+for i in range(len(a)):
+    b[i] = np.sin(a[i])
+
+print(b)
+
+
+# En este caso el programa es más largo y difícil de leer. Además, en muchos casos será más lento. A la manipulación de vectores y cualquiera de los cálculos realizados entre ellos sin acceder a sus índices suele conocerse como 'vectorización'. Cuando sea posible emplearla, la vectorización incrementará el rendimiento y velocidad de los códigos de cálculo. En el ejercicio final de este guión, se analizará el rendimiento de este tipo de técnicas.
+
+# Los códigos ateriores calculan el seno de cada componente del vector `a`. Debemos remarcar que para ello la función que se está utilizando es `np.sin`, que depende directamente del módulo **Numpy**. El uso de cualquier otra implementación de la función en otros módulos (por ejemplo, en el módulo **Sympy**), podría dar lugar a error cuando se aplica a objetos pertenecientes al módulo **Numpy**. De hecho, en general, las funciones dependientes de **Sympy** no admiten operaciones vectoriales sobre vectores de **Numpy**. Sin embargo, se pueden traducir objetos que dependen del módulo **Sympy** a objetos del módulo **Numpy** a través del método `sp.lambdify`. Veamos a continuación algunos ejemplos de su uso:
+
+# In[145]:
+
+
+x = sp.Symbol('x', real=True) # definimos la variable simbólica x
+
+# Ejemplo con una expresión simbólica 
+expr = sp.cos(2*x) # definimos la expresión simbólica
+f = sp.lambdify(x,expr,"numpy") # función numpy de la expresión simbólica expr
+b = f(a) # Calculamos el coseno del ángulo doble de cada componente del vector a
+print(b)
+
+# Ejemplo con una función simbólica  
+f = sp.Lambda(x,sp.sin(x)+sp.cos(x)) # definimos la función simbólica
+fn = sp.lambdify(x,f(x),"numpy") # función numpy de la expresión simbólica f(x)
+b = fn(a) # Aplicamos la función fn a cada componente del vector a
+print(b)
+
 
 # ## Ejercicio: aceleración con Numpy en el cálculo de normas de vectores
 # 

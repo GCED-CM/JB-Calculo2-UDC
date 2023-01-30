@@ -263,9 +263,9 @@ ax.set_zlabel('z')
 plt.show()
 
 
-# > **NOTA**: Si introducimos `f` como una función o expresión de **Sympy**, tendríamos previamente que convertirla en **Numpy** a través del método `sp.lambdify` para así poder evaluarla en objetos pertenecientes al módulo **Numpy**, como lo son los elementos de la nube de puntos. 
+# > **NOTA**: Si introducimos `f` como una función o expresión de **Sympy**, tendríamos previamente que convertirla en **Numpy** a través del método `sp.lambdify` para así poder evaluarla de forma vectorial en objetos pertenecientes al módulo **Numpy**, como lo son los elementos de la nube de puntos. 
 
-# Por ejemplo, para representar el cono de ecuación $x^2+y^2-z^2=0$ podemos usar el siguiente código:
+# A continuación, tenemos en cuenta esta observación para representar el cono de ecuación $x^2+y^2-z^2=0$:
 
 # In[97]:
 
