@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.7. Superficies en el espacio &#8212; Calculo en varias variables</title>
+    <title>1.8. Coordenadas cilíndricas y esféricas &#8212; Calculo en varias variables</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.8. Coordenadas cilíndricas y esféricas" href="08.Coordenadas.html" />
-    <link rel="prev" title="1.6. Rectas y planos en el espacio 3D" href="06.RectasPlanos.html" />
+    <link rel="next" title="2. Límites y continuidad" href="../02/README.html" />
+    <link rel="prev" title="1.7. Superficies en el espacio" href="07.SuperficiesEspacio.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -159,13 +159,13 @@ const thebe_selector_output = ".output, .cell_output"
      1.6. Rectas y planos en el espacio
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.SuperficiesEspacio.html">
      1.7. Superficies en el espacio
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.Coordenadas.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      1.8. Coordenadas cilíndricas y esféricas
     </a>
    </li>
@@ -272,7 +272,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/01/07.SuperficiesEspacio.ipynb"
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/01/08.Coordenadas.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -315,7 +315,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/capitulos/01/07.SuperficiesEspacio.ipynb"
+        <a href="../../_sources/capitulos/01/08.Coordenadas.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -375,18 +375,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superficies-cilindricas">
-   1.7.1. Superficies cilíndricas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superficies-cuadricas">
-   1.7.2. Superficies cuádricas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superficies-de-revolucion">
-   1.7.3. Superficies de revolución
+  <a class="reference internal nav-link" href="#coordenadas-cilindricas">
+   1.8.1. Coordenadas cilíndricas
   </a>
  </li>
 </ul>
@@ -398,7 +388,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Superficies en el espacio</h1>
+                <h1>Coordenadas cilíndricas y esféricas</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -409,18 +399,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superficies-cilindricas">
-   1.7.1. Superficies cilíndricas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superficies-cuadricas">
-   1.7.2. Superficies cuádricas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superficies-de-revolucion">
-   1.7.3. Superficies de revolución
+  <a class="reference internal nav-link" href="#coordenadas-cilindricas">
+   1.8.1. Coordenadas cilíndricas
   </a>
  </li>
 </ul>
@@ -433,77 +413,42 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="superficies-en-el-espacio">
-<h1><span class="section-number">1.7. </span>Superficies en el espacio<a class="headerlink" href="#superficies-en-el-espacio" title="Permalink to this headline">#</a></h1>
-<p>En esta sección vamos a estudiar las ecuaciones de algunos tipos más complejos de superficies: cilíndircas, cuádricas y de revolución.</p>
-<section id="superficies-cilindricas">
-<h2><span class="section-number">1.7.1. </span>Superficies cilíndricas<a class="headerlink" href="#superficies-cilindricas" title="Permalink to this headline">#</a></h2>
-<p>Hasta ahora hemos estudiado dos tipos de superficies:</p>
-<ul class="simple">
-<li><p>Esferas, en la sección <a class="reference internal" href="02.VectoresEspacio.html#sec-1-2-3-esfera"><span class="std std-ref">Ecuación de la esfera</span></a>: <span class="math notranslate nohighlight">\(\left(x- x_{0}\right)^2 + \left(y- y_{0}\right)^2 + \left(z- z_{0}\right)^2 = r^2\)</span>.</p></li>
-<li><p>Planos, en la sección <a class="reference internal" href="06.RectasPlanos.html#sec-1-6-3-plano"><span class="std std-ref">Ecuaciones del plano</span></a>: <span class="math notranslate nohighlight">\(Ax+By+Cz+D=0\)</span>.</p></li>
-</ul>
-<p>Vamos ahora con un tercer tipo de superficie en el espacio llamada <strong>superficie cilíndrica</strong> o, simplemente, <strong>cilindro</strong>.</p>
-<p>Vamos a pensar, para fijar ideas, en un cilindro circular recto, como mostramos en la siguiente figura:</p>
-<a class="reference internal image-reference" href="../../_images/1.7.cilindro_circular_recto.jpg"><img alt="../../_images/1.7.cilindro_circular_recto.jpg" src="../../_images/1.7.cilindro_circular_recto.jpg" style="width: 250px;" /></a>
-<p>Este cilindro se genera cuando una recta vertical (es decir, paralela al eje <span class="math notranslate nohighlight">\(Z\)</span>) se mueve alrededor de la circunferencia <span class="math notranslate nohighlight">\(x^2+y^2=a^2\)</span> en el plano <span class="math notranslate nohighlight">\(XY\)</span>.
-Generalizamos esta idea en la siguiente definición:</p>
-<div class="proof definition admonition" id="def_1.7_cilindro">
-<p class="admonition-title"><span>Definition </span> (Superficie cilíndrica)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="coordenadas-cilindricas-y-esfericas">
+<h1><span class="section-number">1.8. </span>Coordenadas cilíndricas y esféricas<a class="headerlink" href="#coordenadas-cilindricas-y-esfericas" title="Permalink to this headline">#</a></h1>
+<p>Hasta ahora hemos utilizado las coordenadas cartesianas para representar punto, rectas y superficies en <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span>.
+Es decir, caracterizamos cada punto por sus coordenadas respecto a los tres ejes cartesianos: <span class="math notranslate nohighlight">\((x,y,z)\)</span>.
+En esta sección vamos a estudiar otras dos maneras de describir un punto con las coordenadas cilíndircas y esféricas, lo que,
+en ocasiones, nos permitirá simplificar la escritura.</p>
+<section id="coordenadas-cilindricas">
+<h2><span class="section-number">1.8.1. </span>Coordenadas cilíndricas<a class="headerlink" href="#coordenadas-cilindricas" title="Permalink to this headline">#</a></h2>
+<p>El sistema de coordenadas cilíndricas es una extensión de las coordenadas polares en el plano al espacio 3D. Mantendremos las
+coordenadas polares en el plano <span class="math notranslate nohighlight">\(XY\)</span> añadiendo la altura <span class="math notranslate nohighlight">\(Z\)</span>. Es decir:</p>
+<div class="proof definition admonition" id="def_1.8.cilindricas">
+<p class="admonition-title"><span>Definition </span> (Coordenadas cilíndricas)</p>
 <section class="definition-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(C\)</span> una curva sobre un plano y <span class="math notranslate nohighlight">\(L\)</span> una recta no paralela a ese plano.
-Llamaremos superficie cilíndrica a la superficie que generan todas las rectas paralelas a <span class="math notranslate nohighlight">\(L\)</span> que cortan a <span class="math notranslate nohighlight">\(C\)</span>.</p>
-<p>Llamaremos a <span class="math notranslate nohighlight">\(C\)</span> <strong>curva generadora</strong> (o <strong>directriz</strong>) y llamaremos <span class="math notranslate nohighlight">\(recta generatriz a \)</span>L$.</p>
-</section>
-</div><p>Sin pérdida de generalidad, podemos suponer que <span class="math notranslate nohighlight">\(C\)</span> está en uno de los tres planos de coordenadas. Además, en esta asignatura nos
-limitaremos a estudiar cilindros rectos, es decir, cilindros cuyas recta generatriz es perpendicular al plano de coordenadas que contiene a <span class="math notranslate nohighlight">\(C\)</span>.</p>
-<a class="reference internal image-reference" href="../../_images/1.7.cilindro.jpg"><img alt="../../_images/1.7.cilindro.jpg" src="../../_images/1.7.cilindro.jpg" style="width: 400px;" /></a>
-<p>Para describir la ecuación de un cilindro recto, basta con dar la ecuación de la curva <span class="math notranslate nohighlight">\(C\)</span> en el plano de coordenadas en que se encuentre, ya que la tercera
-coordenada, al generarse por una recta perpendicular a este plano, será arbitraria.</p>
-<p>Por ejemplo, para el cilindro circular recto con el que empezábamos esta subsección, la ecuación en el espacio será <span class="math notranslate nohighlight">\(x^2+y^2 = a^2\)</span>,
-ya que podemos elegir cualquier <span class="math notranslate nohighlight">\(z\)</span> para este cilindro.</p>
-<p>Mostramos a continuación (utilizando la aplicación de Geogebra de Allan Avendaño, <a class="reference external" href="https://www.geogebra.org/m/VJfSv5Rn">https://www.geogebra.org/m/VJfSv5Rn</a>) un cilindro parabólico, de ecuación <span class="math notranslate nohighlight">\(z = y^2\)</span>,
-y un cilindro hiperbólico, de ecuación <span class="math notranslate nohighlight">\(x^2-y^2 = 4\)</span>.</p>
-<a class="reference internal image-reference" href="../../_images/1.7.cilindros.jpg"><img alt="../../_images/1.7.cilindros.jpg" src="../../_images/1.7.cilindros.jpg" style="width: 750px;" /></a>
-</section>
-<section id="superficies-cuadricas">
-<h2><span class="section-number">1.7.2. </span>Superficies cuádricas<a class="headerlink" href="#superficies-cuadricas" title="Permalink to this headline">#</a></h2>
-<p>Las superficies cuádricas responden a la ecuación general <span class="math notranslate nohighlight">\(P_{2}(x,y,z) = 0\)</span>, siendo <span class="math notranslate nohighlight">\(P_{2}\)</span> un polinomio de orden <span class="math notranslate nohighlight">\(2\)</span> en las variables <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> y <span class="math notranslate nohighlight">\(z\)</span>, es decir</p>
-<div class="math notranslate nohighlight">
-\[
-Ax^2 + By^2 + Cz^2 + Dxy + Exz + Fyz + Gx + Hy + Ix + J =0.
-\]</div>
-<p>En dimensión 3 juegan el mismo papel que las secciones cónicas en el plano.</p>
-<p>De aquí salen 6 tipos básicos de superficies cuádricas: elipsoide, hiperboloide de una hoja, hiperboloide de dos hojas, cono elíptico, paraboloide elíptico y paraboloide hiperbólico
-(mira en la wiki: <a class="reference external" href="https://es.wikipedia.org/wiki/Cu%C3%A1drica">https://es.wikipedia.org/wiki/Cuádrica</a>).</p>
-<a class="reference internal image-reference" href="../../_images/1.7.elipsoide_hiperboloide.jpg"><img alt="../../_images/1.7.elipsoide_hiperboloide.jpg" src="../../_images/1.7.elipsoide_hiperboloide.jpg" style="width: 750px;" /></a>
-<a class="reference internal image-reference" href="../../_images/1.7.hiperboloide_cono.jpg"><img alt="../../_images/1.7.hiperboloide_cono.jpg" src="../../_images/1.7.hiperboloide_cono.jpg" style="width: 750px;" /></a>
-<a class="reference internal image-reference" href="../../_images/1.7.paraboloides.jpg"><img alt="../../_images/1.7.paraboloides.jpg" src="../../_images/1.7.paraboloides.jpg" style="width: 750px;" /></a>
-</section>
-<section id="superficies-de-revolucion">
-<h2><span class="section-number">1.7.3. </span>Superficies de revolución<a class="headerlink" href="#superficies-de-revolucion" title="Permalink to this headline">#</a></h2>
-<p>El quinto tipo de superficie que vamos a estudiar son las superficies de revolución.</p>
-<p>Podemos pensar, por ejemplo, la gráfica de una función <span class="math notranslate nohighlight">\(y = r(z)\)</span> en el plano <span class="math notranslate nohighlight">\(YZ\)</span>.
-Si esta gráfica gira alrededor del eje <span class="math notranslate nohighlight">\(Z\)</span> forma una superficie de revolución:</p>
-<a class="reference internal image-reference" href="../../_images/1.7.revolucion.jpg"><img alt="../../_images/1.7.revolucion.jpg" src="../../_images/1.7.revolucion.jpg" style="width: 250px;" /></a>
-<p>La traza de la superficie en el plano <span class="math notranslate nohighlight">\(z=z_{0}\)</span> es un círculo cuyo radio es <span class="math notranslate nohighlight">\(r\left(z_{0}\right)\)</span> y cuya ecuación es</p>
-<div class="math notranslate nohighlight">
-\[
-x^2 + y^2 = \left[ r\left(z_{0}\right) \right]^2
-\]</div>
-<p>Si en vez de centrarnos en el círculo de radio <span class="math notranslate nohighlight">\(r\left(z_{0}\right)\)</span> dejamos variar <span class="math notranslate nohighlight">\(z\)</span> en un determinado intervalo (o en todos los números reales) obtendremos una superficie 3D.</p>
-<p>De forma similar se pueden obtener ecuaciones de superficies de revolución al situar una curva en uno de los planos de coordenadas y dejarla girar alrededor del eje perpendicular.</p>
-<div class="proof definition admonition" id="def_1.7_revolucion">
-<p class="admonition-title"><span>Definition </span> (Superficie de revolución)</p>
-<section class="definition-content" id="proof-content">
-<p>Si la gráfica de una función <span class="math notranslate nohighlight">\(r\)</span> se gira sobre uno de los ejes coordenados, la ecuación de la superficie de revolución resultante tendrá una de las siguientes formas:</p>
+<p>En un <strong>sistema de coordenadas cilíndricas</strong> un punto <span class="math notranslate nohighlight">\(P\)</span> del espacio se representa por medio de una terna ordenada
+<span class="math notranslate nohighlight">\(\left(r,\theta,z\right)\)</span>, donde:</p>
 <ol class="simple">
-<li><p>Al girar alrededor del eje <span class="math notranslate nohighlight">\(X\)</span>: <span class="math notranslate nohighlight">\(y^2+z^2 = \left[ r(x) \right]^2\)</span>.</p></li>
-<li><p>Al girar alrededor del eje <span class="math notranslate nohighlight">\(Y\)</span>: <span class="math notranslate nohighlight">\(x^2+z^2 = \left[ r(y) \right]^2\)</span>.</p></li>
-<li><p>Al girar alrededor del eje <span class="math notranslate nohighlight">\(Z\)</span>: <span class="math notranslate nohighlight">\(x^2+y^2 = \left[ r(z) \right]^2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((r,\theta)\)</span> es una representación en coordenadas polares de la proyección de <span class="math notranslate nohighlight">\(P\)</span> sobre el plano <span class="math notranslate nohighlight">\(XY\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(z\)</span> es la distancia dirigida de <span class="math notranslate nohighlight">\((r,\theta)\)</span> a <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
 </ol>
+<a class="reference internal image-reference" href="../../_images/1.8.coordenadas_cilindricas.jpg"><img alt="../../_images/1.8.coordenadas_cilindricas.jpg" src="../../_images/1.8.coordenadas_cilindricas.jpg" style="width: 350px;" /></a>
 </section>
-</div></section>
+</div><p>Para realizar los cambios de coordenadas, de cartesianas a cilíndricas y viceversa, aplicaremos las siguientes fórmulas:</p>
+<ul>
+<li><p><strong>Cartesianas a cilíndricas</strong>:</p>
+<p><span class="math notranslate nohighlight">\(r = \sqrt{x^2+y^2}\)</span>, <span class="math notranslate nohighlight">\(\theta = \arctan\left(\frac{y}{x}\right)\)</span>, <span class="math notranslate nohighlight">\(z=z\)</span>.</p>
+</li>
+<li><p><strong>Cilíndricas a cartesianas</strong>:</p>
+<p><span class="math notranslate nohighlight">\(x = r\cos\theta\)</span>, <span class="math notranslate nohighlight">\(y=r\sin\theta\)</span>, <span class="math notranslate nohighlight">\(z=z\)</span>.</p>
+</li>
+</ul>
+<p>Las coordenadas cilíndricas son especialmente convenientes para representar superficies cilíndircas y superficies de revolución con el eje <span class="math notranslate nohighlight">\(Z\)</span> como eje de simetría,
+como mostramos en la figura a continuación:</p>
+<a class="reference internal image-reference" href="../../_images/1.8.cilindros_en_cilindricas.jpg"><img alt="../../_images/1.8.cilindros_en_cilindricas.jpg" src="../../_images/1.8.cilindros_en_cilindricas.jpg" style="width: 1000px;" /></a>
+<p>También los planos verticales y horizontales tienen ecuaciones simples en coordenadas cilíndricas:</p>
+<a class="reference internal image-reference" href="../../_images/1.8.planos_en_cilindricas.jpg"><img alt="../../_images/1.8.planos_en_cilindricas.jpg" src="../../_images/1.8.planos_en_cilindricas.jpg" style="width: 750px;" /></a>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -533,17 +478,17 @@ x^2 + y^2 = \left[ r\left(z_{0}\right) \right]^2
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="06.RectasPlanos.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="07.SuperficiesEspacio.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.6. </span>Rectas y planos en el espacio 3D</p>
+            <p class="prev-next-title"><span class="section-number">1.7. </span>Superficies en el espacio</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="08.Coordenadas.html" title="next page">
+    <a class='right-next' id="next-link" href="../02/README.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.8. </span>Coordenadas cilíndricas y esféricas</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Límites y continuidad</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
