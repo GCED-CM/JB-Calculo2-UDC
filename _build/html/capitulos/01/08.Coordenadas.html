@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Límites y continuidad" href="../02/README.html" />
+    <link rel="next" title="1.9. Boletín de ejercicios del primer capítulo" href="09.Boletin.html" />
     <link rel="prev" title="1.7. Superficies en el espacio" href="07.SuperficiesEspacio.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -167,6 +167,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      1.8. Coordenadas cilíndricas y esféricas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09.Boletin.html">
+     1.9. Boletín de ejercicios del primer capítulo
     </a>
    </li>
   </ul>
@@ -379,6 +384,21 @@ title="Print to PDF"
    1.8.1. Coordenadas cilíndricas
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coordenadas-esfericas">
+   1.8.2. Coordenadas esféricas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algunos-ejercicios-resueltos-con-python">
+   1.8.3. Algunos ejercicios resueltos con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -403,6 +423,21 @@ title="Print to PDF"
    1.8.1. Coordenadas cilíndricas
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coordenadas-esfericas">
+   1.8.2. Coordenadas esféricas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algunos-ejercicios-resueltos-con-python">
+   1.8.3. Algunos ejercicios resueltos con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -414,10 +449,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="coordenadas-cilindricas-y-esfericas">
-<h1><span class="section-number">1.8. </span>Coordenadas cilíndricas y esféricas<a class="headerlink" href="#coordenadas-cilindricas-y-esfericas" title="Permalink to this headline">#</a></h1>
+<span id="sec-1-8-coordenadas"></span><h1><span class="section-number">1.8. </span>Coordenadas cilíndricas y esféricas<a class="headerlink" href="#coordenadas-cilindricas-y-esfericas" title="Permalink to this headline">#</a></h1>
 <p>Hasta ahora hemos utilizado las coordenadas cartesianas para representar punto, rectas y superficies en <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span>.
-Es decir, caracterizamos cada punto por sus coordenadas respecto a los tres ejes cartesianos: <span class="math notranslate nohighlight">\((x,y,z)\)</span>.
-En esta sección vamos a estudiar otras dos maneras de describir un punto con las coordenadas cilíndircas y esféricas, lo que,
+Es decir, caracterizamos cada punto por sus coordenadas respecto a los tres ejes cartesianos: <span class="math notranslate nohighlight">\((x,y,z).\)</span>
+En esta sección vamos a estudiar otras dos maneras de describir un punto con las coordenadas cilíndricas y esféricas, lo que,
 en ocasiones, nos permitirá simplificar la escritura.</p>
 <section id="coordenadas-cilindricas">
 <h2><span class="section-number">1.8.1. </span>Coordenadas cilíndricas<a class="headerlink" href="#coordenadas-cilindricas" title="Permalink to this headline">#</a></h2>
@@ -440,14 +475,153 @@ coordenadas polares en el plano <span class="math notranslate nohighlight">\(XY\
 <p><span class="math notranslate nohighlight">\(r = \sqrt{x^2+y^2}\)</span>, <span class="math notranslate nohighlight">\(\theta = \arctan\left(\frac{y}{x}\right)\)</span>, <span class="math notranslate nohighlight">\(z=z\)</span>.</p>
 </li>
 <li><p><strong>Cilíndricas a cartesianas</strong>:</p>
-<p><span class="math notranslate nohighlight">\(x = r\cos\theta\)</span>, <span class="math notranslate nohighlight">\(y=r\sin\theta\)</span>, <span class="math notranslate nohighlight">\(z=z\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(x = r\cos(\theta)\)</span>, <span class="math notranslate nohighlight">\(y=r\sin(\theta)\)</span>, <span class="math notranslate nohighlight">\(z=z\)</span>.</p>
 </li>
 </ul>
-<p>Las coordenadas cilíndricas son especialmente convenientes para representar superficies cilíndircas y superficies de revolución con el eje <span class="math notranslate nohighlight">\(Z\)</span> como eje de simetría,
+<p>El punto <span class="math notranslate nohighlight">\((0,0,0)\)</span> se llama <strong>polo</strong> u <strong>origen de coordenadas</strong>. Además, dado que la representación del origen en <span class="math notranslate nohighlight">\(\mathbb{R}^{2}\)</span> no es única en polares, tampoco
+será única la representación del origen en <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span> en coordenadas cilíndricas.</p>
+<p>Las coordenadas cilíndricas son especialmente convenientes para representar superficies cilíndricas y superficies de revolución con el eje <span class="math notranslate nohighlight">\(Z\)</span> como eje de simetría,
 como mostramos en la figura a continuación:</p>
 <a class="reference internal image-reference" href="../../_images/1.8.cilindros_en_cilindricas.jpg"><img alt="../../_images/1.8.cilindros_en_cilindricas.jpg" src="../../_images/1.8.cilindros_en_cilindricas.jpg" style="width: 1000px;" /></a>
 <p>También los planos verticales y horizontales tienen ecuaciones simples en coordenadas cilíndricas:</p>
 <a class="reference internal image-reference" href="../../_images/1.8.planos_en_cilindricas.jpg"><img alt="../../_images/1.8.planos_en_cilindricas.jpg" src="../../_images/1.8.planos_en_cilindricas.jpg" style="width: 750px;" /></a>
+</section>
+<section id="coordenadas-esfericas">
+<h2><span class="section-number">1.8.2. </span>Coordenadas esféricas<a class="headerlink" href="#coordenadas-esfericas" title="Permalink to this headline">#</a></h2>
+<p>En el sistema de coordenadas esféricas cada punto, <span class="math notranslate nohighlight">\(P\)</span>, está representado por 3 coordenadas: la primera es la distancia desde <span class="math notranslate nohighlight">\(P\)</span> al origen,
+la segunda el ángulo que forma la proyección de <span class="math notranslate nohighlight">\(P\)</span> sobre el plano <span class="math notranslate nohighlight">\(XY\)</span> (esta segunda es igual que en las coordenadas cilíndricas) y la
+tercera el ángulo que forma <span class="math notranslate nohighlight">\(OP\)</span> con el eje <span class="math notranslate nohighlight">\(Z\)</span>. Es decir:</p>
+<div class="proof definition admonition" id="def_1.8.esfericas">
+<p class="admonition-title"><span>Definition </span> (Coordenadas cilíndricas)</p>
+<section class="definition-content" id="proof-content">
+<p>En un <strong>sistema de coordenadas esféricas</strong> un punto <span class="math notranslate nohighlight">\(P\)</span> del espacio se representa por medio de una terna ordenada
+<span class="math notranslate nohighlight">\(\left(\rho,\theta,\phi\right)\)</span>, donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span> es la distancia entre <span class="math notranslate nohighlight">\(P\)</span> y el origen (<span class="math notranslate nohighlight">\(\rho \geq 0\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span> es el mismo ángulo utilizado en coordenadas cilíndricas para <span class="math notranslate nohighlight">\(r\geq 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> es el ángulo entre el eje <span class="math notranslate nohighlight">\(Z\)</span> positivo y el segmento de recta <span class="math notranslate nohighlight">\(OP\)</span> (<span class="math notranslate nohighlight">\(0\leq \phi \leq \pi\)</span>).</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/1.8.coordenadas_esfericas.jpg"><img alt="../../_images/1.8.coordenadas_esfericas.jpg" src="../../_images/1.8.coordenadas_esfericas.jpg" style="width: 350px;" /></a>
+</section>
+</div><p>Para realizar los cambios de coordenadas, de cartesianas a esféricas y viceversa, aplicaremos las siguientes fórmulas:</p>
+<ul>
+<li><p><strong>Cartesianas a esféricas</strong>:</p>
+<p><span class="math notranslate nohighlight">\(\rho = \sqrt{x^2+y^2+z^2}\)</span>, <span class="math notranslate nohighlight">\(\theta = \arctan\left(\frac{y}{x}\right)\)</span>, <span class="math notranslate nohighlight">\(\phi = \arccos\left(\frac{z}{\sqrt{x^2+y^+z^2}}\right)\)</span>.</p>
+</li>
+<li><p><strong>Esféricas a cartesianas</strong>:</p>
+<p><span class="math notranslate nohighlight">\(x = r\sin(\phi)\cos(\theta)\)</span>, <span class="math notranslate nohighlight">\(y=r\sin(\phi)\sin(\theta)\)</span>, <span class="math notranslate nohighlight">\(z=\rho\cos(\phi)\)</span>.</p>
+</li>
+</ul>
+<p>Si nos interesa cambiar de cilíndricas a esféricas, o viceversa:</p>
+<ul>
+<li><p><strong>Esféricas a cilíndricas</strong>:</p>
+<p><span class="math notranslate nohighlight">\(r^2 = \rho^2 \sin^2(\theta)\)</span>, <span class="math notranslate nohighlight">\(\theta = \theta\)</span>, <span class="math notranslate nohighlight">\(z = \rho\cos(\theta)\)</span>.</p>
+</li>
+<li><p><strong>Cilíndricas a esféricas</strong>:</p>
+<p><span class="math notranslate nohighlight">\(\rho = \sqrt{r^2+z^2}\)</span>, <span class="math notranslate nohighlight">\(\theta = \theta\)</span>, <span class="math notranslate nohighlight">\(\phi=\arccos\left( \frac{z}{\sqrt{r^2+z^2}} \right)\)</span>.</p>
+</li>
+</ul>
+<p>El sistema de coordenadas esféricas es útil, sobre todo, en superficies en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> que tienen un punto o un eje de simetría. Por ejemplo:</p>
+<a class="reference internal image-reference" href="../../_images/1.8.superficies_coordenadas_esfericas.jpg"><img alt="../../_images/1.8.superficies_coordenadas_esfericas.jpg" src="../../_images/1.8.superficies_coordenadas_esfericas.jpg" style="width: 1000px;" /></a>
+<p>Como curiosidad, podemos comentar que el sistema de longitud-latitud, que se usa en posicionamiento GPS para describir un punto en la superficie de la Tierra,
+corresponde a una variante (el ángulo <span class="math notranslate nohighlight">\(\phi\)</span> se mide desde el plano) de las coordenadas esféricas:</p>
+<a class="reference internal image-reference" href="../../_images/1.8.latitud_longitud.jpg"><img alt="../../_images/1.8.latitud_longitud.jpg" src="../../_images/1.8.latitud_longitud.jpg" style="width: 600px;" /></a>
+<p>Por ejemplo…</p>
+<a class="reference internal image-reference" href="../../_images/1.8.FIC_GPS.jpg"><img alt="../../_images/1.8.FIC_GPS.jpg" src="../../_images/1.8.FIC_GPS.jpg" style="width: 600px;" /></a>
+<p>Si quieres enterarte más de esto, puedes consultar, por ejemplo: <a class="reference external" href="https://world.ubergizmo.com/es/como/aprende-a-leer-las-coordenadas-del-gps/">https://world.ubergizmo.com/es/como/aprende-a-leer-las-coordenadas-del-gps/</a>.</p>
+</section>
+<section id="algunos-ejercicios-resueltos-con-python">
+<h2><span class="section-number">1.8.3. </span>Algunos ejercicios resueltos con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#algunos-ejercicios-resueltos-con-python" title="Permalink to this headline">#</a></h2>
+<p>Vamos a ver a continuación algunos <strong>ejercicios/ejemplos de cambios de coordenadas</strong>.</p>
+<ul class="simple">
+<li><p><strong>Ejercicio 1:</strong> Pasar el punto <span class="math notranslate nohighlight">\(P_{1} = (x,y,z) = (3,5,4)\)</span> a coordenadas cilíndricas y esféricas.</p></li>
+<li><p><strong>Ejercicio 2:</strong> Pasar el punto <span class="math notranslate nohighlight">\(P_{2} = (r,\theta,z) = (2,\frac{\pi}{4},-3)\)</span> a coordenadas cartesianas y esféricas.</p></li>
+<li><p><strong>Ejercicio 3:</strong> Pasar el punto <span class="math notranslate nohighlight">\(P_{3} = (\rho,\theta,\phi) = (2,\frac{\pi}{4},\frac{\pi}{4})\)</span> a coordenadas cartesianas y cilíndricas.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resolvemos el ejercicio 1. Dejamos 2 y 3 para que practiquéis</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">cart_2_cil</span><span class="p">(</span><span class="n">P</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">r</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">z</span>
+
+<span class="k">def</span> <span class="nf">cart_2_esf</span><span class="p">(</span><span class="n">P</span><span class="p">):</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span> <span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">rho</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">rho</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">phi</span>
+
+<span class="n">P_car</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">P_cil</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">P_esf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Dato</span>
+<span class="n">P_car</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">])</span>
+
+<span class="c1"># Cambiamos de coordenadas</span>
+<span class="n">P_cil</span> <span class="o">=</span> <span class="n">cart_2_cil</span><span class="p">(</span><span class="n">P_car</span><span class="p">)</span>
+<span class="n">P_esf</span> <span class="o">=</span> <span class="n">cart_2_esf</span><span class="p">(</span><span class="n">P_car</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dato: P_car= &#39;</span><span class="p">,</span> <span class="n">P_car</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;P_cil= &#39;</span><span class="p">,</span><span class="n">P_cil</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;P_esf= &#39;</span><span class="p">,</span><span class="n">P_esf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dato: P_car=  [3. 5. 4.]
+P_cil=  (5.830951894845301, 1.0303768265243125, 4.0)
+P_esf=  (7.0710678118654755, 1.0303768265243125, 0.9695321101157683)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora nos vamos a quedar en el cálculo simbólico (es decir, en <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>), para cambiar de coordenadas la ecuación de una superficie.</p>
+<ul class="simple">
+<li><p><strong>Ejercicio 4:</strong> Representa en coordenadas cilíndricas y esféricas la ecuación del cono <span class="math notranslate nohighlight">\(x^2+y^2=z^2\)</span>.</p></li>
+<li><p><strong>Ejercicio 5:</strong> Representa en coordenadas cilíndricas y esféricas la superficie que en coordenadas cartesianas
+se representa como <span class="math notranslate nohighlight">\(x^2+y^2+z^2-4z=0\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resolvemos el ejercicio 4 y os dejamos el 5 para que practiquéis</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">nonnegative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">)</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="n">nonnegative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">)</span>
+
+<span class="c1"># Definimos la ecuación en cartesianas</span>
+<span class="n">exp_cart</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">ec_cart</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">exp_cart</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Pasamos la ecuación a cilíndricas</span>
+<span class="n">ec_cil</span> <span class="o">=</span> <span class="n">ec_cart</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">y</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">z</span><span class="p">:</span><span class="n">z</span><span class="p">})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">ec_cil</span><span class="p">))</span>
+
+<span class="c1"># Pasamos la ecuación a esféricas</span>
+<span class="n">ec_esf</span> <span class="o">=</span> <span class="n">ec_cart</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">rho</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">y</span><span class="p">:</span><span class="n">rho</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">z</span><span class="p">:</span><span class="n">rho</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">ec_esf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle r^{2} - z^{2} = 0\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \rho^{2} \cos{\left(2 \phi \right)} = 0\]</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -485,10 +659,10 @@ como mostramos en la figura a continuación:</p>
             <p class="prev-next-title"><span class="section-number">1.7. </span>Superficies en el espacio</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../02/README.html" title="next page">
+    <a class='right-next' id="next-link" href="09.Boletin.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Límites y continuidad</p>
+        <p class="prev-next-title"><span class="section-number">1.9. </span>Boletín de ejercicios del primer capítulo</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

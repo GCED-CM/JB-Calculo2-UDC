@@ -141,9 +141,11 @@ plt.show()
 # $
 # 
 # Generalizando en el espacio tridimensional, se tiene que una curva viene definida por tres funciones diferentes que dependen de un mismo y único parámetro $t$:
-# $$
-# \text{Curva en }\mathbb{R}^3=\{(x,y,z)\in\mathbb{R}^3:\ x=f(t),\ y=g(t),\ z=h(t)\text{ con }t\in\mathbb{R}\}=\{(f(t),g(t),h(t)):\ t\in\mathbb{R}\}.
-# $$
+# 
+# \begin{eqnarray*}
+# \text{Curva en }\mathbb{R}^3 &=& \{(x,y,z)\in\mathbb{R}^3:\ x=f(t),\ y=g(t),\ z=h(t)\text{ con }t\in\mathbb{R}\} \\
+# &=&\{(f(t),g(t),h(t)):\ t\in\mathbb{R}\}.
+# \end{eqnarray*}
 # Por ejemplo, en el caso particular de una recta que pasa por el punto $P = (a,b,c)$ y tiene vector director $\mathbf{v}=\left(v_{1},v_{2},v_{3}\right)$, se tiene:
 # 
 # $$
@@ -152,6 +154,7 @@ plt.show()
 # Las gráficas de curvas se crean a partir de la evaluación de las funciones que las definen en un gran número de valores almacenados en un vector **Numpy**. Al usar un número suficiente de valores para el parámetro, la gráfica de la curva parecerá suave. Sin embargo, hay que entender que lo que se está representando gráficamente es una concatenación de segmentos rectos que unen los puntos resultantes de la evaluación. Por tanto, el primer paso será crear un vector de valores en los que se evaluarán las funciones utilizando el comando `np.linspace`, y, más adelante, se utilizará el comando `plt.plot` (en 2D) o en comando `plt.plot3D` (en 3D).
 # 
 # Por ejemplo, para representar las curvas 
+# 
 # $$
 # y = \sin(x),\qquad y=\cos(x),\qquad x\in[0,4\pi],
 # $$
@@ -182,6 +185,7 @@ plt.show()
 
 
 # De forma análoga en el espacio tridimensional, representamos gráficamente la curva
+# 
 # $$
 # \begin{align*}
 # f(t)&=(1+0.2\cos(10t))\cos(t),\\
@@ -241,7 +245,12 @@ plt.show()
 # $
 # Como en la representación gráfica de curvas, las gráficas de superficies se crean a partir de un gran número de puntos de la superficie que resultan de evaluar la función en una nube de puntos en el plano $xy$. Por tanto, el primer paso será crear la nube de puntos con el comando `np.meshgrid` a partir de dos vectores que almacenan las componentes $x$ e $y$ de los puntos de la nube, y que se obtienen utilizando el comando `np.linspace`. Finalmente, se creará la gráfica tridimensional a través del comando `plot_surface`.
 # 
-# Por ejemplo, para representar el paraboloide elíptico $$z=\dfrac{x^2}{2}+y^2\quad\text{con }(x,y)\in[-1,1]\times[-1,1],$$ se utilizarían los comandos correspondientes como sigue:
+# Por ejemplo, para representar el paraboloide elíptico 
+# 
+# $$
+# z=\dfrac{x^2}{2}+y^2\quad\text{con }(x,y)\in[-1,1]\times[-1,1],
+# $$ 
+# se utilizarían los comandos correspondientes como sigue:
 
 # In[96]:
 

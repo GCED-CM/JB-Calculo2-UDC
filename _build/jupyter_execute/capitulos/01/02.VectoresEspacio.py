@@ -95,9 +95,9 @@
 # * $\theta$ en la proyección del vector en el plano $XY$,
 # * $\phi$ para indicar el ángulo que forma el vector con el eje $Z$.
 # 
-# <img src="../../images/1.2.coordenadas_esfericas.png" width="250"/>
+# <img src="../../images/1.8.coordenadas_esfericas.jpg" width="350"/>
 # 
-# Profundizaremos más en esto cuando hablemos de coordenadas esféricas, hacia el final de este capítulo.
+# Profundizaremos más en esto cuando hablemos de coordenadas esféricas (véase {ref}`sec:1.8.coordenadas`).
 # 
 # Ahora podemos definir el **vector unitario en la dirección de $\mathbf{v}$** como
 # 
@@ -105,7 +105,7 @@
 # \mathbf{v}_{1} = \frac{\mathbf{v}}{\|\mathbf{v}\|} = \frac{1}{\|\mathbf{v}\|} \mathbf{v}.
 # $$
 # 
-# Y, de forma totalmente análoga a los vectores en el plano, definimos las operaciones con vectores:
+# Y, de forma totalmente análoga a los vectores en el plano, definimos las operaciones con vectores en el espacio:
 # 
 # ````{prf:definition} Suma de vectores y multiplicación por un escalar en 3D
 # :label: def_01_suma_3D

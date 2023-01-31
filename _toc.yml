@@ -24,6 +24,8 @@ chapters:
      title: Superficies en el espacio
    - file: capitulos/01/08.Coordenadas
      title: Coordenadas cilíndricas y esféricas
+   - file: capitulos/01/09.Boletin
+     title: Boletín de ejercicios del primer capítulo
   
 - file: capitulos/02/README
   title: Límites y continuidad
