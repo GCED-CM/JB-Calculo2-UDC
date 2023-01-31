@@ -168,6 +168,11 @@ const thebe_selector_output = ".output, .cell_output"
      1.8. Coordenadas cilíndricas y esféricas
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/09.Boletin.html">
+     1.9. Boletín de ejercicios del primer capítulo
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -707,21 +712,24 @@ title="Print to PDF"
 <span class="math notranslate nohighlight">\(
 \{(x,f(x)):x\in\mathbb{R}\}.
 \)</span></p>
-<p>Generalizando en el espacio tridimensional, se tiene que una curva viene definida por tres funciones diferentes que dependen de un mismo y único parámetro <span class="math notranslate nohighlight">\(t\)</span>:
-$<span class="math notranslate nohighlight">\(
-\text{Curva en }\mathbb{R}^3=\{(x,y,z)\in\mathbb{R}^3:\ x=f(t),\ y=g(t),\ z=h(t)\text{ con }t\in\mathbb{R}\}=\{(f(t),g(t),h(t)):\ t\in\mathbb{R}\}.
-\)</span><span class="math notranslate nohighlight">\(
-Por ejemplo, en el caso particular de una recta que pasa por el punto \)</span>P = (a,b,c)<span class="math notranslate nohighlight">\( y tiene vector director \)</span>\mathbf{v}=\left(v_{1},v_{2},v_{3}\right)$, se tiene:</p>
+<p>Generalizando en el espacio tridimensional, se tiene que una curva viene definida por tres funciones diferentes que dependen de un mismo y único parámetro <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\text{Curva en }\mathbb{R}^3 &amp;=&amp; \{(x,y,z)\in\mathbb{R}^3:\ x=f(t),\ y=g(t),\ z=h(t)\text{ con }t\in\mathbb{R}\} \\
+&amp;=&amp;\{(f(t),g(t),h(t)):\ t\in\mathbb{R}\}.
+\end{eqnarray*}\]</div>
+<p>Por ejemplo, en el caso particular de una recta que pasa por el punto <span class="math notranslate nohighlight">\(P = (a,b,c)\)</span> y tiene vector director <span class="math notranslate nohighlight">\(\mathbf{v}=\left(v_{1},v_{2},v_{3}\right)\)</span>, se tiene:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Recta en }\mathbb{R}^3=\{(f(t),g(t),h(t)):\ t\in\mathbb{R}\}=\{(a + t v_{1},b + t v_{2},c + t v_{3}):\ t\in\mathbb{R}\}.
 \]</div>
 <p>Las gráficas de curvas se crean a partir de la evaluación de las funciones que las definen en un gran número de valores almacenados en un vector <strong>Numpy</strong>. Al usar un número suficiente de valores para el parámetro, la gráfica de la curva parecerá suave. Sin embargo, hay que entender que lo que se está representando gráficamente es una concatenación de segmentos rectos que unen los puntos resultantes de la evaluación. Por tanto, el primer paso será crear un vector de valores en los que se evaluarán las funciones utilizando el comando <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code>, y, más adelante, se utilizará el comando <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> (en 2D) o en comando <code class="docutils literal notranslate"><span class="pre">plt.plot3D</span></code> (en 3D).</p>
-<p>Por ejemplo, para representar las curvas
-$<span class="math notranslate nohighlight">\(
+<p>Por ejemplo, para representar las curvas</p>
+<div class="math notranslate nohighlight">
+\[
 y = \sin(x),\qquad y=\cos(x),\qquad x\in[0,4\pi],
-\)</span>$
-se utilizarían los comandos correspondientes como sigue:</p>
+\]</div>
+<p>se utilizarían los comandos correspondientes como sigue:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creación de los valores en donde se evalúan las funciones</span>
@@ -750,16 +758,16 @@ se utilizarían los comandos correspondientes como sigue:</p>
 <img alt="../../_images/03.RepresentacionGraficaMatplotlib_20_0.png" src="../../_images/03.RepresentacionGraficaMatplotlib_20_0.png" />
 </div>
 </div>
-<p>De forma análoga en el espacio tridimensional, representamos gráficamente la curva
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>De forma análoga en el espacio tridimensional, representamos gráficamente la curva</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 f(t)&amp;=(1+0.2\cos(10t))\cos(t),\\
 g(t)&amp;=(1+0.2\cos(10t))\sin(t),\\
 h(t)&amp;=2t+0.2\sin(10t),
-\end{align*}\]</div>
-<p>$<span class="math notranslate nohighlight">\(
-con \)</span>t\in[0,8\pi]$, como sigue:</p>
+\end{align*}
+\end{split}\]</div>
+<p>con <span class="math notranslate nohighlight">\(t\in[0,8\pi]\)</span>, como sigue:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inicialización de la representación 3D</span>
@@ -820,7 +828,12 @@ con \)</span>t\in[0,8\pi]$, como sigue:</p>
 \{(x,y,f(x,y)):(x,y)\in\mathbb{R}^2\}\subset \mathbb{R}^3.
 \)</span>
 Como en la representación gráfica de curvas, las gráficas de superficies se crean a partir de un gran número de puntos de la superficie que resultan de evaluar la función en una nube de puntos en el plano <span class="math notranslate nohighlight">\(xy\)</span>. Por tanto, el primer paso será crear la nube de puntos con el comando <code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code> a partir de dos vectores que almacenan las componentes <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> de los puntos de la nube, y que se obtienen utilizando el comando <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code>. Finalmente, se creará la gráfica tridimensional a través del comando <code class="docutils literal notranslate"><span class="pre">plot_surface</span></code>.</p>
-<p>Por ejemplo, para representar el paraboloide elíptico $<span class="math notranslate nohighlight">\(z=\dfrac{x^2}{2}+y^2\quad\text{con }(x,y)\in[-1,1]\times[-1,1],\)</span>$ se utilizarían los comandos correspondientes como sigue:</p>
+<p>Por ejemplo, para representar el paraboloide elíptico</p>
+<div class="math notranslate nohighlight">
+\[
+z=\dfrac{x^2}{2}+y^2\quad\text{con }(x,y)\in[-1,1]\times[-1,1],
+\]</div>
+<p>se utilizarían los comandos correspondientes como sigue:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inicialización de la representación 3D</span>
