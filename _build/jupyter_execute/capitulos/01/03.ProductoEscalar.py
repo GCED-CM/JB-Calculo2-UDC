@@ -227,7 +227,7 @@ display('Ángulo entre u y v: ', theta1)
 #     $$
 #     \mathbf{w}_{1} \equiv \mathrm{proy}_{\mathbf{v}} \mathbf{u} = \left(\frac{ \mathbf{u}\cdot\mathbf{v} }{ \|\mathbf{v}\|^2 }\right) \mathbf{v}.
 #     $$
-# * Definimos la **proyección de $\mathbf{u}$ ortogonal a $\mathbf{v}$** como el vector
+# * Definimos la **componente vectorial de $\mathbf{u}$ ortogonal a $\mathbf{v}$** como el vector
 # 
 #     $$
 #     \mathbf{w}_{2} = \mathbf{u} - \mathbf{w}_{1} = \mathbf{u} - \mathrm{proy}_{\mathbf{v}} \mathbf{u}. 
