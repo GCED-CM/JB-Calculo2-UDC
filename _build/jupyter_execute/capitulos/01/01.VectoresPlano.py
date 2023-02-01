@@ -123,7 +123,7 @@
 # \textrm{6.}\; (c+d)\mathbf{u} = c\mathbf{u} + d\mathbf{u} & \textrm{(distributiva (1) ).} \\
 # \textrm{7.}\; c(\mathbf{u}+\mathbf{v}) = c\mathbf{u} + c\mathbf{v} & \textrm{(distributiva (2)).} \\
 # \textrm{8.}\; 1(\mathbf{u}) = \mathbf{u} & \textrm{(elemento neutro de la multiplicación por escalares).} \\
-# \textrm{9.}\; 0\mathbf{u} = \mathbf{0} & \textrm{(elemento 0 en la multiplicación por escalares).}
+# \textrm{9.}\; 0(\mathbf{u}) = \mathbf{0} & \textrm{(elemento 0 en la multiplicación por escalares).}
 # \end{array}
 # $$
 # 

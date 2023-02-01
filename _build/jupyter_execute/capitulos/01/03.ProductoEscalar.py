@@ -100,7 +100,7 @@ print(product)
 # :label: prop_01_angulo_vectores
 # :nonumber: 
 # 
-# Si $\theta$ es el ángulo entre los vectores $\mathbf{u}$, $\mathbf{v}\in\mathbb{R}^{2}$, ambos distintos de $\mathbb{0}$, entonces
+# Si $\theta$ es el ángulo entre los vectores $\mathbf{u}$, $\mathbf{v}\in\mathbb{R}^{2}$, ambos distintos de $\mathbf{0}$, entonces
 # 
 # $$
 # \cos\theta = \frac{\mathbf{u}\cdot\mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|},
@@ -193,9 +193,9 @@ display('Ángulo entre u y v: ', theta1)
 # 
 # Podemos calcular los cosenos directores con la última propiedad enunciada:
 # 
-# * $\cos\alpha = \frac{\mathbf{v}\cdot\mathbf{i}}{\|\mathbf{v}\|\|\mathbf{i}\|} = \frac{ v_{1} } {\|\mathbf{v}\|}$.
-# * $\cos\beta = \frac{\mathbf{v}\cdot\mathbf{j}}{\|\mathbf{v}\|\|\mathbf{j}\|} = \frac{ v_{2} } {\|\mathbf{v}\|}$.
-# * $\cos\gamma = \frac{\mathbf{v}\cdot\mathbf{k}}{\|\mathbf{v}\|\|\mathbf{k}\|} = \frac{ v_{3} } {\|\mathbf{v}\|}$.
+# * $\cos\alpha = \dfrac{\mathbf{v}\cdot\mathbf{i}}{\|\mathbf{v}\|\|\mathbf{i}\|} = \dfrac{ v_{1} } {\|\mathbf{v}\|}$.
+# * $\cos\beta = \dfrac{\mathbf{v}\cdot\mathbf{j}}{\|\mathbf{v}\|\|\mathbf{j}\|} = \dfrac{ v_{2} } {\|\mathbf{v}\|}$.
+# * $\cos\gamma = \dfrac{\mathbf{v}\cdot\mathbf{k}}{\|\mathbf{v}\|\|\mathbf{k}\|} = \dfrac{ v_{3} } {\|\mathbf{v}\|}$.
 # 
 # Una consecuencia interesante de estas fórmulas es que los cosenos directores nos permiten escribir la forma normalizada de cualquier vector:
 # 
