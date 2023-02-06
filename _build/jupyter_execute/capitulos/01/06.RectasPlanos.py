@@ -19,11 +19,11 @@
 # 
 # * La **ecuación vectorial** de la recta: 
 # 
-#     Un punto $P=(x,y,z)$ está en la recta $L$, paralela al vector $\mathbf{v}=\left(v_{1},v_{2},v_{3}\right)$ 
+#     Un punto $Q=(x,y,z)$ está en la recta $L$, paralela al vector $\mathbf{v}=\left(v_{1},v_{2},v_{3}\right)$ 
 #     y que pasa por el punto $P=(a,b,c)$, si existe algún valor $t\in\mathbb{R}$ tal que
 # 
 #     $$
-#     P = A + t\mathbf{v}.
+#     Q = P + t\mathbf{v}.
 #     $$
 # 
 # * Equivalentemente, si nos fijamos en sus coordenadas, de la ecuación anterior obtenemos las **ecuaciones paramétricas** de la recta:

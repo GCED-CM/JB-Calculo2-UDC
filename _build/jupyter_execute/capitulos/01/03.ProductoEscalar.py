@@ -72,7 +72,7 @@ dot_product = u.dot(v)
 print('Producto escalar de u y v: ', dot_product)
 
 
-# Para hacer el producto vectorial en `Sympy` tenemos que usar la segunda sintaxis. Recuerda que en este caso los vectores tienen que definirse como `sp.Matrix`.
+# Para hacer el producto escalar en `Sympy` tenemos que usar la segunda sintaxis. Recuerda que en este caso los vectores tienen que definirse como `sp.Matrix`.
 
 # In[12]:
 
