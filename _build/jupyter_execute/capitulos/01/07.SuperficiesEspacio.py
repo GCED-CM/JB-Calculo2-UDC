@@ -28,7 +28,7 @@
 # Sea $C$ una curva sobre un plano y $L$ una recta no paralela a ese plano. 
 # Llamaremos superficie cilíndrica a la superficie que generan todas las rectas paralelas a $L$ que cortan a $C$.
 # 
-# Llamaremos a $C$ **curva generadora** (o **directriz**) y llamaremos $recta generatriz a $L$. 
+# Llamaremos a $C$ **curva generadora** (o **directriz**) y llamaremos **recta generatriz** a $L$. 
 # 
 # ````
 # 

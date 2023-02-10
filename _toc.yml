@@ -29,6 +29,13 @@ chapters:
   
 - file: capitulos/02/README
   title: Límites y continuidad
+  sections:
+    - file: capitulos/02/01.Funciones
+      title: Funciones de varias variables
+    - file: capitulos/02/02.Limites
+      title: Límites
+    - file: capitulos/02/03.Continuidad
+      title: Continuidad
   
 - file: capitulos/03/README
   title: Derivación y extremos

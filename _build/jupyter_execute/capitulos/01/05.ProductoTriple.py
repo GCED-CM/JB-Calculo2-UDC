@@ -7,7 +7,7 @@
 # 
 # ## Definición
 # 
-# ````{prf:definition} Producto vectorial
+# ````{prf:definition} Producto triple
 # :label: def_01_producto_vectorial
 # :nonumber: 
 # 

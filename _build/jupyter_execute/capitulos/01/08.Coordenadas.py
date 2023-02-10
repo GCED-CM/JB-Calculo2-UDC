@@ -76,7 +76,7 @@
 # 
 # * **Cartesianas a esféricas**: 
 # 
-#     $\rho = \sqrt{x^2+y^2+z^2}$, $\theta = \arctan\left(\frac{y}{x}\right)$, $\phi = \arccos\left(\frac{z}{\sqrt{x^2+y^+z^2}}\right)$.
+#     $\rho = \sqrt{x^2+y^2+z^2}$, $\theta = \arctan\left(\frac{y}{x}\right)$, $\phi = \arccos\left(\frac{z}{\sqrt{x^2+y^2+z^2}}\right)$.
 # * **Esféricas a cartesianas**:
 # 
 #     $x = r\sin(\phi)\cos(\theta)$, $y=r\sin(\phi)\sin(\theta)$, $z=\rho\cos(\phi)$.
