@@ -47,7 +47,7 @@
 # 
 # Valga lo siguiente como ejemplo:
 
-# In[35]:
+# In[1]:
 
 
 import sympy as sp
@@ -167,7 +167,8 @@ y = np.linspace(-4, 4, N)
 
 X, Y = np.meshgrid(x, y)
 f_exp = np.sqrt(16 - 4*X**2 - Y**2)
-# Va a dar un warning porque hay puntos en la malla (por ej., el (-2,4)) que ocasionan un negativo en la raíz
+# Va a dar un warning porque hay puntos en la malla (por ej., el (-2,4)) 
+# que ocasionan un negativo en la raíz
 
 # Curvas de nivel
 p = plt.contour(X, Y, f_exp)
