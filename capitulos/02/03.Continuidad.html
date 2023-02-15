@@ -402,13 +402,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuidad-de-una-funcion-de-dos-variables">
-   2.3.1. Continuidad de una función de dos variables
+  <a class="reference internal nav-link" href="#continuidad-para-funciones-de-dos-variables">
+   2.3.1. Continuidad para funciones de dos variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuidad-de-una-funcion-de-tres-variables">
-   2.3.2. Continuidad de una funcion de tres variables
+  <a class="reference internal nav-link" href="#continuidad-para-funciones-de-tres-variables">
+   2.3.2. Continuidad para funciones de tres variables
   </a>
  </li>
 </ul>
@@ -431,13 +431,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuidad-de-una-funcion-de-dos-variables">
-   2.3.1. Continuidad de una función de dos variables
+  <a class="reference internal nav-link" href="#continuidad-para-funciones-de-dos-variables">
+   2.3.1. Continuidad para funciones de dos variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuidad-de-una-funcion-de-tres-variables">
-   2.3.2. Continuidad de una funcion de tres variables
+  <a class="reference internal nav-link" href="#continuidad-para-funciones-de-tres-variables">
+   2.3.2. Continuidad para funciones de tres variables
   </a>
  </li>
 </ul>
@@ -452,40 +452,56 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="continuidad">
 <h1><span class="section-number">2.3. </span>Continuidad<a class="headerlink" href="#continuidad" title="Permalink to this headline">#</a></h1>
-<section id="continuidad-de-una-funcion-de-dos-variables">
-<h2><span class="section-number">2.3.1. </span>Continuidad de una función de dos variables<a class="headerlink" href="#continuidad-de-una-funcion-de-dos-variables" title="Permalink to this headline">#</a></h2>
+<section id="continuidad-para-funciones-de-dos-variables">
+<h2><span class="section-number">2.3.1. </span>Continuidad para funciones de dos variables<a class="headerlink" href="#continuidad-para-funciones-de-dos-variables" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def_cont_2v">
 <p class="admonition-title"><span>Definition </span> (Definición de continuidad de una función de dos variables)</p>
 <section class="definition-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(D \subset \mathbb{R}^2\)</span>, <span class="math notranslate nohighlight">\((x_0,y_0) \in D\)</span>. Diremos que <strong><span class="math notranslate nohighlight">\(f\)</span> es continua en el punto <span class="math notranslate nohighlight">\((x_0,y_0)\)</span></strong> si y sólo si existe <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y)\)</span> y es igual a <span class="math notranslate nohighlight">\(f(x_0,y_0)\)</span>. Es decir,
-$<span class="math notranslate nohighlight">\(
-\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y) = f(x_0,y_0).
-\)</span>$</p>
+<p>Sea <span class="math notranslate nohighlight">\(D \subset \mathbb{R}^2\)</span>, <span class="math notranslate nohighlight">\((x_0,y_0) \in D\)</span>. Diremos que <strong><span class="math notranslate nohighlight">\(f\)</span> es continua en el punto <span class="math notranslate nohighlight">\((x_0,y_0)\)</span></strong> si y sólo si existe
+el límite en ese punto y es igual al valor de la función en el mismo. Es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+\exists\lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y) \textrm{ y, además, } \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y) = f(x_0,y_0).
+\]</div>
 <p>Diremos que la función <span class="math notranslate nohighlight">\(f\)</span> es continua si y sólo si es continua en todos los puntos de <span class="math notranslate nohighlight">\(D\)</span>.</p>
 </section>
 </div><p>Por lo tanto, la función <span class="math notranslate nohighlight">\(f\)</span> es discontinua cuando no es continua en al menos un punto de <span class="math notranslate nohighlight">\(D\)</span>. Hay dos tipos de discontinuidades: evitable e inevitable.</p>
 <ul class="simple">
-<li><p>La función <strong><span class="math notranslate nohighlight">\(f\)</span> tiene una discontinuidad evitable en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span></strong> si existe <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y)\)</span> y se cumple alguna de las siguientes condiciones: no existe <span class="math notranslate nohighlight">\(f(x_0,y_0)\)</span> o <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y) \neq f(x_0,y_0)\)</span>.</p></li>
-<li><p>La función <strong><span class="math notranslate nohighlight">\(f\)</span> tiene una discontinuidad inevitable en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span></strong> si <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y)\)</span> no existe.</p></li>
+<li><p>La función <strong><span class="math notranslate nohighlight">\(f\)</span> tiene una discontinuidad evitable en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span></strong> si existe <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y)\)</span> y se cumple alguna de las siguientes condiciones:</p>
+<ul>
+<li><p>no existe <span class="math notranslate nohighlight">\(f(x_0,y_0)\)</span>, o</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y) \neq f(x_0,y_0)\)</span>.</p></li>
 </ul>
-<p>Por ejemplo, la función <span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{5x^2y}{x^2+y^2}\)</span> tiene una discontinuidad evitable en <span class="math notranslate nohighlight">\((0,0)\)</span>. Como el límite en ese punto existe, se puede eliminar esa discontinuidad redefiniendo <span class="math notranslate nohighlight">\(f\)</span> como:
-$<span class="math notranslate nohighlight">\(
-\hat{f}(x,y)=
-\begin{cases}
-\displaystyle \lim_{(x,y) \rightarrow (0,0)} f(x,y) &amp; \text{si } (x,y)=(0,0),\\
-f(x,y) &amp; \text{en otro caso}.
-\end{cases}
-\)</span>$</p>
-<p>Sin embargo, la función <span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \left(\frac{x^2-y^2}{x^2+y^2}\right)^2\)</span> no es continua en <span class="math notranslate nohighlight">\((0,0)\)</span>, y esta discontinuidad es inevitable.</p>
-<div class="proof property admonition" id="pr_operaciones">
+</li>
+<li><p>La función <strong><span class="math notranslate nohighlight">\(f\)</span> tiene una discontinuidad inevitable en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span></strong> si no existe <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} f(x,y)\)</span>.</p></li>
+</ul>
+<div class="proof example admonition" id="2.3._ex">
+<p class="admonition-title"><span>Example </span></p>
+<section class="example-content" id="proof-content">
+<ol>
+<li><p>La función <span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{5x^2y}{x^2+y^2}\)</span> tiene una discontinuidad evitable en <span class="math notranslate nohighlight">\((0,0)\)</span>.
+Como el límite en ese punto existe, se puede eliminar esa discontinuidad redefiniendo <span class="math notranslate nohighlight">\(f\)</span> como:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \hat{f}(x,y)=
+    \begin{cases}
+    \displaystyle \frac{5x^2y}{x^2+y^2}  &amp; \text{si } (x,y)\neq(0,0),\\
+    0 &amp; \text{si } (x,y)=(0,0).
+    \end{cases}
+    \end{split}\]</div>
+</li>
+<li><p>La función <span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \left(\frac{x^2-y^2}{x^2+y^2}\right)^2\)</span> no es continua en <span class="math notranslate nohighlight">\((0,0)\)</span>, y esta discontinuidad es inevitable (reto: ¿por qué?).</p></li>
+</ol>
+</section>
+</div><div class="proof property admonition" id="pr_operaciones">
 <p class="admonition-title"><span>Property </span> (Operaciones con funciones de varias variables )</p>
 <section class="property-content" id="proof-content">
-<p>Sean <span class="math notranslate nohighlight">\(f, g: D \subset \mathbb{R}^{2} \rightarrow \mathbb{R}\)</span> funciones continuas en un punto <span class="math notranslate nohighlight">\((x_0,y_0) \in D\)</span>. Entonces las funciones siguientes son continuas en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span>:</p>
+<p>Sean <span class="math notranslate nohighlight">\(f, g: D \subset \mathbb{R}^{2} \rightarrow \mathbb{R}\)</span> funciones continuas en un punto <span class="math notranslate nohighlight">\((x_0,y_0) \in D\)</span>. Entonces las siguientes funciones también son continuas en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span>:</p>
 <ul class="simple">
-<li><p><strong>Múltiplo escalar</strong>: <span class="math notranslate nohighlight">\(\lambda f\)</span>, \quad <span class="math notranslate nohighlight">\(\forall \lambda \in \mathbb{R}\)</span>.</p></li>
+<li><p><strong>Múltiplo escalar</strong>: <span class="math notranslate nohighlight">\(\lambda f\)</span>, <span class="math notranslate nohighlight">\(\forall \lambda \in \mathbb{R}\)</span>.</p></li>
 <li><p><strong>Suma y diferencia</strong>: <span class="math notranslate nohighlight">\(f \pm g\)</span>.</p></li>
 <li><p><strong>Producto</strong>: <span class="math notranslate nohighlight">\(fg\)</span>.</p></li>
-<li><p><strong>Cociente</strong>: <span class="math notranslate nohighlight">\(\dfrac{f}{g}\)</span>, \quad si \quad <span class="math notranslate nohighlight">\(g(x_0,y_0) \neq 0\)</span>.</p></li>
+<li><p><strong>Cociente</strong>: <span class="math notranslate nohighlight">\(\dfrac{f}{g}\)</span>, si <span class="math notranslate nohighlight">\(g(x_0,y_0) \neq 0\)</span>.</p></li>
 </ul>
 </section>
 </div><div class="proof theorem admonition" id="th_func_comp_cont">
@@ -497,7 +513,9 @@ f(x,y) &amp; \text{en otro caso}.
 \displaystyle \lim_{(x,y) \rightarrow (x_0,y_0)} g(f(x,y)) = g(f(x_0,y_0)).
 \]</div>
 </section>
-</div><p>Estos resultados teóricos son muy útiles, pues a partir de ellos se obtiene la continuidad de polinomios y funciones racionales de varias variables. Además, establecen la continuidad de otro tipo de funciones conocidas. Por ejemplo, las funciones <span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{1}{2}\sin(x^2+y^2)\)</span> y <span class="math notranslate nohighlight">\(\displaystyle g(x,y) = \cos(y^2)e^{-\sqrt{x^2+y^2}}\)</span> son continuas. Vamos a utilizar <code class="docutils literal notranslate"><span class="pre">Python</span></code> para observar sus representaciones gráficas.</p>
+</div><p>Estos resultados teóricos son muy útiles, pues a partir de ellos se obtiene la continuidad de polinomios y funciones racionales de varias variables. Además, establecen la continuidad de otro tipo de funciones conocidas.</p>
+<p>Por ejemplo, a partir de ellos es inmediato probar que las funciones <span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{1}{2}\sin(x^2+y^2)\)</span> y <span class="math notranslate nohighlight">\(\displaystyle g(x,y) = \cos(y^2)e^{-\sqrt{x^2+y^2}}\)</span> son continuas.</p>
+<p>Vamos a utilizar <code class="docutils literal notranslate"><span class="pre">Python</span></code> para visualizar sus representaciones gráficas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -513,18 +531,23 @@ f(x,y) &amp; \text{en otro caso}.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x, y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas x e y  </span>
+
 <span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># función NumPy de f</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span> <span class="c1"># función NumPy de g</span>
+
 <span class="c1"># Inicialización de la representación 3D</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figaspect</span><span class="p">(</span><span class="mf">0.4</span><span class="p">))</span>
 <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
 <span class="c1"># Creación de la nube de puntos (x,y) en [-2,2]x[-2,2] (100 puntos en cada eje, x e y) </span>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
 <span class="n">ff</span><span class="p">,</span> <span class="n">gg</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">),</span> <span class="n">g</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">)</span>
+
 <span class="c1"># Representación de f</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
 <span class="c1"># Representación de g</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">gg</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -537,42 +560,38 @@ f(x,y) &amp; \text{en otro caso}.
 <img alt="../../_images/03.Continuidad_2_0.png" src="../../_images/03.Continuidad_2_0.png" />
 </div>
 </div>
-<p>Ahora, vamos a practicar con un par de funciones concretas:</p>
+<p>¡Sigamos practicando!</p>
 <div class="proof example admonition" id="ex_cont_3v">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
-<p>Analiza la continuidad de cada función:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-* f(x,y) = \frac{x-2y}{x^2+y^2}.\\
-* g(x,y) = \frac{2}{y-x^2}.
-\end{split}\]</div>
+<p>Analiza la continuidad de</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle f(x,y) = \frac{x-2y}{x^2+y^2}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle g(x,y) = \frac{2}{y-x^2}\)</span>.</p></li>
+</ul>
 <p><strong>Solución:</strong></p>
-<p>Las funciones racionales <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(g\)</span> son continuas, excepto en los puntos en los que el denominador es <span class="math notranslate nohighlight">\(0\)</span>. Estos puntos son los dados por la ecuación:</p>
-<div class="math notranslate nohighlight">
-\[
-x^2+y^2 = 0,
-\]</div>
-<p>así que <span class="math notranslate nohighlight">\(f\)</span> es continua en cada punto del plano <span class="math notranslate nohighlight">\(xy\)</span>, excepto en <span class="math notranslate nohighlight">\((0,0)\)</span>. Y, los dados por la ecuación:</p>
-<div class="math notranslate nohighlight">
-\[
-y-x^2 = 0,
-\]</div>
-<p>así que <span class="math notranslate nohighlight">\(g\)</span> es continua en todos los puntos, excepto aquellos situados en la parábola <span class="math notranslate nohighlight">\(y = x^2\)</span>.</p>
+<p>Las funciones racionales <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(g\)</span> son continuas, excepto en los puntos en los que el denominador es <span class="math notranslate nohighlight">\(0\)</span>. Estos puntos son los dados, respectivamente, por las ecuaciones:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle x^2+y^2 = 0\)</span>. Lo que implica que <span class="math notranslate nohighlight">\(f\)</span> es continua en cada punto del plano <span class="math notranslate nohighlight">\(XY\)</span>, excepto en el origen, <span class="math notranslate nohighlight">\((0,0)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle y-x^2 = 0\)</span>. Lo que implica que <span class="math notranslate nohighlight">\(g\)</span> es continua en todos los puntos, excepto en los situados sobre la parábola <span class="math notranslate nohighlight">\(y = x^2\)</span>.</p></li>
+</ol>
 </section>
 </div></section>
-<section id="continuidad-de-una-funcion-de-tres-variables">
-<h2><span class="section-number">2.3.2. </span>Continuidad de una funcion de tres variables<a class="headerlink" href="#continuidad-de-una-funcion-de-tres-variables" title="Permalink to this headline">#</a></h2>
+<section id="continuidad-para-funciones-de-tres-variables">
+<h2><span class="section-number">2.3.2. </span>Continuidad para funciones de tres variables<a class="headerlink" href="#continuidad-para-funciones-de-tres-variables" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def_cont_3v">
 <p class="admonition-title"><span>Definition </span> (Definición de continuidad de una función de tres variables)</p>
 <section class="definition-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(D \subset \mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\((x_0,y_0,z_0) \in D\)</span>. Diremos que <strong><span class="math notranslate nohighlight">\(f\)</span> es continua en el punto <span class="math notranslate nohighlight">\((x_0,y_0,z_0)\)</span></strong> si y sólo si existe <span class="math notranslate nohighlight">\(\displaystyle \lim_{(x,y,z) \rightarrow (x_0,y_0,z_0)} f(x,y,z)\)</span> y es igual a <span class="math notranslate nohighlight">\(f(x_0,y_0,z_0)\)</span>. Es decir,
-$<span class="math notranslate nohighlight">\(
-\displaystyle \lim_{(x,y,z) \rightarrow (x_0,y_0,z_0)} f(x,y,z) = f(x_0,y_0,z_0).
-\)</span>$</p>
+<p>Sea <span class="math notranslate nohighlight">\(D \subset \mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\((x_0,y_0,z_0) \in D\)</span>. Diremos que <strong><span class="math notranslate nohighlight">\(f\)</span> es continua en el punto <span class="math notranslate nohighlight">\((x_0,y_0,z_0)\)</span></strong><br />
+si y sólo si existe el límite en ese punto y es igual al valor de la función en el mismo. Es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+\exists\lim_{(x,y,z) \rightarrow (x_0,y_0,z_0)} f(x,y,z) \textrm{ y, además, } 
+\lim_{(x,y,z) \rightarrow (x_0,y_0,z_0)} f(x,y,z) = f(x_0,y_0,z_0).
+\]</div>
 <p>Diremos que la función <span class="math notranslate nohighlight">\(f\)</span> es continua si y sólo si es continua en todos los puntos de <span class="math notranslate nohighlight">\(D\)</span>.</p>
 </section>
-</div><p>Ahora, vamos a practicar con una función concreta:</p>
+</div><p>¡A practicar!</p>
 <div class="proof example admonition" id="ex_cont_3v">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
