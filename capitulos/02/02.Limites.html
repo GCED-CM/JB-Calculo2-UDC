@@ -238,6 +238,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.3. Representación Gráfica con Matplotlib
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04.LimitesContinuidad.html">
+     5.4. Límites y continuidad con Python
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -552,7 +557,7 @@ alrededor de <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\rig
 \]</div>
 </section>
 </div><p>Gráficamente, esta condición implica que el valor de <span class="math notranslate nohighlight">\(f(x,y)\)</span> se encuentra entre los planos <span class="math notranslate nohighlight">\(z = L-\varepsilon\)</span> y
-<span class="math notranslate nohighlight">\(z = L+\varepsilon\)</span> para todo punto <span class="math notranslate nohighlight">\((x,y)\neq (x_0,y_0)\)</span> del disco centrado en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span> y de radio <span class="math notranslate nohighlight">\(\delta\)</span>, com opodemos ver en la aplicación de Geogebra de <em>silvina</em>, <a class="reference external" href="https://www.geogebra.org/m/uebhpsgv:">https://www.geogebra.org/m/uebhpsgv:</a></p>
+<span class="math notranslate nohighlight">\(z = L+\varepsilon\)</span> para todo punto <span class="math notranslate nohighlight">\((x,y)\neq (x_0,y_0)\)</span> del disco centrado en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span> y de radio <span class="math notranslate nohighlight">\(\delta\)</span>, como podemos ver en la aplicación de Geogebra de <em>silvina</em>, <a class="reference external" href="https://www.geogebra.org/m/uebhpsgv:">https://www.geogebra.org/m/uebhpsgv:</a></p>
 <a class="reference internal image-reference" href="../../_images/2.2.Limites.jpg"><img alt="../../_images/2.2.Limites.jpg" src="../../_images/2.2.Limites.jpg" style="width: 800px;" /></a>
 <p><strong>Nota:</strong> Decimos que el límite de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span> es <span class="math notranslate nohighlight">\(+\infty\)</span> si la función crece ‘‘indefinidamente’’ (sin cota superior) al acercarse las variables a <span class="math notranslate nohighlight">\((x_0,y_0)\)</span>. Análogamente, decimos que el límite de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\((x_0,y_0)\)</span> es <span class="math notranslate nohighlight">\(-\infty\)</span> si la función decrece ‘‘indefinidamente’’ (sin cota inferior) al acercarse las variables a <span class="math notranslate nohighlight">\((x_0,y_0)\)</span>.</p>
 <div class="proof remark admonition" id="rem_02_limites">
@@ -790,23 +795,26 @@ Límite iterado empezando en y 0
 <span class="o">%</span><span class="k">matplotlib</span> notebook
 
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># definimos la función</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># definimos la función</span>
 
 <span class="c1"># Inicialización de la representación 3D</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
-<span class="n">fn</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy de f</span>
+<span class="n">fn</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">,</span> <span class="s2">&quot;numpy&quot;</span> <span class="p">)</span> <span class="c1"># función numpy de f</span>
+
 <span class="c1"># Creación de la nube de puntos (50 puntos en cada eje, x e y) </span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
-<span class="n">zz</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
 <span class="c1"># Representación de la superficie</span>
-<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
 <span class="c1"># Etiquetas de los ejes</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+
 <span class="c1"># Orientamos los ejes</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">azim</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">elev</span> <span class="o">=</span> <span class="mi">15</span>
