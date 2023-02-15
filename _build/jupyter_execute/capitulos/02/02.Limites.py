@@ -284,6 +284,7 @@ print('Límite restringido a y=sqrt(x):',sp.simplify(sp.limit(f(x,sp.sqrt(x)),x,
 # Por tanto, el límite no existe porque depende del camino. 
 # 
 # Como **segundo ejemplo**, vamos a estudiar el límite
+# 
 # $$
 #  \lim\limits_{(x,y)
 # \to (0,0)}\,\dfrac{xy}{\sqrt{x^2+y^2}},
