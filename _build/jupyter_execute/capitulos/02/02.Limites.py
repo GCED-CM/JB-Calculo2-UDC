@@ -28,8 +28,8 @@
 # * Decimos que $(x_0,y_0)$ es un **punto interior** de $R$ si existe un entorno centrado en $(x_0,y_0)$ totalmente contenido en $R$ (como se muestra en la figura):  
 # 
 #     $$ 
-#     (x_0,y_0) \textrm{ es un punto interior de }R\Leftrightarrow \left[ \exists\delta > 0 \, \Big{/}\,  
-#     D_\delta(x_0,y_0)\subset R.\right]
+#     (x_0,y_0) \textrm{ es un punto interior de }R\Leftrightarrow \Big[ \exists\delta > 0 \, \Big{/}\,  
+#     D_\delta(x_0,y_0)\subset R.\Big]
 #     $$    
 #     
 #     
@@ -40,8 +40,8 @@
 # * Decimos que $(x_0,y_0)$ es un **punto frontera** de $R$ si todo entorno centrado en $(x_0,y_0)$ tiene puntos que están dentro y fuera de $R$:  
 # 
 #     $$ 
-#     (x_0,y_0) \textrm{ es un punto frontera de }R \Leftrightarrow \left[ R\cap D_\delta(x_0,y_0)\neq \emptyset 
-#     \textrm{ y }(\mathbb{R}^2\backslash R)\cap D_\delta(x_0,y_0)\neq \emptyset\right],$$    
+#     (x_0,y_0) \textrm{ es un punto frontera de }R \Leftrightarrow \Big[ R\cap D_\delta(x_0,y_0)\neq \emptyset 
+#     \textrm{ y }(\mathbb{R}^2\backslash R)\cap D_\delta(x_0,y_0)\neq \emptyset\Big],$$    
 #     para todo $\delta>0$.
 #     
 #     **Nota**: los puntos frontera de $R$ pueden estar o no en $R$ (dependiendo de la región).
@@ -50,123 +50,173 @@
 # 
 # <img src="../../images/02_punto_frontera_interior.png" width="400"/>
 
-# ## Límite de una función de dos variables
+# ## Definición de límite para una función de dos variables
+# 
+# Antes de nada, vamos a *recordar* lo que quiere decir, en funciones de una variable, que 
+# 
+# $$
+# \lim_{x\to x_{0} } f(x) = l.
+# $$
+# 
+# En este caso, la definición formal de Weierstrass, llamada de épsilon-delta, dice que si fijamos cualquier distancia $\varepsilon$, alrededor de $l$, existe otra distancia, $\delta$, alrededor de $x_{0}$, de forma que si tomamos $x$ a una distancia de $x_{0}$ menor que $\delta$ (es decir, en el intervalo verde en la imagen que sigue), entonces $f(x)$ estará a una distancia de $l$ menor que $\varepsilon$ (en el intervalo azul).
+# 
+# <img src="../../images/2.2.Limites_una_variable.png" width="300"/>
+# 
+# Puedes verla en detalle
+# 
+# * en la wikipedia: https://es.wikipedia.org/wiki/L%C3%ADmite_de_una_funci%C3%B3n,
+# * o en el JB análogo a éste pero para funciones de una sola variable: https://luishervella.github.io/JB_Calculo1_UDC/capitulos/02/04.Limites.html.
+# 
+# La extensión a funciones de dos variables es muy sencilla. En lugar de un intervalo alrededor de $x_{0}$ tendremos un disco 
+# alrededor de $\left(x_{0}, y_{0}\right)$ y el resto es idéntico, como vemos en la siguiente definición.
 # 
 # ````{prf:definition} Límite de una función de dos variables
 # :label: def_limite
 # :nonumber: 
 # 
-# Sea $f$ una función de dos variables bien definida en un disco abierto centrado en $(x_0,y_0)$ excepto posiblemente en $(x_0,y_0)$ y sea $L$ un número real. Decimos que el límite de $f$ en $(x_0,y_0)$ es $L$ y escribimos
-# 
-# $$\lim\limits_{(x,y)
-# \rightarrow (x_0,y_0)}\,f(x,y)=L,$$
-# 
-# si para cada número real $\varepsilon>0$ existe un número real $\delta>0$ tal que
-# $$
-# |f(x,y)-L|<\varepsilon \textrm{ siempre que } 0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\delta. 
-# $$
-# 
-# ````
-# Gráficamente, esta condición implica que el valor de $f(x,y)$ se encuentra entre $L-\varepsilon$ y $L+\varepsilon$ para todo punto $(x,y)\neq (x_0,y_0)$ del disco centrado en $(x_0,y_0)$ y de radio $\delta$. Dicho de otra forma equivalente, se tiene que la gráfica de $f$ restringida a dicho entorno y excluyendo el centro se encuentra dentro del trozo de cilindro circular recto correspondiente que está contenido entre los planos $z=L-\varepsilon$ y $z=L+\varepsilon$, como se muestra en la siguiente figura. 
-# 
-# <img src="../../images/02_limite_def.png" width="250"/>
-# 
-# **Nota:** Decimos que el límite de $f$ en $(x_0,y_0)$ es $+\infty$ si la función crece ''indefinidamente'' (sin cota superior) al acercarse las variables a $(x_0,y_0)$. Análogamente, decimos que el límite de $f$ en $(x_0,y_0)$ es $-\infty$ si la función decrece ''indefinidamente'' (sin cota inferior) al acercarse las variables a $(x_0,y_0)$.
-# 
-# El concepto de límite de una función de dos variables es el mismo que el de una función de una variable (se analiza la tendencia de la función al aproximarnos a un punto sea cual sea la dirección), y también lo son sus propiedades con respecto a sumas, diferencias, productos y cocientes. Sin embargo, en el cálculo práctico de límites, hay una característica crítica asociada a la dimensión que marca la diferencia. En el caso unidimensional (en la recta real), solo nos podemos aproximar a un punto por dos direcciones, derecha o izquierda, por eso en este caso es suficiente con analizar los dos límites laterales (la tendencia de la función por la derecha y por la izquierda), y concluir que el límite existe y toma ese valor si y solo si ambos límites laterales coinciden. En el caso bidimensional ($\mathbb{R}^2$), hay infinitas maneras de aproximarse a un punto $(x_0,y_0)$ del plano, por lo que en este caso no se puede aplicar el procedimiento empleado en el caso unidimensional para el cálculo de límites. Por el contrario, la no existencia de límite se puede argumentar de forma similar tanto en una como en varias variables, encontrando dos caminos diferentes hacia el punto cuyos límites restringidos (a dichos caminos) sean distintos. A continuación, enumeramos algunas consecuencias inmediatas de la definición previa de límite que se pueden utilizar para demostrar la no existencia de límite.  
-# 
-# ````{prf:property} 
-# :label: prop_02_limites
-# :nonumber: 
-# 
-# * Si existe el límite de $f$ en $(x_0,y_0)$ y vale $L$, entonces el límite restringido a cualquier camino hacia el punto existe y coincide con $L$:
+# Sea $f$ una función de dos variables definida, al menos, en un disco abierto centrado en $(x_0,y_0)$ excepto, posiblemente, en $(x_0,y_0)$, y sea $L$ un número real. Decimos que el límite de $f$ en $(x_0,y_0)$ es $L$ y escribimos
 # 
 # $$
 # \lim\limits_{(x,y)
-# \rightarrow (x_0,y_0)}\,f(x,y)=\lim\limits_{x
-# \rightarrow x_0}\,f(x,\alpha(x))=L,
+# \rightarrow (x_0,y_0)}\,f(x,y)=L,
 # $$
-# para cualquiera que sea el camino $\alpha$ que lleve al punto $(x_0,y_0)$.
 # 
-# * Particularizando la propiedad anterior a rectas, se deduce que una condición **necesaria** para que el límite exista es que los límites restringidos a rectas que pasan por el punto existan y sean iguales (independientes de la pendiente de la recta):
+# si para cada número real $\varepsilon>0$ existe un número real $\delta>0$ tal que
 # 
 # $$
-# \textrm{Si} \lim\limits_{(x,y)
-# \rightarrow (x_0,y_0)}\,f(x,y)=L \Rightarrow \lim_{x\to x_0}\,f(x,y_0+m(x-x_0))=L,$$
-# para cualquier valor de $m\in \mathbb{R}$. 
-# 
-# **Nota:** Los límites restringidos a rectas se llaman límites direccionales.
-# 
-# * Si no existe algún límite restringido a un camino hacia el punto, entonces no existe el límite de la función en dicho punto: 
-# 
+# \left[ 0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\delta\right] \Rightarrow \Big[ |f(x,y)-L|<\varepsilon \Big] . 
 # $$
-# \textrm{si} \nexists \lim\limits_{x
-# \rightarrow x_0}\,f(x,\alpha(x))\Rightarrow \nexists\lim\limits_{(x,y)
-# \rightarrow (x_0,y_0)}\,f(x,y),
-# $$
-# siendo $\alpha$ un camino que lleva al punto $(x_0,y_0)$.  
-# 
-# * Si los límites restringidos a dos caminos diferentes hacia el punto no coinciden, entonces no existe el límite de la función en dicho punto:
-# $$
-# \textrm{Si} \lim\limits_{x
-# \rightarrow x_0}\,f(x,\alpha(x))\neq \lim\limits_{x
-# \rightarrow x_0}\,f(x,\beta(x)) \Rightarrow \nexists\lim\limits_{(x,y)
-# \rightarrow (x_0,y_0)}\,f(x,y),
-# $$
-# siendo $\alpha$ y $\beta$ dos caminos diferentes que llevan al punto $(x_0,y_0)$.  
 # 
 # ````
-# A continuación, se introduce otro criterio que se puede considerar para demostrar la no existencia de límite, y es el asociado a los límites iterados, cuya definición se enuncia en primer lugar.  
+# Gráficamente, esta condición implica que el valor de $f(x,y)$ se encuentra entre los planos $z = L-\varepsilon$ y 
+# $z = L+\varepsilon$ para todo punto $(x,y)\neq (x_0,y_0)$ del disco centrado en $(x_0,y_0)$ y de radio $\delta$, com opodemos ver en la aplicación de Geogebra de *silvina*, https://www.geogebra.org/m/uebhpsgv: 
 # 
-# ````{prf:definition} 
-# :label: def_02_limit_iter Límites iterados
+# <img src="../../images/2.2.Limites.jpg" width="800"/>
+# 
+# **Nota:** Decimos que el límite de $f$ en $(x_0,y_0)$ es $+\infty$ si la función crece ''indefinidamente'' (sin cota superior) al acercarse las variables a $(x_0,y_0)$. Análogamente, decimos que el límite de $f$ en $(x_0,y_0)$ es $-\infty$ si la función decrece ''indefinidamente'' (sin cota inferior) al acercarse las variables a $(x_0,y_0)$.
+# 
+# ````{prf:remark} 
+# :label: rem_02_limites
+# :nonumber:
+# El concepto de límite de una función de dos variables es el mismo que el de una función de una variable (se analiza la tendencia de la función al aproximarnos a un punto sea cual sea la dirección), y también lo son sus propiedades con respecto a sumas, diferencias, productos y cocientes. 
+# 
+# Sin embargo, hay una característica crítica asociada a la dimensión que marca la diferencia:
+# 
+# * En el caso 1D sólo nos podemos aproximar a un punto por dos direcciones: derecha o izquierda. Por eso en este caso es suficiente con analizar los dos límites laterales (la tendencia de la función por la derecha y por la izquierda), y concluir que el límite existe y toma ese valor si y solo si ambos límites laterales coinciden. 
+# * Sin embargo, en 2D, hay **infinitas maneras de aproximarse a un punto $(x_0,y_0)$ del plano**. 
+# 
+# Hablaremos entonces de aproximaciones por rectas, por parábolas, por trayectos paralelos a los ejes,... 
+# Pero los resultaod serán siempre negativos: si dos de estos caminos dan resultados diferentes quiere decir que no existe 
+# límite. 
+# 
+# El resultado positivo (*Sí existe límite*) sólo se podrá establecer, en general, realizando un cambio de variable a coordenadas polares.
+# ````
+# 
+# 
+
+# ## Cálculo de límites
+# 
+# A continuación, veremos algunas de las técnicas más usuales para
+# 
+# 1. saber cuándo no existe límite de una función de dos variables,
+# 2. saber cuándo sí existe y cuánto vale dicho límite.
+#  
+# 
+# ````{prf:property} Límite por rectas
+# :label: prop_02_limites_rectas
 # :nonumber: 
 # 
-# Se definen los límites iterados de $f:D\subset \mathbb{R}^2\longrightarrow
-# \mathbb{R}$ en $(x_0,y_0)$ como 
+# Teniendo en cuenta que una recta genérica que pasa por $\left( x_{0}, y_{0}\right)$ tiene la ecuación 
+# $y=y_{0} + m \left(x-x_{0}\right)$, si el resultado de 
 # 
 # $$
-# \lim\limits_{x
-# \rightarrow x_0}\big(\lim\limits_{y
-# \rightarrow y_0}f(x,y)\big),\quad \lim\limits_{y
-# \rightarrow y_0}\big(\lim\limits_{x
-# \rightarrow x_0}f(x,y)\big).
+# \lim_{x\to x_0}\,f(x,y_0+m(x-x_0))
 # $$
+# depende de $m$, podemos concluir que 
+# $\displaystyle\not\exists \lim\limits_{(x,y)\rightarrow (x_0,y_0)}\,f(x,y)$.
 # ````
-# **Nota:** en ambos casos los límites iterados se corresponden con dos límites en una variable calculados de forma sucesiva.  
 # 
-# ````{prf:theorem}  
-# :label: th_02_limit_iter
+# **Nota:** Los límites restringidos a rectas se llaman **límites direccionales**.
+# 
+# ````{prf:property} Límite por parábolas
+# :label: prop_02_limites_parabolas
 # :nonumber: 
 # 
-# Si los límites iterados de $f:D\subset \mathbb{R}^2\longrightarrow
-# \mathbb{R}$ en $(x_0,y_0)$ **existen y son diferentes** entonces **no existe** el límite de la función en dicho punto. 
+# Teniendo en cuenta que una parábola genérica que pasa por $\left( x_{0}, y_{0}\right)$ tiene la ecuación 
+# $y=y_{0} + m \left(x-x_{0}\right)^2$, si el resultado de 
+# 
+# $$
+# \lim_{x\to x_0}\,f(x,y_0+m(x-x_0)^2)
+# $$
+# depende de $m$, podemos concluir que 
+# $\displaystyle \not\exists \lim\limits_{(x,y)\rightarrow (x_0,y_0)}\,f(x,y)$.
+# ````
+# 
+# ````{prf:property} 
+# :label: prop_02_limit_iter Límites iterados
+# :nonumber: 
+# 
+# Si los límites iterados 
+# 
+# \begin{eqnarray*}
+# && \lim\limits_{x \rightarrow x_0}\big(\lim\limits_{y\rightarrow y_0}f(x,y)\big), \\ 
+# && \lim\limits_{y\rightarrow y_0}\big(\lim\limits_{x\rightarrow x_0}f(x,y)\big),
+# \end{eqnarray*}
+# 
+# no coinciden, podemos concluir que 
+# $\displaystyle\not\exists \lim\limits_{(x,y)\rightarrow (x_0,y_0)}\,f(x,y)$.
+# ````
+# 
+# Por supuesto, estas posibilidades no agotan las opciones. Vamos a pensar en un ejemplo:
+# 
+# 
+# ````{prf:example}  
+# :label: ex_02_no_limite
+# :nonumber: 
+# 
+# Comprueba que no existe límite en $(0,0)$ para la función 
+# 
+# $$
+# f(x,y) = \frac{xy^2}{x^2+y^4}.
+# $$
+# 
+# Si lo haces por rectas, parábolas o iterados siempre obtendrás el mismo resultado: $0$.
+# 
+# Sin embargo, elige $y=m\sqrt{x}$ y verás que el resultado depende de $m$, por lo que podemos concluir que no existe el límite.
+# 
+# Tenemos este caso gráficamente en la aplicación de Geogebra, desarrollada por Carmen Blanco del Prado, https://www.geogebra.org/m/urfz8pad, de la que extraemos la siguiente imagen:
+# 
+# <img src="../../images/2.2.Ejemplo_limite.jpg" width="800"/>
 # 
 # ````
-# El único procedimiento que nos permite asegurar la existencia del límite de una función  de dos variables consiste en utilizar las coordenadas polares en el límite y aplicar el **criterio de la función mayorante**. A continuación, se introduce este criterio para el caso particular en el que el punto de aproximación en el límite sea el origen de coordenadas $(x_0,y_0)=(0,0)$. 
+# 
+# Como vemos (y ya hemos apuntado), las tres propiedades anteriores son criterios negativos: sólo nos permiten afirmar que no existe límite. 
+# 
+# El único procedimiento que nos permite asegurar la existencia del límite de una función  de dos variables consiste en utilizar las coordenadas polares en el límite y aplicar el **criterio de la función mayorante**. ¡Vamos con este último (en el caso particular en el que el punto de aproximación sea el origen de coordenadas, $(x_0,y_0)=(0,0)$)! 
 # 
 # ````{prf:theorem}  
 # :label: th_02_func_mayorante
 # :nonumber: 
 # 
-# Una condición **necesaria y suficiente** para que $$
+# Una condición **necesaria y suficiente** para que 
+# 
+# $$
 # \lim\limits_{(x,y)
 # \rightarrow (0,0)}\,f(x,y)=L,
 # $$
 # es que exista una función $H(r)$ (independiente de $\theta$) tal que   
 # 
-# $$
-# |f(r\cos\theta,r\,\textrm{sen}\,\theta)-L|\leq H(r) \textrm{ y } \lim\limits_{r
-# \rightarrow 0^+}\,H(r)=0.
-# $$
+# * $\displaystyle \left| f(r\cos\theta,r\,\textrm{sen}\,\theta)-L \right| \leq H(r)$,  y
+# * $\displaystyle \lim\limits_{r\rightarrow 0^+}\,H(r)=0$.
 # 
 # ````
 # **Nota:** Este prodecimiento se puede generalizar de forma natural para un punto de aproximación en el límite arbitrario $(x_0,y_0)\in \mathbb{R}^2$ aplicando el cambio de coordenadas polares con origen en dicho punto:
+# 
 # $$
 # x=x_0+r\cos\theta,\quad y=y_0+r\,\textrm{sen}\,\theta.
 # $$
 # 
-# Teniendo en cuenta la definición de límite y el teorema previo, estudiamos a continuación algunos casos de aparición en el cálculo de límites en coordenadas polares. 
+# La aplicación más habitual del anterior teorema es la siguiente: 
 # 
 # ````{prf:property} 
 # :label: prop_02_limit_polar Cambio a coordenadas polares en el límite
@@ -174,101 +224,117 @@
 # Sea $f:D\subset \mathbb{R}^2\longrightarrow
 # \mathbb{R}$ y $(x_0,y_0)=(0,0)$. 
 # 
-# * **Caso I:** Si $f(r\cos\theta,r\,\textrm{sen}\,\theta)\equiv F(r)$ (independiente de $\theta$), entonces
-# $$
-# \lim\limits_{(x,y)
-# \to (0,0)}\,f(x,y)=\lim\limits_{r\to 0^+}F(r).
-# $$  
+# 1. Si $\displaystyle f(r\cos\theta,r\,\textrm{sen}\,\theta)\equiv F(r)$ (independiente de $\theta$) 
+#     $\displaystyle \Rightarrow\lim\limits_{(x,y)\to (0,0)}\,f(x,y)=\lim\limits_{r\to 0^+}F(r)$.
 # 
-# * **Caso II:** Si $f(r\cos\theta,r\,\textrm{sen}\,\theta)\equiv h(r)\cdot g(\theta)$ con $\lim\limits_{r
-# \to 0^+}\,h(r)=0$ y $g$ acotada en $[0,2\pi)$, entonces
-# $$
-#  \lim\limits_{(x,y)
-# \to (0,0)}\,f(x,y)=0.$$
-# 
-# * **Caso III:** Si $\lim\limits_{\substack{r
-# \to 0^+\\ \theta\in [0,2\pi)}}\,f(r\cos\theta,r\,\textrm{sen}\,\theta)$ depende de $\theta$, entonces el límite $\lim\limits_{(x,y)
-# \to (0,0)}\,f(x,y)$ no existe puesto que los límites restringidos a semirectas no coinciden.
-# 
+# 2. Si $\displaystyle\lim\limits_{r\to 0^+}\,f(r\cos\theta,r\,\textrm{sen}\,\theta)$ 
+#     depende de $\theta$ $\displaystyle\Rightarrow\not\exists\lim\limits_{(x,y)\to (0,0)}\,f(x,y)$.
 # ````
+# 
+# **¡Cuidado!** Como el cambio a polares es lo único que nos puede dar una solución definitiva, tendremos la tentación 
+# de *pasar de todo lo anterior* y hacer directamente ese cambio. La realidad es que, cuando el límite no existe, suele ser mucho más difícil verlo en polares que por rectas, parábolas o límites iterados.
 
 # ## Algunos ejemplos de límites con `Python`
 # 
-# Analizamos a continuación dos límites en dos variables aplicando las técnicas expuestas y haciendo uso de la librería `Sympy` de `Python` que nos permite calcular límites de funciones que dependen de una única variable a través de la función `sp.limit`. En primer lugar, consideramos el siguiente límite
-# $$
-#  \lim\limits_{(x,y)
-# \to (0,0)}\,\dfrac{xy^2}{x^2+y^4}.
-# $$
-# Este límite no existe como se puede visualizar en la aplicación de Geogebra, creada por Menchu Blanco del Prado, https://www.geogebra.org/m/urfz8pad, de la que extraemos la siguiente imagen
+# Analizamos a continuación dos límites en dos variables aplicando las técnicas expuestas y haciendo uso de la librería `Sympy` de `Python` que nos permite calcular límites de funciones que dependen de una única variable a través de la función `sp.limit`. 
 # 
-# <img src="../../images/02_limite_ejemplo_geo.png" width="500"/>
+# Vamos a aplicarlo al caso, comentado en la subsección anterior, del límite 
 # 
-# A continuación, comprobamos analíticamente la no existencia de límite como sigue:
+# $$
+#  \lim\limits_{(x,y)\to (0,0)}\,\dfrac{xy^2}{x^2+y^4},
+# $$
+# que, como ya hemos visto, no existe. 
+# 
+# ¡Vamos a comprobarlo, ayudados por `Sympy`!
+# 
+# ... pero observa que `Sympy` *olvida* un caso clave en el cambio a polares. 
+# Como ya dijimos, no es tan fácil ver que no existe límite en coordenadas polares... ¡ni siquiera para *#sympyelinfalible*!
 
-# In[1]:
+# In[9]:
 
 
 import sympy as sp
+
 x, y = sp.symbols('x y', real=True) # definimos las variables simbólicas
 f = sp.Lambda((x,y),x*y**2/(x**2+y**4)) # definimos la función
+
 # calculamos el límite a través de rectas
 m = sp.Symbol('m', real=True)
-display('Límites direccionales:',sp.limit(f(x,m*x),x,0)) # todos valen 0
+print('Límites direccionales: ',sp.limit(f(x,m*x),x,0)) # todos valen 0
+
+# calculamos los límites iterados (coinciden aunque en este caso no existe el límite)
+fy = sp.limit(f(x,y),x,0)
+print('Límite iterado empezando en x: ',sp.limit(fy,y,0))
+fx = sp.limit(f(x,y),y,0)
+print('Límite iterado empezando en y: ',sp.limit(fy,x,0))
+
 # calculamos el límite en coordenadas polares
 r = sp.Symbol('r', nonnegative=True)
 theta = sp.Symbol('theta', real=True)
 fpol=f(r*sp.cos(theta), r*sp.sin(theta))
-display('Función en polares:',sp.simplify(fpol))
-display('Límite en polares:',sp.simplify(sp.limit(fpol,r,0,dir='+'))) # restringidos a semirectas valen 0 
-# calculamos los límites iterados (coinciden aunque en este caso no existe el límite)
-fy = sp.limit(f(x,y),x,0)
-display('Límite iterado empezando en x',sp.limit(fy,y,0))
-fx = sp.limit(f(x,y),y,0)
-display('Límite iterado empezando en y',sp.limit(fy,x,0))
+display('Función en polares: ',sp.simplify(fpol))
+print('Límite en polares: ',sp.simplify(sp.limit(fpol,r,0,dir='+'))) 
+# restringidos a semirectas valen 0 
+
 # calculamos el límite restringido a la curva y=sqrt(x)
-display('Límite restringido a y=sqrt(x):',sp.simplify(sp.limit(f(x,sp.sqrt(x)),x,0))) # el límite no existe, depende del camino
+print('Límite restringido a y=sqrt(x):',sp.simplify(sp.limit(f(x,sp.sqrt(x)),x,0))) 
+# el límite no existe, depende del camino
 
 
 # Por tanto, el límite no existe porque depende del camino. 
 # 
-# Por último, consideramos el límite
+# Como **segundo ejemplo**, vamos a estudiar el límite
 # $$
 #  \lim\limits_{(x,y)
 # \to (0,0)}\,\dfrac{xy}{\sqrt{x^2+y^2}},
 # $$
 # que resolvemos de la siguiente manera:
 
-# In[2]:
+# In[10]:
 
 
 import sympy as sp
+
 x, y = sp.symbols('x y', real=True) # definimos las variables simbólicas
 f = sp.Lambda((x,y),x*y/sp.sqrt(x**2+y**2)) # definimos la función
+
 # calculamos el límite a través de rectas
 m = sp.Symbol('m', real=True)
-display('Límites direccionales:',sp.limit(f(x,m*x),x,0)) # todos valen 0
+print('Límites direccionales:',sp.limit(f(x,m*x),x,0)) # todos valen 0
+
+# calculamos los límites iterados
+fy = sp.limit(f(x,y),x,0)
+print('Límite iterado empezando en x',sp.limit(fy,y,0))
+fx = sp.limit(f(x,y),y,0)
+print('Límite iterado empezando en y',sp.limit(fy,x,0))
+
 # calculamos el límite en coordenadas polares
 r = sp.Symbol('r', nonnegative=True)
 theta = sp.Symbol('theta', real=True)
 fpol=f(r*sp.cos(theta), r*sp.sin(theta))
-display('Función en polares:',sp.simplify(fpol)) # el límite es 0, Caso II del cálculo en polares 
-display('Límite en polares:',sp.simplify(sp.limit(fpol,r,0,dir='+'))) # restringidos a semirectas valen 0 
-# calculamos los límites iterados
-fy = sp.limit(f(x,y),x,0)
-display('Límite iterado empezando en x',sp.limit(fy,y,0))
-fx = sp.limit(f(x,y),y,0)
-display('Límite iterado empezando en y',sp.limit(fy,x,0))
+display('Función en polares:',sp.simplify(fpol)) 
+# el límite es 0, Caso II del cálculo en polares 
+print('Límite en polares:',sp.simplify(sp.limit(fpol,r,0,dir='+'))) 
+# restringidos a semirectas valen 0 
 
 
-# En este caso, existe el límite y vale $0$ porque el término del límite, en coordenadas polares, está compuesto por un producto de dos factores, uno de ellos que depende únicamente de $r$ y que tiende a $0$ ($r$) y el otro que depende enteramente de $\theta$ y está acotado ($\textrm{sen}(2\theta)/2$). A continuación, lo comprobamos gráficamente:
+# En este caso, existe el límite y vale $0$ porque el término del límite, en coordenadas polares, está compuesto por un producto de dos factores, uno de ellos que depende únicamente de $r$ (de hecho, es $r$) y que tiende a $0$, y el otro que depende únicamente de $\theta$ y está acotado ($\textrm{sen}(2\theta)/2$). 
+# 
+# Vamos a visualizar esta función:
 
-# In[3]:
+# In[20]:
 
 
 import numpy as np
+import sympy as sp
 import matplotlib as mp
 import matplotlib.pyplot as plt
+from matplotlib import cm
 get_ipython().run_line_magic('matplotlib', 'notebook')
+
+x, y = sp.symbols('x y', real=True) # definimos las variables simbólicas
+f = sp.Lambda((x,y),x*y/sp.sqrt(x**2+y**2)) # definimos la función
+
 # Inicialización de la representación 3D
 fig = plt.figure()
 ax = plt.axes(projection="3d")
@@ -279,7 +345,7 @@ yy = np.linspace(-1, 1, 50)
 xx, yy = np.meshgrid(xx, yy)
 zz = fn(xx,yy)
 # Representación de la superficie
-surf = ax.plot_surface(xx, yy, zz)
+surf = ax.plot_surface(xx, yy, zz, cmap=cm.coolwarm)
 # Etiquetas de los ejes
 ax.set_xlabel('x')
 ax.set_ylabel('y')
@@ -289,4 +355,10 @@ ax.azim = 25
 ax.elev = 15
 
 plt.show()
+
+
+# In[ ]:
+
+
+
 
