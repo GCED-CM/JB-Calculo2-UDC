@@ -52,3 +52,5 @@ chapters:
      title: Introducción a NumPy
    - file: capitulos/05/03.RepresentacionGraficaMatplotlib
      title: Representación Gráfica con Matplotlib
+   - file: capitulos/05/04.LimitesContinuidad
+     title: Límites y continuidad con Python

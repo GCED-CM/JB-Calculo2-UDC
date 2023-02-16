@@ -89,7 +89,7 @@
 # 
 # ````
 # Gráficamente, esta condición implica que el valor de $f(x,y)$ se encuentra entre los planos $z = L-\varepsilon$ y 
-# $z = L+\varepsilon$ para todo punto $(x,y)\neq (x_0,y_0)$ del disco centrado en $(x_0,y_0)$ y de radio $\delta$, com opodemos ver en la aplicación de Geogebra de *silvina*, https://www.geogebra.org/m/uebhpsgv: 
+# $z = L+\varepsilon$ para todo punto $(x,y)\neq (x_0,y_0)$ del disco centrado en $(x_0,y_0)$ y de radio $\delta$, como podemos ver en la aplicación de Geogebra de *silvina*, https://www.geogebra.org/m/uebhpsgv: 
 # 
 # <img src="../../images/2.2.Limites.jpg" width="800"/>
 # 
@@ -250,7 +250,7 @@
 # ... pero observa que `Sympy` *olvida* un caso clave en el cambio a polares. 
 # Como ya dijimos, no es tan fácil ver que no existe límite en coordenadas polares... ¡ni siquiera para *#sympyelinfalible*!
 
-# In[9]:
+# In[39]:
 
 
 import sympy as sp
@@ -291,7 +291,7 @@ print('Límite restringido a y=sqrt(x):',sp.simplify(sp.limit(f(x,sp.sqrt(x)),x,
 # $$
 # que resolvemos de la siguiente manera:
 
-# In[10]:
+# In[40]:
 
 
 import sympy as sp
@@ -323,7 +323,7 @@ print('Límite en polares:',sp.simplify(sp.limit(fpol,r,0,dir='+')))
 # 
 # Vamos a visualizar esta función:
 
-# In[20]:
+# In[41]:
 
 
 import numpy as np
@@ -334,32 +334,29 @@ from matplotlib import cm
 get_ipython().run_line_magic('matplotlib', 'notebook')
 
 x, y = sp.symbols('x y', real=True) # definimos las variables simbólicas
-f = sp.Lambda((x,y),x*y/sp.sqrt(x**2+y**2)) # definimos la función
+f = sp.Lambda( (x,y) , x*y/sp.sqrt(x**2+y**2) ) # definimos la función
 
 # Inicialización de la representación 3D
 fig = plt.figure()
 ax = plt.axes(projection="3d")
-fn= sp.lambdify((x,y),f(x,y),"numpy") # función numpy de f
+fn= sp.lambdify( (x,y) , f(x,y) , "numpy" ) # función numpy de f
+
 # Creación de la nube de puntos (50 puntos en cada eje, x e y) 
 xx = np.linspace(-1, 1, 50)
 yy = np.linspace(-1, 1, 50)
-xx, yy = np.meshgrid(xx, yy)
-zz = fn(xx,yy)
+X, Y = np.meshgrid(xx, yy)
+Z = fn(X,Y)
+
 # Representación de la superficie
-surf = ax.plot_surface(xx, yy, zz, cmap=cm.coolwarm)
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
 # Etiquetas de los ejes
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
+
 # Orientamos los ejes
 ax.azim = 25
 ax.elev = 15
 
 plt.show()
-
-
-# In[ ]:
-
-
-
 

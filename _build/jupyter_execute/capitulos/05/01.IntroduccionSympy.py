@@ -10,7 +10,7 @@
 # 
 # Para emplear directamente este guión de prácticas desde una instalación de Python con *Anaconda*, basta con hacer clic en la aplicación 'Jupyter notebook' que ya está instalada por defecto (para más detalles: https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html). Para instalar *Anaconda* en vuestro sistema operativo, entrad en el siguiente link: https://docs.anaconda.com/anaconda/install.
 # 
-# ## Objetivos:
+# **Objetivos:**
 # 
 # - Usar variables y expresiones simbólicas.
 # - Representar gráficamente regiones en el plano.
@@ -117,7 +117,7 @@ e = sp.E # definición del número e
 print(sp.log(e))
 
 
-# ### Suposiciones sobre las variables
+# ### Hipótesis sobre las variables
 # 
 # Cuando se define una variable simbólica se le puede asignar cierta información adicional sobre el tipo de valores que puede alcanzar, o las suposiciones que se le van a aplicar. Por ejemplo, podemos decidir antes de hacer cualquier cálculo si la variable toma valores enteros o reales, si es positiva o negativa, mayor que un cierto número, etc. Este tipo de información se añade en el momento de la definición de la variable simbólica como un argumento opcional.
 
