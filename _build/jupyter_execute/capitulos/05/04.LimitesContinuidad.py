@@ -3,7 +3,7 @@
 
 # # Límites y continuidad en Python
 # 
-# Esta sección pretende ser un compendio (esperemos que más claro y mejor ordenado) de todo el `Python` 
+# Esta sección pretende ser un compendio (esperemos que claro y ordenado) de todo el `Python` 
 # que hemos ido usando en el Capítulo 2. 
 # 
 # **Objetivos:**
@@ -12,295 +12,199 @@
 # - Cálculo de límites en una y varias variables.
 # - Análisis de la continuidad de una función.
 
-# ## Dominio e rango dunha función de varias variables
+# ## Dominio y rango de una función de varias variables
+# 
 # Para calcular el dominio de una función, se puede, en primer lugar, calcular las singularidades de una función dada. 
 # 
 # En la implementación del módulo `Sympy` únicamente está disponible este cálculo para funciones de tipo racional y con dependencia de una única variable. 
 # 
 # Si tenemos esto en cuenta, el dominio de la función vendrá dado por el conjunto de puntos del espacio excepto las singularidades. Para el caso de varias variables, este análisis sólo se puede hacer con respecto a una de las variables, tomando como fijas el resto. 
+# 
+# De la misma manera que lo que ocurre con las singularidades, `Sympy` solamente es capaz de calcular el rango de funciones de una variable. 
+# Debemos aceptar esta limitación (al menos, a la espera de alguna nueva versión que soluciones el problema), pero, de todos modos, es posible explorar el rango 
+# de una función de varias variables restringiendo los valores de los argumentos a ciertos planos cartesianos y analizando el rango de la función resultante (ya de una variable).  
+# 
+# Por lo tanto, como resumen: 
+# 
+# * `sp.calculus.singularities(f(x,y), x)`: Cálculo de las singularidades de la función (Lambda) $f$, respecto a $x$ (es decir, dejando fija la $y$). 
+#     Por supuesto, análogo respecto a la otra variable.
+# *  `sp.calculus.util.function_range(f(x,1), x, sp.Reals)`: Tal como está escrito, realizaría el cálculo del rango de $f(x,1)$ dejando variar la variable $x$. 
 
-# In[6]:
+# In[1]:
 
 
 import sympy as sp
 
+import sympy as sp
 
+x = sp.Symbol('x', real = True)
+y = sp.Symbol('y', real = True)
 
-f=sp.Lambda((x,y), x/((x+y)*y))
-display(sp.calculus.singularities(f(x,y), x))
-display(sp.calculus.singularities(f(x,y), y))
+f_exp = sp.sqrt( x**2 + y**2 -9 )/x
 
+f=sp.Lambda((x,y), f_exp)
+print("Singularidades respecto x: ", sp.calculus.singularities(f(x,y), x))
+print("Singularidades respecto y: ", sp.calculus.singularities(f(x,y), y))
 
-# Do mesmo xeito ao que ocorre coas singularidades, **Sympy** soamente é capaz de calcular o rango de funcións dunha única variable. Aínda que isto supón unha limitación, é posible explorar o rango dunha función de varias variables restrinxindo os valores dos argumentos a certos planos cartesianos e analizando o rango das funcións resultantes (dunha variable):
-
-# In[7]:
-
-
-x, y, z = sp.symbols('x y z', real=True) # define as variables simbólicas x, y, z
-f=sp.Lambda((x,y,z), x*z/((x+y)*y))
-Rx = sp.calculus.util.function_range(f(x,1,1), x, sp.Reals)
-Ry = sp.calculus.util.function_range(f(1,y,1), y, sp.Reals)
-Rz = sp.calculus.util.function_range(f(1,1,z), z, sp.Reals)
+Rx = sp.calculus.util.function_range(f(x,1), x, sp.Reals)
+Ry = sp.calculus.util.function_range(f(1,y), y, sp.Reals)
+Ryn = sp.calculus.util.function_range(f(-1,y), y, sp.Reals)
 display(Rx)
 display(Ry)
-display(Rz)
+display(Ryn)
 
 
-# ### **Exercicio 5.1** 
-# Calcula as singularidades e o rango da función $f(x,y)=\displaystyle\frac{y+x}{y-x^3}$.
-
-# In[8]:
-
-
-# O TEU CÓDIGO AQUÍ
-
-
-# ## Límites
-# O módulo **Sympy** soamente dispón de ferramentas para cálcular os límites que depende dunha única variable. A pesar desta limitación, é posible calcular límites en varias variables usando as técnicas que xa revisamos nas clases de pizarra como son o uso de camiños por rectas $y=mx$, os límites (re)iterados, ou o cambio a coordenadas polares.
-
-# ### Límites de expresións nunha variable
-# Os límites de expresións nunha variable poden calcularse usando a función `sp.limit`. O mesmo comando tamén permite o cálculo de límites laterais. Comprobemos o seu uso cunha función dunha variable moi sinxela (que non posúe límite):
-# $$
-# f(x)=
-# \begin{cases}
-# -1 & \text{se } x\le 0,\\
-# +1 & \text{se } x \gt 0.\\
-# \end{cases}
-# $$
-
-# In[9]:
-
-
-x = sp.Symbol('x', real=True) # define a variable simbólica x
-f = -1 + 2 * sp.Heaviside(x, 0)
-F = sp.Lambda(x, f)
-# Comprobar a definición da función F
-display(sp.simplify(F(x).rewrite(sp.Piecewise)))
-
-
-# Neste caso, o límite $\displaystyle\lim_{x\to 0}f(x)$ non existe xa que os límite laterais non coinciden. A pesar disto, obtense:
-
-# In[10]:
-
-
-display(sp.limit(F(x),x,0)) # Por defecto usa o valor do límite pola dereita
-display(sp.limit(F(x),x,0,dir='+')) # límite pola dereita
-display(sp.limit(f,x,0,dir='-')) # límite pola esquerda
-
-
-# Do mesmo xeito a como se definen os límite cando $x$ tende a un valor finito $a$, tamén se poden calcular os valores cando $x\to+\infty$ ou $x\to-\infty$. O valor de $\infty$ está representado en **Sympy** por `sp.oo`. No caso da función $f(x)=e^x$, se obtén:
-
-# In[11]:
-
-
-display(sp.limit(sp.exp(x),x,-sp.oo))
-display(sp.limit(sp.exp(x),x,sp.oo))
-
-
-# ### Límites de expresións en varias variables
-# Como xa revisamos nas clases de pizarra, o cálculo de límites en varias variables é máis complexo xa que debemos analizar todos os camiños posibles para poder asegurar que o límite existe e coincide cun valor dado. Por exemplo, no caso da función $f(x,y)=\frac{x^2y}{x^5+y^2}$ podemos ter valores diferentes segundo o camiño escollido para chegar ao punto $(0,0)$:
-
-# In[12]:
-
-
-x, y = sp.symbols('x y', real=True) # define a variable simbólica x e y
-f = sp.Lambda((x,y), x**2*y/(x**5+y**2)) # agora temos definida a función simbólica f(x)
-sp.limit(f(x,y),x,0) # límite fixando o valor de y
-
-
-# In[13]:
-
-
-sp.limit(f(x,y),y,0) # límite fixando o valor de x
-
-
-# In[14]:
-
-
-m = sp.Symbol('m', real=True)
-display(f(x,m*x))
-sp.limit(f(x,m*x),x,0) # límites polas rectas de pendente m
-
-
-# Nembargantes, se se emprega o camiño $y=x^3$ obtense un valor do límite diferentes de cero, do que se conclúe que o límite non existe:
-
-# In[15]:
-
-
-sp.limit(f(x,x**3),x,0)
-
-
-# ### Límites (re)iterados
-# Os límites (re)iterados é outra ferramenta máis para tratar de analizar o que ocorre co límite de funcións de varias variables. Posto que estos límite iterados son unha sucesión de cálculos de límites tendo en conta unha soa variable, este procedemento pode implementarse en **Sympy**. Por exemplo, se consideramos $f(x,y)= \displaystyle \frac{x^2-y^2}{x^2+y^2}$, resulta
-
-# In[16]:
-
-
-f = sp.Lambda((x,y),(x**2-y**2)/(x**2+y**2))
-g = sp.limit(f(x,y),x,0)
-sp.limit(g,y,0)
-
-
-# In[17]:
-
-
-g = sp.limit(f(x,y),y,0)
-sp.limit(g,x,0)
-
-
-# e polo tanto pódese concluir que non existe o límite, xa que os valores non coinciden.
+# ## Graficación de curvas de nivel y barras de colores
 # 
-# ### Casos onde non existe límites
-# Como xa vimos nos exemplos analizados en clase de pizarra, existen multitude de exemplos onde os límites non existe, como é o caso de $\displaystyle\lim_{(x,y)\to(0,0)}f(x,y)$ con 
-# $$
-# f(x,y)=
-# \begin{cases}
-# \frac{xy}{x^2+y^2} & \text{se } x^2+y^2 \gt 0,\\
-# 0 & \text{se } (x,y)=(0,0).
-# \end{cases}
-# $$
+# Mostramos a continuación un *script* para graficar tanto las curvas de nivel (`contour`) como las barras de colores (`contourf`) para una función de dos variables.
+# 
+# Aquí podéis encontrar una descripción completa de estas funciones, con todas las opciones disponibles: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contour.html.
 
-# In[18]:
+# In[ ]:
 
 
-# Definición das función definida a cachos
-f1 = x*y/(x**2+y**2); f2 = 0
-f = f2 + (f1-f2) * sp.Heaviside(x**2+y**2, 0)
-F = sp.Lambda((x,y), f)
-# Comprobar a definición da función F
-display(sp.simplify(F.rewrite(sp.Piecewise)))
-# Límite iterado primeiro en x e despois en y
-G = sp.limit(F(x,y),x,0)
-sp.limit(G,y,0)
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+
+N = 50  # 50 puntos en cada dirección dos eixes cartesianos
+x = np.linspace(-2, 2, N)
+y = np.linspace(-4, 4, N)
+
+X, Y = np.meshgrid(x, y)
+f_exp = np.sqrt(16 - 4*X**2 - Y**2)
+# Va a dar un warning porque hay puntos en la malla (por ej., el (-2,4)) 
+# que ocasionan un negativo en la raíz
+
+# Curvas de nivel
+p = plt.contour(X, Y, f_exp)
+plt.clabel(p) # Añade el valor numérico de cada curva de nivel
+# Etiquetas de los ejes
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axis('square')
+plt.xlim(-2,2)
+plt.ylim(-4,4)
+plt.show()
+
+# Colores sobre el dominio
+p = plt.contourf(X, Y, f_exp)
+plt.colorbar()  # Añade la barra de colores con los valores asociados
+# Etiquetas de los ejes
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axis('square')
+plt.xlim(-2,2)
+plt.ylim(-4,4)
+plt.show()
 
 
-# Tendo en conta o límite sobre a recta $y=mx$, resulta:
+# ## Superficies de nivel
+# 
+# Ahora mostramos cómo graficar las superficies de nivel. 
+# En este caso, y a modo de ejemplo, dibujaremos la superficie de nivel de altura $C$ para la función $\displaystyle f(x,y,z) =  x^2 + y^2 - z^2$. 
 
-# In[19]:
-
-
-display(F(x,m*x))
-sp.limit(F(x,m*x),x,0)
-
-
-# Polo que podemos asegurar que o límite non existe xa que o valor do límite dependería de $m$. Un último exemplo, onde os límites iterados dan lugar a funcións descontinuas (nos cálculos intermedios), pero aínda así, os límite iterados existen e ademais son iguais. Consideramos a función:
-# $$
-# f(x,y)=
-# \begin{cases}
-# y & \text{se } x \gt 0,\\
-# -y & \text{se } x \le 0.
-# \end{cases}
-# $$
-
-# In[20]:
+# In[3]:
 
 
-# f = sp.Piecewise((y, x > 0), (-y, True))
-# Definición das función definida a cachos
-f1 = y; f2 = -y
-f = f2 + (f1-f2) * sp.Heaviside(x, 0)
-F = sp.Lambda((x,y), f)
-# Comprobar a definición da función F
-display(sp.simplify(F.rewrite(sp.Piecewise)))
-# Límite iterado primeiro en x e despois en y
-Gp = sp.limit(F(x,y),x,0,dir='+')
-display(Gp)
-Gm = sp.limit(F(x,y),x,0,dir='-')
-display(Gm)
-sp.limit(Gp,y,0) # que ten o mesmo resultado que sp.limit(Gm,y,0)
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+
+# Inicialización de la representación 3D
+fig = plt.figure()
+ax = plt.axes(projection="3d")
+# Creación de la nube de puntos (50 puntos en cada eje, x e y) 
+N = 100  # 100 puntos en cada dirección dos eixes cartesianos
+x = np.linspace(-10, 10, N)
+y = np.linspace(-10, 10, N)
+X, Y = np.meshgrid(x, y)
+
+C = -1
+Z1 = np.sqrt( X**2 + Y**2 - C )
+Z2 = -np.sqrt( X**2 + Y**2 - C )
+
+# Representación de la superficie
+surf = ax.plot_surface(X, Y, Z1)
+surf = ax.plot_surface(X, Y, Z2)
+# Etiquetas de los ejes
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+# Orientamos los ejes
+ax.azim = 60
+ax.elev = 20
+plt.show()
 
 
-# In[21]:
+# ## Cálculo de límites
+# 
+# Para el cálculo de límites en dos variables hemos aprendido a usar el comando `sp.limit` que, de nuevo, sólo permite calcular límites para funciones de una variable.
+# 
+# De todos modos, es perfectamente aplicable para el cálculo de límites por rectas, parábolas, iterados y con cambio a coordenadas polares, como mostramos en el siguiente ejemplo.
+# 
+# De todos modos, ten mucho cuidado al interpretar los resultados, pues no es (¡nimucho menos!) infalible en el análisis de situaciones *atípicas* (verás un ejemplo en la Sección 2.2).
+
+# In[1]:
 
 
-# Límite iterado primeiro en y e despois en x
-G = sp.limit(F(x,y),y,0)
-display(G)
+import numpy as np
+import sympy as sp
+import matplotlib as mp
+import matplotlib.pyplot as plt
+from matplotlib import cm
+get_ipython().run_line_magic('matplotlib', 'notebook')
 
+x, y = sp.symbols('x y', real=True) # definimos las variables simbólicas
+f = sp.Lambda((x,y),x*y/sp.sqrt(x**2+y**2)) # definimos la función
 
-# ### Límites con coordenadas polares
-# Un dos recursos que usaremos con máis frecuencia para calcular límites en varias variables será o uso de coordenadas polares (no plano) ou coordenadas esféricas (no espazo tridimensional), para calcular límites do tipo $\displaystyle\lim_{(x,y)\to(0,0)}f(x,y)$ substitutindo $x=r\cos\theta$ e $y=r\sin\theta$. Por exemplo:
+# calculamos el límite a través de rectas
+m = sp.Symbol('m', real=True)
+print('Límites direccionales:',sp.limit(f(x,m*x),x,0)) # todos valen 0
 
-# In[22]:
+# calculamos el límite a través de parábolas
+print('Límites por parábolas:',sp.limit(f(x,m*x**2),x,0)) # todos valen 0
 
+# calculamos los límites iterados
+fy = sp.limit(f(x,y),x,0)
+print('Límite iterado empezando en x: ',sp.limit(fy,y,0))
+fx = sp.limit(f(x,y),y,0)
+print('Límite iterado empezando en y: ',sp.limit(fy,x,0))
 
+# calculamos el límite en coordenadas polares
 r = sp.Symbol('r', nonnegative=True)
 theta = sp.Symbol('theta', real=True)
-f = (x**3+2*x*y**2)/(x**2+y**2)
-F = sp.Lambda((x,y), f)
-display(F)
-display(F(r*sp.cos(theta), r*sp.sin(theta)))
-sp.limit(F(r*sp.cos(theta), r*sp.sin(theta)),r,0)
+fpol=f(r*sp.cos(theta), r*sp.sin(theta))
+display('Función en polares:',sp.simplify(fpol)) 
+# el límite es 0, Caso II del cálculo en polares 
+print('Límite en polares:',sp.simplify(sp.limit(fpol,r,0,dir='+'))) 
+# restringidos a semirectas valen 0 
 
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Segunda parte:
+#     Visualizamos la función
 
-# ### **Exercicio 5.2** 
-# 
-# Dada a función $f(x,y)=\displaystyle\frac{x-y^3}{x+y^3}$ calcula os seguintes límites cando $(x,y)\to (0,0)$:
-# - Límites sobre as rectas $y=mx$
-# - Límites iterados
-# - Límite usando coordenadas polares
+# Inicialización de la representación 3D
+fig = plt.figure()
+ax = plt.axes(projection="3d")
+fn= sp.lambdify( (x,y) , f(x,y) , "numpy" ) # función numpy de f
 
-# In[23]:
+# Creación de la nube de puntos (50 puntos en cada eje, x e y) 
+xx = np.linspace(-1, 1, 50)
+yy = np.linspace(-1, 1, 50)
+X, Y = np.meshgrid(xx, yy)
+Z = fn(X,Y)
 
+# Representación de la superficie
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm)
+# Etiquetas de los ejes
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
 
-# O TEU CÓDIGO AQUÍ
+# Orientamos los ejes
+ax.azim = 25
+ax.elev = 15
 
-
-# ## Análise da continuidade de varias variables
-# 
-# No módulo de **Sympy** existe unha función que calcular o dominio de continuidade (o conxunto de puntos onde a funciín é continua) dunha función dunha única variable. No caso de varias variables, o que se pode analizar é a continuidade dunha función con respecto ao resto de variables fixas. A función  empregar é `sp.calculus.util.continuous_domain(f(x,y), x, sp.Reals)`
-
-# In[24]:
-
-
-f=sp.Lambda((x,y), x/((x+y)*y))
-Ix = sp.calculus.util.continuous_domain(f(x,y), x, sp.Reals)
-Iy = sp.calculus.util.continuous_domain(f(x,y), y, sp.Reals)
-display(Ix)
-display(Iy)
-
-
-# Ademáis, para analizar a continuidade de $F$ nun punto $(a,b)$, basta con comprobar que
-# $$
-# F(a,b)=\lim_{(x,y)\to(a,b)}F(x,y).
-# $$
-# Por exemplo, no caso dunha función dunha única variable:
-
-# In[27]:
-
-
-# Dominio de continuidade da función valor absoluto
-F = sp.Lambda((x), sp.Abs(x))
-Ix = sp.calculus.util.continuous_domain(F(x), x, sp.Reals)
-display(Ix)
-
-# Comprobación da continuidade definida a cachos
-# f = sp.Piecewise((x, x > 0), (-x, True))
-# Definición das función definida a cachos
-f1 = x; f2 = -x
-f = f2 + (f1-f2) * sp.Heaviside(x, 0)
-F = sp.Lambda((x), f)
-# Comprobar a definición da función F
-display(sp.simplify(F.rewrite(sp.Piecewise)))
-
-F = sp.Lambda((x), f)
-print('A función F é continua en x=0:', sp.limit(F(x),x,0)==F(0))
-Ix = sp.calculus.util.continuous_domain(F(x), x, sp.Reals)
-
-
-# ### **Exercicio 5.3** 
-# Analiza a continuidade da función 
-# $$
-# f(x,y)=
-# \begin{cases}
-# \displaystyle\frac{1}{xy} & \text{se }x\neq 0, y\neq 0,\\
-# 1 & \text{noutro caso},
-# \end{cases}
-# $$
-# en calquera punto $(x,y)$ do plano
-
-# In[26]:
-
-
-# O TEU CÓDIGO AQUÍ
+plt.show()
 

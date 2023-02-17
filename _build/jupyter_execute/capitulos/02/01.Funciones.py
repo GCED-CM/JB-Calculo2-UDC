@@ -220,9 +220,6 @@ plt.show()
 # Aquí puedes, jugando con $C$ y con la expresión, visualizar superficies de nivel para diferentes funciones (está escrito para replicar la primera de las dos imágenes anteriores).
 # 
 # Como **ejercicio** te proponemos que pienses en las superficies de nivel con valores $C=0$, $C=4$ y $C=16$ para la función $\displaystyle f(x,y,z) = 4x^2 + y^2 + z^2$.
-# 
-# 
-# 
 
 # In[19]:
 

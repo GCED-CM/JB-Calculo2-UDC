@@ -250,7 +250,7 @@
 # ... pero observa que `Sympy` *olvida* un caso clave en el cambio a polares. 
 # Como ya dijimos, no es tan fácil ver que no existe límite en coordenadas polares... ¡ni siquiera para *#sympyelinfalible*!
 
-# In[39]:
+# In[4]:
 
 
 import sympy as sp
@@ -261,6 +261,9 @@ f = sp.Lambda((x,y),x*y**2/(x**2+y**4)) # definimos la función
 # calculamos el límite a través de rectas
 m = sp.Symbol('m', real=True)
 print('Límites direccionales: ',sp.limit(f(x,m*x),x,0)) # todos valen 0
+
+# calculamos el límite a través de parábolas
+print('Límites por parábolas:',sp.limit(f(x,m*x**2),x,0)) # todos valen 0
 
 # calculamos los límites iterados (coinciden aunque en este caso no existe el límite)
 fy = sp.limit(f(x,y),x,0)
@@ -291,7 +294,7 @@ print('Límite restringido a y=sqrt(x):',sp.simplify(sp.limit(f(x,sp.sqrt(x)),x,
 # $$
 # que resolvemos de la siguiente manera:
 
-# In[40]:
+# In[5]:
 
 
 import sympy as sp
@@ -303,11 +306,14 @@ f = sp.Lambda((x,y),x*y/sp.sqrt(x**2+y**2)) # definimos la función
 m = sp.Symbol('m', real=True)
 print('Límites direccionales:',sp.limit(f(x,m*x),x,0)) # todos valen 0
 
+# calculamos el límite a través de parábolas
+print('Límites por parábolas:',sp.limit(f(x,m*x**2),x,0)) # todos valen 0
+
 # calculamos los límites iterados
 fy = sp.limit(f(x,y),x,0)
-print('Límite iterado empezando en x',sp.limit(fy,y,0))
+print('Límite iterado empezando en x: ',sp.limit(fy,y,0))
 fx = sp.limit(f(x,y),y,0)
-print('Límite iterado empezando en y',sp.limit(fy,x,0))
+print('Límite iterado empezando en y: ',sp.limit(fy,x,0))
 
 # calculamos el límite en coordenadas polares
 r = sp.Symbol('r', nonnegative=True)
@@ -323,7 +329,7 @@ print('Límite en polares:',sp.simplify(sp.limit(fpol,r,0,dir='+')))
 # 
 # Vamos a visualizar esta función:
 
-# In[41]:
+# In[3]:
 
 
 import numpy as np
