@@ -39,7 +39,24 @@ chapters:
   
 - file: capitulos/03/README
   title: Derivación y extremos
-  
+  sections:
+    - file: capitulos/03/01.DerivadasParciales
+      title: Derivadas parciales
+    - file: capitulos/03/02.DerivadasDireccionales
+      title: Derivadas direccionales y gradiente
+    - file: capitulos/03/03.Diferenciacion
+      title: Diferenciación
+    - file: capitulos/03/04.PlanoTangente
+      title: Plano tangente
+    - file: capitulos/03/05.ReglaCadena
+      title: Regla de la cadena
+    - file: capitulos/03/06.Extremos2D
+      title: Extremos en 2D
+    - file: capitulos/03/07.ExtremosAplicaciones
+      title: Extremos. Aplicaciones
+    - file: capitulos/03/08.Multiplicadores
+      title: Multiplicadores de Lagrange
+      
 - file: capitulos/04/README
   title: Integración
   

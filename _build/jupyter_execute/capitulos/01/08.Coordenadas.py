@@ -79,13 +79,13 @@
 #     $\rho = \sqrt{x^2+y^2+z^2}$, $\theta = \arctan\left(\frac{y}{x}\right)$, $\phi = \arccos\left(\frac{z}{\sqrt{x^2+y^2+z^2}}\right)$.
 # * **Esféricas a cartesianas**:
 # 
-#     $x = r\sin(\phi)\cos(\theta)$, $y=r\sin(\phi)\sin(\theta)$, $z=\rho\cos(\phi)$.
+#     $x = \rho\sin(\phi)\cos(\theta)$, $y=\rho\sin(\phi)\sin(\theta)$, $z=\rho\cos(\phi)$.
 # 
 # Si nos interesa cambiar de cilíndricas a esféricas, o viceversa:
 # 
 # * **Esféricas a cilíndricas**: 
 # 
-#     $r^2 = \rho^2 \sin^2(\theta)$, $\theta = \theta$, $z = \rho\cos(\theta)$.
+#     $r^2 = \rho^2 \sin^2(\phi)$, $\theta = \theta$, $z = \rho\cos(\phi)$.
 # * **Cilíndricas a esféricas**:
 # 
 #     $\rho = \sqrt{r^2+z^2}$, $\theta = \theta$, $\phi=\arccos\left( \frac{z}{\sqrt{r^2+z^2}} \right)$.

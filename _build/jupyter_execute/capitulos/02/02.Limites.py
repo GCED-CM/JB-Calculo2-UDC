@@ -106,7 +106,7 @@
 # * Sin embargo, en 2D, hay **infinitas maneras de aproximarse a un punto $(x_0,y_0)$ del plano**. 
 # 
 # Hablaremos entonces de aproximaciones por rectas, por parábolas, por trayectos paralelos a los ejes,... 
-# Pero los resultaod serán siempre negativos: si dos de estos caminos dan resultados diferentes quiere decir que no existe 
+# Pero estos resultados serán siempre negativos: si dos de estos caminos dan resultados diferentes quiere decir que no existe 
 # límite. 
 # 
 # El resultado positivo (*Sí existe límite*) sólo se podrá establecer, en general, realizando un cambio de variable a coordenadas polares.
