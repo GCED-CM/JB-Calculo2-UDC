@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.2. Derivadas direccionales" href="02.DerivadasDireccionales.html" />
@@ -429,12 +431,56 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-una-funcion-de-dos-variables">
+   3.1.1. Derivadas parciales para una función de dos variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-funciones-de-dos-variables-con-python">
+   3.1.2. Derivadas parciales para funciones de dos variables con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-una-funcion-de-tres-o-mas-variables">
+   3.1.3. Derivadas parciales para una función de tres o más variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-de-orden-superior">
+   3.1.4. Derivadas parciales de orden superior
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -446,6 +492,39 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-una-funcion-de-dos-variables">
+   3.1.1. Derivadas parciales para una función de dos variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-funciones-de-dos-variables-con-python">
+   3.1.2. Derivadas parciales para funciones de dos variables con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-una-funcion-de-tres-o-mas-variables">
+   3.1.3. Derivadas parciales para una función de tres o más variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-de-orden-superior">
+   3.1.4. Derivadas parciales de orden superior
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -455,6 +534,229 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="derivadas-parciales">
 <h1><span class="section-number">3.1. </span>Derivadas parciales<a class="headerlink" href="#derivadas-parciales" title="Permalink to this headline">#</a></h1>
+<section id="derivadas-parciales-para-una-funcion-de-dos-variables">
+<h2><span class="section-number">3.1.1. </span>Derivadas parciales para una función de dos variables<a class="headerlink" href="#derivadas-parciales-para-una-funcion-de-dos-variables" title="Permalink to this headline">#</a></h2>
+<p>Antes de entrar en materia, te recomendamos que pongas al día tus conocimientos de derivadas para funciones de una variable. Puedes consultar:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://luishervella.github.io/JB_Calculo1_UDC/capitulos/03/01.DerivacionDefProp.html">https://luishervella.github.io/JB_Calculo1_UDC/capitulos/03/01.DerivacionDefProp.html</a></p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Derivada">https://es.wikipedia.org/wiki/Derivada</a></p></li>
+<li><p>…</p></li>
+</ul>
+<p>Ahora, si nos enfrentamos a una función que dependa de dos variables independientes (normalmente denotadas como <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>), podemos calcular su derivada respecto a cada una de estas variables, suponiendo que la otra queda <em>congelada</em>.
+Este proceso se denomina <strong>diferenciación parcial</strong>, y el resultado se conoce como <strong>derivada parcial</strong> de <span class="math notranslate nohighlight">\(f\)</span> con respecto a la variable elegida (<span class="math notranslate nohighlight">\(x\)</span> o <span class="math notranslate nohighlight">\(y\)</span>).</p>
+<p>¡Vamos a formalizar la definición!</p>
+<p>Por cierto, las gráficas que mostramos han sido obtenidas con la aplicación de Geogebra de Laura del Río que podéis ver aquí: <a class="reference external" href="https://www.geogebra.org/m/CH9CR9tb">https://www.geogebra.org/m/CH9CR9tb</a>.</p>
+<div class="proof definition admonition" id="def_DerivParc2D">
+<p class="admonition-title"><span>Definition </span> (Derivadas parciales para funciones de dos variables)</p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f:\mathbb{R}^{2} \to \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> un punto en el dominio de <span class="math notranslate nohighlight">\(f\)</span>. Definimos las derivadas parciales de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> como los límites, si existen,</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) := 
+  \lim_{h\to 0}\frac{f\left( (x_{0}, y_{0}) + h(1,0) \right)-f\left(x_{0}, y_{0}\right)}{h}
+  = \lim_{h\to 0}\frac{f\left(x_{0}+h, y_{0} \right)-f\left(x_{0}, y_{0}\right)}{h}\)</span>,</p>
+<a class="reference internal image-reference" href="../../_images/3.1.Derivada_parcial_X.jpg"><img alt="../../_images/3.1.Derivada_parcial_X.jpg" src="../../_images/3.1.Derivada_parcial_X.jpg" style="width: 600px;" /></a>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right) := 
+  \lim_{h\to 0}\frac{f\left( (x_{0}, y_{0}) + h(0,1) \right)-f\left(x_{0}, y_{0}\right)}{h}
+  = \lim_{h\to 0}\frac{f\left(x_{0}, y_{0}+h \right)-f\left(x_{0}, y_{0}\right)}{h}\)</span>.</p>
+<a class="reference internal image-reference" href="../../_images/3.1.Derivada_parcial_Y.jpg"><img alt="../../_images/3.1.Derivada_parcial_Y.jpg" src="../../_images/3.1.Derivada_parcial_Y.jpg" style="width: 600px;" /></a>
+</li>
+</ul>
+</section>
+</div><p><strong>Nota:</strong> En la práctica, para funciones suficientemente regulares, si queremos calcular la derivada parcial respecto a <span class="math notranslate nohighlight">\(x\)</span>, consideramos <span class="math notranslate nohighlight">\(y\)</span> como una constante y derivamos respecto a <span class="math notranslate nohighlight">\(x\)</span> (respectivamente, si queremos calcular la derivada parcial respecto a <span class="math notranslate nohighlight">\(y\)</span>, consideramos <span class="math notranslate nohighlight">\(x\)</span> constante y derivamos respecto a <span class="math notranslate nohighlight">\(y\)</span>), como mostramos en el siguiente ejemplo:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \displaystyle f(x,y) = 5x^3y^2+4x^2y^3 \to \displaystyle\frac{\partial f}{\partial x}(x,y) = 15x^2y^2+8xy^3\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \displaystyle f(x,y) = 5x^3y^2+4x^2y^3 \to \displaystyle\frac{\partial f}{\partial y}(x,y) = 10x^3y+12x^2y^2\)</span>.</p></li>
+</ul>
+<p><strong>Interpretación geométrica:</strong> Como se puede ver en las ilustraciones anteriores,</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(y=y_{0}\)</span>, entonces <span class="math notranslate nohighlight">\(z = f\left(x,y_{0}\right)\)</span> representa la curva formada por la intersección de la superficie
+<span class="math notranslate nohighlight">\(z = f(x,y)\)</span> con el plano <span class="math notranslate nohighlight">\(y=y_{0}\)</span>. Por lo tanto, la derivada parcial respecto a <span class="math notranslate nohighlight">\(x\)</span> en el punto
+<span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> será la pendiente de esta curva en dicho punto.</p></li>
+<li><p>Análogamente, la derivada parcial respecto a <span class="math notranslate nohighlight">\(y\)</span> en el punto <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> será la pendiente de la curva fruto de la intersección del plano <span class="math notranslate nohighlight">\(x = x_{0}\)</span> con la superficie <span class="math notranslate nohighlight">\(z = f(x,y)\)</span>.</p></li>
+</ul>
+<div class="proof remark admonition" id="rem_NotacionDerivParc">
+<p class="admonition-title"><span>Remark </span> (Notación para derivadas parciales)</p>
+<section class="remark-content" id="proof-content">
+<p>Si <span class="math notranslate nohighlight">\(z = f(x,y)\)</span>, denotaremos, indistintamente, sus derivadas parciales mediante</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle  \frac{\partial f}{\partial x}(x,y) = \left.\frac{\partial f}{\partial x}\right|_{(x,y)} =  f_{x}(x,y) \)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle  \frac{\partial f}{\partial y}(x,y) = \left.\frac{\partial f}{\partial y}\right|_{(x,y)} =  f_{y}(x,y) \)</span>.</p></li>
+</ul>
+</section>
+</div></section>
+<section id="derivadas-parciales-para-funciones-de-dos-variables-con-python">
+<h2><span class="section-number">3.1.2. </span>Derivadas parciales para funciones de dos variables con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#derivadas-parciales-para-funciones-de-dos-variables-con-python" title="Permalink to this headline">#</a></h2>
+<p>Veamos ahora cómo calcular derivadas parciales utilizando sympy.</p>
+<p>La función clave es <code class="docutils literal notranslate"><span class="pre">sp.diff</span></code>. que debe llevar como argumentos la expresión a derivar (o función Lambda, también vale) y, a continuación, la variable respecto a la que queremos hacerlo.</p>
+<p>Veamos un par de ejemplos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">df_x_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x</span>
+<span class="n">df_y_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a y</span>
+
+<span class="n">df_x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">dfx_expr</span><span class="p">)</span>  <span class="c1"># Creamos una función Lambda para la derivada respecto x</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_x_expr</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_y_expr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df_x(1,2): &quot;</span><span class="p">,</span><span class="n">df_x</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># Utilizamos la función Lambda para evaluar la derivada en un punto</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 15 x^{2} y^{2} + 8 x y^{3}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 10 x^{3} y + 12 x^{2} y^{2}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_x(1,2):  64*z**4 + 160*z**2
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left( \left( x, \  y\right) \mapsto 20 x^{3} y^{3} z^{2} + 8 x y^{3} z^{4} \right)\]</div>
+</div>
+</div>
+</section>
+<section id="derivadas-parciales-para-una-funcion-de-tres-o-mas-variables">
+<h2><span class="section-number">3.1.3. </span>Derivadas parciales para una función de tres o más variables<a class="headerlink" href="#derivadas-parciales-para-una-funcion-de-tres-o-mas-variables" title="Permalink to this headline">#</a></h2>
+<p>El concepto de derivación parcial que hemos definido para una función de dos variables, se puede extender de forma directa a funciones con tres o más variables, como veremos a continuación.</p>
+<div class="proof definition admonition" id="def_DerivParc3D">
+<p class="admonition-title"><span>Definition </span> (Derivadas parciales para funciones de tres variables)</p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f:\mathbb{R}^{3} \to \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}, z_{0}\right)\)</span> un punto en el dominio de <span class="math notranslate nohighlight">\(f\)</span>. Definimos las derivadas parciales de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}, z_{0}\right)\)</span> como los límites, si existen,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial f}{\partial x} \left(x_{0}, y_{0}, z_{0}\right) := 
+  \lim_{h\to 0}\frac{f\left( (x_{0}, y_{0}, z_{0}) + h(1,0,0) \right)-f\left(x_{0}, y_{0}, z_{0}\right)}{h}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial f}{\partial y} \left(x_{0}, y_{0}, z_{0}\right) := 
+  \lim_{h\to 0}\frac{f\left( (x_{0}, y_{0}, z_{0}) + h(0,1,0) \right)-f\left(x_{0}, y_{0}, z_{0}\right)}{h}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial f}{\partial y} \left(x_{0}, y_{0}, z_{0}\right) := 
+  \lim_{h\to 0}\frac{f\left( (x_{0}, y_{0}, z_{0}) + h(0,0,1) \right)-f\left(x_{0}, y_{0}, z_{0}\right)}{h}\)</span>.</p></li>
+</ul>
+</section>
+</div><p><strong>Nota:</strong> Al igual que para funciones de dos variables, para calcular la derivada parcial respecto a una de las variables, consideramos las otras como constantes y derivamos la función respecto a la variable de que se trate como si fuera una función de una única variable. Por ejemplo:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \displaystyle f(x,y,z) = 5 x^4 y^3 z^2 + 4 x^2 y^3 z^4 \to \displaystyle\frac{\partial f}{\partial x}(x,y,z) = 20 x^3 y^3 z^2 + 8 x y^3 z^4\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \displaystyle f(x,y,z) =  5 x^4 y^3 z^2 + 4 x^2 y^3 z^4 \to \displaystyle\frac{\partial f}{\partial y}(x,y,z) = 15 x^4 y^2 z^2 + 12 x^2 y^2 z^4\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \displaystyle f(x,y,z) =  5 x^4 y^3 z^2 + 4 x^2 y^3 z^4 \to \displaystyle\frac{\partial f}{\partial y}(x,y,z) = 10 x^4 y^3 z + 16 x^2 y^3 z^3\)</span>.</p></li>
+</ul>
+<p>Por supuesto, el cálculo de derivadas parciales para funciones con tres variables utilizando <code class="docutils literal notranslate"><span class="pre">Sympy</span></code> es totalmente análogo a lo ya visto para funciones de dos variables, como mostramos a continuación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y, z</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">z</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="n">df_x_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x</span>
+<span class="n">df_y_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a y</span>
+<span class="n">df_z_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a z</span>
+
+
+<span class="n">df_x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),</span><span class="n">df_x_expr</span><span class="p">)</span>  <span class="c1"># Creamos una función Lambda para la derivada respecto x</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_x_expr</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_y_expr</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_z_expr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df_x(1,2,3): &quot;</span><span class="p">,</span><span class="n">df_x</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># Utilizamos la función Lambda para evaluar la derivada en un punto</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 12 x^{3} y^{3} z^{2} + 8 x y^{3} z^{4}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 9 x^{4} y^{2} z^{2} + 12 x^{2} y^{2} z^{4}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6 x^{4} y^{3} z + 16 x^{2} y^{3} z^{3}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_x(1,2,3):  6048
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left( \left( x, \  y, \  z\right) \mapsto 12 x^{3} y^{3} z^{2} + 8 x y^{3} z^{4} \right)\]</div>
+</div>
+</div>
+</section>
+<section id="derivadas-parciales-de-orden-superior">
+<h2><span class="section-number">3.1.4. </span>Derivadas parciales de orden superior<a class="headerlink" href="#derivadas-parciales-de-orden-superior" title="Permalink to this headline">#</a></h2>
+<p>Al igual que hacíamos para funciones de una variable, introduciendo derivadas segundas, terceras, <em>etc.</em>, en funciones de varias variables podemos introducir las derivadas parciales de las funciones derivadas parciales, para obtener de este modo las derivadas parciales segundas, terceras, …</p>
+<p>Por ejemplo, para una función <span class="math notranslate nohighlight">\(z=f(x,y)\)</span>, dependiente de dos variables, podemos definir:</p>
+<ol>
+<li><p>Derivada parcial de orden 2, respecto a <span class="math notranslate nohighlight">\(x\)</span> dos veces:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right) = \frac{\partial^{2}f}{\partial x^2}=f_{xx}.
+    \]</div>
+</li>
+<li><p>Derivada parcial de orden 2, primero respecto a <span class="math notranslate nohighlight">\(x\)</span> y luego respecto a <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right) = \frac{\partial^{2}f}{\partial y \partial x}=f_{xy}.
+    \]</div>
+</li>
+<li><p>Derivada parcial de orden 2, primero respecto a <span class="math notranslate nohighlight">\(y\)</span> y luego respecto a <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right) = \frac{\partial^{2}f}{\partial x \partial y}=f_{yx}.
+    \]</div>
+</li>
+<li><p>Derivada parcial de orden 2, respecto a <span class="math notranslate nohighlight">\(y\)</span> dos veces:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right) = \frac{\partial^{2}f}{\partial y^2}=f_{yy}.
+    \]</div>
+</li>
+</ol>
+<p>El segundo y tercer caso se denominan <strong>derivadas parciales mixtas</strong>. Tienen una propiedad importante:</p>
+<div class="proof property admonition" id="prop_DerivMixtas">
+<p class="admonition-title"><span>Property </span> (Igualdad de las derivadas parciales mixtas)</p>
+<section class="property-content" id="proof-content">
+<p>Si <span class="math notranslate nohighlight">\(f\)</span> es una función de dos variables tal que <span class="math notranslate nohighlight">\(\frac{\partial^{2}f}{\partial y \partial x}\)</span> y
+<span class="math notranslate nohighlight">\(\frac{\partial^{2}f}{\partial x \partial y}\)</span> son funciones continuas en un disco abierto <span class="math notranslate nohighlight">\(D\)</span>, entonces, para cualquier punto <span class="math notranslate nohighlight">\((x,y)\in D\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^{2}f}{\partial y \partial x}(x,y) = \frac{\partial^{2}f}{\partial x \partial y} (x,y).
+\]</div>
+</section>
+</div><p>En cuanto al cálculo en <code class="docutils literal notranslate"><span class="pre">Sympy</span></code> de las derivadas parciales de orden superior:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">df_xx_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x dos veces. También se puede escribir sp.diff(f_expr,x,2)</span>
+<span class="n">df_yx_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial primero respecto x, luego respecto y</span>
+<span class="n">df_xy_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial primero respecto y, luego respecto x</span>
+<span class="n">df_yy_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x dos veces</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_xx_expr</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_yx_expr</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_xy_expr</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_yy_expr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2 y^{2} \cdot \left(15 x + 4 y\right)\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6 x y \left(5 x + 4 y\right)\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6 x y \left(5 x + 4 y\right)\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2 x^{2} \cdot \left(5 x + 12 y\right)\]</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

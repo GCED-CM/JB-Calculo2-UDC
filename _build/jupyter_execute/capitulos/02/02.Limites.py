@@ -250,7 +250,7 @@
 # ... pero observa que `Sympy` *olvida* un caso clave en el cambio a polares. 
 # Como ya dijimos, no es tan fácil ver que no existe límite en coordenadas polares... ¡ni siquiera para *#sympyelinfalible*!
 
-# In[4]:
+# In[1]:
 
 
 import sympy as sp
@@ -294,7 +294,7 @@ print('Límite restringido a y=sqrt(x):',sp.simplify(sp.limit(f(x,sp.sqrt(x)),x,
 # $$
 # que resolvemos de la siguiente manera:
 
-# In[5]:
+# In[2]:
 
 
 import sympy as sp
@@ -366,3 +366,7 @@ ax.elev = 15
 
 plt.show()
 
+
+# ## Más información
+# 
+# Si te has quedado con ganas de saber más sobre límites de funciones de dos variables, te recomendamos el siguiente artículo, en la Gaceta de la Real Sociedad Matemática Española, escrito por Juan Bosco y Óscar López Pouso, profesores de la Universidade de Santiago de Compostela: https://gaceta.rsme.es/abrir.php?id=85
