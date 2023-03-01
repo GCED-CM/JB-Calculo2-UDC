@@ -269,7 +269,7 @@ print('Límites por parábolas:',sp.limit(f(x,m*x**2),x,0)) # todos valen 0
 fy = sp.limit(f(x,y),x,0)
 print('Límite iterado empezando en x: ',sp.limit(fy,y,0))
 fx = sp.limit(f(x,y),y,0)
-print('Límite iterado empezando en y: ',sp.limit(fy,x,0))
+print('Límite iterado empezando en y: ',sp.limit(fx,x,0))
 
 # calculamos el límite en coordenadas polares
 r = sp.Symbol('r', nonnegative=True)

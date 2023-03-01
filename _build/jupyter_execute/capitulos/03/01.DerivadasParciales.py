@@ -90,7 +90,7 @@ df_x = sp.Lambda((x,y),dfx_expr)  # Creamos una función Lambda para la derivada
 display(df_x_expr) 
 display(df_y_expr)
 
-print("df_x(1,2): ",df_x(1,2))  # Utilizamos la función Lambda para evaluar la derivada en un punto
+print("df_x(1,2): ",df_x(1,2))  # Usamos la función Lambda para evaluar la derivada en un punto
 display(df_x)
 
 
@@ -145,7 +145,7 @@ display(df_x_expr)
 display(df_y_expr)
 display(df_z_expr)
 
-print("df_x(1,2,3): ",df_x(1,2,3))  # Utilizamos la función Lambda para evaluar la derivada en un punto
+print("df_x(1,2,3): ",df_x(1,2,3))  # Usamos la función Lambda para evaluar la derivada en un punto
 display(df_x)
 
 

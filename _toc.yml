@@ -36,6 +36,8 @@ chapters:
       title: Límites
     - file: capitulos/02/03.Continuidad
       title: Continuidad
+    - file: capitulos/02/04.Boletin
+      title: Boletín de ejercicios del segundo capítulo
   
 - file: capitulos/03/README
   title: Derivación y extremos

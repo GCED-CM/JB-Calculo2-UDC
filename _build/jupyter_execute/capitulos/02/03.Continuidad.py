@@ -74,7 +74,7 @@
 # 
 # Vamos a utilizar `Python` para visualizar sus representaciones gráficas.
 
-# In[43]:
+# In[2]:
 
 
 import sympy as sp
@@ -85,12 +85,14 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
 
-# In[46]:
+# In[5]:
 
 
 x, y = sp.symbols('x, y', real=True) # definimos las variables simbólicas x e y  
 
-f = sp.lambdify((x,y),sp.sin(x**2 + y**2)/2) # función NumPy de f
+# f = sp.lambdify((x,y),sp.sin(x**2 + y**2)/2) # función NumPy de f
+# f = sp.lambdify((x,y), (x-2*y)/(x**2+y**2))
+f = sp.lambdify((x,y), ((x**2-y**2)/(x**2+y**2))**2)
 g = sp.lambdify((x,y),sp.cos(y**2)*sp.exp(-sp.sqrt(x**2+y**2))) # función NumPy de g
 
 # Inicialización de la representación 3D
