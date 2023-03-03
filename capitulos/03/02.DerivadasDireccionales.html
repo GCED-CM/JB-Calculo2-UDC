@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3.2. Derivadas direccionales y gradiente &#8212; Calculo en varias variables</title>
+    <title>3.2. Derivadas direccionales, gradiente y matriz jacobiana &#8212; Calculo en varias variables</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.3. Diferenciación" href="03.Diferenciacion.html" />
+    <link rel="next" title="3.3. Diferenciabilidad" href="03.Diferenciacion.html" />
     <link rel="prev" title="3.1. Derivadas parciales" href="01.DerivadasParciales.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -468,6 +468,26 @@ title="Print to PDF"
    3.2.2. Vector gradiente
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aplicaciones-del-gradiente">
+   3.2.3. Aplicaciones del gradiente
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matriz-jacobiana">
+   3.2.4. Matriz jacobiana
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matriz-jacobiana-y-derivada-direccional-con-sympy">
+   3.2.5. Matriz jacobiana y derivada direccional con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -477,7 +497,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Derivadas direccionales y gradiente</h1>
+                <h1>Derivadas direccionales, gradiente y matriz jacobiana</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -497,6 +517,26 @@ title="Print to PDF"
    3.2.2. Vector gradiente
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aplicaciones-del-gradiente">
+   3.2.3. Aplicaciones del gradiente
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matriz-jacobiana">
+   3.2.4. Matriz jacobiana
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matriz-jacobiana-y-derivada-direccional-con-sympy">
+   3.2.5. Matriz jacobiana y derivada direccional con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -507,8 +547,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="derivadas-direccionales-y-gradiente">
-<h1><span class="section-number">3.2. </span>Derivadas direccionales y gradiente<a class="headerlink" href="#derivadas-direccionales-y-gradiente" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="derivadas-direccionales-gradiente-y-matriz-jacobiana">
+<h1><span class="section-number">3.2. </span>Derivadas direccionales, gradiente y matriz jacobiana<a class="headerlink" href="#derivadas-direccionales-gradiente-y-matriz-jacobiana" title="Permalink to this headline">#</a></h1>
 <section id="derivadas-direccionales">
 <h2><span class="section-number">3.2.1. </span>Derivadas direccionales<a class="headerlink" href="#derivadas-direccionales" title="Permalink to this headline">#</a></h2>
 <p>En la sección anterior hemos aprendido cómo, dado el gráfico de una función de dos variables,  calcular la inclinación haciendo cortes por planos paralelos a los ejes <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span>.
@@ -528,10 +568,39 @@ Definimos la <strong>derivada direccional de <span class="math notranslate nohig
     \lim_{h\to 0}\frac{f\left( (x_{0}, y_{0}) + h(v_{1},v_{2}) \right)-f\left(x_{0}, y_{0}\right)}{h} \\
     &amp;=&amp; \lim_{h\to 0}\frac{f\left(x_{0}+hv_{1}, y_{0}+hv_{2} \right)-f\left(x_{0}, y_{0}\right)}{h}.
 \end{eqnarray*}\]</div>
-<a class="reference internal image-reference" href="../../_images/3.2.Derivada_direccional.jpg"><img alt="../../_images/3.2.Derivada_direccional.jpg" src="../../_images/3.2.Derivada_direccional.jpg" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/3.2.Derivada_direccional.jpg"><img alt="../../_images/3.2.Derivada_direccional.jpg" src="../../_images/3.2.Derivada_direccional.jpg" style="width: 500px;" /></a>
 </section>
 </div><p>La imagen anterior la hemos obtenido de la aplicación de Geogebra, creada por Laura del Río, <a class="reference external" href="https://www.geogebra.org/m/ZTttemYc">https://www.geogebra.org/m/ZTttemYc</a>.</p>
-<p>Destaquemos que, si <span class="math notranslate nohighlight">\(f\)</span> es una función que depende de tres variables, podemos definir de forma análoga la derivada direccional de <span class="math notranslate nohighlight">\(f\)</span> en un punto de su dominio según la dirección marcada por cualquier vector unitario en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
+<p><strong>Nota:</strong> Si <span class="math notranslate nohighlight">\(f\)</span> es una función de tres variables, podemos definir de forma análoga la derivada direccional de <span class="math notranslate nohighlight">\(f\)</span> en un punto de su dominio según la dirección marcada por cualquier vector unitario en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
+<p>Veamos cómo calcular una derivada direccional aplicando directamente la definición con <code class="docutils literal notranslate"><span class="pre">Python</span></code>.
+En concreto, calcularemos la derivada de <span class="math notranslate nohighlight">\(f(x,y) = \frac{x}{(x+y)y}\)</span> en el punto <span class="math notranslate nohighlight">\(P=(1,2)\)</span> según la dirección de
+<span class="math notranslate nohighlight">\(\mathbf{u} = (\cos(\theta),\sin(\theta))\)</span> para cualquier <span class="math notranslate nohighlight">\(\theta\in[0,2\pi)\)</span>. Hacia el final de esta sección, calcularemos esta misma derivada direccional utilizando el vector gradiente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define la variable simbólica h</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define la variable simbólica h</span>
+
+<span class="n">f</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">/</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)]</span>
+
+<span class="n">df_u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span> <span class="p">(</span> <span class="n">f</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span> <span class="o">/</span> <span class="n">h</span> <span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span> <span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Derivada en la dirección de u: &#39;</span><span class="p">,</span><span class="n">df_u</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Derivada en la dirección de u: &#39;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{5 \sin{\left(\theta \right)}}{36} + \frac{\cos{\left(\theta \right)}}{9}\]</div>
+</div>
+</div>
 </section>
 <section id="vector-gradiente">
 <h2><span class="section-number">3.2.2. </span>Vector gradiente<a class="headerlink" href="#vector-gradiente" title="Permalink to this headline">#</a></h2>
@@ -539,14 +608,293 @@ Definimos la <strong>derivada direccional de <span class="math notranslate nohig
 <p class="admonition-title"><span>Definition </span> (Vector gradiente)</p>
 <section class="definition-content" id="proof-content">
 <p>Sea <span class="math notranslate nohighlight">\(f:\mathbb{R}^{2} \to \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> un punto en el dominio de <span class="math notranslate nohighlight">\(f\)</span>.
-Definimos el <strong>vector gradiente de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span></strong> como el límite, si existe,</p>
+Definimos el <strong>vector gradiente de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span></strong> como el vector, si existe,</p>
 <div class="math notranslate nohighlight">
 \[
  \mathbf{\nabla}f \left(x_{0}, y_{0}\right) = 
- \left( \frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right), \frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right) \right).
+ \left( \frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right), \frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right) \right)^{\mathrm{t}}.
+\]</div>
+</section>
+</div><p><strong>NOTA 1:</strong> Nosotros usaremos la notación <span class="math notranslate nohighlight">\(\mathbf{\nabla}\)</span> (“nabla”) para el gradiente, aunque en ocasiones lo podréis ver escrito como “<span class="math notranslate nohighlight">\(\mathbf{grad}\)</span>”:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{grad} f \left(x_{0}, y_{0}\right) = \mathbf{\nabla}f \left(x_{0}, y_{0}\right).
+\]</div>
+<p>Fíjate que el gradiente para una función de dos variables es un vector bidimensional. Suele representarse en el plano <span class="math notranslate nohighlight">\(XY\)</span>, sobre el dominio de la función, como se muestra en la siguiente figura (extraída de la aplicación de Geogebra de Rafael Robles que podéis encontrar en <a class="reference external" href="https://www.geogebra.org/m/rfgggtps">https://www.geogebra.org/m/rfgggtps</a>):</p>
+<a class="reference internal image-reference" href="../../_images/3.2.Gradiente.png"><img alt="../../_images/3.2.Gradiente.png" src="../../_images/3.2.Gradiente.png" style="width: 600px;" /></a>
+<p><strong>NOTA 2:</strong> Si <span class="math notranslate nohighlight">\(f\)</span> es una función de tres variables, podemos definir su gradiente como</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{\nabla}f \left(x_{0}, y_{0}, z_{0}\right) = \left( \frac{\partial f}{\partial x} \left(x_{0}, y_{0}, z_{0}\right), \frac{\partial f}{\partial y} \left(x_{0}, y_{0}, z_{0}\right), 
+\frac{\partial f}{\partial z} \left(x_{0}, y_{0}, z_{0}\right) \right)^{\mathrm{t}}.
+\]</div>
+</section>
+<section id="aplicaciones-del-gradiente">
+<h2><span class="section-number">3.2.3. </span>Aplicaciones del gradiente<a class="headerlink" href="#aplicaciones-del-gradiente" title="Permalink to this headline">#</a></h2>
+<div class="proof property admonition" id="prop_CalculoDerDirecc">
+<p class="admonition-title"><span>Property </span> (Cálculo de la derivada direccional con el gradiente)</p>
+<section class="property-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f:\mathbb{R}^{2} \to \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> un punto en el dominio de <span class="math notranslate nohighlight">\(f\)</span> para
+el que existe <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span>.</p>
+<p>Entonces, para cualquier vector <span class="math notranslate nohighlight">\(\mathbf{u}\in\mathbb{R}^{2}\)</span>, con <span class="math notranslate nohighlight">\(\|\mathbf{u}\|=1\)</span>, se cumple</p>
+<div class="math notranslate nohighlight">
+\[
+D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right)
+= u_{1}\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) + u_{2}\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right).
+\]</div>
+</section>
+</div><p><strong>NOTA:</strong> Para funciones de tres variables:</p>
+<div class="math notranslate nohighlight">
+\[
+D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}, z_{0}\right)
+= u_{1}\frac{\partial f}{\partial x} \left(x_{0}, y_{0}, z_{0}\right) + 
+  u_{2}\frac{\partial f}{\partial y} \left(x_{0}, y_{0}, z_{0} \right) +
+  u_{3}\frac{\partial f}{\partial z} \left(x_{0}, y_{0}, z_{0} \right).
+\]</div>
+<div class="proof remark admonition" id="rem_CalculoDerDirecc">
+<p class="admonition-title"><span>Remark </span></p>
+<section class="remark-content" id="proof-content">
+<ol>
+<li><p>Si la dirección respecto a la cual queremos calcular la derivada direccional viniera definida respecto a un vector, <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, no unitario, basta normalizarlo: <span class="math notranslate nohighlight">\(\displaystyle\mathbf{u}=\frac{\mathbf{v}}{\|\mathbf{v}\|}\)</span>.</p></li>
+<li><p>Cuando elegimos un vector unitario, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, podemos pensar que es un punto en la circunferencia de radio unidad y, por tanto, podemos reescribir sus coordenadas en función de un ángulo <span class="math notranslate nohighlight">\(\theta\)</span> como sigue:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf{u}=\left(u_{1},u_{2}\right) = \left(\cos(\theta),\sin(\theta)\right),
+    \]</div>
+<p>para algún <span class="math notranslate nohighlight">\(\theta\in [0,2\pi)\)</span>. Por lo tanto, la fórmula de la derivada direccional podría escribirse como</p>
+<div class="math notranslate nohighlight">
+\[
+    D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right) 
+    = \cos(\theta)\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) + 
+    \sin(\theta)\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right).
+    \]</div>
+<a class="reference internal image-reference" href="../../_images/3.2.Vectores_unitarios.png"><img alt="../../_images/3.2.Vectores_unitarios.png" src="../../_images/3.2.Vectores_unitarios.png" style="width: 400px;" /></a>
+</li>
+</ol>
+</section>
+</div><div class="proof property admonition" id="prop_PropGradiente">
+<p class="admonition-title"><span>Property </span></p>
+<section class="property-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f:\mathbb{R}^{2} \to \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> un punto en el dominio de <span class="math notranslate nohighlight">\(f\)</span> para
+el que existe <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span>.</p>
+<ol>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span> indica la dirección de máximo crecimiento de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span>.
+El valor máximo de <span class="math notranslate nohighlight">\(D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)\)</span> es <span class="math notranslate nohighlight">\(\left\|\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\right\|\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span> indica la dirección de máximo decrecimiento de <span class="math notranslate nohighlight">\(f\)</span> en
+<span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span>. El valor mínimo de <span class="math notranslate nohighlight">\(D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)\)</span> es
+<span class="math notranslate nohighlight">\(-\left\|\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\right\|\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\neq \mathbf{0}\)</span>, entonces <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span> es
+ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span>, como se muestra en la siguiente figura
+(extraída de la aplicación en Geogebra de Analucía Fantín, <a class="reference external" href="https://www.geogebra.org/m/zqzweqcq">https://www.geogebra.org/m/zqzweqcq</a>):</p>
+<a class="reference internal image-reference" href="../../_images/3.2.Gradiente_y_curvas_nivel.png"><img alt="../../_images/3.2.Gradiente_y_curvas_nivel.png" src="../../_images/3.2.Gradiente_y_curvas_nivel.png" style="width: 600px;" /></a>
+</li>
+</ol>
+</section>
+</div></section>
+<section id="matriz-jacobiana">
+<h2><span class="section-number">3.2.4. </span>Matriz jacobiana<a class="headerlink" href="#matriz-jacobiana" title="Permalink to this headline">#</a></h2>
+<p>Por su interés a la hora de calcular el vector gradiente en <code class="docutils literal notranslate"><span class="pre">sympy</span></code> y, también, para su uso futuro en la regla de la cadena de una función de varias variables, vamos a dedicar esta subsección a definir la matriz jacobiana, que debe su nombre al matemático alemán Carl Gustav Jakov Jacobi (<a class="reference external" href="https://es.wikipedia.org/wiki/Carl_Gustav_Jakob_Jacobi">https://es.wikipedia.org/wiki/Carl_Gustav_Jakob_Jacobi</a>).</p>
+<div class="proof definition admonition" id="def_Jacobiana">
+<p class="admonition-title"><span>Definition </span></p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> una función desde <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> que toma valores en <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{matrix}
+\mathbf{F}: &amp; \mathbb{R}^{n} &amp; \to &amp; \mathbb{R}^{m} \\
+&amp;  \left(x_{1}, x_{2}, ..., x_{n}\right) &amp; \to &amp; \left( F_{1}, F_{2}, ... , F_{m}  \right)
+\end{matrix}
+\end{split}\]</div>
+<p>Definimos su <strong>matriz jacobiana</strong> como la matriz, con <span class="math notranslate nohighlight">\(m\)</span> filas y <span class="math notranslate nohighlight">\(n\)</span> columnas,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{J}\mathbf{F} =
+\begin{bmatrix}
+\frac{\partial F_{1}}{\partial x_{1}} &amp; \frac{\partial F_{1}}{\partial x_{2}} &amp; ... &amp; \frac{\partial F_{1}}{\partial x_{n}} \\
+\frac{\partial F_{2}}{\partial x_{1}} &amp; \frac{\partial F_{2}}{\partial x_{2}} &amp; ... &amp; \frac{\partial F_{2}}{\partial x_{n}} \\
+... &amp; ... &amp; ... &amp; ... \\
+\frac{\partial F_{m}}{\partial x_{1}} &amp; \frac{\partial F_{m}}{\partial x_{2}} &amp; ... &amp; \frac{\partial F_{m}}{\partial x_{n}} \\
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+</div><p>En la siguiente subsección, mostramos un ejemplo completo, calculado con la ayuda de <code class="docutils literal notranslate"><span class="pre">sympy</span></code>.</p>
+<div class="proof remark admonition" id="rem_Jacobiana">
+<p class="admonition-title"><span>Remark </span></p>
+<section class="remark-content" id="proof-content">
+<p>Si <span class="math notranslate nohighlight">\(f:\mathbb{R}^{2} \to \mathbb{R}\)</span>, entonces la matriz jacobiana será una matriz fila, exactamente la transpuesta del gradiente (que se puede ver como una matriz columna):</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{\nabla} f = \left(\mathrm{J}f\right)^{\mathrm{t}}.
 \]</div>
 </section>
 </div></section>
+<section id="matriz-jacobiana-y-derivada-direccional-con-sympy">
+<h2><span class="section-number">3.2.5. </span>Matriz jacobiana y derivada direccional con <code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#matriz-jacobiana-y-derivada-direccional-con-sympy" title="Permalink to this headline">#</a></h2>
+<p>Vamos a empezar esta subsección mostrando cómo calcular la matriz jacobiana para una función en <code class="docutils literal notranslate"><span class="pre">sympy</span></code>. Para ello, tendremos que definir la función a través de una matriz y, después, utilizar la function <code class="docutils literal notranslate"><span class="pre">jacobian</span></code>, predefinida para estos objetos.</p>
+<p>La sintaxis es muy sencilla:  <code class="docutils literal notranslate"><span class="pre">F.jacobian([x,y,z])</span></code>, por ejemplo, calcula la matriz jacobiana de la función (definida a partir de una matriz) <code class="docutils literal notranslate"><span class="pre">F</span></code>, respecto a las variables x, y, z.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+
+<span class="c1"># Cálculo del jacobiano de F</span>
+<span class="n">jac_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">jac_F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}x^{2} y z\\3 x y^{2} z\\5 x y z^{2}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}2 x y z &amp; x^{2} z &amp; x^{2} y\\3 y^{2} z &amp; 6 x y z &amp; 3 x y^{2}\\5 y z^{2} &amp; 5 x z^{2} &amp; 10 x y z\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Ahora vamos a ver cómo implementar el gradiente en <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>. Lo haremos de dos maneras distintas. La primera es la que se nos podría ocurrir directamente, <em>sin pensarlo mucho</em>: a partir de una expresión, f_expr, creamos una matriz columna cuyas filas son las derivadas respecto a <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, respectivamente.</p>
+<p>Lo mostramos sobre la función <span class="math notranslate nohighlight">\(f(x,y)=3x^2-5y^2\)</span>, cuyo gradiente es</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\nabla f(x,y)=
+\begin{pmatrix}
+6x\\
+-10y
+\end{pmatrix}.
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">grad_f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span> 
+
+<span class="n">display</span><span class="p">(</span><span class="n">grad_f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}6 x\\- 10 y\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Ahora vamos a hacer lo mismo utilizando la matriz jacobiana. Recuerda: el gradiente es la transpuesta de la jacobiana.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Cálculo del jacobiano de F</span>
+<span class="n">jac_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">jac_F</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="c1"># NOTA: Se puede hacer lo mismo en un único paso:</span>
+<span class="c1"># grad_F = F.jacobian([x,y]).transpose()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}6 x\\- 10 y\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Ahora vamos a mostrar un par de aplicaciones del gradiente.</p>
+<p>Empezamos con el cálculo de la derivada direccional que hicimos, de modo teórico, al principio de esta sección.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="n">theta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">x</span><span class="o">/</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">y</span> <span class="p">)])</span>
+
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># Definimos el punto P</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)])</span> <span class="c1"># Definimos un vector director unitario</span>
+
+<span class="n">nabla</span> <span class="o">=</span> <span class="n">grad_F</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">nabla</span><span class="p">)</span>
+
+<span class="n">df_u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">nabla</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}- \frac{x}{y \left(x + y\right)^{2}} + \frac{1}{y \left(x + y\right)}\\- \frac{x}{y \left(x + y\right)^{2}} - \frac{x}{y^{2} \left(x + y\right)}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\frac{1}{9}\\- \frac{5}{36}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{5 \sin{\left(\theta \right)}}{36} + \frac{\cos{\left(\theta \right)}}{9}\]</div>
+</div>
+</div>
+<p>Por último, vamos a ilustrar, sobre un ejemplo sencillo, la propiedad que dice que el vector gradiente es ortogonal a las curvas de nivel.</p>
+<p>Fíjate que a partir de creamos funciones de tipo <code class="docutils literal notranslate"><span class="pre">lambdify</span></code> a partir de las matrices:</p>
+<ul class="simple">
+<li><p>Función F_lamb, con valores escalares, a partir de la matriz F.</p></li>
+<li><p>Función grad_F_lamb, con valores vectoriales, a partir de la matriz grad_F.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">F_lamb</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="c1"># display(F_lamb)</span>
+
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">grad_F_lamb</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">[</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span> 
+<span class="c1"># Creamos una función lambdify del gradiente para poder evaluarlo en cualquier punto</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># 50 puntos en cada dirección de los ejes cartesianos para las curvas de nivel</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Values</span> <span class="o">=</span> <span class="n">F_lamb</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="n">Ng</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 10 puntos en cada dirección de los ejes cartesianos para los vectores gradientes</span>
+<span class="n">xg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">Ng</span><span class="p">)</span>
+<span class="n">yg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">Ng</span><span class="p">)</span>
+<span class="n">Xg</span><span class="p">,</span> <span class="n">Yg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">yg</span><span class="p">)</span>
+<span class="n">Values_Grad</span><span class="o">=</span><span class="n">grad_F_lamb</span><span class="p">(</span><span class="n">Xg</span><span class="p">,</span><span class="n">Yg</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Values</span><span class="p">)</span> <span class="c1"># Representación gráfica de las curvas de nivel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># Se añade el valor numérico a cada curva de nivel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">Xg</span><span class="p">,</span> <span class="n">Yg</span><span class="p">,</span> <span class="n">Values_Grad</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Values_Grad</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Representación gráfica del campo de vectores gradiente</span>
+<span class="c1"># plt.quiver(Xg, Yg, Values_Grad) # Representación gráfica del campo de vectores gradiente</span>
+<span class="c1"># Etiquetas de los ejes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/02.DerivadasDireccionales_14_0.png" src="../../_images/02.DerivadasDireccionales_14_0.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -586,7 +934,7 @@ Definimos el <strong>vector gradiente de <span class="math notranslate nohighlig
     <a class='right-next' id="next-link" href="03.Diferenciacion.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Diferenciación</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Diferenciabilidad</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -605,7 +605,7 @@ Este proceso se denomina <strong>diferenciación parcial</strong>, y el resultad
 <span class="n">df_x_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x</span>
 <span class="n">df_y_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a y</span>
 
-<span class="n">df_x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">dfx_expr</span><span class="p">)</span>  <span class="c1"># Creamos una función Lambda para la derivada respecto x</span>
+<span class="n">df_x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">df_x_expr</span><span class="p">)</span>  <span class="c1"># Creamos una función Lambda para la derivada respecto x</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">df_x_expr</span><span class="p">)</span> 
 <span class="n">display</span><span class="p">(</span><span class="n">df_y_expr</span><span class="p">)</span>
@@ -620,11 +620,11 @@ Este proceso se denomina <strong>diferenciación parcial</strong>, y el resultad
 \[\displaystyle 15 x^{2} y^{2} + 8 x y^{3}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle 10 x^{3} y + 12 x^{2} y^{2}\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_x(1,2):  64*z**4 + 160*z**2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_x(1,2):  124
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \left( \left( x, \  y\right) \mapsto 20 x^{3} y^{3} z^{2} + 8 x y^{3} z^{4} \right)\]</div>
+\[\displaystyle \left( \left( x, \  y\right) \mapsto 15 x^{2} y^{2} + 8 x y^{3} \right)\]</div>
 </div>
 </div>
 </section>

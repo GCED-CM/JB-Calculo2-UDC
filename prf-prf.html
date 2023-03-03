@@ -392,6 +392,7 @@ title="Fullscreen mode"
 
    <div class="modindex-jumpbox">
    <a href="#cap-2.3._ex"><strong>2.3._ex</strong></a> | 
+   <a href="#cap-3.x._ex"><strong>3.x._ex</strong></a> | 
    <a href="#cap-def_01_angulos_directores"><strong>def_01_angulos_directores</strong></a> | 
    <a href="#cap-def_01_esfera"><strong>def_01_esfera</strong></a> | 
    <a href="#cap-def_01_producto_escalar"><strong>def_01_producto_escalar</strong></a> | 
@@ -403,6 +404,7 @@ title="Fullscreen mode"
    <a href="#cap-def_01_vector2"><strong>def_01_vector2</strong></a> | 
    <a href="#cap-def_01_vector_unitario"><strong>def_01_vector_unitario</strong></a> | 
    <a href="#cap-def_01_vectores_canonicos"><strong>def_01_vectores_canonicos</strong></a> | 
+   <a href="#cap-def_03_difer"><strong>def_03_difer</strong></a> | 
    <a href="#cap-def_1.7_cilindro"><strong>def_1.7_cilindro</strong></a> | 
    <a href="#cap-def_1.7_revolucion"><strong>def_1.7_revolucion</strong></a> | 
    <a href="#cap-def_1.8.cilindricas"><strong>def_1.8.cilindricas</strong></a> | 
@@ -413,14 +415,17 @@ title="Fullscreen mode"
    <a href="#cap-def_DerivDirec"><strong>def_DerivDirec</strong></a> | 
    <a href="#cap-def_DerivParc2D"><strong>def_DerivParc2D</strong></a> | 
    <a href="#cap-def_DerivParc3D"><strong>def_DerivParc3D</strong></a> | 
+   <a href="#cap-def_Jacobiana"><strong>def_Jacobiana</strong></a> | 
    <a href="#cap-def_cont_2v"><strong>def_cont_2v</strong></a> | 
    <a href="#cap-def_cont_3v"><strong>def_cont_3v</strong></a> | 
    <a href="#cap-def_disco"><strong>def_disco</strong></a> | 
    <a href="#cap-def_gradiente"><strong>def_gradiente</strong></a> | 
    <a href="#cap-def_limite"><strong>def_limite</strong></a> | 
+   <a href="#cap-def_rc_2vi"><strong>def_rc_2vi</strong></a> | 
    <a href="#cap-ex_01_producto_escalar"><strong>ex_01_producto_escalar</strong></a> | 
    <a href="#cap-ex_01_vector"><strong>ex_01_vector</strong></a> | 
    <a href="#cap-ex_02_no_limite"><strong>ex_02_no_limite</strong></a> | 
+   <a href="#cap-ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección"><strong>ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección</strong></a> | 
    <a href="#cap-ex_2.1_dominios"><strong>ex_2.1_dominios</strong></a> | 
    <a href="#cap-ex_cont_3v"><strong>ex_cont_3v</strong></a> | 
    <a href="#cap-example-8"><strong>example-8</strong></a> | 
@@ -434,13 +439,23 @@ title="Fullscreen mode"
    <a href="#cap-prop_02_limites_rectas"><strong>prop_02_limites_rectas</strong></a> | 
    <a href="#cap-prop_1.6_distancia_punto_plano"><strong>prop_1.6_distancia_punto_plano</strong></a> | 
    <a href="#cap-prop_1.7_distancia_punto_recta"><strong>prop_1.7_distancia_punto_recta</strong></a> | 
+   <a href="#cap-prop_CalculoDerDirecc"><strong>prop_CalculoDerDirecc</strong></a> | 
    <a href="#cap-prop_DerivMixtas"><strong>prop_DerivMixtas</strong></a> | 
+   <a href="#cap-prop_PropGradiente"><strong>prop_PropGradiente</strong></a> | 
+   <a href="#cap-rc_01_regla_cadena"><strong>rc_01_regla_cadena</strong></a> | 
+   <a href="#cap-rc_02_regla_cadena"><strong>rc_02_regla_cadena</strong></a> | 
    <a href="#cap-rem_02_limites"><strong>rem_02_limites</strong></a> | 
+   <a href="#cap-rem_CalculoDerDirecc"><strong>rem_CalculoDerDirecc</strong></a> | 
+   <a href="#cap-rem_Jacobiana"><strong>rem_Jacobiana</strong></a> | 
    <a href="#cap-rem_NotacionDerivParc"><strong>rem_NotacionDerivParc</strong></a> | 
    <a href="#cap-th_01_desigualdad_triangular"><strong>th_01_desigualdad_triangular</strong></a> | 
    <a href="#cap-th_01_prop_suma"><strong>th_01_prop_suma</strong></a> | 
    <a href="#cap-th_02_func_mayorante"><strong>th_02_func_mayorante</strong></a> | 
-   <a href="#cap-th_func_comp_cont"><strong>th_func_comp_cont</strong></a>
+   <a href="#cap-th_03_cont"><strong>th_03_cont</strong></a> | 
+   <a href="#cap-th_03_cont_der"><strong>th_03_cont_der</strong></a> | 
+   <a href="#cap-th_func_comp_cont"><strong>th_func_comp_cont</strong></a> | 
+   <a href="#cap-th_regla_cad_2_var_ind"><strong>th_regla_cad_2_var_ind</strong></a> | 
+   <a href="#cap-th_regla_cad_var_ind"><strong>th_regla_cad_var_ind</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -451,6 +466,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="capitulos/02/03.Continuidad.html#2.3._ex"><code class="xref">2.3._ex</code></a> <em>(capitulos/02/03.Continuidad)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-3.x._ex"><td></td><td>
+       <strong>3.x._ex</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#3.x._ex"><code class="xref">3.x._ex</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_01_angulos_directores"><td></td><td>
@@ -541,6 +564,14 @@ title="Fullscreen mode"
        <a href="capitulos/01/01.VectoresPlano.html#def_01_vectores_canonicos"><code class="xref">def_01_vectores_canonicos</code></a> <em>(capitulos/01/01.VectoresPlano)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_03_difer"><td></td><td>
+       <strong>def_03_difer</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/03.Diferenciacion.html#def_03_difer"><code class="xref">def_03_difer</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_1.7_cilindro"><td></td><td>
        <strong>def_1.7_cilindro</strong></td><td></td></tr>
      <tr>
@@ -621,6 +652,14 @@ title="Fullscreen mode"
        <a href="capitulos/03/01.DerivadasParciales.html#def_DerivParc3D"><code class="xref">def_DerivParc3D</code></a> <em>(capitulos/03/01.DerivadasParciales)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_Jacobiana"><td></td><td>
+       <strong>def_Jacobiana</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/02.DerivadasDireccionales.html#def_Jacobiana"><code class="xref">def_Jacobiana</code></a> <em>(capitulos/03/02.DerivadasDireccionales)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_cont_2v"><td></td><td>
        <strong>def_cont_2v</strong></td><td></td></tr>
      <tr>
@@ -661,6 +700,14 @@ title="Fullscreen mode"
        <a href="capitulos/02/02.Limites.html#def_limite"><code class="xref">def_limite</code></a> <em>(capitulos/02/02.Limites)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_rc_2vi"><td></td><td>
+       <strong>def_rc_2vi</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#def_rc_2vi"><code class="xref">def_rc_2vi</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ex_01_producto_escalar"><td></td><td>
        <strong>ex_01_producto_escalar</strong></td><td></td></tr>
      <tr>
@@ -683,6 +730,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="capitulos/02/02.Limites.html#ex_02_no_limite"><code class="xref">ex_02_no_limite</code></a> <em>(capitulos/02/02.Limites)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección"><td></td><td>
+       <strong>ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/03.Diferenciacion.html#ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección"><code class="xref">ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ex_2.1_dominios"><td></td><td>
@@ -789,6 +844,14 @@ title="Fullscreen mode"
        <a href="capitulos/01/06.RectasPlanos.html#prop_1.7_distancia_punto_recta"><code class="xref">prop_1.7_distancia_punto_recta</code></a> <em>(capitulos/01/06.RectasPlanos)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_CalculoDerDirecc"><td></td><td>
+       <strong>prop_CalculoDerDirecc</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/02.DerivadasDireccionales.html#prop_CalculoDerDirecc"><code class="xref">prop_CalculoDerDirecc</code></a> <em>(capitulos/03/02.DerivadasDireccionales)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_DerivMixtas"><td></td><td>
        <strong>prop_DerivMixtas</strong></td><td></td></tr>
      <tr>
@@ -797,12 +860,52 @@ title="Fullscreen mode"
        <a href="capitulos/03/01.DerivadasParciales.html#prop_DerivMixtas"><code class="xref">prop_DerivMixtas</code></a> <em>(capitulos/03/01.DerivadasParciales)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_PropGradiente"><td></td><td>
+       <strong>prop_PropGradiente</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/02.DerivadasDireccionales.html#prop_PropGradiente"><code class="xref">prop_PropGradiente</code></a> <em>(capitulos/03/02.DerivadasDireccionales)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rc_01_regla_cadena"><td></td><td>
+       <strong>rc_01_regla_cadena</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#rc_01_regla_cadena"><code class="xref">rc_01_regla_cadena</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rc_02_regla_cadena"><td></td><td>
+       <strong>rc_02_regla_cadena</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#rc_02_regla_cadena"><code class="xref">rc_02_regla_cadena</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rem_02_limites"><td></td><td>
        <strong>rem_02_limites</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="capitulos/02/02.Limites.html#rem_02_limites"><code class="xref">rem_02_limites</code></a> <em>(capitulos/02/02.Limites)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_CalculoDerDirecc"><td></td><td>
+       <strong>rem_CalculoDerDirecc</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/02.DerivadasDireccionales.html#rem_CalculoDerDirecc"><code class="xref">rem_CalculoDerDirecc</code></a> <em>(capitulos/03/02.DerivadasDireccionales)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_Jacobiana"><td></td><td>
+       <strong>rem_Jacobiana</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/02.DerivadasDireccionales.html#rem_Jacobiana"><code class="xref">rem_Jacobiana</code></a> <em>(capitulos/03/02.DerivadasDireccionales)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rem_NotacionDerivParc"><td></td><td>
@@ -837,12 +940,44 @@ title="Fullscreen mode"
        <a href="capitulos/02/02.Limites.html#th_02_func_mayorante"><code class="xref">th_02_func_mayorante</code></a> <em>(capitulos/02/02.Limites)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_03_cont"><td></td><td>
+       <strong>th_03_cont</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/03.Diferenciacion.html#th_03_cont"><code class="xref">th_03_cont</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_03_cont_der"><td></td><td>
+       <strong>th_03_cont_der</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/03.Diferenciacion.html#th_03_cont_der"><code class="xref">th_03_cont_der</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-th_func_comp_cont"><td></td><td>
        <strong>th_func_comp_cont</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="capitulos/02/03.Continuidad.html#th_func_comp_cont"><code class="xref">th_func_comp_cont</code></a> <em>(capitulos/02/03.Continuidad)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_regla_cad_2_var_ind"><td></td><td>
+       <strong>th_regla_cad_2_var_ind</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#th_regla_cad_2_var_ind"><code class="xref">th_regla_cad_2_var_ind</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_regla_cad_var_ind"><td></td><td>
+       <strong>th_regla_cad_var_ind</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#th_regla_cad_var_ind"><code class="xref">th_regla_cad_var_ind</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
        <em>theorem</em></td></tr>
    </table>
 
