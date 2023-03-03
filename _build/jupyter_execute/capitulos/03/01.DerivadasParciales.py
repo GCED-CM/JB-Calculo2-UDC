@@ -74,7 +74,7 @@
 # 
 # Veamos un par de ejemplos:
 
-# In[31]:
+# In[1]:
 
 
 import sympy as sp
@@ -85,7 +85,7 @@ f_expr = 5* x**3 * y**2 + 4* x**2 * y**3
 df_x_expr = sp.diff(f_expr,x)   # Derivada parcial respecto a x
 df_y_expr = sp.diff(f_expr,y)   # Derivada parcial respecto a y
 
-df_x = sp.Lambda((x,y),dfx_expr)  # Creamos una función Lambda para la derivada respecto x
+df_x = sp.Lambda((x,y),df_x_expr)  # Creamos una función Lambda para la derivada respecto x
 
 display(df_x_expr) 
 display(df_y_expr)
