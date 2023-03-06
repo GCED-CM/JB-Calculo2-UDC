@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.4. Plano tangente" href="04.PlanoTangente.html" />
-    <link rel="prev" title="3.2. Derivadas direccionales y gradiente" href="02.DerivadasDireccionales.html" />
+    <link rel="next" title="3.4. Plano tangente y recta normal" href="04.PlanoTangente.html" />
+    <link rel="prev" title="3.2. Derivadas direccionales, gradiente y matriz jacobiana" href="02.DerivadasDireccionales.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -463,7 +463,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="diferenciabilidad">
 <h1><span class="section-number">3.3. </span>Diferenciabilidad<a class="headerlink" href="#diferenciabilidad" title="Permalink to this headline">#</a></h1>
 <p>Comenzaremos esta sección motivando la aparición de un concepto más fuerte que el asociado a la existencia de las derivadas parciales, que resulta ser el concepto de diferenciabilidad. Para ello es necesario explicar que para funciones de dos o más variables la existencia de las derivadas parciales (es decir, la derivabilidad en la dirección de los ejes) no garantiza la continuidad, a diferencia de lo que ocurre para funciones de una variable. Además, la existencia de las derivadas parciales tampoco garantiza la existencia de todas las derivadas direccionales. Como ejemplo que ilustra ambas cuestiones, se puede considerar el siguiente.</p>
-<div class="proof example admonition" id="ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección">
+<div class="proof example admonition" id="ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
 <p>La función</p>
@@ -503,8 +503,35 @@ f(x,y)=\left\{
     \left\{\begin{array}{l}\displaystyle\lim_{h\to 0^-}\frac{-3}{2h}=\infty\\ \displaystyle\lim_{h\to 0^+}\frac{-3}{2h}=-\infty\end{array} \right.
 \end{eqnarray*}\]</div>
 <a class="reference internal image-reference" href="../../_images/03_ejemplo1.png"><img alt="../../_images/03_ejemplo1.png" src="../../_images/03_ejemplo1.png" style="width: 250px;" /></a>
+<p>A continuación, vamos a calcular estos límites pero con la ayuda de la librería <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>.</p>
 </section>
-</div><p>El concepto de diferenciabilidad está relacionado con la existencia de una aproximación lineal de la función en las proximidades del punto. En concreto, introducimos a continuación su definición formal para el caso de funciones escalares de dos variables resultando natural su extensión a más variables,</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y h&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># definimos la expresión de f para puntos distintos del origen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite restringido a y=x: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite restringido a y=-x: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial respecto a x en el (0,0): &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f1</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial respecto a y en el (0,0): &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f1</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada direccional en el (0,0) en la dirección de la recta y=x: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f1</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+                                                                        <span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f1</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Límite restringido a y=x:  -3/2
+Límite restringido a y=-x:  3/2
+Derivada parcial respecto a x en el (0,0):  0
+Derivada parcial respecto a y en el (0,0):  0
+Derivada direccional en el (0,0) en la dirección de la recta y=x:  oo -oo
+</pre></div>
+</div>
+</div>
+</div>
+<p>El concepto de diferenciabilidad está relacionado con la existencia de una aproximación lineal de la función en las proximidades del punto. En concreto, introducimos a continuación su definición formal para el caso de funciones escalares de dos variables resultando natural su extensión a más variables,</p>
 <div class="proof definition admonition" id="def_03_difer">
 <p class="admonition-title"><span>Definition </span> (Diferenciabilidad)</p>
 <section class="definition-content" id="proof-content">
@@ -516,7 +543,52 @@ f(x,y)=\left\{
 \]</div>
 <p>Decimos que <span class="math notranslate nohighlight">\(f\)</span> es diferenciable en <span class="math notranslate nohighlight">\(R\)</span>, si lo es en cada punto de <span class="math notranslate nohighlight">\(R\)</span>.</p>
 </section>
-</div><p>Finalizamos la sección estableciendo dos condiciones para la diferenciabilidad, la necesaria de continuidad y la suficiente de continuidad de las derivadas parciales.</p>
+</div><p>A continuación, vamos a analizar este límite, con la ayuda de la librería <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>, para comprobar que la función del ejemplo anterior no es diferenciable en el <span class="math notranslate nohighlight">\((0,0)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># definimos la expresión de f para puntos distintos del origen</span>
+<span class="n">fun</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># definimos la función del límite asociado a la diferenciabilidad </span>
+
+<span class="c1"># calculamos el límite a través de rectas</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límites direccionales: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># son infinitos</span>
+
+<span class="c1"># calculamos los límites iterados (coinciden aunque en este caso no existe el límite)</span>
+<span class="n">fy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite iterado empezando en x: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fy</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite iterado empezando en y: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># calculamos el límite en coordenadas polares</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">nonnegative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fpol</span><span class="o">=</span><span class="n">fun</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Función en polares: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">fpol</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite en polares: &#39;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fpol</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">))</span> 
+<span class="c1"># restringidos a semirectas son infinitos </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Límites direccionales:  -oo*sign(m)
+Límite iterado empezando en x:  0
+Límite iterado empezando en y:  0
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Función en polares: &#39;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{3 \sin{\left(2 \theta \right)}}{2 r}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Límite en polares:  -oo*sign(sin(theta)*cos(theta))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Por tanto, no existe el límite que tiene que ser cero para la diferenciabilidad en el <span class="math notranslate nohighlight">\((0,0)\)</span>, y en consecuencia la función no es diferenciable en dicho punto. Finalizamos la sección estableciendo dos condiciones para la diferenciabilidad, la necesaria de continuidad y la suficiente de continuidad de las derivadas parciales.</p>
 <div class="proof theorem admonition" id="th_03_cont">
 <p class="admonition-title"><span>Theorem </span> (Diferenciabilidad implica continuidad )</p>
 <section class="theorem-content" id="proof-content">
@@ -560,13 +632,13 @@ f(x,y)=\left\{
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.2. </span>Derivadas direccionales y gradiente</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>Derivadas direccionales, gradiente y matriz jacobiana</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04.PlanoTangente.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.4. </span>Plano tangente</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Plano tangente y recta normal</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
