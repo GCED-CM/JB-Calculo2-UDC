@@ -39,7 +39,7 @@
 # En concreto, calcularemos la derivada de $f(x,y) = \frac{x}{(x+y)y}$ en el punto $P=(1,2)$ según la dirección de 
 # $\mathbf{u} = (\cos(\theta),\sin(\theta))$ para cualquier $\theta\in[0,2\pi)$. Hacia el final de esta sección, calcularemos esta misma derivada direccional utilizando el vector gradiente. 
 
-# In[17]:
+# In[1]:
 
 
 import sympy as sp
@@ -103,7 +103,7 @@ display('Derivada en la dirección de u: ',df_u)
 # Entonces, para cualquier vector $\mathbf{u}\in\mathbb{R}^{2}$, con $\|\mathbf{u}\|=1$, se cumple
 # 
 # $$
-# D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right)
+# D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right)
 # = u_{1}\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) + u_{2}\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right).
 # $$
 #         
@@ -112,7 +112,7 @@ display('Derivada en la dirección de u: ',df_u)
 # **NOTA:** Para funciones de tres variables:
 # 
 # $$
-# D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}, z_{0}\right)
+# D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}, z_{0}\right)
 # = u_{1}\frac{\partial f}{\partial x} \left(x_{0}, y_{0}, z_{0}\right) + 
 #   u_{2}\frac{\partial f}{\partial y} \left(x_{0}, y_{0}, z_{0} \right) +
 #   u_{3}\frac{\partial f}{\partial z} \left(x_{0}, y_{0}, z_{0} \right).
@@ -131,7 +131,7 @@ display('Derivada en la dirección de u: ',df_u)
 #     para algún $\theta\in [0,2\pi)$. Por lo tanto, la fórmula de la derivada direccional podría escribirse como 
 # 
 #     $$
-#     D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right) 
+#     D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right) 
 #     = \cos(\theta)\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) + 
 #     \sin(\theta)\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right).
 #     $$
@@ -147,9 +147,9 @@ display('Derivada en la dirección de u: ',df_u)
 # Sea $f:\mathbb{R}^{2} \to \mathbb{R}$ y $\left(x_{0}, y_{0}\right)$ un punto en el dominio de $f$ para
 # el que existe $\mathbf{\nabla} f\left(x_{0}, y_{0}\right)$.
 # 
-# 1. $\mathbf{\nabla} f\left(x_{0}, y_{0}\right)$ indica la dirección de máximo crecimiento de $f$ en $\left(x_{0}, y_{0}\right)$.
+# 1. $\left( +\mathbf{\nabla} f\left(x_{0}, y_{0}\right) \right)$ indica la dirección de máximo crecimiento de $f$ en $\left(x_{0}, y_{0}\right)$.
 #    El valor máximo de $D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)$ es $\left\|\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\right\|$.
-# 2. $-\mathbf{\nabla} f\left(x_{0}, y_{0}\right)$ indica la dirección de máximo decrecimiento de $f$ en 
+# 2. $\left( -\mathbf{\nabla} f\left(x_{0}, y_{0}\right) \right)$ indica la dirección de máximo decrecimiento de $f$ en 
 #    $\left(x_{0}, y_{0}\right)$. El valor mínimo de $D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)$ es 
 #    $-\left\|\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\right\|$.
 # 3. Si $\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\neq \mathbf{0}$, entonces $\mathbf{\nabla} f\left(x_{0}, y_{0}\right)$ es 
@@ -271,9 +271,10 @@ grad_F = jac_F.transpose()
 display(grad_F)
 
 
-# Ahora vamos a mostrar un par de aplicaciones del gradiente. 
+# Ahora vamos a mostrar la programación en `Python` de un par de aplicaciones del gradiente. 
 # 
-# Empezamos con el cálculo de la derivada direccional que hicimos, de modo teórico, al principio de esta sección.
+# **Empezamos utilizando el gradiente para calcular una derivada direccional**. En concreto, la que hicimos, de modo teórico, al principio de esta sección: derivada de $f(x,y) = \frac{x}{(x+y)y}$ en el punto $P=(1,2)$ según la dirección de 
+# $\mathbf{u} = (\cos(\theta),\sin(\theta))$ para cualquier $\theta\in[0,2\pi)$.
 
 # In[21]:
 
@@ -299,9 +300,9 @@ df_u = u.dot(nabla)
 display(df_u)
 
 
-# Por último, vamos a ilustrar, sobre un ejemplo sencillo, la propiedad que dice que el vector gradiente es ortogonal a las curvas de nivel.
+# Por último, **vamos a ilustrar, sobre un ejemplo sencillo, la propiedad que dice que el vector gradiente es ortogonal a las curvas de nivel**.
 # 
-# Fíjate que a partir de creamos funciones de tipo `lambdify` a partir de las matrices:
+# Fíjate que creamos funciones de tipo `lambdify` a partir de las matrices:
 # * Función F_lamb, con valores escalares, a partir de la matriz F.
 # * Función grad_F_lamb, con valores vectoriales, a partir de la matriz grad_F.   
 

@@ -639,14 +639,14 @@ el que existe <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\lef
 <p>Entonces, para cualquier vector <span class="math notranslate nohighlight">\(\mathbf{u}\in\mathbb{R}^{2}\)</span>, con <span class="math notranslate nohighlight">\(\|\mathbf{u}\|=1\)</span>, se cumple</p>
 <div class="math notranslate nohighlight">
 \[
-D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right)
+D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right)
 = u_{1}\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) + u_{2}\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right).
 \]</div>
 </section>
 </div><p><strong>NOTA:</strong> Para funciones de tres variables:</p>
 <div class="math notranslate nohighlight">
 \[
-D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}, z_{0}\right)
+D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}, z_{0}\right)
 = u_{1}\frac{\partial f}{\partial x} \left(x_{0}, y_{0}, z_{0}\right) + 
   u_{2}\frac{\partial f}{\partial y} \left(x_{0}, y_{0}, z_{0} \right) +
   u_{3}\frac{\partial f}{\partial z} \left(x_{0}, y_{0}, z_{0} \right).
@@ -664,7 +664,7 @@ D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u} \cdot \mathbf{\nab
 <p>para algún <span class="math notranslate nohighlight">\(\theta\in [0,2\pi)\)</span>. Por lo tanto, la fórmula de la derivada direccional podría escribirse como</p>
 <div class="math notranslate nohighlight">
 \[
-    D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right) 
+    D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot \mathbf{\nabla} f \left(x_{0}, y_{0}\right) 
     = \cos(\theta)\frac{\partial f}{\partial x} \left(x_{0}, y_{0}\right) + 
     \sin(\theta)\frac{\partial f}{\partial y} \left(x_{0}, y_{0}\right).
     \]</div>
@@ -678,9 +678,9 @@ D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u} \cdot \mathbf{\nab
 <p>Sea <span class="math notranslate nohighlight">\(f:\mathbb{R}^{2} \to \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span> un punto en el dominio de <span class="math notranslate nohighlight">\(f\)</span> para
 el que existe <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span>.</p>
 <ol>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span> indica la dirección de máximo crecimiento de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span>.
+<li><p><span class="math notranslate nohighlight">\(\left( +\mathbf{\nabla} f\left(x_{0}, y_{0}\right) \right)\)</span> indica la dirección de máximo crecimiento de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span>.
 El valor máximo de <span class="math notranslate nohighlight">\(D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)\)</span> es <span class="math notranslate nohighlight">\(\left\|\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\right\|\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(-\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span> indica la dirección de máximo decrecimiento de <span class="math notranslate nohighlight">\(f\)</span> en
+<li><p><span class="math notranslate nohighlight">\(\left( -\mathbf{\nabla} f\left(x_{0}, y_{0}\right) \right)\)</span> indica la dirección de máximo decrecimiento de <span class="math notranslate nohighlight">\(f\)</span> en
 <span class="math notranslate nohighlight">\(\left(x_{0}, y_{0}\right)\)</span>. El valor mínimo de <span class="math notranslate nohighlight">\(D_{\mathbf{u}}f\left(x_{0}, y_{0}\right)\)</span> es
 <span class="math notranslate nohighlight">\(-\left\|\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\right\|\)</span>.</p></li>
 <li><p>Si <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\neq \mathbf{0}\)</span>, entonces <span class="math notranslate nohighlight">\(\mathbf{\nabla} f\left(x_{0}, y_{0}\right)\)</span> es
@@ -807,8 +807,9 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 \[\begin{split}\displaystyle \left[\begin{matrix}6 x\\- 10 y\end{matrix}\right]\end{split}\]</div>
 </div>
 </div>
-<p>Ahora vamos a mostrar un par de aplicaciones del gradiente.</p>
-<p>Empezamos con el cálculo de la derivada direccional que hicimos, de modo teórico, al principio de esta sección.</p>
+<p>Ahora vamos a mostrar la programación en <code class="docutils literal notranslate"><span class="pre">Python</span></code> de un par de aplicaciones del gradiente.</p>
+<p><strong>Empezamos utilizando el gradiente para calcular una derivada direccional</strong>. En concreto, la que hicimos, de modo teórico, al principio de esta sección: derivada de <span class="math notranslate nohighlight">\(f(x,y) = \frac{x}{(x+y)y}\)</span> en el punto <span class="math notranslate nohighlight">\(P=(1,2)\)</span> según la dirección de
+<span class="math notranslate nohighlight">\(\mathbf{u} = (\cos(\theta),\sin(\theta))\)</span> para cualquier <span class="math notranslate nohighlight">\(\theta\in[0,2\pi)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -842,8 +843,8 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 \[\displaystyle - \frac{5 \sin{\left(\theta \right)}}{36} + \frac{\cos{\left(\theta \right)}}{9}\]</div>
 </div>
 </div>
-<p>Por último, vamos a ilustrar, sobre un ejemplo sencillo, la propiedad que dice que el vector gradiente es ortogonal a las curvas de nivel.</p>
-<p>Fíjate que a partir de creamos funciones de tipo <code class="docutils literal notranslate"><span class="pre">lambdify</span></code> a partir de las matrices:</p>
+<p>Por último, <strong>vamos a ilustrar, sobre un ejemplo sencillo, la propiedad que dice que el vector gradiente es ortogonal a las curvas de nivel</strong>.</p>
+<p>Fíjate que creamos funciones de tipo <code class="docutils literal notranslate"><span class="pre">lambdify</span></code> a partir de las matrices:</p>
 <ul class="simple">
 <li><p>Función F_lamb, con valores escalares, a partir de la matriz F.</p></li>
 <li><p>Función grad_F_lamb, con valores vectoriales, a partir de la matriz grad_F.</p></li>

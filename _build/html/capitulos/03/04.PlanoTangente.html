@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3.4. Plano tangente &#8212; Calculo en varias variables</title>
+    <title>3.4. Plano tangente y recta normal &#8212; Calculo en varias variables</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.5. Regla de la cadena" href="05.ReglaCadena.html" />
-    <link rel="prev" title="3.3. Diferenciación" href="03.Diferenciacion.html" />
+    <link rel="prev" title="3.3. Diferenciabilidad" href="03.Diferenciacion.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -434,23 +436,100 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plano-tangente-a-una-superficie">
+   3.4.1. Plano tangente a una superficie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plano-tangente-y-recta-normal-a-una-superficie">
+   3.4.2. Plano tangente y recta normal a una superficie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#angulo-de-inclinacion">
+   3.4.3. Ángulo de inclinación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python">
+   3.4.4. Cálculo y representación del plano tangente y de la recta normal con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Plano tangente</h1>
+                <h1>Plano tangente y recta normal</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plano-tangente-a-una-superficie">
+   3.4.1. Plano tangente a una superficie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plano-tangente-y-recta-normal-a-una-superficie">
+   3.4.2. Plano tangente y recta normal a una superficie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#angulo-de-inclinacion">
+   3.4.3. Ángulo de inclinación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python">
+   3.4.4. Cálculo y representación del plano tangente y de la recta normal con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -458,8 +537,236 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="plano-tangente">
-<h1><span class="section-number">3.4. </span>Plano tangente<a class="headerlink" href="#plano-tangente" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="plano-tangente-y-recta-normal">
+<h1><span class="section-number">3.4. </span>Plano tangente y recta normal<a class="headerlink" href="#plano-tangente-y-recta-normal" title="Permalink to this headline">#</a></h1>
+<section id="plano-tangente-a-una-superficie">
+<h2><span class="section-number">3.4.1. </span>Plano tangente a una superficie<a class="headerlink" href="#plano-tangente-a-una-superficie" title="Permalink to this headline">#</a></h2>
+<p>Comenzamos esta sección abordando el problema de encontrar el plano tangente a una superficie <span class="math notranslate nohighlight">\(S\)</span> en un punto de la misma <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span>. Para ello, consideramos la representación más general de una superficie dada por una ecuación de la forma</p>
+<div class="math notranslate nohighlight">
+\[F(x,y,z)=0.\]</div>
+<p>De esta manera general, la superficie <span class="math notranslate nohighlight">\(S\)</span> se puede ver como la superficie de nivel <span class="math notranslate nohighlight">\(0\)</span> de <span class="math notranslate nohighlight">\(F\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+S=\left\{(x,y,z)\in \mathbb{R}^3:\,F(x,y,z)=0\right\}.
+\]</div>
+<p>Además, consideramos una curva <span class="math notranslate nohighlight">\(C\)</span> contenida en la superficie <span class="math notranslate nohighlight">\(S\)</span> y que pasa por <span class="math notranslate nohighlight">\(P\)</span> definida por la función de valores vectoriales <span class="math notranslate nohighlight">\(\mathbf{r}(t)=x(t)\mathbf{i}+y(t)\mathbf{j}+z(t)\mathbf{k}\)</span> como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+C=\{(x,y,z)\in\mathbb{R}^3:\, x=x(t),\ y=y(t),\ z=z(t)\text{ con }t\in\mathbb{R}\}\subset S,
+\]</div>
+<p>siendo <span class="math notranslate nohighlight">\(P=\mathbf{r}(t_0)=(x(t_0),y(t_0),z(t_0))\)</span> para un <span class="math notranslate nohighlight">\(t_0\in\mathbb{R}\)</span>. Entonces,</p>
+<div class="math notranslate nohighlight">
+\[
+F(x(t),y(t),z(t))=0,
+\]</div>
+<p>para todo <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span>. Derivamos la ecuación anterior respecto a <span class="math notranslate nohighlight">\(t\)</span> aplicando la regla de la cadena y asumiendo que <span class="math notranslate nohighlight">\(F\)</span> es difereciable, y que <span class="math notranslate nohighlight">\(x(t)\)</span>, <span class="math notranslate nohighlight">\(y(t)\)</span> y <span class="math notranslate nohighlight">\(z(t)\)</span> son derivables, y obtenemos</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial F}{\partial x}(x(t),y(t),z(t))x'(t)+\frac{\partial F}{\partial y}(x(t),y(t),z(t))y'(t)+\frac{\partial F}{\partial x}(x(t),y(t),z(t))z'(t)=0,
+\]</div>
+<p>para todo <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span>. En <span class="math notranslate nohighlight">\(t=t_0\)</span>, la forma vectorial equivalente es la siguiente,</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla F(x_0,y_0,z_0)\cdot \mathbf{r}'(t_0)=0.
+\]</div>
+<p>Este resultado significa que, en el punto <span class="math notranslate nohighlight">\(P\)</span>, el gradiente de <span class="math notranslate nohighlight">\(F\)</span> es ortogonal al vector tangente de cada curva contenida en <span class="math notranslate nohighlight">\(S\)</span>. Por lo tanto, todas las rectas tangentes a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P\)</span>, se encuentran en un plano que es normal al vector gradiente de <span class="math notranslate nohighlight">\(F\)</span> en <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span>, y que contiene al punto <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span>, como se muestra en la figura.</p>
+<a class="reference internal image-reference" href="../../_images/04_plano_tang.png"><img alt="../../_images/04_plano_tang.png" src="../../_images/04_plano_tang.png" style="width: 250px;" /></a>
+</section>
+<section id="plano-tangente-y-recta-normal-a-una-superficie">
+<h2><span class="section-number">3.4.2. </span>Plano tangente y recta normal a una superficie<a class="headerlink" href="#plano-tangente-y-recta-normal-a-una-superficie" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_04_plano_tang">
+<p class="admonition-title"><span>Definition </span> (Plano tangente y recta normal )</p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(F\)</span> una función escalar de tres variables diferenciable en un punto <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> de la superficie dada por <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span> tal que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\neq \mathbf{0}\)</span>.</p>
+<ul class="simple">
+<li><p>Al plano que pasa por <span class="math notranslate nohighlight">\(P\)</span> y es normal a <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> se le llama <strong>plano tangente a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P\)</span></strong>.</p></li>
+<li><p>A la recta que pasa por <span class="math notranslate nohighlight">\(P\)</span> y tiene la dirección de <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> se le llama <strong>recta normal a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P\)</span></strong>.</p></li>
+</ul>
+</section>
+</div><p>La ecuación del plano tangente a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> se deduce inmediatamente teniendo en cuenta que <span class="math notranslate nohighlight">\(P\)</span> pertenece al plano y que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> es normal a dicho plano (ortogonal a cada vector en el plano). En efecto, dado <span class="math notranslate nohighlight">\((x,y,z)\)</span> un punto arbitrario en el plano, se tiene que el vector que une dicho punto y <span class="math notranslate nohighlight">\(P\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}=(x-x_0)\mathbf{i}+(y-y_0)\mathbf{j}+(z-z_0)\mathbf{k}
+\]</div>
+<p>se encuentra en el plano tangente, y por tanto es ortogonal a <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span>, es decir, se tiene</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla F(x_0,y_0,z_0)\cdot \mathbf{v}=0,
+\]</div>
+<p>que conduce al siguiente teorema.</p>
+<div class="proof theorem admonition" id="th_04_plano_tang">
+<p class="admonition-title"><span>Theorem </span> (Ecuación del plano tangente )</p>
+<section class="theorem-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(F\)</span> una función escalar de tres variables diferenciable en un punto <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> de la superficie dada por <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span> tal que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\neq \mathbf{0}\)</span>. Entonces,</p>
+<ul class="simple">
+<li><p>La ecuación del plano tangente a dicha superficie en <span class="math notranslate nohighlight">\((x_0,y_0,z_0)\)</span> es</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial F}{\partial x}(x_0,y_0,z_0)(x-x_0)+\frac{\partial F}{\partial y}(x_0,y_0,z_0)(y-y_0)+
+\frac{\partial F}{\partial z}(x_0,y_0,z_0)(z-z_0)=0.
+\]</div>
+<ul class="simple">
+<li><p>Las ecuaciones paramétricas de la recta normal a la superficie en <span class="math notranslate nohighlight">\((x_0,y_0,z_0)\)</span> son</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left\{\begin{array}{l}x=x_0+t\frac{\partial F}{\partial x}(x_0,y_0,z_0)\\
+y=y_0+t\frac{\partial F}{\partial y}(x_0,y_0,z_0)\\
+z=z_0+t\frac{\partial F}{\partial z}(x_0,y_0,z_0)
+\right.\quad t\in \mathbb{R}. 
+\end{split}\]</div>
+</section>
+</div><p>Nótese que, la gráfica de una función de dos variables, es decir, una superficie de la forma <span class="math notranslate nohighlight">\(z=f(x,y)\)</span>, se puede convertir a la forma general definiendo <span class="math notranslate nohighlight">\(F\)</span> como</p>
+<div class="math notranslate nohighlight">
+\[F(x,y,z)=f(x,y)-z.\]</div>
+<p>Entonces, por el teorema anterior se tiene que, si <span class="math notranslate nohighlight">\(f\)</span> es diferenciable, el plano tangente a la gráfica de <span class="math notranslate nohighlight">\(f\)</span> en el punto <span class="math notranslate nohighlight">\((x_0,y_0,z_0)=(x_0,y_0,f(x_0,y_0))\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial f}{\partial x}(x_0,y_0,z_0)(x-x_0)+\frac{\partial f}{\partial y}(x_0,y_0,z_0)(y-y_0)-
+(z-z_0)=0.
+\]</div>
+<p>En este punto, conviene señalar que el concepto de diferenciabilidad está relacionado con la existencia del plano tangente. En concreto, para una función de dos variables, dicho concepto permite establecer el plano tangente como aproximación lineal de la gráfica de la función, de la misma manera que el concepto de derivabilidad permite introducir la recta tangente como aproximación lineal de la gráfica de una función de variable real.</p>
+</section>
+<section id="angulo-de-inclinacion">
+<h2><span class="section-number">3.4.3. </span>Ángulo de inclinación<a class="headerlink" href="#angulo-de-inclinacion" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_04_plano_tang">
+<p class="admonition-title"><span>Definition </span> (Ángulo de inclinación de un plano)</p>
+<section class="definition-content" id="proof-content">
+<p>El <strong>ángulo de inclinación</strong> de un plano se define como el ángulo <span class="math notranslate nohighlight">\(\theta\)</span> (<span class="math notranslate nohighlight">\(0\leq \theta \leq \pi/2\)</span>) entre el plano dado y el plano <span class="math notranslate nohighlight">\(XY\)</span>, como se muestra en la figura. Puesto que el vector <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> es normal al plano <span class="math notranslate nohighlight">\(XY\)</span>, se puede utilizar la fórmula del coseno del ángulo entre dos vectores para concluir que el ángulo de inclinación de un plano con vector normal <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\cos \theta=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||||\mathbf{k}||}=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||},
+\]</div>
+<p>siendo <span class="math notranslate nohighlight">\(0\leq \theta \leq \pi/2\)</span>.</p>
+<a class="reference internal image-reference" href="../../_images/04_angulo_inc.png"><img alt="../../_images/04_angulo_inc.png" src="../../_images/04_angulo_inc.png" style="width: 250px;" /></a>
+</section>
+</div><p>Nótese que otro uso del gradiente es determinar el ángulo de inclinación del plano tangente a una superficie como se indica en la siguiente observación.</p>
+<div class="proof remark admonition" id="rem_04_angulo_inc_tang">
+<p class="admonition-title"><span>Remark </span></p>
+<section class="remark-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(F\)</span> una función escalar de tres variables diferenciable en un punto <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> de la superficie dada por <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span> tal que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\neq \mathbf{0}\)</span>. Entonces, el ángulo de inclinación del plano tangente a dicha superficie en <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\cos \theta=\frac{|\nabla F(x_0,y_0,z_0)\cdot \mathbf{k}|}{||\nabla F(x_0,y_0,z_0)||}=\frac{\left|\dfrac{\partial F}{\partial z}(x_0,y_0,z_0)\right|}{||\nabla F(x_0,y_0,z_0)||},
+\]</div>
+<p>siendo <span class="math notranslate nohighlight">\(0\leq \theta \leq \pi/2\)</span>.</p>
+</section>
+</div></section>
+<section id="calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python">
+<h2><span class="section-number">3.4.4. </span>Cálculo y representación del plano tangente y de la recta normal con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python" title="Permalink to this headline">#</a></h2>
+<p>Consideramos a continuación el problema de encontrar el plano tangente y la recta normal a la superficie <span class="math notranslate nohighlight">\(z=f(x,y)=x^2+y^2+3\)</span> en el punto <span class="math notranslate nohighlight">\((x_0,y_0,z_0)=(1,1/2,f(1,1/2))\)</span>, que resolvemos, en <code class="docutils literal notranslate"><span class="pre">Python</span></code>, aplicando los resultados expuestos. En primer lugar, importamos los módulos necesarios teniendo en cuenta que usaremos <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> para la representación gráfica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y0</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">z0</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span>
+<span class="c1"># Cálculo de la ecuación del plano tangente</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">z</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span>
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">grad_fun</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),(</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">grad_fun</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">z0</span><span class="p">)</span> <span class="c1"># vector perpendicular al plano</span>
+<span class="n">plano_tang</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">z0</span><span class="p">),</span><span class="mi">0</span><span class="p">),</span><span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Cálculo de la ecuación vectorial de la recta normal</span>
+<span class="n">recta_norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">t</span><span class="p">,(</span><span class="n">x0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">z0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una vez calculado el plano tangente y la recta normal, se traslada la información del módulo <strong>Sympy</strong> a <strong>Numpy</strong>, para un uso posterior en <strong>Matplotlib</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_n</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy con la expresión de f(x,y)</span>
+<span class="n">Plano_tang</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">plano_tang</span><span class="p">,</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> 
+<span class="n">Recta_norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">recta_norm</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora se pueden usar las funciones de <strong>Numpy</strong> para la representación gráfica del plano tangente y la recta normal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<span class="c1"># Nube de puntos para representar la superficie y el plano</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">fval</span> <span class="o">=</span> <span class="n">f_n</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">Pval</span> <span class="o">=</span> <span class="n">Plano_tang</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Conjunto de puntos para representar la recta normal</span>
+<span class="n">tvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Rval</span> <span class="o">=</span> <span class="n">Recta_norm</span><span class="p">(</span><span class="n">tvec</span><span class="p">)</span>
+
+<span class="c1"># Creación de la figura 3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+<span class="c1"># Representación de la superficie z=f(x,y), el plano tangente y la recta normal</span>
+<span class="n">surf_F</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">fval</span><span class="p">)</span> 
+<span class="n">surf_Plano</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Pval</span><span class="p">)</span>
+<span class="n">recta</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="o">*</span><span class="n">Rval</span><span class="p">)</span>
+<span class="c1"># Etiquetas de los ejes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="c1"># Punto de vista del observador: elevación, ángulo azimutal</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">auto_scale_xyz</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04.PlanoTangente_8_0.png" src="../../_images/04.PlanoTangente_8_0.png" />
+</div>
+</div>
+<p>Por último, calculamos el ángulo de inclinación del plano tangente calculado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angulo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Ángulo de inclinación del plano tangente:&#39;</span><span class="p">,</span><span class="n">angulo</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span>: &#39;Float&#39; object has no attribute &#39;sqrt&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_10632</span>\<span class="mf">3773599388.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">angulo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Ángulo de inclinación del plano tangente:&#39;</span><span class="p">,</span><span class="n">angulo</span><span class="p">)</span>
+
+<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">norm</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="nn">~\anaconda3\lib\site-packages\numpy\linalg\linalg.py</span> in <span class="ni">norm</span><span class="nt">(x, ord, axis, keepdims)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2529</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2530</span>                 <span class="n">sqnorm</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2531</span>             <span class="n">ret</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sqnorm</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2532</span>             <span class="k">if</span> <span class="n">keepdims</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2533</span>                 <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ndim</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="ne">TypeError</span>: loop of ufunc does not support argument 0 of type Float which has no callable sqrt method
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -493,7 +800,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.3. </span>Diferenciación</p>
+            <p class="prev-next-title"><span class="section-number">3.3. </span>Diferenciabilidad</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05.ReglaCadena.html" title="next page">

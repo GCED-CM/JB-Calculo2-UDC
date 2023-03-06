@@ -6,7 +6,7 @@
 # Comenzaremos esta sección motivando la aparición de un concepto más fuerte que el asociado a la existencia de las derivadas parciales, que resulta ser el concepto de diferenciabilidad. Para ello es necesario explicar que para funciones de dos o más variables la existencia de las derivadas parciales (es decir, la derivabilidad en la dirección de los ejes) no garantiza la continuidad, a diferencia de lo que ocurre para funciones de una variable. Además, la existencia de las derivadas parciales tampoco garantiza la existencia de todas las derivadas direccionales. Como ejemplo que ilustra ambas cuestiones, se puede considerar el siguiente. 
 # 
 # ````{prf:example}
-# :label: ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad en toda dirección 
+# :label: ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad 
 # :nonumber:
 # 
 # La función 
@@ -53,9 +53,26 @@
 # 
 # <img src="../../images/03_ejemplo1.png" width="250"/>
 # 
+# A continuación, vamos a calcular estos límites pero con la ayuda de la librería `Sympy`.
+# 
 # ````
 # 
-# 
+
+# In[9]:
+
+
+import sympy as sp
+
+x, y, h = sp.symbols('x y h', real=True) # definimos las variables simbólicas
+f1 = sp.Lambda((x,y),-3*x*y/(x**2+y**2)) # definimos la expresión de f para puntos distintos del origen
+
+print('Límite restringido a y=x: ',sp.limit(f1(x,x),x,0))
+print('Límite restringido a y=-x: ',sp.limit(f1(x,-x),x,0))
+print('Derivada parcial respecto a x en el (0,0): ',sp.limit((f1(h,0)-0)/h,h,0))
+print('Derivada parcial respecto a y en el (0,0): ',sp.limit((f1(0,h)-0)/h,h,0))
+print('Derivada direccional en el (0,0) en la dirección de la recta y=x: ',sp.limit((f1(h/sp.sqrt(2),h/sp.sqrt(2))-0)/h,h,0,dir='-')
+                                                                        , sp.limit((f1(h/sp.sqrt(2),h/sp.sqrt(2))-0)/h,h,0,dir='+'))
+
 
 # El concepto de diferenciabilidad está relacionado con la existencia de una aproximación lineal de la función en las proximidades del punto. En concreto, introducimos a continuación su definición formal para el caso de funciones escalares de dos variables resultando natural su extensión a más variables,
 # 
@@ -74,9 +91,37 @@
 # 
 # ````
 # 
-# 
+# A continuación, vamos a analizar este límite, con la ayuda de la librería `Sympy`, para comprobar que la función del ejemplo anterior no es diferenciable en el $(0,0)$.    
 
-# Finalizamos la sección estableciendo dos condiciones para la diferenciabilidad, la necesaria de continuidad y la suficiente de continuidad de las derivadas parciales.
+# In[3]:
+
+
+import sympy as sp
+
+x, y = sp.symbols('x y', real=True) # definimos las variables simbólicas
+f1 = sp.Lambda((x,y),-3*x*y/(x**2+y**2)) # definimos la expresión de f para puntos distintos del origen
+fun = sp.Lambda((x,y),f1(x,y)/sp.sqrt(x**2+y**2)) # definimos la función del límite asociado a la diferenciabilidad 
+
+# calculamos el límite a través de rectas
+m = sp.Symbol('m', real=True)
+print('Límites direccionales: ',sp.limit(fun(x,m*x),x,0)) # son infinitos
+
+# calculamos los límites iterados (coinciden aunque en este caso no existe el límite)
+fy = sp.limit(fun(x,y),x,0)
+print('Límite iterado empezando en x: ',sp.limit(fy,y,0))
+fx = sp.limit(fun(x,y),y,0)
+print('Límite iterado empezando en y: ',sp.limit(fx,x,0))
+
+# calculamos el límite en coordenadas polares
+r = sp.Symbol('r', nonnegative=True)
+theta = sp.Symbol('theta', real=True)
+fpol=fun(r*sp.cos(theta), r*sp.sin(theta))
+display('Función en polares: ',sp.simplify(fpol))
+print('Límite en polares: ',sp.limit(fpol,r,0,dir='+')) 
+# restringidos a semirectas son infinitos 
+
+
+# Por tanto, no existe el límite que tiene que ser cero para la diferenciabilidad en el $(0,0)$, y en consecuencia la función no es diferenciable en dicho punto. Finalizamos la sección estableciendo dos condiciones para la diferenciabilidad, la necesaria de continuidad y la suficiente de continuidad de las derivadas parciales.
 # 
 # ````{prf:theorem} Diferenciabilidad implica continuidad 
 # :label: th_03_cont
@@ -92,3 +137,9 @@
 # 
 # ````
 # 
+
+# In[ ]:
+
+
+
+

@@ -15,7 +15,7 @@
 # \frac{dw}{dt} = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt}.
 # $$
 # ````
-# <img src="../../images/3.5.Regla_cadena_1_var_ind.png" width="250"/>
+# <img src="../../images/3.5.Regla_cadena_1_var_ind.png" width="200"/>
 # 
 # ¡A practicar!
 # 
@@ -93,7 +93,7 @@
 # \begin{split}
 # \frac{\partial w}{\partial s} & = \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s} \\
 #  & = 2y(2s) + 2x\frac{1}{t} \\
-#  & = 2 \color{blue}{\frac{s}{t}}(2s) + w(\color{blue}{s^2 + t^2})\frac{1}{t} \\
+#  & = 2 \color{blue}{\frac{s}{t}}\normalcolor(2s) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{1}{t} \\
 #  & = \frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t} \\
 #  & = \frac{6s^2 + 2t^2}{t}.
 # \end{split}
@@ -101,16 +101,16 @@
 # 
 # Del mismo modo, asumiendo $s$ constante, obtenemos que
 # 
-# \begin{equation} 
+# \begin{equation*} 
 # \begin{split}
 # \frac{\partial w}{\partial t} & = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
 #  & = 2y(2t) + 2x\frac{-s}{t^2} \\
-#  & = 2\color{blue}{\frac{s}{t}}(2t) + 2(\color{blue}{s^2 + t^2})\frac{-s}{t^2} \\
+#  & = 2\color{blue}{\frac{s}{t}}\normalcolor(2t) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{-s}{t^2} \\
 #  & = 4s - \frac{2s^3 + 2st^2}{t^2} \\
 #  & = \frac{4st^2 - 2s^3 - 2st^2}{t^2} \\
 #  & = \frac{2st^2 - 2s^3}{t^2}.
 # \end{split}
-# \end{equation}
+# \end{equation*}
 # ````
 # 
 # Vamos ahora a practicar con `Python`.
@@ -151,7 +151,7 @@ display(sp.simplify(w_t))
 # && \frac{\partial w}{\partial t_1} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_1} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_1} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_1}, \\ 
 # && \frac{\partial w}{\partial t_2} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_2} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_2} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_2}, \\
 # && \quad \vdots \\
-# \frac{\partial w}{\partial t_m} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_m} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_m} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_m}
+# && \frac{\partial w}{\partial t_m} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_m} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_m} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_m}
 # \end{eqnarray*}
 # ````
 
@@ -195,13 +195,13 @@ display(sp.simplify(w_t))
 # Entonces
 # 
 # $$
-# F_x(x,y) = -2x \quad \textrm{ y } F_y(x,y) = 3y^2 + 2y - 5.
+# F_x(x,y) = -2x \quad \textrm{ y } \quad F_y(x,y) = 3y^2 + 2y - 5.
 # $$
 # 
-# Usando el resultado teórico de diferenciación parcial implícita, obtenemos que
+# Usando el resultado teórico de derivación implícita, obtenemos que
 # 
 # $$
-# \frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)} = \frac{-(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
+# \frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
 # $$
 # ````
 # 

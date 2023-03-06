@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.6. Extremos en 2D" href="06.Extremos2D.html" />
-    <link rel="prev" title="3.4. Plano tangente" href="04.PlanoTangente.html" />
+    <link rel="prev" title="3.4. Plano tangente y recta normal" href="04.PlanoTangente.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -530,7 +530,7 @@ title="Print to PDF"
 \frac{dw}{dt} = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt}.
 \]</div>
 </section>
-</div><a class="reference internal image-reference" href="../../_images/3.5.Regla_cadena_1_var_ind.png"><img alt="../../_images/3.5.Regla_cadena_1_var_ind.png" src="../../_images/3.5.Regla_cadena_1_var_ind.png" style="width: 250px;" /></a>
+</div><a class="reference internal image-reference" href="../../_images/3.5.Regla_cadena_1_var_ind.png"><img alt="../../_images/3.5.Regla_cadena_1_var_ind.png" src="../../_images/3.5.Regla_cadena_1_var_ind.png" style="width: 200px;" /></a>
 <p>¡A practicar!</p>
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span></p>
@@ -592,23 +592,23 @@ w = f(x_1,x_2,\ldots,x_n),
 \begin{split}
 \frac{\partial w}{\partial s} &amp; = \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s} \\
  &amp; = 2y(2s) + 2x\frac{1}{t} \\
- &amp; = 2 \color{blue}{\frac{s}{t}}(2s) + w(\color{blue}{s^2 + t^2})\frac{1}{t} \\
+ &amp; = 2 \color{blue}{\frac{s}{t}}\normalcolor(2s) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{1}{t} \\
  &amp; = \frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t} \\
  &amp; = \frac{6s^2 + 2t^2}{t}.
 \end{split}
 \end{equation*}\]</div>
 <p>Del mismo modo, asumiendo <span class="math notranslate nohighlight">\(s\)</span> constante, obtenemos que</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5fd2ffa3-dd07-4a56-8658-394b4ccb049e">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-5fd2ffa3-dd07-4a56-8658-394b4ccb049e" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*} 
 \begin{split}
 \frac{\partial w}{\partial t} &amp; = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
  &amp; = 2y(2t) + 2x\frac{-s}{t^2} \\
- &amp; = 2\color{blue}{\frac{s}{t}}(2t) + 2(\color{blue}{s^2 + t^2})\frac{-s}{t^2} \\
+ &amp; = 2\color{blue}{\frac{s}{t}}\normalcolor(2t) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{-s}{t^2} \\
  &amp; = 4s - \frac{2s^3 + 2st^2}{t^2} \\
  &amp; = \frac{4st^2 - 2s^3 - 2st^2}{t^2} \\
  &amp; = \frac{2st^2 - 2s^3}{t^2}.
 \end{split}
-\end{equation}\]</div>
+\end{equation*}\]</div>
 </section>
 </div><p>Vamos ahora a practicar con <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 <div class="cell docutils container">
@@ -660,7 +660,7 @@ w = f(x_1,x_2,\ldots,x_n),
 &amp;&amp; \frac{\partial w}{\partial t_1} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_1} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_1} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_1}, \\ 
 &amp;&amp; \frac{\partial w}{\partial t_2} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_2} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_2} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_2}, \\
 &amp;&amp; \quad \vdots \\
-\frac{\partial w}{\partial t_m} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_m} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_m} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_m}
+&amp;&amp; \frac{\partial w}{\partial t_m} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_m} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_m} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_m}
 \end{eqnarray*}\]</div>
 </section>
 </div></section>
@@ -695,12 +695,12 @@ F(x,y) = y^3 + y^2 - 5y - x^2 + 4.
 <p>Entonces</p>
 <div class="math notranslate nohighlight">
 \[
-F_x(x,y) = -2x \quad \textrm{ y } F_y(x,y) = 3y^2 + 2y - 5.
+F_x(x,y) = -2x \quad \textrm{ y } \quad F_y(x,y) = 3y^2 + 2y - 5.
 \]</div>
-<p>Usando el resultado teórico de diferenciación parcial implícita, obtenemos que</p>
+<p>Usando el resultado teórico de derivación implícita, obtenemos que</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)} = \frac{-(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
+\frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
 \]</div>
 </section>
 </div><p>Vamos a comprobar que el cálculo es correcto con la ayuda de <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
@@ -761,7 +761,7 @@ F_x(x,y) = -2x \quad \textrm{ y } F_y(x,y) = 3y^2 + 2y - 5.
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.4. </span>Plano tangente</p>
+            <p class="prev-next-title"><span class="section-number">3.4. </span>Plano tangente y recta normal</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="06.Extremos2D.html" title="next page">
