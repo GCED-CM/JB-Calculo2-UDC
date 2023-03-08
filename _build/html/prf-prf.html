@@ -231,8 +231,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="capitulos/03/03.Diferenciacion.html">
-     3.3. Diferenciación
+    <a class="reference internal" href="capitulos/03/03.Diferenciabilidad.html">
+     3.3. Diferenciabilidad
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,10 +426,11 @@ title="Fullscreen mode"
    <a href="#cap-ex_01_producto_escalar"><strong>ex_01_producto_escalar</strong></a> | 
    <a href="#cap-ex_01_vector"><strong>ex_01_vector</strong></a> | 
    <a href="#cap-ex_02_no_limite"><strong>ex_02_no_limite</strong></a> | 
-   <a href="#cap-ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad"><strong>ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad</strong></a> | 
+   <a href="#cap-ex_03_der_cont"><strong>ex_03_der_cont</strong></a> | 
    <a href="#cap-ex_2.1_dominios"><strong>ex_2.1_dominios</strong></a> | 
    <a href="#cap-ex_cont_3v"><strong>ex_cont_3v</strong></a> | 
    <a href="#cap-example-8"><strong>example-8</strong></a> | 
+   <a href="#cap-ob_f_versus_F"><strong>ob_f_versus_F</strong></a> | 
    <a href="#cap-pr_operaciones"><strong>pr_operaciones</strong></a> | 
    <a href="#cap-prop_01_alg_vectorial"><strong>prop_01_alg_vectorial</strong></a> | 
    <a href="#cap-prop_01_angulo_vectores"><strong>prop_01_angulo_vectores</strong></a> | 
@@ -447,6 +448,7 @@ title="Fullscreen mode"
    <a href="#cap-rc_02_regla_cadena"><strong>rc_02_regla_cadena</strong></a> | 
    <a href="#cap-rem_02_limites"><strong>rem_02_limites</strong></a> | 
    <a href="#cap-rem_04_angulo_inc_tang"><strong>rem_04_angulo_inc_tang</strong></a> | 
+   <a href="#cap-rem_04_plano_tang"><strong>rem_04_plano_tang</strong></a> | 
    <a href="#cap-rem_CalculoDerDirecc"><strong>rem_CalculoDerDirecc</strong></a> | 
    <a href="#cap-rem_Jacobiana"><strong>rem_Jacobiana</strong></a> | 
    <a href="#cap-rem_NotacionDerivParc"><strong>rem_NotacionDerivParc</strong></a> | 
@@ -456,9 +458,8 @@ title="Fullscreen mode"
    <a href="#cap-th_03_cont"><strong>th_03_cont</strong></a> | 
    <a href="#cap-th_03_cont_der"><strong>th_03_cont_der</strong></a> | 
    <a href="#cap-th_04_plano_tang"><strong>th_04_plano_tang</strong></a> | 
-   <a href="#cap-th_func_comp_cont"><strong>th_func_comp_cont</strong></a> | 
-   <a href="#cap-th_regla_cad_2_var_ind"><strong>th_regla_cad_2_var_ind</strong></a> | 
-   <a href="#cap-th_regla_cad_var_ind"><strong>th_regla_cad_var_ind</strong></a>
+   <a href="#cap-th_dif_func_comp"><strong>th_dif_func_comp</strong></a> | 
+   <a href="#cap-th_func_comp_cont"><strong>th_func_comp_cont</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -572,7 +573,7 @@ title="Fullscreen mode"
      <tr>
        <td></td>
        <td>
-       <a href="capitulos/03/03.Diferenciacion.html#def_03_difer"><code class="xref">def_03_difer</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <a href="capitulos/03/03.Diferenciabilidad.html#def_03_difer"><code class="xref">def_03_difer</code></a> <em>(capitulos/03/03.Diferenciabilidad)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_04_plano_tang"><td></td><td>
@@ -743,12 +744,12 @@ title="Fullscreen mode"
        <a href="capitulos/02/02.Limites.html#ex_02_no_limite"><code class="xref">ex_02_no_limite</code></a> <em>(capitulos/02/02.Limites)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad"><td></td><td>
-       <strong>ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad</strong></td><td></td></tr>
+     <tr class="cap" id="cap-ex_03_der_cont"><td></td><td>
+       <strong>ex_03_der_cont</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="capitulos/03/03.Diferenciacion.html#ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad"><code class="xref">ex_03_der_cont Existencia de derivadas parciales no implica continuidad ni derivabilidad</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <a href="capitulos/03/03.Diferenciabilidad.html#ex_03_der_cont"><code class="xref">ex_03_der_cont</code></a> <em>(capitulos/03/03.Diferenciabilidad)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ex_2.1_dominios"><td></td><td>
@@ -774,6 +775,14 @@ title="Fullscreen mode"
        <td>
        <a href="capitulos/01/01.VectoresPlano.html#example-8"><code class="xref">example-8</code></a> <em>(capitulos/01/01.VectoresPlano)</em></td><td>
        <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ob_f_versus_F"><td></td><td>
+       <strong>ob_f_versus_F</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/04.PlanoTangente.html#ob_f_versus_F"><code class="xref">ob_f_versus_F</code></a> <em>(capitulos/03/04.PlanoTangente)</em></td><td>
+       <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-pr_operaciones"><td></td><td>
        <strong>pr_operaciones</strong></td><td></td></tr>
@@ -911,6 +920,14 @@ title="Fullscreen mode"
        <a href="capitulos/03/04.PlanoTangente.html#rem_04_angulo_inc_tang"><code class="xref">rem_04_angulo_inc_tang</code></a> <em>(capitulos/03/04.PlanoTangente)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_04_plano_tang"><td></td><td>
+       <strong>rem_04_plano_tang</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/04.PlanoTangente.html#rem_04_plano_tang"><code class="xref">rem_04_plano_tang</code></a> <em>(capitulos/03/04.PlanoTangente)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rem_CalculoDerDirecc"><td></td><td>
        <strong>rem_CalculoDerDirecc</strong></td><td></td></tr>
      <tr>
@@ -964,7 +981,7 @@ title="Fullscreen mode"
      <tr>
        <td></td>
        <td>
-       <a href="capitulos/03/03.Diferenciacion.html#th_03_cont"><code class="xref">th_03_cont</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <a href="capitulos/03/03.Diferenciabilidad.html#th_03_cont"><code class="xref">th_03_cont</code></a> <em>(capitulos/03/03.Diferenciabilidad)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-th_03_cont_der"><td></td><td>
@@ -972,7 +989,7 @@ title="Fullscreen mode"
      <tr>
        <td></td>
        <td>
-       <a href="capitulos/03/03.Diferenciacion.html#th_03_cont_der"><code class="xref">th_03_cont_der</code></a> <em>(capitulos/03/03.Diferenciacion)</em></td><td>
+       <a href="capitulos/03/03.Diferenciabilidad.html#th_03_cont_der"><code class="xref">th_03_cont_der</code></a> <em>(capitulos/03/03.Diferenciabilidad)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-th_04_plano_tang"><td></td><td>
@@ -983,28 +1000,20 @@ title="Fullscreen mode"
        <a href="capitulos/03/04.PlanoTangente.html#th_04_plano_tang"><code class="xref">th_04_plano_tang</code></a> <em>(capitulos/03/04.PlanoTangente)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_dif_func_comp"><td></td><td>
+       <strong>th_dif_func_comp</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/05.ReglaCadena.html#th_dif_func_comp"><code class="xref">th_dif_func_comp</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-th_func_comp_cont"><td></td><td>
        <strong>th_func_comp_cont</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="capitulos/02/03.Continuidad.html#th_func_comp_cont"><code class="xref">th_func_comp_cont</code></a> <em>(capitulos/02/03.Continuidad)</em></td><td>
-       <em>theorem</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-th_regla_cad_2_var_ind"><td></td><td>
-       <strong>th_regla_cad_2_var_ind</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="capitulos/03/05.ReglaCadena.html#th_regla_cad_2_var_ind"><code class="xref">th_regla_cad_2_var_ind</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
-       <em>theorem</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-th_regla_cad_var_ind"><td></td><td>
-       <strong>th_regla_cad_var_ind</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="capitulos/03/05.ReglaCadena.html#th_regla_cad_var_ind"><code class="xref">th_regla_cad_var_ind</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
        <em>theorem</em></td></tr>
    </table>
 

@@ -3,19 +3,57 @@
 
 # # Regla de la cadena 
 # 
-# ## Regla de la cadena para una variable independiente
+# ## Matriz jacobiana y regla de la cadena
 # 
-# ````{prf:theorem}  Regla de la cadena: una variable independiente
-# :label: th_regla_cad_var_ind
+# La noción de matriz jacobiana, junto con la de regla general de la cadena, nos va a permitir calcular las derivadas parciales de una composición de funciones diferenciables. 
+# 
+# ````{prf:theorem}  Diferenciabilidad de una función compuesta
+# :label: th_dif_func_comp
 # :nonumber: 
 # 
-# Sea $w = f(x,y)$, donde $f$ es una función derivable de $x$ e $y$. Si $x = g(t)$ e $y = h(t)$, donde $g$ y $h$ son funciones derivables de $t$, entonces $w$ es una función diferenciable de $t$, y 
+# Sean $\mathbf{F}: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m$ y $G: \mathbb{R}^m \rightarrow \mathbb{R}$ dos funciones tales que $\mathbf{F}(D) \subset \mathbb{R}^m$. Sea $\mathbf{a} \in D$ tal que $\mathbf{F}$ es diferenciable en $\mathbf{a}$ y $G$ es diferenciable en $\mathbf{F}(\mathbf{a})$. Entonces la función compuesta $G \circ \mathbf{F}$ es diferenciable en $\mathbf{a}$ y a partir de la **regla general de la cadena** se tiene:
 # 
 # $$
-# \frac{dw}{dt} = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt}.
+# \mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = \mathrm{J}G(\mathbf{F}(\mathbf{a}))\mathrm{J}\mathbf{F}(\mathbf{a}),
+# $$
+# 
+# donde $\mathrm{J}G = \left[\frac{\partial G}{\partial \overline{x}_{1}}, \frac{\partial G}{\partial \overline{x}_{2}}, ... , \frac{\partial G}{\partial \overline{x}_{m}}\right]$ es la matriz jacobiana de $G$, y 
+# 
+# $$
+# \mathrm{J}\mathbf{F} =
+# \begin{bmatrix}
+# \frac{\partial F_{1}}{\partial x_{1}} & \frac{\partial F_{1}}{\partial x_{2}} & ... & \frac{\partial F_{1}}{\partial x_{n}} \\
+# \frac{\partial F_{2}}{\partial x_{1}} & \frac{\partial F_{2}}{\partial x_{2}} & ... & \frac{\partial F_{2}}{\partial x_{n}} \\
+# ... & ... & ... & ... \\
+# \frac{\partial F_{m}}{\partial x_{1}} & \frac{\partial F_{m}}{\partial x_{2}} & ... & \frac{\partial F_{m}}{\partial x_{n}} \\
+# \end{bmatrix}
+# $$
+# 
+# es la matriz jacobiana de $\mathbf{F}$.
+# ````
+# 
+# **NOTA 1:** Recuerda que para una función $G: \mathbb{R}^m \rightarrow \mathbb{R}$, la matriz jacobiana es igual a la transpuesta del gradiente. Por tanto, a partir de la igualdad anterior, tenemos que 
+# 
+# $$
+# \mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(\mathbf{a}))\mathrm{J}\mathbf{F}(\mathbf{a}).
+# $$
+# 
+# **NOTA 2:** La regla de la cadena para el caso multivariable es una generalización de la regla de la cadena para una variable. Si $n = m = 1$, tal que $a \in \mathbb{R}$, $\mathbf{F}: D \subset \mathbb{R} \rightarrow \mathbb{R}$ y $G: \mathbb{R} \rightarrow \mathbb{R}$, entonces 
+# 
+# $$
+# \mathrm{J}(G \circ F) (a) = \mathrm{J}G(F(a))\mathrm{J}F(a) = G'(F(a))F'(a).
+# $$
+# 
+# ````{prf:remark} Regla de la cadena para una variable independiente
+# :label: rc_01_regla_cadena
+# :nonumber:
+# 
+# Sea $w = G(x_1,x_2,...,x_m)$, donde $G$ es una función diferenciable de las $m$ variables $x_1, x_2, ... , x_m$. Si cada una de las $x_j = F_j(t)$ es una función diferenciable de $t$, entonces $w$ es una función diferenciable de $t$, y
+# 
+# $$
+# \frac{dw}{dt} = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(t))\mathrm{J}\mathbf{F}(t) = \frac{\partial w}{\partial x_1}\frac{dx_1}{dt} + \frac{\partial w}{\partial x_2}\frac{dx_2}{dt} + ... + \frac{\partial w}{\partial x_m}\frac{dx_m}{dt}.
 # $$
 # ````
-# <img src="../../images/3.5.Regla_cadena_1_var_ind.png" width="200"/>
 # 
 # ¡A practicar!
 # 
@@ -23,7 +61,7 @@
 # :label: 3.x._ex
 # :nonumber: 
 # 
-# Sea $w = x^2y - y^2$ donde $x = \sin(t)$ e $y = e^t$. Calcular $dw/dt$ cuando $t = 0$.
+# Sea $w = x^2y - y^2$ donde $x = \sin(t)$ e $y = e^t$. Calcular $\frac{\partial w}{\partial t}$.
 # 
 # **Solución:**
 # 
@@ -31,51 +69,32 @@
 # 
 # \begin{equation*} 
 # \begin{split}
-# \frac{dw}{dt} & = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt} \\
+# \frac{dw}{dt} & = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
 #  & = 2xy(\cos(t)) + (x^2 - 2y)e^t \\
-#  & = 2\sin(t)e^t\cos(t) + (\sin^2(t) - 2e^t)e^t \\
+#  & = 2\color{blue}{\sin(t)}\color{blue}{e^t}\cos(t) + (\color{blue}{\sin}^2\color{blue}{(t)} - 2\color{blue}{e^t})e^t \\
 #  & = 2e^t\sin(t)\cos(t) + e^t\sin^2(t) - 2e^(2t).
 # \end{split}
 # \end{equation*}
-# 
-# Cuando $t = 0$, se tiene que
-# 
-# $$
-# \frac{dw}{dt} = -2.
-# $$
 # ````
 # 
-# ````{prf:remark} 
-# :label: rc_01_regla_cadena
+# ````{prf:remark} Regla de la cadena para dos variables independientes
+# :label: rc_02_regla_cadena
 # :nonumber:
 # 
-# La regla de la cadena para una variable independiente se puede extender a cualquier número de variables. Si
+# Sea $w = G(x_1,x_2,...,x_m)$, donde $G$ es una función diferenciable de las $m$ variables $x_1, x_2, ... , x_m$. Si cada una de las $x_j = F_j(s,t)$ es una función diferenciable de $s$ y $t$, entonces $w$ es una función diferenciable de $s$ y $t$, y 
 # 
 # $$
-# w = f(x_1,x_2,\ldots,x_n),
-# $$
-# 
-# donde cada una de las $x_j$ es una función diferenciable de una sola variable $t$. Entonces
-# 
-# $$
-# \frac{dw}{dt} = \frac{\partial w}{\partial x_1}\frac{dx_1}{dt} + \frac{\partial w}{\partial x_2}\frac{dx_2}{dt} + \ldots + \frac{\partial w}{\partial x_n}\frac{dx_n}{dt}.
-# $$
-# ````
-# 
-# ## Regla de la cadena para dos variables independientes
-# 
-# ````{prf:theorem}  Regla de la cadena: dos variables independientes
-# :label: th_regla_cad_2_var_ind
-# :nonumber: 
-# 
-# Sea $w = f(x,y)$, donde $f$ es una función diferenciable de $x$ e $y$. Si $x = g(s,t)$ e $y = h(s,t)$ son tales que las derivadas parciales de primer order $\partial x / \partial s$, $\partial x / \partial t$, $\partial y / \partial s$ y $\partial y / \partial t$ existen, entonces $\partial w / \partial s$ y $\partial w / \partial t$ existen y vienen dadas por
-# 
-# $$
-# \frac{\partial w}{\partial s} = \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s} \quad \textrm{ y } \quad \frac{\partial w}{\partial t} = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t}.
+# \begin{bmatrix}
+# \frac{\partial w}{\partial s}\\
+# \frac{\partial w}{\partial t}\\
+# \end{bmatrix}
+# = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(s,t))\mathrm{J}\mathbf{F}(s,t) = 
+# \begin{bmatrix}
+# \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial s} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial s} + \ldots + \frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial s}\\
+# \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t} + \ldots + \frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial t}
+# \end{bmatrix}
 # $$
 # ````
-# 
-# <img src="../../images/3.5.Regla_cadena_2_var_ind.png" width="300"/>
 # 
 # ¡Sigamos practicando!
 # 
@@ -87,30 +106,34 @@
 # 
 # **Solución:**
 # 
-# Por la regla de la cadena para dos variables independientes, si $t$ se asume constante y diferenciamos con respecto a $s$, obtenemos que
+# Por la regla de la cadena para dos variables independientes, obtenemos que
 # 
-# \begin{equation*} 
-# \begin{split}
-# \frac{\partial w}{\partial s} & = \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s} \\
-#  & = 2y(2s) + 2x\frac{1}{t} \\
-#  & = 2 \color{blue}{\frac{s}{t}}\normalcolor(2s) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{1}{t} \\
-#  & = \frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t} \\
-#  & = \frac{6s^2 + 2t^2}{t}.
-# \end{split}
-# \end{equation*}
-# 
-# Del mismo modo, asumiendo $s$ constante, obtenemos que
-# 
-# \begin{equation*} 
-# \begin{split}
-# \frac{\partial w}{\partial t} & = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
-#  & = 2y(2t) + 2x\frac{-s}{t^2} \\
-#  & = 2\color{blue}{\frac{s}{t}}\normalcolor(2t) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{-s}{t^2} \\
-#  & = 4s - \frac{2s^3 + 2st^2}{t^2} \\
-#  & = \frac{4st^2 - 2s^3 - 2st^2}{t^2} \\
-#  & = \frac{2st^2 - 2s^3}{t^2}.
-# \end{split}
-# \end{equation*}
+# $$
+# \begin{bmatrix}
+# \frac{\partial w}{\partial s}\\
+# \frac{\partial w}{\partial t}\\
+# \end{bmatrix} = 
+# \begin{bmatrix}
+# \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s}\\
+# \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t}\\
+# \end{bmatrix} =
+# \begin{bmatrix}
+# 2y(2s) + 2x\frac{1}{t}\\
+# 2y(2t) + 2x\frac{-s}{t^2}\\
+# \end{bmatrix} = 
+# \begin{bmatrix}
+# 2 \color{blue}{\frac{s}{t}}(2s) + 2(\color{blue}{s^2 + t^2})\frac{1}{t}\\
+# 2\color{blue}{\frac{s}{t}}(2t) + 2(\color{blue}{s^2 + t^2})\frac{-s}{t^2}\\
+# \end{bmatrix} = 
+# \begin{bmatrix}
+# \frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t}\\
+# 4s - \frac{2s^3 + 2st^2}{t^2}\\
+# \end{bmatrix} = 
+# \begin{bmatrix}
+# \frac{6s^2 + 2t^2}{t}\\
+# \frac{2st^2 - 2s^3}{t^2}\\
+# \end{bmatrix} 
+# $$
 # ````
 # 
 # Vamos ahora a practicar con `Python`.
@@ -125,35 +148,24 @@ import sympy as sp
 
 
 x, y, s, t = sp.symbols('x y s t', real=True) # define las variables simbólicas x, y, s, t 
+
 w = 2*x*y # define w(x,y)
 xx = s**2 + t**2 # define x(s,t)
 yy = s/t # define y(s,t)
+
+# Cálculo de las derivadas parciales de w con respecto a s y t:
+F, G = sp.Matrix([xx, yy]), sp.Matrix([w])
+jac_F, jac_G = F.jacobian([s,t]), G.jacobian([x,y]) # cálculo del jacobiano de F y G
+dw_s, dw_t = sp.simplify(jac_G.subs({x:s**2+t**2,y:s/t})*jac_F)
+
 # Cálculo de la derivada de w con respecto a s:
-w_x, w_y = sp.diff(w,x).subs({x:s**2+t**2,y:s/t}), sp.diff(w,y).subs({x:s**2+t**2,y:s/t})
-x_s, y_s = sp.diff(xx,s), sp.diff(yy,s)
-w_s = w_x * x_s + w_y * y_s
-print('Derivada de w con respecto a s: ')
-display(sp.simplify(w_s))
+print('Derivada parcial de w con respecto a s: ')
+display(dw_s)
+
 # Cálculo de la derivada de w con respecto a t:
-x_t, y_t = sp.diff(xx,t), sp.diff(yy,t)
-w_t = w_x * x_t + w_y * y_t
-print('Derivada de w con respecto a t: ')
-display(sp.simplify(w_t))
+print('Derivada parcial de w con respecto a t: ')
+display(dw_t)
 
-
-# ````{prf:remark} 
-# :label: rc_02_regla_cadena
-# :nonumber:
-# 
-# La regla de la cadena para dos variables independientes también se puede extender a cualquier número de variables. Si $w$ es una función diferenciable de las $n$ variables $x_1, x_2, \ldots, x_n$, donde cada $x_j$ es una función diferenciable de las $m$ variables $t_1, t_2, \ldots, t_m$. Para $w = f(x_1, x_2, \ldots, x_n)$, se obtiene:  
-# 
-# \begin{eqnarray*}
-# && \frac{\partial w}{\partial t_1} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_1} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_1} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_1}, \\ 
-# && \frac{\partial w}{\partial t_2} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_2} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_2} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_2}, \\
-# && \quad \vdots \\
-# && \frac{\partial w}{\partial t_m} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_m} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_m} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_m}
-# \end{eqnarray*}
-# ````
 
 # ## Derivación implícita
 # 
@@ -166,7 +178,7 @@ display(sp.simplify(w_t))
 # Si la ecuación $F(x,y) = 0$ define a $y$ implícitamente como función derivable de $x$, entonces
 # 
 # $$
-# \frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)}, \quad F_y(x,y) \neq 0.
+# \frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)}, \quad F_y(x,y) \neq 0.
 # $$
 # 
 # Si la ecuación $F(x,y,z) = 0$ define a $z$ implícitamente como función diferenciable de $x$ e $y$, entonces
@@ -182,7 +194,7 @@ display(sp.simplify(w_t))
 # :label: 3.x._ex
 # :nonumber: 
 # 
-# Calcular $dy/dx$ para $y^3 + y^2 - 5y - x^2 = -4$. 
+# Calcular $\frac{\partial y}{partial x}$ para $y^3 + y^2 - 5y - x^2 = -4$. 
 # 
 # **Solución:**
 # 
@@ -201,7 +213,7 @@ display(sp.simplify(w_t))
 # Usando el resultado teórico de derivación implícita, obtenemos que
 # 
 # $$
-# \frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
+# \frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
 # $$
 # ````
 # 
@@ -211,8 +223,10 @@ display(sp.simplify(w_t))
 
 
 x, y = sp.symbols('x y', real=True) # define la variable simbólica x e y 
+
 F = y**3 + y**2 - 5*y - x**2 + 4 # define F tal que F(x,y) = 0
 display(sp.Eq(F,0))
+
 # Cálculo de la derivada implícita con respecto a x
 F_x, F_y = sp.diff(F, x), sp.diff(F, y) 
 y_x = - F_x/F_y

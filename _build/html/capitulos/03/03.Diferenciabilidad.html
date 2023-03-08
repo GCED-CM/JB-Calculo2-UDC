@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3.3. Diferenciabilidad &#8212; Calculo en varias variables</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.4. Plano tangente y recta normal" href="04.PlanoTangente.html" />
+    <link rel="prev" title="3.2. Derivadas direccionales, gradiente y matriz jacobiana" href="02.DerivadasDireccionales.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-148221575-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/udc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculo en varias variables</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/README.html">
+   1. Vectores y geometría del espacio
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/01.VectoresPlano.html">
+     1.1. Vectores en el plano
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/02.VectoresEspacio.html">
+     1.2. Vectores en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/03.ProductoEscalar.html">
+     1.3. El producto escalar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/04.ProductoVectorial.html">
+     1.4. El producto vectorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/05.ProductoTriple.html">
+     1.5. El producto triple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/06.RectasPlanos.html">
+     1.6. Rectas y planos en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07.SuperficiesEspacio.html">
+     1.7. Superficies en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/08.Coordenadas.html">
+     1.8. Coordenadas cilíndricas y esféricas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/09.Boletin.html">
+     1.9. Boletín de ejercicios del primer capítulo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/README.html">
+   2. Límites y continuidad
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/01.Funciones.html">
+     2.1. Funciones de varias variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/02.Limites.html">
+     2.2. Límites
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/03.Continuidad.html">
+     2.3. Continuidad
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/04.Boletin.html">
+     2.4. Boletín de ejercicios del segundo capítulo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   3. Derivación y extremos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.DerivadasParciales.html">
+     3.1. Derivadas parciales
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.DerivadasDireccionales.html">
+     3.2. Derivadas direccionales y gradiente
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.3. Diferenciabilidad
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.PlanoTangente.html">
+     3.4. Plano tangente
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.ReglaCadena.html">
+     3.5. Regla de la cadena
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.Extremos2D.html">
+     3.6. Extremos en 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.ExtremosAplicaciones.html">
+     3.7. Extremos. Aplicaciones
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.Multiplicadores.html">
+     3.8. Multiplicadores de Lagrange
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/README.html">
+   4. Integración
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05/README.html">
+   5. Pyhton para cálculo de varias variables
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/01.IntroduccionSympy.html">
+     5.1. Introducción a SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02.IntroduccionNumpy.html">
+     5.2. Introducción a NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03.RepresentacionGraficaMatplotlib.html">
+     5.3. Representación Gráfica con Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04.LimitesContinuidad.html">
+     5.4. Límites y continuidad con Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/03/03.Diferenciabilidad.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/capitulos/03/03.Diferenciabilidad.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-diferenciabilidad">
+   3.3.1. Definición de diferenciabilidad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propiedades-para-funciones-diferenciables">
+   3.3.2. Propiedades para funciones diferenciables
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Diferenciabilidad</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-diferenciabilidad">
+   3.3.1. Definición de diferenciabilidad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propiedades-para-funciones-diferenciables">
+   3.3.2. Propiedades para funciones diferenciables
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="diferenciabilidad">
+<h1><span class="section-number">3.3. </span>Diferenciabilidad<a class="headerlink" href="#diferenciabilidad" title="Permalink to this headline">#</a></h1>
+<section id="definicion-de-diferenciabilidad">
+<h2><span class="section-number">3.3.1. </span>Definición de diferenciabilidad<a class="headerlink" href="#definicion-de-diferenciabilidad" title="Permalink to this headline">#</a></h2>
+<p>Comenzaremos esta sección motivando la aparición de un concepto más fuerte que el asociado a la existencia de las derivadas parciales, que resulta ser el concepto de diferenciabilidad.</p>
+<p>En primer lugar, debemos entender que, para funciones de dos o más variables, la existencia de las derivadas parciales (es decir, la derivabilidad en la dirección de los ejes) no garantiza la existencia de otras derivadas direccionales. Es más, <strong>ni siquiera garantiza la continuidad</strong>.</p>
+<p>Vamos a verlo sobre un ejemplo:</p>
+<div class="proof example admonition" id="ex_03_der_cont">
+<p class="admonition-title"><span>Example </span></p>
+<section class="example-content" id="proof-content">
+<p>Consideramos la función:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x,y)=\left\{
+\begin{array}{ll}
+\dfrac{-3xy}{x^2+y^2} &amp; \textrm{si }(x,y)\neq
+(0,0),
+\\ 
+ 0 &amp; \textrm{si }(x,y)=(0,0).
+\end{array}
+\right.
+\end{split}\]</div>
+<p>Veamos, en primer lugar, que tiene derivadas parciales en el origen:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\dfrac{\partial f}{\partial x}(0,0)&amp;=\lim_{h\to 0} \dfrac{f(h,0)-f(0,0)}{h}=\lim_{h\to 0}\dfrac{0-0}{h}=0,\\
+\dfrac{\partial f}{\partial y}(0,0)&amp;=\lim_{h\to 0} \dfrac{f(0,h)-f(0,0)}{h}=\lim_{h\to 0}\dfrac{0-0}{h}=0.
+\end{eqnarray*}\]</div>
+<p>Sin embargo, es fácil comprobar que <span class="math notranslate nohighlight">\(f\)</span> no es continua en <span class="math notranslate nohighlight">\((0,0)\)</span>. En efecto, si consideramos su límite restringido a la recta <span class="math notranslate nohighlight">\(y=x\)</span>, obtenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\lim_{\substack{ (x,y)\to (0,0)\\ y=x}} f(x,y)=\lim_{x\to 0} f(x,x)=\lim_{x\to 0}\dfrac{-3x^2}{2x^2}=-\dfrac{3}{2},
+\end{split}\]</div>
+<p>mientras que considerando la recta <span class="math notranslate nohighlight">\(y=-x\)</span> se tiene</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\lim_{\substack{ (x,y)\to (0,0)\\ y=-x}} f(x,y)=\lim_{x\to 0} f(x,-x)=\lim_{x\to 0}\dfrac{3x^2}{2x^2}=\dfrac{3}{2}.
+\end{split}\]</div>
+<p>Como los dos resultados son distintos, concluimos que <span class="math notranslate nohighlight">\(f\)</span> no es continua en <span class="math notranslate nohighlight">\((0,0)\)</span>.</p>
+<p>Ahora podríamos comprobar que las únicas derivadas direccionales que existen son las dos derivadas parciales, pero eso os lo vamos a dejar como ejercicio y nos centraremos en un caso particular (y más sencillo): no existe la derivada en la dirección de <span class="math notranslate nohighlight">\(\mathbf{u}=\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)\)</span>.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+ D_{\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)}f(0,0) &amp;:=&amp; 
+    \lim_{h\to 0}\frac{f\left( (0,0) + h\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right) \right)-f(0,0)}{h} \\
+    &amp;=&amp; \lim_{h\to 0}\frac{f\left(\frac{h}{\sqrt{2}},\frac{h}{\sqrt{2}}\right)}{h}=\lim_{h\to 0}\frac{\frac{-\frac{3h^2}{2}}{\frac{h^2}{2}+\frac{h^2}{2}}}{h}=
+    \left\{\begin{array}{l}\displaystyle\lim_{h\to 0^-}\frac{-3}{2h}=\infty\\ \displaystyle\lim_{h\to 0^+}\frac{-3}{2h}=-\infty\end{array} \right.
+\end{eqnarray*}\]</div>
+<a class="reference internal image-reference" href="../../_images/03_ejemplo1.png"><img alt="../../_images/03_ejemplo1.png" src="../../_images/03_ejemplo1.png" style="width: 700px;" /></a>
+<p>¡Veamos estos límites con la ayuda de <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>!</p>
+</section>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y h&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Función f en puntos distintos del origen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite restringido a y=x: &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límite restringido a y=-x: &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial respecto a x en el (0,0): &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial respecto a y en el (0,0): &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada en (0,0) en la dirección de y=x. Izda.: &#39;</span><span class="p">,</span> 
+      <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada en (0,0) en la dirección de y=x. Dcha.: &#39;</span><span class="p">,</span> 
+      <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">h</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Límite restringido a y=x:  -3/2
+Límite restringido a y=-x:  3/2
+Derivada parcial respecto a x en el (0,0):  0
+Derivada parcial respecto a y en el (0,0):  0
+Derivada en (0,0) en la dirección de y=x. Izda.:  oo
+Derivada en (0,0) en la dirección de y=x. Dcha.:  -oo
+</pre></div>
+</div>
+</div>
+</div>
+<p>En resumen: como ya nos podíamos imaginar, después de todo lo que aprendimos en el cálculo de límites para funciones de dos variables, no es suficiente con estudiar las derivadas parciales. Necesitamos algo más.</p>
+<p>Ese <em>algo más</em> es el concepto de diferenciabilidad, que está relacionado con la existencia de una aproximación lineal de la función en las proximidades del punto en cuestión.</p>
+<p>Vamos a introducir, a continuación, su definición formal para el caso de funciones escalares de dos variables, resultando natural su extensión a más variables.</p>
+<div class="proof definition admonition" id="def_03_difer">
+<p class="admonition-title"><span>Definition </span> (Diferenciabilidad)</p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f:R\subset \mathbb{R}^2\longrightarrow
+\mathbb{R}\)</span> con <span class="math notranslate nohighlight">\(R\)</span> abierto. Decimos que <span class="math notranslate nohighlight">\(f\)</span> es diferenciable en <span class="math notranslate nohighlight">\((x_0,y_0)\in R\)</span>, si existen las derivadas parciales primeras de <span class="math notranslate nohighlight">\(f\)</span> en el punto <span class="math notranslate nohighlight">\((x_0,y_0)\)</span>, y además</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{(x,y)\to (x_0,y_0)}\dfrac{f(x,y)- \Big( f(x_0,y_0)+\nabla f(x_0,y_0)\cdot (x-x_0,y-y_0) \Big)}{\left\|(x-x_0,y-y_0)\right\|}=0.
+\]</div>
+<p>Decimos que <span class="math notranslate nohighlight">\(f\)</span> es diferenciable en <span class="math notranslate nohighlight">\(R\)</span>, si lo es en cada punto de <span class="math notranslate nohighlight">\(R\)</span>.</p>
+</section>
+</div><p>A continuación, vamos a analizar este límite, con la ayuda de la librería <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>, para comprobar que la función del ejemplo anterior no es diferenciable en el <span class="math notranslate nohighlight">\((0,0)\)</span>.</p>
+<p>Fíjate en que, por un lado estamos considerando <span class="math notranslate nohighlight">\((x_0,y_0)=(0,0)\)</span> y, por otra, ya vimos que <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial x} (0,0) = \frac{\partial f}{\partial y} (0,0) = 0\)</span>, por lo que <span class="math notranslate nohighlight">\(\nabla f(x_0,y_0) = \nabla f(0,0) = (0, \; 0)\)</span>. De aquí que</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+&amp;&amp; \lim_{(x,y)\to (0,0)}\dfrac{f(x,y)- \Big( f(0,0)+ \nabla f(0,0) \cdot (x-0,y-0) \Big)}{\left\|(x-0,y-0)\right\|} \\
+&amp;=&amp; \lim_{(x,y)\to (0,0)}\dfrac{f(x,y)}{\left\|(x,y)\right\|}
+= \lim_{(x,y)\to (0,0)}\dfrac{-3xy}{\left(x^2+y^2\right)\sqrt{x^2+y^2}}.
+\end{eqnarray*}\]</div>
+<p>Y al hacer este límite, por rectas, obtendremos como resultado <span class="math notranslate nohighlight">\(+\)</span> o <span class="math notranslate nohighlight">\(-\infty\)</span>, como nos confirma <code class="docutils literal notranslate"><span class="pre">Sympy</span></code> (al ser distinto de <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(f\)</span> no es diferenciable en <span class="math notranslate nohighlight">\((0,0)\)</span>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> 
+
+<span class="c1"># Ahora definimos fun = f entre ||(x,y)|| </span>
+<span class="n">fun</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>  
+
+<span class="c1"># calculamos el límite a través de rectas</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Límites direccionales: &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Límites direccionales:  -oo*sign(m)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="propiedades-para-funciones-diferenciables">
+<h2><span class="section-number">3.3.2. </span>Propiedades para funciones diferenciables<a class="headerlink" href="#propiedades-para-funciones-diferenciables" title="Permalink to this headline">#</a></h2>
+<p>Finalizamos la sección estableciendo dos condiciones para la diferenciabilidad: la necesaria de continuidad y la suficiente de continuidad de las derivadas parciales.</p>
+<div class="proof theorem admonition" id="th_03_cont">
+<p class="admonition-title"><span>Theorem </span> (Diferenciabilidad implica continuidad )</p>
+<section class="theorem-content" id="proof-content">
+<p>Si <span class="math notranslate nohighlight">\(f\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> es continua en <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>.</p>
+</section>
+</div><div class="proof theorem admonition" id="th_03_cont_der">
+<p class="admonition-title"><span>Theorem </span> (Condición suficiente para la diferenciabilidad )</p>
+<section class="theorem-content" id="proof-content">
+<p>Si las derivadas parciales (de primer orden) de <span class="math notranslate nohighlight">\(f\)</span> son continuas en una región abierta <span class="math notranslate nohighlight">\(R\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> es diferenciable en <span class="math notranslate nohighlight">\(R\)</span>.</p>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./capitulos/03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02.DerivadasDireccionales.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>Derivadas direccionales, gradiente y matriz jacobiana</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04.PlanoTangente.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Plano tangente y recta normal</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By M. Benítez, L. Hervella, A. Prieto and J. Ráfales<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+Esta obra está bajo una <a href="https://creativecommons.org/licenses/by/4.0/deed.es"> Licencia Creative Commons Atribución 4.0 Internacional </a>
+<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.es_ES"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

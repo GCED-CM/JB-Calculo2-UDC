@@ -126,7 +126,7 @@ display('Derivada en la dirección de u: ',df_u)
 # 2. Cuando elegimos un vector unitario, $\mathbf{u}$, podemos pensar que es un punto en la circunferencia de radio unidad y, por tanto, podemos reescribir sus coordenadas en función de un ángulo $\theta$ como sigue: 
 # 
 #     $$
-#     \mathbf{u}=\left(u_{1},u_{2}\right) = \left(\cos(\theta),\sin(\theta)\right),
+#     \mathbf{u}=\left(u_{1},u_{2}\right)^{\mathrm{t}} = \left(\cos(\theta),\sin(\theta)\right)^{\mathrm{t}},
 #     $$ 
 #     para algún $\theta\in [0,2\pi)$. Por lo tanto, la fórmula de la derivada direccional podría escribirse como 
 # 
@@ -210,14 +210,16 @@ display('Derivada en la dirección de u: ',df_u)
 # 
 # La sintaxis es muy sencilla:  `F.jacobian([x,y,z])`, por ejemplo, calcula la matriz jacobiana de la función (definida a partir de una matriz) `F`, respecto a las variables x, y, z.
 
-# In[18]:
+# In[9]:
 
 
 import sympy as sp
 
 x, y, z = sp.symbols('x y z', real=True) 
 
-F = sp.Matrix([x**2*y*z, 3*x*y**2*z, 5*x*y*z**2])
+# F = sp.Matrix([x**2*y*z, 3*x*y**2*z, 5*x*y*z**2])
+F = sp.Matrix([x**2*y*z, x*y**2*z])
+    
 display(F)
 
 # Cálculo del jacobiano de F
@@ -275,6 +277,29 @@ display(grad_F)
 # 
 # **Empezamos utilizando el gradiente para calcular una derivada direccional**. En concreto, la que hicimos, de modo teórico, al principio de esta sección: derivada de $f(x,y) = \frac{x}{(x+y)y}$ en el punto $P=(1,2)$ según la dirección de 
 # $\mathbf{u} = (\cos(\theta),\sin(\theta))$ para cualquier $\theta\in[0,2\pi)$.
+
+# In[8]:
+
+
+import sympy as sp
+
+x, y = sp.symbols('x y', real=True) 
+
+F = sp.Matrix([ x*sp.sqrt(y) ])
+
+grad_F = F.jacobian([x,y]).transpose()
+display(grad_F)
+
+u = sp.Matrix([1, 2]) # Definimos un vector director unitario
+
+display(u)
+norm_u = sp.sqrt(u.dot(u))
+u = u/norm_u
+display(u)
+
+df_u = u.dot(grad_F)
+display(df_u)
+
 
 # In[21]:
 

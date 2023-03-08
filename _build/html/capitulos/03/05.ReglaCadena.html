@@ -229,8 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.Diferenciacion.html">
-     3.3. Diferenciación
+    <a class="reference internal" href="03.Diferenciabilidad.html">
+     3.3. Diferenciabilidad
     </a>
    </li>
    <li class="toctree-l2">
@@ -459,18 +459,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regla-de-la-cadena-para-una-variable-independiente">
-   3.5.1. Regla de la cadena para una variable independiente
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regla-de-la-cadena-para-dos-variables-independientes">
-   3.5.2. Regla de la cadena para dos variables independientes
+  <a class="reference internal nav-link" href="#matriz-jacobiana-y-regla-de-la-cadena">
+   3.5.1. Matriz jacobiana y regla de la cadena
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#derivacion-implicita">
-   3.5.3. Derivación implícita
+   3.5.2. Derivación implícita
   </a>
  </li>
 </ul>
@@ -493,18 +488,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regla-de-la-cadena-para-una-variable-independiente">
-   3.5.1. Regla de la cadena para una variable independiente
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regla-de-la-cadena-para-dos-variables-independientes">
-   3.5.2. Regla de la cadena para dos variables independientes
+  <a class="reference internal nav-link" href="#matriz-jacobiana-y-regla-de-la-cadena">
+   3.5.1. Matriz jacobiana y regla de la cadena
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#derivacion-implicita">
-   3.5.3. Derivación implícita
+   3.5.2. Derivación implícita
   </a>
  </li>
 </ul>
@@ -519,96 +509,117 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="regla-de-la-cadena">
 <h1><span class="section-number">3.5. </span>Regla de la cadena<a class="headerlink" href="#regla-de-la-cadena" title="Permalink to this headline">#</a></h1>
-<section id="regla-de-la-cadena-para-una-variable-independiente">
-<h2><span class="section-number">3.5.1. </span>Regla de la cadena para una variable independiente<a class="headerlink" href="#regla-de-la-cadena-para-una-variable-independiente" title="Permalink to this headline">#</a></h2>
-<div class="proof theorem admonition" id="th_regla_cad_var_ind">
-<p class="admonition-title"><span>Theorem </span> (Regla de la cadena: una variable independiente)</p>
+<section id="matriz-jacobiana-y-regla-de-la-cadena">
+<h2><span class="section-number">3.5.1. </span>Matriz jacobiana y regla de la cadena<a class="headerlink" href="#matriz-jacobiana-y-regla-de-la-cadena" title="Permalink to this headline">#</a></h2>
+<p>La noción de matriz jacobiana, junto con la de regla general de la cadena, nos va a permitir calcular las derivadas parciales de una composición de funciones diferenciables.</p>
+<div class="proof theorem admonition" id="th_dif_func_comp">
+<p class="admonition-title"><span>Theorem </span> (Diferenciabilidad de una función compuesta)</p>
 <section class="theorem-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(w = f(x,y)\)</span>, donde <span class="math notranslate nohighlight">\(f\)</span> es una función derivable de <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>. Si <span class="math notranslate nohighlight">\(x = g(t)\)</span> e <span class="math notranslate nohighlight">\(y = h(t)\)</span>, donde <span class="math notranslate nohighlight">\(g\)</span> y <span class="math notranslate nohighlight">\(h\)</span> son funciones derivables de <span class="math notranslate nohighlight">\(t\)</span>, entonces <span class="math notranslate nohighlight">\(w\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(t\)</span>, y</p>
+<p>Sean <span class="math notranslate nohighlight">\(\mathbf{F}: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> y <span class="math notranslate nohighlight">\(G: \mathbb{R}^m \rightarrow \mathbb{R}\)</span> dos funciones tales que <span class="math notranslate nohighlight">\(\mathbf{F}(D) \subset \mathbb{R}^m\)</span>. Sea <span class="math notranslate nohighlight">\(\mathbf{a} \in D\)</span> tal que <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> y <span class="math notranslate nohighlight">\(G\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{F}(\mathbf{a})\)</span>. Entonces la función compuesta <span class="math notranslate nohighlight">\(G \circ \mathbf{F}\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> y a partir de la <strong>regla general de la cadena</strong> se tiene:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dw}{dt} = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt}.
+\mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = \mathrm{J}G(\mathbf{F}(\mathbf{a}))\mathrm{J}\mathbf{F}(\mathbf{a}),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\mathrm{J}G = \left[\frac{\partial G}{\partial \overline{x}_{1}}, \frac{\partial G}{\partial \overline{x}_{2}}, ... , \frac{\partial G}{\partial \overline{x}_{m}}\right]\)</span> es la matriz jacobiana de <span class="math notranslate nohighlight">\(G\)</span>, y</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{J}\mathbf{F} =
+\begin{bmatrix}
+\frac{\partial F_{1}}{\partial x_{1}} &amp; \frac{\partial F_{1}}{\partial x_{2}} &amp; ... &amp; \frac{\partial F_{1}}{\partial x_{n}} \\
+\frac{\partial F_{2}}{\partial x_{1}} &amp; \frac{\partial F_{2}}{\partial x_{2}} &amp; ... &amp; \frac{\partial F_{2}}{\partial x_{n}} \\
+... &amp; ... &amp; ... &amp; ... \\
+\frac{\partial F_{m}}{\partial x_{1}} &amp; \frac{\partial F_{m}}{\partial x_{2}} &amp; ... &amp; \frac{\partial F_{m}}{\partial x_{n}} \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>es la matriz jacobiana de <span class="math notranslate nohighlight">\(\mathbf{F}\)</span>.</p>
+</section>
+</div><p><strong>NOTA 1:</strong> Recuerda que para una función <span class="math notranslate nohighlight">\(G: \mathbb{R}^m \rightarrow \mathbb{R}\)</span>, la matriz jacobiana es igual a la transpuesta del gradiente. Por tanto, a partir de la igualdad anterior, tenemos que</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(\mathbf{a}))\mathrm{J}\mathbf{F}(\mathbf{a}).
+\]</div>
+<p><strong>NOTA 2:</strong> La regla de la cadena para el caso multivariable es una generalización de la regla de la cadena para una variable. Si <span class="math notranslate nohighlight">\(n = m = 1\)</span>, tal que <span class="math notranslate nohighlight">\(a \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{F}: D \subset \mathbb{R} \rightarrow \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(G: \mathbb{R} \rightarrow \mathbb{R}\)</span>, entonces</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}(G \circ F) (a) = \mathrm{J}G(F(a))\mathrm{J}F(a) = G'(F(a))F'(a).
+\]</div>
+<div class="proof remark admonition" id="rc_01_regla_cadena">
+<p class="admonition-title"><span>Remark </span> (Regla de la cadena para una variable independiente)</p>
+<section class="remark-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(w = G(x_1,x_2,...,x_m)\)</span>, donde <span class="math notranslate nohighlight">\(G\)</span> es una función diferenciable de las <span class="math notranslate nohighlight">\(m\)</span> variables <span class="math notranslate nohighlight">\(x_1, x_2, ... , x_m\)</span>. Si cada una de las <span class="math notranslate nohighlight">\(x_j = F_j(t)\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(t\)</span>, entonces <span class="math notranslate nohighlight">\(w\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(t\)</span>, y</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dw}{dt} = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(t))\mathrm{J}\mathbf{F}(t) = \frac{\partial w}{\partial x_1}\frac{dx_1}{dt} + \frac{\partial w}{\partial x_2}\frac{dx_2}{dt} + ... + \frac{\partial w}{\partial x_m}\frac{dx_m}{dt}.
 \]</div>
 </section>
-</div><a class="reference internal image-reference" href="../../_images/3.5.Regla_cadena_1_var_ind.png"><img alt="../../_images/3.5.Regla_cadena_1_var_ind.png" src="../../_images/3.5.Regla_cadena_1_var_ind.png" style="width: 200px;" /></a>
-<p>¡A practicar!</p>
+</div><p>¡A practicar!</p>
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(w = x^2y - y^2\)</span> donde <span class="math notranslate nohighlight">\(x = \sin(t)\)</span> e <span class="math notranslate nohighlight">\(y = e^t\)</span>. Calcular <span class="math notranslate nohighlight">\(dw/dt\)</span> cuando <span class="math notranslate nohighlight">\(t = 0\)</span>.</p>
+<p>Sea <span class="math notranslate nohighlight">\(w = x^2y - y^2\)</span> donde <span class="math notranslate nohighlight">\(x = \sin(t)\)</span> e <span class="math notranslate nohighlight">\(y = e^t\)</span>. Calcular <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial t}\)</span>.</p>
 <p><strong>Solución:</strong></p>
 <p>Por la regla de la cadena para una variable independiente, tenemos que</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*} 
 \begin{split}
-\frac{dw}{dt} &amp; = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt} \\
+\frac{dw}{dt} &amp; = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
  &amp; = 2xy(\cos(t)) + (x^2 - 2y)e^t \\
- &amp; = 2\sin(t)e^t\cos(t) + (\sin^2(t) - 2e^t)e^t \\
+ &amp; = 2\color{blue}{\sin(t)}\color{blue}{e^t}\cos(t) + (\color{blue}{\sin}^2\color{blue}{(t)} - 2\color{blue}{e^t})e^t \\
  &amp; = 2e^t\sin(t)\cos(t) + e^t\sin^2(t) - 2e^(2t).
 \end{split}
 \end{equation*}\]</div>
-<p>Cuando <span class="math notranslate nohighlight">\(t = 0\)</span>, se tiene que</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dw}{dt} = -2.
-\]</div>
 </section>
-</div><div class="proof remark admonition" id="rc_01_regla_cadena">
-<p class="admonition-title"><span>Remark </span></p>
+</div><div class="proof remark admonition" id="rc_02_regla_cadena">
+<p class="admonition-title"><span>Remark </span> (Regla de la cadena para dos variables independientes)</p>
 <section class="remark-content" id="proof-content">
-<p>La regla de la cadena para una variable independiente se puede extender a cualquier número de variables. Si</p>
+<p>Sea <span class="math notranslate nohighlight">\(w = G(x_1,x_2,...,x_m)\)</span>, donde <span class="math notranslate nohighlight">\(G\)</span> es una función diferenciable de las <span class="math notranslate nohighlight">\(m\)</span> variables <span class="math notranslate nohighlight">\(x_1, x_2, ... , x_m\)</span>. Si cada una de las <span class="math notranslate nohighlight">\(x_j = F_j(s,t)\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(s\)</span> y <span class="math notranslate nohighlight">\(t\)</span>, entonces <span class="math notranslate nohighlight">\(w\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(s\)</span> y <span class="math notranslate nohighlight">\(t\)</span>, y</p>
 <div class="math notranslate nohighlight">
-\[
-w = f(x_1,x_2,\ldots,x_n),
-\]</div>
-<p>donde cada una de las <span class="math notranslate nohighlight">\(x_j\)</span> es una función diferenciable de una sola variable <span class="math notranslate nohighlight">\(t\)</span>. Entonces</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dw}{dt} = \frac{\partial w}{\partial x_1}\frac{dx_1}{dt} + \frac{\partial w}{\partial x_2}\frac{dx_2}{dt} + \ldots + \frac{\partial w}{\partial x_n}\frac{dx_n}{dt}.
-\]</div>
+\[\begin{split}
+\begin{bmatrix}
+\frac{\partial w}{\partial s}\\
+\frac{\partial w}{\partial t}\\
+\end{bmatrix}
+= (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(s,t))\mathrm{J}\mathbf{F}(s,t) = 
+\begin{bmatrix}
+\frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial s} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial s} + \ldots + \frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial s}\\
+\frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t} + \ldots + \frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial t}
+\end{bmatrix}
+\end{split}\]</div>
 </section>
-</div></section>
-<section id="regla-de-la-cadena-para-dos-variables-independientes">
-<h2><span class="section-number">3.5.2. </span>Regla de la cadena para dos variables independientes<a class="headerlink" href="#regla-de-la-cadena-para-dos-variables-independientes" title="Permalink to this headline">#</a></h2>
-<div class="proof theorem admonition" id="th_regla_cad_2_var_ind">
-<p class="admonition-title"><span>Theorem </span> (Regla de la cadena: dos variables independientes)</p>
-<section class="theorem-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(w = f(x,y)\)</span>, donde <span class="math notranslate nohighlight">\(f\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>. Si <span class="math notranslate nohighlight">\(x = g(s,t)\)</span> e <span class="math notranslate nohighlight">\(y = h(s,t)\)</span> son tales que las derivadas parciales de primer order <span class="math notranslate nohighlight">\(\partial x / \partial s\)</span>, <span class="math notranslate nohighlight">\(\partial x / \partial t\)</span>, <span class="math notranslate nohighlight">\(\partial y / \partial s\)</span> y <span class="math notranslate nohighlight">\(\partial y / \partial t\)</span> existen, entonces <span class="math notranslate nohighlight">\(\partial w / \partial s\)</span> y <span class="math notranslate nohighlight">\(\partial w / \partial t\)</span> existen y vienen dadas por</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial w}{\partial s} = \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s} \quad \textrm{ y } \quad \frac{\partial w}{\partial t} = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t}.
-\]</div>
-</section>
-</div><a class="reference internal image-reference" href="../../_images/3.5.Regla_cadena_2_var_ind.png"><img alt="../../_images/3.5.Regla_cadena_2_var_ind.png" src="../../_images/3.5.Regla_cadena_2_var_ind.png" style="width: 300px;" /></a>
-<p>¡Sigamos practicando!</p>
+</div><p>¡Sigamos practicando!</p>
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
 <p>Utiliza la regla de la cadena para calcular <span class="math notranslate nohighlight">\(\frac{dw}{ds}\)</span> y <span class="math notranslate nohighlight">\(\frac{dw}{dt}\)</span> para <span class="math notranslate nohighlight">\(w = 2xy\)</span> donde <span class="math notranslate nohighlight">\(x = s^2 + t^2\)</span> e <span class="math notranslate nohighlight">\(y = s/t\)</span>.</p>
 <p><strong>Solución:</strong></p>
-<p>Por la regla de la cadena para dos variables independientes, si <span class="math notranslate nohighlight">\(t\)</span> se asume constante y diferenciamos con respecto a <span class="math notranslate nohighlight">\(s\)</span>, obtenemos que</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*} 
-\begin{split}
-\frac{\partial w}{\partial s} &amp; = \frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s} \\
- &amp; = 2y(2s) + 2x\frac{1}{t} \\
- &amp; = 2 \color{blue}{\frac{s}{t}}\normalcolor(2s) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{1}{t} \\
- &amp; = \frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t} \\
- &amp; = \frac{6s^2 + 2t^2}{t}.
-\end{split}
-\end{equation*}\]</div>
-<p>Del mismo modo, asumiendo <span class="math notranslate nohighlight">\(s\)</span> constante, obtenemos que</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*} 
-\begin{split}
-\frac{\partial w}{\partial t} &amp; = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
- &amp; = 2y(2t) + 2x\frac{-s}{t^2} \\
- &amp; = 2\color{blue}{\frac{s}{t}}\normalcolor(2t) + 2(\color{blue}{s^2 + t^2}\normalcolor)\frac{-s}{t^2} \\
- &amp; = 4s - \frac{2s^3 + 2st^2}{t^2} \\
- &amp; = \frac{4st^2 - 2s^3 - 2st^2}{t^2} \\
- &amp; = \frac{2st^2 - 2s^3}{t^2}.
-\end{split}
-\end{equation*}\]</div>
+<p>Por la regla de la cadena para dos variables independientes, obtenemos que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\frac{\partial w}{\partial s}\\
+\frac{\partial w}{\partial t}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s}\\
+\frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t}\\
+\end{bmatrix} =
+\begin{bmatrix}
+2y(2s) + 2x\frac{1}{t}\\
+2y(2t) + 2x\frac{-s}{t^2}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+2 \color{blue}{\frac{s}{t}}(2s) + 2(\color{blue}{s^2 + t^2})\frac{1}{t}\\
+2\color{blue}{\frac{s}{t}}(2t) + 2(\color{blue}{s^2 + t^2})\frac{-s}{t^2}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t}\\
+4s - \frac{2s^3 + 2st^2}{t^2}\\
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{6s^2 + 2t^2}{t}\\
+\frac{2st^2 - 2s^3}{t^2}\\
+\end{bmatrix} 
+\end{split}\]</div>
 </section>
 </div><p>Vamos ahora a practicar con <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 <div class="cell docutils container">
@@ -621,51 +632,42 @@ w = f(x_1,x_2,\ldots,x_n),
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y s t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y, s, t </span>
+
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="c1"># define w(x,y)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># define x(s,t)</span>
 <span class="n">yy</span> <span class="o">=</span> <span class="n">s</span><span class="o">/</span><span class="n">t</span> <span class="c1"># define y(s,t)</span>
+
+<span class="c1"># Cálculo de las derivadas parciales de w con respecto a s y t:</span>
+<span class="n">F</span><span class="p">,</span> <span class="n">G</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">]),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">w</span><span class="p">])</span>
+<span class="n">jac_F</span><span class="p">,</span> <span class="n">jac_G</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]),</span> <span class="n">G</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span> <span class="c1"># cálculo del jacobiano de F y G</span>
+<span class="n">dw_s</span><span class="p">,</span> <span class="n">dw_t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">jac_G</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">s</span><span class="o">/</span><span class="n">t</span><span class="p">})</span><span class="o">*</span><span class="n">jac_F</span><span class="p">)</span>
+
 <span class="c1"># Cálculo de la derivada de w con respecto a s:</span>
-<span class="n">w_x</span><span class="p">,</span> <span class="n">w_y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">s</span><span class="o">/</span><span class="n">t</span><span class="p">}),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">s</span><span class="o">/</span><span class="n">t</span><span class="p">})</span>
-<span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">s</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
-<span class="n">w_s</span> <span class="o">=</span> <span class="n">w_x</span> <span class="o">*</span> <span class="n">x_s</span> <span class="o">+</span> <span class="n">w_y</span> <span class="o">*</span> <span class="n">y_s</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada de w con respecto a s: &#39;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">w_s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial de w con respecto a s: &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dw_s</span><span class="p">)</span>
+
 <span class="c1"># Cálculo de la derivada de w con respecto a t:</span>
-<span class="n">x_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">t</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-<span class="n">w_t</span> <span class="o">=</span> <span class="n">w_x</span> <span class="o">*</span> <span class="n">x_t</span> <span class="o">+</span> <span class="n">w_y</span> <span class="o">*</span> <span class="n">y_t</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada de w con respecto a t: &#39;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">w_t</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial de w con respecto a t: &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dw_t</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada de w con respecto a s: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada parcial de w con respecto a s: 
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle \frac{6 s^{2}}{t} + 2 t\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada de w con respecto a t: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada parcial de w con respecto a t: 
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle - \frac{2 s^{3}}{t^{2}} + 2 s\]</div>
 </div>
 </div>
-<div class="proof remark admonition" id="rc_02_regla_cadena">
-<p class="admonition-title"><span>Remark </span></p>
-<section class="remark-content" id="proof-content">
-<p>La regla de la cadena para dos variables independientes también se puede extender a cualquier número de variables. Si <span class="math notranslate nohighlight">\(w\)</span> es una función diferenciable de las <span class="math notranslate nohighlight">\(n\)</span> variables <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span>, donde cada <span class="math notranslate nohighlight">\(x_j\)</span> es una función diferenciable de las <span class="math notranslate nohighlight">\(m\)</span> variables <span class="math notranslate nohighlight">\(t_1, t_2, \ldots, t_m\)</span>. Para <span class="math notranslate nohighlight">\(w = f(x_1, x_2, \ldots, x_n)\)</span>, se obtiene:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-&amp;&amp; \frac{\partial w}{\partial t_1} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_1} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_1} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_1}, \\ 
-&amp;&amp; \frac{\partial w}{\partial t_2} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_2} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_2} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_2}, \\
-&amp;&amp; \quad \vdots \\
-&amp;&amp; \frac{\partial w}{\partial t_m} = \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_m} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_m} + \ldots + \frac{\partial w}{\partial x_n}\frac{\partial x_n}{\partial t_m}
-\end{eqnarray*}\]</div>
 </section>
-</div></section>
 <section id="derivacion-implicita">
-<h2><span class="section-number">3.5.3. </span>Derivación implícita<a class="headerlink" href="#derivacion-implicita" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5.2. </span>Derivación implícita<a class="headerlink" href="#derivacion-implicita" title="Permalink to this headline">#</a></h2>
 <p>Si queremos calcular las derivadas de una función que depende de una o varias variables no tenemos porque conocer su expresión de forma explícita, puede venir dada implícitamente. Por ejemplo, la función <span class="math notranslate nohighlight">\(y = f(x)\)</span> puede venir determinada por la expresión <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>. En este caso, no se conoce de forma explícita cuál es la expresión de <span class="math notranslate nohighlight">\(f\)</span> en términos de <span class="math notranslate nohighlight">\(x\)</span>. A pesar de ello, es posible calcular la derivada parcial <span class="math notranslate nohighlight">\(\partial f/\partial x\)</span>.</p>
 <div class="proof definition admonition" id="def_rc_2vi">
 <p class="admonition-title"><span>Definition </span> (Regla de la cadena: derivación implícita)</p>
@@ -673,7 +675,7 @@ w = f(x_1,x_2,\ldots,x_n),
 <p>Si la ecuación <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span> define a <span class="math notranslate nohighlight">\(y\)</span> implícitamente como función derivable de <span class="math notranslate nohighlight">\(x\)</span>, entonces</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)}, \quad F_y(x,y) \neq 0.
+\frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)}, \quad F_y(x,y) \neq 0.
 \]</div>
 <p>Si la ecuación <span class="math notranslate nohighlight">\(F(x,y,z) = 0\)</span> define a <span class="math notranslate nohighlight">\(z\)</span> implícitamente como función diferenciable de <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, entonces</p>
 <div class="math notranslate nohighlight">
@@ -685,7 +687,7 @@ w = f(x_1,x_2,\ldots,x_n),
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
-<p>Calcular <span class="math notranslate nohighlight">\(dy/dx\)</span> para <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>.</p>
+<p>Calcular <span class="math notranslate nohighlight">\(\frac{\partial y}{partial x}\)</span> para <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>.</p>
 <p><strong>Solución:</strong></p>
 <p>Tomando <span class="math notranslate nohighlight">\(F\)</span> tal que <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span>, tenemos que</p>
 <div class="math notranslate nohighlight">
@@ -700,15 +702,17 @@ F_x(x,y) = -2x \quad \textrm{ y } \quad F_y(x,y) = 3y^2 + 2y - 5.
 <p>Usando el resultado teórico de derivación implícita, obtenemos que</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dy}{dx} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
+\frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
 \]</div>
 </section>
 </div><p>Vamos a comprobar que el cálculo es correcto con la ayuda de <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define la variable simbólica x e y </span>
+
 <span class="n">F</span> <span class="o">=</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="c1"># define F tal que F(x,y) = 0</span>
 <span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
 <span class="c1"># Cálculo de la derivada implícita con respecto a x</span>
 <span class="n">F_x</span><span class="p">,</span> <span class="n">F_y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
 <span class="n">y_x</span> <span class="o">=</span> <span class="o">-</span> <span class="n">F_x</span><span class="o">/</span><span class="n">F_y</span>

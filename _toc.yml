@@ -46,8 +46,8 @@ chapters:
       title: Derivadas parciales
     - file: capitulos/03/02.DerivadasDireccionales
       title: Derivadas direccionales y gradiente
-    - file: capitulos/03/03.Diferenciacion
-      title: Diferenciación
+    - file: capitulos/03/03.Diferenciabilidad
+      title: Diferenciabilidad
     - file: capitulos/03/04.PlanoTangente
       title: Plano tangente
     - file: capitulos/03/05.ReglaCadena

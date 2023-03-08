@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.3. Diferenciabilidad" href="03.Diferenciacion.html" />
+    <link rel="next" title="3.3. Diferenciabilidad" href="03.Diferenciabilidad.html" />
     <link rel="prev" title="3.1. Derivadas parciales" href="01.DerivadasParciales.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -229,8 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.Diferenciacion.html">
-     3.3. Diferenciación
+    <a class="reference internal" href="03.Diferenciabilidad.html">
+     3.3. Diferenciabilidad
     </a>
    </li>
    <li class="toctree-l2">
@@ -659,7 +659,7 @@ D_{\mathbf{u}}f\left(x_{0}, y_{0}, z_{0}\right)  = \mathbf{u}^{\mathrm{t}} \cdot
 <li><p>Cuando elegimos un vector unitario, <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, podemos pensar que es un punto en la circunferencia de radio unidad y, por tanto, podemos reescribir sus coordenadas en función de un ángulo <span class="math notranslate nohighlight">\(\theta\)</span> como sigue:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbf{u}=\left(u_{1},u_{2}\right) = \left(\cos(\theta),\sin(\theta)\right),
+    \mathbf{u}=\left(u_{1},u_{2}\right)^{\mathrm{t}} = \left(\cos(\theta),\sin(\theta)\right)^{\mathrm{t}},
     \]</div>
 <p>para algún <span class="math notranslate nohighlight">\(\theta\in [0,2\pi)\)</span>. Por lo tanto, la fórmula de la derivada direccional podría escribirse como</p>
 <div class="math notranslate nohighlight">
@@ -738,7 +738,9 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 
-<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># F = sp.Matrix([x**2*y*z, 3*x*y**2*z, 5*x*y*z**2])</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">z</span><span class="p">])</span>
+    
 <span class="n">display</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
 
 <span class="c1"># Cálculo del jacobiano de F</span>
@@ -749,9 +751,9 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}\displaystyle \left[\begin{matrix}x^{2} y z\\3 x y^{2} z\\5 x y z^{2}\end{matrix}\right]\end{split}\]</div>
+\[\begin{split}\displaystyle \left[\begin{matrix}x^{2} y z\\x y^{2} z\end{matrix}\right]\end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}\displaystyle \left[\begin{matrix}2 x y z &amp; x^{2} z &amp; x^{2} y\\3 y^{2} z &amp; 6 x y z &amp; 3 x y^{2}\\5 y z^{2} &amp; 5 x z^{2} &amp; 10 x y z\end{matrix}\right]\end{split}\]</div>
+\[\begin{split}\displaystyle \left[\begin{matrix}2 x y z &amp; x^{2} z &amp; x^{2} y\\y^{2} z &amp; 2 x y z &amp; x y^{2}\end{matrix}\right]\end{split}\]</div>
 </div>
 </div>
 <p>Ahora vamos a ver cómo implementar el gradiente en <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>. Lo haremos de dos maneras distintas. La primera es la que se nos podría ocurrir directamente, <em>sin pensarlo mucho</em>: a partir de una expresión, f_expr, creamos una matriz columna cuyas filas son las derivadas respecto a <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, respectivamente.</p>
@@ -810,6 +812,40 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 <p>Ahora vamos a mostrar la programación en <code class="docutils literal notranslate"><span class="pre">Python</span></code> de un par de aplicaciones del gradiente.</p>
 <p><strong>Empezamos utilizando el gradiente para calcular una derivada direccional</strong>. En concreto, la que hicimos, de modo teórico, al principio de esta sección: derivada de <span class="math notranslate nohighlight">\(f(x,y) = \frac{x}{(x+y)y}\)</span> en el punto <span class="math notranslate nohighlight">\(P=(1,2)\)</span> según la dirección de
 <span class="math notranslate nohighlight">\(\mathbf{u} = (\cos(\theta),\sin(\theta))\)</span> para cualquier <span class="math notranslate nohighlight">\(\theta\in[0,2\pi)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span> <span class="n">x</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">])</span>
+
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># Definimos un vector director unitario</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="n">norm_u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="o">/</span><span class="n">norm_u</span>
+<span class="n">display</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="n">df_u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\sqrt{y}\\\frac{x}{2 \sqrt{y}}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}1\\2\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\frac{\sqrt{5}}{5}\\\frac{2 \sqrt{5}}{5}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{\sqrt{5} x}{5 \sqrt{y}} + \frac{\sqrt{5} \sqrt{y}}{5}\]</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -892,7 +928,7 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/02.DerivadasDireccionales_14_0.png" src="../../_images/02.DerivadasDireccionales_14_0.png" />
+<img alt="../../_images/02.DerivadasDireccionales_15_0.png" src="../../_images/02.DerivadasDireccionales_15_0.png" />
 </div>
 </div>
 </section>
@@ -932,7 +968,7 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
             <p class="prev-next-title"><span class="section-number">3.1. </span>Derivadas parciales</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="03.Diferenciacion.html" title="next page">
+    <a class='right-next' id="next-link" href="03.Diferenciabilidad.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">3.3. </span>Diferenciabilidad</p>
