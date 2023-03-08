@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.5. Regla de la cadena" href="05.ReglaCadena.html" />
-    <link rel="prev" title="3.3. Diferenciabilidad" href="03.Diferenciacion.html" />
+    <link rel="prev" title="3.3. Diferenciabilidad" href="03.Diferenciabilidad.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -229,8 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.Diferenciacion.html">
-     3.3. Diferenciación
+    <a class="reference internal" href="03.Diferenciabilidad.html">
+     3.3. Diferenciabilidad
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -459,8 +459,16 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plano-tangente-a-una-superficie">
-   3.4.1. Plano tangente a una superficie
+  <a class="reference internal nav-link" href="#z-f-x-y-o-f-x-y-z-0">
+   3.4.1. ¿
+   <span class="math notranslate nohighlight">
+    \(z=f(x,y)\)
+   </span>
+   o
+   <span class="math notranslate nohighlight">
+    \(F(x,y,z)=0\)
+   </span>
+   ?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -503,8 +511,16 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plano-tangente-a-una-superficie">
-   3.4.1. Plano tangente a una superficie
+  <a class="reference internal nav-link" href="#z-f-x-y-o-f-x-y-z-0">
+   3.4.1. ¿
+   <span class="math notranslate nohighlight">
+    \(z=f(x,y)\)
+   </span>
+   o
+   <span class="math notranslate nohighlight">
+    \(F(x,y,z)=0\)
+   </span>
+   ?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -539,51 +555,43 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="plano-tangente-y-recta-normal">
 <h1><span class="section-number">3.4. </span>Plano tangente y recta normal<a class="headerlink" href="#plano-tangente-y-recta-normal" title="Permalink to this headline">#</a></h1>
-<section id="plano-tangente-a-una-superficie">
-<h2><span class="section-number">3.4.1. </span>Plano tangente a una superficie<a class="headerlink" href="#plano-tangente-a-una-superficie" title="Permalink to this headline">#</a></h2>
-<p>Comenzamos esta sección abordando el problema de encontrar el plano tangente a una superficie <span class="math notranslate nohighlight">\(S\)</span> en un punto de la misma <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span>. Para ello, consideramos la representación más general de una superficie dada por una ecuación de la forma</p>
-<div class="math notranslate nohighlight">
-\[F(x,y,z)=0.\]</div>
-<p>De esta manera general, la superficie <span class="math notranslate nohighlight">\(S\)</span> se puede ver como la superficie de nivel <span class="math notranslate nohighlight">\(0\)</span> de <span class="math notranslate nohighlight">\(F\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-S=\left\{(x,y,z)\in \mathbb{R}^3:\,F(x,y,z)=0\right\}.
-\]</div>
-<p>Además, consideramos una curva <span class="math notranslate nohighlight">\(C\)</span> contenida en la superficie <span class="math notranslate nohighlight">\(S\)</span> y que pasa por <span class="math notranslate nohighlight">\(P\)</span> definida por la función de valores vectoriales <span class="math notranslate nohighlight">\(\mathbf{r}(t)=x(t)\mathbf{i}+y(t)\mathbf{j}+z(t)\mathbf{k}\)</span> como sigue</p>
-<div class="math notranslate nohighlight">
-\[
-C=\{(x,y,z)\in\mathbb{R}^3:\, x=x(t),\ y=y(t),\ z=z(t)\text{ con }t\in\mathbb{R}\}\subset S,
-\]</div>
-<p>siendo <span class="math notranslate nohighlight">\(P=\mathbf{r}(t_0)=(x(t_0),y(t_0),z(t_0))\)</span> para un <span class="math notranslate nohighlight">\(t_0\in\mathbb{R}\)</span>. Entonces,</p>
-<div class="math notranslate nohighlight">
-\[
-F(x(t),y(t),z(t))=0,
-\]</div>
-<p>para todo <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span>. Derivamos la ecuación anterior respecto a <span class="math notranslate nohighlight">\(t\)</span> aplicando la regla de la cadena y asumiendo que <span class="math notranslate nohighlight">\(F\)</span> es difereciable, y que <span class="math notranslate nohighlight">\(x(t)\)</span>, <span class="math notranslate nohighlight">\(y(t)\)</span> y <span class="math notranslate nohighlight">\(z(t)\)</span> son derivables, y obtenemos</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial F}{\partial x}(x(t),y(t),z(t))x'(t)+\frac{\partial F}{\partial y}(x(t),y(t),z(t))y'(t)+\frac{\partial F}{\partial x}(x(t),y(t),z(t))z'(t)=0,
-\]</div>
-<p>para todo <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span>. En <span class="math notranslate nohighlight">\(t=t_0\)</span>, la forma vectorial equivalente es la siguiente,</p>
-<div class="math notranslate nohighlight">
-\[
-\nabla F(x_0,y_0,z_0)\cdot \mathbf{r}'(t_0)=0.
-\]</div>
-<p>Este resultado significa que, en el punto <span class="math notranslate nohighlight">\(P\)</span>, el gradiente de <span class="math notranslate nohighlight">\(F\)</span> es ortogonal al vector tangente de cada curva contenida en <span class="math notranslate nohighlight">\(S\)</span>. Por lo tanto, todas las rectas tangentes a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P\)</span>, se encuentran en un plano que es normal al vector gradiente de <span class="math notranslate nohighlight">\(F\)</span> en <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span>, y que contiene al punto <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span>, como se muestra en la figura.</p>
-<a class="reference internal image-reference" href="../../_images/04_plano_tang.png"><img alt="../../_images/04_plano_tang.png" src="../../_images/04_plano_tang.png" style="width: 250px;" /></a>
+<section id="z-f-x-y-o-f-x-y-z-0">
+<h2><span class="section-number">3.4.1. </span>¿<span class="math notranslate nohighlight">\(z=f(x,y)\)</span> o <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span>?<a class="headerlink" href="#z-f-x-y-o-f-x-y-z-0" title="Permalink to this headline">#</a></h2>
+<p>Hasta ahora, hemos representado a las funciones de dos variables mediante ecuaciones de la forma <span class="math notranslate nohighlight">\(x=f(x,y)\)</span>. A partir de éstas, representamos la gráfica de la función. Esto se llama <strong>representación explícita</strong>.</p>
+<p>Sin embargo, este tipo de representación resulta excesivamente restrictivo en algunos casos. Nos va a convenir representar superficies mediante la forma más genérica <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span>, es decir, a una <strong>representación implícita</strong>.</p>
+<p>De todos modos, esto no es nada nuevo. Ya lo hacíamos para funciones de una variable. Fíjate:</p>
+<a class="reference internal image-reference" href="../../_images/3.4.f_versus_F_2D.png"><img alt="../../_images/3.4.f_versus_F_2D.png" src="../../_images/3.4.f_versus_F_2D.png" style="width: 700px;" /></a>
+<p>Hacemos algo parecido para funciones de dos variables.  Siguiendo con un ejemplo análogo al anterior:</p>
+<ul class="simple">
+<li><p>Ecuación implícita de la esfera centrada en <span class="math notranslate nohighlight">\((0,0,0)\)</span> y de radio <span class="math notranslate nohighlight">\(1\)</span>: <span class="math notranslate nohighlight">\(F(x,y,z) = 0\)</span>, con <span class="math notranslate nohighlight">\(F(x,y,z) = x^2 + y^2 + z^2 -1\)</span>.</p></li>
+<li><p>Ecuación explícita de la parte superior de la misma esfera: <span class="math notranslate nohighlight">\(z = f(x,y)\)</span>, con <span class="math notranslate nohighlight">\(f(x,y) = \sqrt{1-x^2-y^2}\)</span>.</p></li>
+</ul>
+<p>Entonces, en general,</p>
+<div class="proof observation admonition" id="ob_f_versus_F">
+<p class="admonition-title"><span>Observation </span></p>
+<section class="observation-content" id="proof-content">
+<p>La gráfica de la función <span class="math notranslate nohighlight">\(z=f(x,y)\)</span> será la superficie de nivel <span class="math notranslate nohighlight">\(S\)</span>, definida como <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span>, para <span class="math notranslate nohighlight">\(F(x,y,z) = f(x,y)-z\)</span>.</p>
+</section>
+</div><p>De todos modos, la representación implícita es mucho más rica y nos permitirá jugar con muchos tipos de superficies tridimensionales. Fíjate, por ejemplo, en el curso de <a class="reference external" href="https://espanol.libretexts.org/Matematicas/Calculo/Calculo_en_Varias_Variables_(ETS_Ingenieria_de_la_Universidad_de_Sevilla)/2._ECUACIONES_IMPLICITAS/2.2._Superficies_definidas_implicitamente_en_el_espacio">Cálculo Multivariable de la ETS de Ingeniería de la Universidad de Sevilla</a>, de donde tomamos la preciosa superficie <span class="math notranslate nohighlight">\(F(x,y,z) = 0\)</span>, con <span class="math notranslate nohighlight">\(\displaystyle F(x,y,z) = 5\left(x^4+y^4+z^4\right) − 5\left(x^2+y^2+z^2\right) + 2\)</span>:</p>
+<a class="reference internal image-reference" href="../../_images/3.4.Superficie_Sevilla.png"><img alt="../../_images/3.4.Superficie_Sevilla.png" src="../../_images/3.4.Superficie_Sevilla.png" style="width: 400px;" /></a>
 </section>
 <section id="plano-tangente-y-recta-normal-a-una-superficie">
 <h2><span class="section-number">3.4.2. </span>Plano tangente y recta normal a una superficie<a class="headerlink" href="#plano-tangente-y-recta-normal-a-una-superficie" title="Permalink to this headline">#</a></h2>
+<p>Definimos a continuación el plano tangente y la recta normal a una superficie.</p>
 <div class="proof definition admonition" id="def_04_plano_tang">
 <p class="admonition-title"><span>Definition </span> (Plano tangente y recta normal )</p>
 <section class="definition-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(F\)</span> una función escalar de tres variables diferenciable en un punto <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> de la superficie dada por <span class="math notranslate nohighlight">\(F(x,y,z)=0\)</span> tal que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\neq \mathbf{0}\)</span>.</p>
+<p>Consideramos <span class="math notranslate nohighlight">\(F\)</span>, una función escalar de tres variables, y <span class="math notranslate nohighlight">\(S\)</span> la superficie definida por la ecuación <span class="math notranslate nohighlight">\(F(x,y,z) = 0\)</span>. Supongamos que <span class="math notranslate nohighlight">\(F\)</span> es diferenciable en el punto
+<span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span>, contenido dentro de <span class="math notranslate nohighlight">\(S\)</span>, y que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\neq \mathbf{0}\)</span>. Entonces:</p>
 <ul class="simple">
 <li><p>Al plano que pasa por <span class="math notranslate nohighlight">\(P\)</span> y es normal a <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> se le llama <strong>plano tangente a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P\)</span></strong>.</p></li>
 <li><p>A la recta que pasa por <span class="math notranslate nohighlight">\(P\)</span> y tiene la dirección de <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> se le llama <strong>recta normal a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P\)</span></strong>.</p></li>
 </ul>
 </section>
-</div><p>La ecuación del plano tangente a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> se deduce inmediatamente teniendo en cuenta que <span class="math notranslate nohighlight">\(P\)</span> pertenece al plano y que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> es normal a dicho plano (ortogonal a cada vector en el plano). En efecto, dado <span class="math notranslate nohighlight">\((x,y,z)\)</span> un punto arbitrario en el plano, se tiene que el vector que une dicho punto y <span class="math notranslate nohighlight">\(P\)</span></p>
+</div><p>Un ejemplo de plano tangente y vector normal puede verse en la siguiente figura (obtenida con <a class="reference external" href="https://www.geogebra.org/m/wTh7KKd3">esta aplicación de Geogebra de Alfredo Sánchez Alberca</a>):</p>
+<a class="reference internal image-reference" href="../../_images/3.4.Plano_tangente.png"><img alt="../../_images/3.4.Plano_tangente.png" src="../../_images/3.4.Plano_tangente.png" style="width: 400px;" /></a>
+<p><strong>NOTA:</strong> Al final de la Sección 3.5 demostraremos que el plano tangente es perpendicular al vector tangente de cualquier curva contenida en <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>La ecuación del plano tangente a <span class="math notranslate nohighlight">\(S\)</span> en <span class="math notranslate nohighlight">\(P=(x_0,y_0,z_0)\)</span> se deduce inmediatamente teniendo en cuenta que <span class="math notranslate nohighlight">\(P\)</span> pertenece al plano y que <span class="math notranslate nohighlight">\(\nabla F(x_0,y_0,z_0)\)</span> es normal a dicho plano (ortogonal a cada vector en el plano). En efecto, dado <span class="math notranslate nohighlight">\((x,y,z)\)</span> un punto arbitrario en el plano, se tiene que el vector que une dicho punto y <span class="math notranslate nohighlight">\(P\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{v}=(x-x_0)\mathbf{i}+(y-y_0)\mathbf{j}+(z-z_0)\mathbf{k}
@@ -611,13 +619,15 @@ F(x(t),y(t),z(t))=0,
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\left\{\begin{array}{l}x=x_0+t\frac{\partial F}{\partial x}(x_0,y_0,z_0)\\
-y=y_0+t\frac{\partial F}{\partial y}(x_0,y_0,z_0)\\
-z=z_0+t\frac{\partial F}{\partial z}(x_0,y_0,z_0)
-\right.\quad t\in \mathbb{R}. 
+\left\{\begin{array}{l}
+    x=x_0+t\dfrac{\partial F}{\partial x}(x_0,y_0,z_0)\\
+    y=y_0+t\dfrac{\partial F}{\partial y}(x_0,y_0,z_0)\\
+    z=z_0+t\dfrac{\partial F}{\partial z}(x_0,y_0,z_0)
+    \end{array}
+\right. ,\qquad t\in \mathbb{R}. 
 \end{split}\]</div>
 </section>
-</div><p>Nótese que, la gráfica de una función de dos variables, es decir, una superficie de la forma <span class="math notranslate nohighlight">\(z=f(x,y)\)</span>, se puede convertir a la forma general definiendo <span class="math notranslate nohighlight">\(F\)</span> como</p>
+</div><p>Nótese que, para la gráfica de una función de dos variables, <span class="math notranslate nohighlight">\(z=f(x,y)\)</span>, según lo que hemos aprendido en la sección anterior,</p>
 <div class="math notranslate nohighlight">
 \[F(x,y,z)=f(x,y)-z.\]</div>
 <p>Entonces, por el teorema anterior se tiene que, si <span class="math notranslate nohighlight">\(f\)</span> es diferenciable, el plano tangente a la gráfica de <span class="math notranslate nohighlight">\(f\)</span> en el punto <span class="math notranslate nohighlight">\((x_0,y_0,z_0)=(x_0,y_0,f(x_0,y_0))\)</span> es</p>
@@ -626,22 +636,34 @@ z=z_0+t\frac{\partial F}{\partial z}(x_0,y_0,z_0)
 \frac{\partial f}{\partial x}(x_0,y_0,z_0)(x-x_0)+\frac{\partial f}{\partial y}(x_0,y_0,z_0)(y-y_0)-
 (z-z_0)=0.
 \]</div>
-<p>En este punto, conviene señalar que el concepto de diferenciabilidad está relacionado con la existencia del plano tangente. En concreto, para una función de dos variables, dicho concepto permite establecer el plano tangente como aproximación lineal de la gráfica de la función, de la misma manera que el concepto de derivabilidad permite introducir la recta tangente como aproximación lineal de la gráfica de una función de variable real.</p>
+<div class="proof remark admonition" id="rem_04_plano_tang">
+<p class="admonition-title"><span>Remark </span> (Diferenciabilidad y plano tangente )</p>
+<section class="remark-content" id="proof-content">
+<p>En este punto, conviene señalar que el concepto de diferenciabilidad está relacionado con la existencia del plano tangente.
+Si recordamos la definición de diferenciabilidad, vemos que <span class="math notranslate nohighlight">\(f\)</span> es diferenciable en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span>, si y sólo si</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{(x,y)\to (x_0,y_0)}\dfrac{f(x,y)- \Big( f(x_0,y_0)+\nabla f(x_0,y_0)\cdot (x-x_0,y-y_0) \Big)}{\left\|(x-x_0,y-y_0)\right\|}=0.
+\]</div>
+<p>Lo que está entre paréntesis no es otra cosa que el plano tangente a <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span>. Por lo tanto, estamos diciendo que una función es diferenciable en un punto si y sólo si la diferencia relativa entre <span class="math notranslate nohighlight">\(f\)</span> y su plano tangente en ese punto tiende a <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Dicho de modo más técnico, <strong>la diferenciabilidad establece que el plano tangente es una aproximación lineal de la gráfica de la función</strong>, de la misma manera que el concepto de derivabilidad establece que la recta tangente es una aproximación lineal de la gráfica de una función de variable real.</p>
 </section>
+</div></section>
 <section id="angulo-de-inclinacion">
 <h2><span class="section-number">3.4.3. </span>Ángulo de inclinación<a class="headerlink" href="#angulo-de-inclinacion" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def_04_plano_tang">
 <p class="admonition-title"><span>Definition </span> (Ángulo de inclinación de un plano)</p>
 <section class="definition-content" id="proof-content">
-<p>El <strong>ángulo de inclinación</strong> de un plano se define como el ángulo <span class="math notranslate nohighlight">\(\theta\)</span> (<span class="math notranslate nohighlight">\(0\leq \theta \leq \pi/2\)</span>) entre el plano dado y el plano <span class="math notranslate nohighlight">\(XY\)</span>, como se muestra en la figura. Puesto que el vector <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> es normal al plano <span class="math notranslate nohighlight">\(XY\)</span>, se puede utilizar la fórmula del coseno del ángulo entre dos vectores para concluir que el ángulo de inclinación de un plano con vector normal <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> es</p>
+<p>El <strong>ángulo de inclinación</strong> de un plano se define como el ángulo <span class="math notranslate nohighlight">\(\theta\)</span> (<span class="math notranslate nohighlight">\(0\leq \theta \leq \pi/2\)</span>) entre el plano dado y el plano <span class="math notranslate nohighlight">\(XY\)</span>, como se muestra en la figura.</p>
+<p>Puesto que el vector <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> (es decir, el vector <span class="math notranslate nohighlight">\((0,0,1)\)</span>) es normal al plano <span class="math notranslate nohighlight">\(XY\)</span>, se puede utilizar la fórmula del coseno del ángulo entre dos vectores para concluir que el ángulo de inclinación de un plano con vector normal <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> es</p>
 <div class="math notranslate nohighlight">
 \[
-\cos \theta=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||||\mathbf{k}||}=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||},
+\cos \theta=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||||\mathbf{k}||}=\frac{n_{3}}{||\mathbf{n}||},
 \]</div>
 <p>siendo <span class="math notranslate nohighlight">\(0\leq \theta \leq \pi/2\)</span>.</p>
-<a class="reference internal image-reference" href="../../_images/04_angulo_inc.png"><img alt="../../_images/04_angulo_inc.png" src="../../_images/04_angulo_inc.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../../_images/04_angulo_inc.png"><img alt="../../_images/04_angulo_inc.png" src="../../_images/04_angulo_inc.png" style="width: 400px;" /></a>
 </section>
-</div><p>Nótese que otro uso del gradiente es determinar el ángulo de inclinación del plano tangente a una superficie como se indica en la siguiente observación.</p>
+</div><p>Ahora podemos definir otra aplicación del vector gradiente (¡este pequeñín sí que vale!): determinar el ángulo de inclinación del plano tangente a una superficie, como se indica en la siguiente observación.</p>
 <div class="proof remark admonition" id="rem_04_angulo_inc_tang">
 <p class="admonition-title"><span>Remark </span></p>
 <section class="remark-content" id="proof-content">
@@ -673,10 +695,9 @@ z=z_0+t\frac{\partial F}{\partial z}(x_0,y_0,z_0)
 <span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y0</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">z0</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span>
 <span class="c1"># Cálculo de la ecuación del plano tangente</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">z</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">z</span><span class="p">])</span>
 <span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-<span class="n">grad_fun</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),(</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">grad_fun</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">z0</span><span class="p">)</span> <span class="c1"># vector perpendicular al plano</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">grad_F</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z0</span><span class="p">)</span>
 <span class="n">plano_tang</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">z0</span><span class="p">),</span><span class="mi">0</span><span class="p">),</span><span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="c1"># Cálculo de la ecuación vectorial de la recta normal</span>
 <span class="n">recta_norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">t</span><span class="p">,(</span><span class="n">x0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">z0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
@@ -729,41 +750,23 @@ z=z_0+t\frac{\partial F}{\partial z}(x_0,y_0,z_0)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04.PlanoTangente_8_0.png" src="../../_images/04.PlanoTangente_8_0.png" />
+<img alt="../../_images/04.PlanoTangente_9_0.png" src="../../_images/04.PlanoTangente_9_0.png" />
 </div>
 </div>
 <p>Por último, calculamos el ángulo de inclinación del plano tangente calculado:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angulo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angulo</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Ángulo de inclinación del plano tangente:&#39;</span><span class="p">,</span><span class="n">angulo</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="ne">AttributeError</span>: &#39;Float&#39; object has no attribute &#39;sqrt&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_10632</span>\<span class="mf">3773599388.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">angulo</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Ángulo de inclinación del plano tangente:&#39;</span><span class="p">,</span><span class="n">angulo</span><span class="p">)</span>
-
-<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">norm</span><span class="nt">(*args, **kwargs)</span>
-
-<span class="nn">~\anaconda3\lib\site-packages\numpy\linalg\linalg.py</span> in <span class="ni">norm</span><span class="nt">(x, ord, axis, keepdims)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2529</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2530</span>                 <span class="n">sqnorm</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2531</span>             <span class="n">ret</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sqnorm</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2532</span>             <span class="k">if</span> <span class="n">keepdims</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2533</span>                 <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ndim</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="ne">TypeError</span>: loop of ufunc does not support argument 0 of type Float which has no callable sqrt method
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Ángulo de inclinación del plano tangente:&#39;
 </pre></div>
 </div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 1.15026199151093\]</div>
 </div>
 </div>
 </section>
@@ -796,7 +799,7 @@ z=z_0+t\frac{\partial F}{\partial z}(x_0,y_0,z_0)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03.Diferenciacion.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03.Diferenciabilidad.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
