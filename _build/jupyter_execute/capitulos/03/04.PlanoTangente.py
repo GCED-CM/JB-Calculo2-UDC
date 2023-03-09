@@ -49,7 +49,7 @@
 # 
 # <img src="../../images/3.4.Plano_tangente.png" width="400"/>
 # 
-# **NOTA:** Al final de la Sección 3.5 demostraremos que el plano tangente es perpendicular al vector tangente de cualquier curva contenida en $S$. 
+# **NOTA:** Puede demostrarse, utilizando la regla de la cadena que veremos en la siguiente sección, que el plano tangente es perpendicular al vector tangente de cualquier curva contenida en $S$. 
 # 
 # La ecuación del plano tangente a $S$ en $P=(x_0,y_0,z_0)$ se deduce inmediatamente teniendo en cuenta que $P$ pertenece al plano y que $\nabla F(x_0,y_0,z_0)$ es normal a dicho plano (ortogonal a cada vector en el plano). En efecto, dado $(x,y,z)$ un punto arbitrario en el plano, se tiene que el vector que une dicho punto y $P$
 # 
@@ -149,6 +149,14 @@
 # 
 # siendo $0\leq \theta \leq \pi/2$.
 # ````
+# 
+
+# ## Links para ampliar conocimientos
+# 
+# Si no tienes suficiente (o no has entendido nada), puedes consultar los siguientes enlaces, a ver si así...
+# 
+# * [Capítulo ya citado, sobre derivadas direccionales y propiedades del gradiente, del libro de Cálculo Multivariable de la ETS de Ingeniería de la Universidad de Sevilla.](https://espanol.libretexts.org/Matematicas/Calculo/Calculo_en_Varias_Variables_(ETS_Ingenieria_de_la_Universidad_de_Sevilla)/2._ECUACIONES_IMPLICITAS/2.2._Superficies_definidas_implicitamente_en_el_espacio)
+# * [Capítulo correspondiente del libro en abierto de G. Strang y E.J. Herman.](https://openstax.org/books/c%C3%A1lculo-volumen-3/pages/4-4-planos-tangentes-y-aproximaciones-lineales)
 # 
 
 # ## Cálculo y representación del plano tangente y de la recta normal con `Python`

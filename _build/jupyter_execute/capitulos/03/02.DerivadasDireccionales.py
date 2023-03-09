@@ -159,13 +159,13 @@ display('Derivada en la dirección de u: ',df_u)
 #    <img src="../../images/3.2.Gradiente_y_curvas_nivel.png" width="600"/>
 #    
 # ````    
-# 
+
 # ## Links para ampliar información
 # 
 # Si os quedáis con ganas de más, os recomendamos que echéis un vistazo a: 
 # 
-# * [Capítulo sobre derivadas direccionales y propiedades del gradiente de la ETS de Ingeniería de la Universidad de Sevilla.](https://espanol.libretexts.org/Matematicas/Calculo/Calculo_en_Varias_Variables_(ETS_Ingenieria_de_la_Universidad_de_Sevilla)/1._DERIVADAS_PARCIALES/1.6._Las_derivadas_direccionales_y_las_propiedades_del_gradiente)
-# * [Capítulo correspondiente del (magnífico) libro en abierto de G. Strang y E.J. Herman](https://openstax.org/books/c%C3%A1lculo-volumen-3/pages/4-6-derivadas-direccionales-y-el-gradiente)
+# * [Capítulo sobre derivadas direccionales y propiedades del gradiente del libro de Cálculo Multivariable de la ETS de Ingeniería de la Universidad de Sevilla.](https://espanol.libretexts.org/Matematicas/Calculo/Calculo_en_Varias_Variables_(ETS_Ingenieria_de_la_Universidad_de_Sevilla)/1._DERIVADAS_PARCIALES/1.6._Las_derivadas_direccionales_y_las_propiedades_del_gradiente)
+# * [Capítulo correspondiente del (magnífico) libro en abierto de G. Strang y E.J. Herman.](https://openstax.org/books/c%C3%A1lculo-volumen-3/pages/4-6-derivadas-direccionales-y-el-gradiente)
 # 
 
 # ## Matriz jacobiana
