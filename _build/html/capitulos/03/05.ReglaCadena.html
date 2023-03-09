@@ -474,8 +474,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#composicion-de-funciones-con-sympy">
-   3.5.4. Composición de funciones con
+  <a class="reference internal nav-link" href="#jacobiano-de-la-composicion-de-funciones-con-sympy">
+   3.5.4. Jacobiano de la composición de funciones con
    <code class="docutils literal notranslate">
     <span class="pre">
      sympy
@@ -523,8 +523,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#composicion-de-funciones-con-sympy">
-   3.5.4. Composición de funciones con
+  <a class="reference internal nav-link" href="#jacobiano-de-la-composicion-de-funciones-con-sympy">
+   3.5.4. Jacobiano de la composición de funciones con
    <code class="docutils literal notranslate">
     <span class="pre">
      sympy
@@ -715,97 +715,81 @@ t \stackrel{\mathbf{F}}\longrightarrow \left(\sin(t),e^{t}\right) \stackrel{G}{\
 \]</div>
 <p>Again… ¡¡Da lo mismo!! ¡¡GUAU, GUAU, GUAUUUU!!</p>
 </section>
-<section id="composicion-de-funciones-con-sympy">
-<h2><span class="section-number">3.5.4. </span>Composición de funciones con <code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#composicion-de-funciones-con-sympy" title="Permalink to this headline">#</a></h2>
-<p>Retomamos este último ejemplo para resolverlo ayudados por <code class="docutils literal notranslate"><span class="pre">sympy</span></code>. ¡A ver si le da lo mismo!</p>
+<section id="jacobiano-de-la-composicion-de-funciones-con-sympy">
+<h2><span class="section-number">3.5.4. </span>Jacobiano de la composición de funciones con <code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#jacobiano-de-la-composicion-de-funciones-con-sympy" title="Permalink to this headline">#</a></h2>
+<p>Retomamos este último ejemplo para resolverlo ayudados por <code class="docutils literal notranslate"><span class="pre">sympy</span></code>. A ver si vuelve a dar lo mismo… aunque ya sería mucha suerte, ¿no?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y s t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y, s, t </span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y r t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 
-<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="c1"># define w(x,y)</span>
-<span class="n">xx</span> <span class="o">=</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># define x(s,t)</span>
-<span class="n">yy</span> <span class="o">=</span> <span class="n">s</span><span class="o">/</span><span class="n">t</span> <span class="c1"># define y(s,t)</span>
+<span class="c1"># Definimos las funciones F y G como matrices</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)])</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="p">])</span>
 
-<span class="c1"># Cálculo de las derivadas parciales de w con respecto a s y t:</span>
-<span class="n">F</span><span class="p">,</span> <span class="n">G</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">]),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">w</span><span class="p">])</span>
-<span class="n">jac_F</span><span class="p">,</span> <span class="n">jac_G</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]),</span> <span class="n">G</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span> <span class="c1"># cálculo del jacobiano de F y G</span>
-<span class="n">dw_s</span><span class="p">,</span> <span class="n">dw_t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">jac_G</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">s</span><span class="o">/</span><span class="n">t</span><span class="p">})</span><span class="o">*</span><span class="n">jac_F</span><span class="p">)</span>
+<span class="c1"># Calculamos (y mostramos) las matrices jacobianas asociadas a F y G</span>
+<span class="n">jac_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">r</span><span class="p">,</span><span class="n">t</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">jac_F</span><span class="p">)</span>
 
-<span class="c1"># Cálculo de la derivada de w con respecto a s:</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial de w con respecto a s: &#39;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">dw_s</span><span class="p">)</span>
+<span class="n">jac_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">jac_G</span><span class="p">)</span>
 
-<span class="c1"># Cálculo de la derivada de w con respecto a t:</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada parcial de w con respecto a t: &#39;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">dw_t</span><span class="p">)</span>
+<span class="c1"># Calculamos la jacobiana de la composición como producto de matrices</span>
+<span class="n">jac_GoF</span> <span class="o">=</span> <span class="n">jac_G</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">y</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)})</span><span class="o">*</span><span class="n">jac_F</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">jac_GoF</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada parcial de w con respecto a s: 
-</pre></div>
-</div>
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \frac{6 s^{2}}{t} + 2 t\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada parcial de w con respecto a t: 
-</pre></div>
-</div>
+\[\begin{split}\displaystyle \left[\begin{matrix}\cos{\left(t \right)} &amp; - r \sin{\left(t \right)}\\\sin{\left(t \right)} &amp; r \cos{\left(t \right)}\end{matrix}\right]\end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle - \frac{2 s^{3}}{t^{2}} + 2 s\]</div>
+\[\displaystyle \left[\begin{matrix}2 x &amp; 2 y\end{matrix}\right]\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left[\begin{matrix}2 r &amp; 0\end{matrix}\right]\]</div>
 </div>
 </div>
 </section>
 <section id="derivacion-implicita">
 <h2><span class="section-number">3.5.5. </span>Derivación implícita<a class="headerlink" href="#derivacion-implicita" title="Permalink to this headline">#</a></h2>
-<p>Si queremos calcular las derivadas de una función que depende de una o varias variables no tenemos porque conocer su expresión de forma explícita, puede venir dada implícitamente. Por ejemplo, la función <span class="math notranslate nohighlight">\(y = f(x)\)</span> puede venir determinada por la expresión <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>. En este caso, no se conoce de forma explícita cuál es la expresión de <span class="math notranslate nohighlight">\(f\)</span> en términos de <span class="math notranslate nohighlight">\(x\)</span>.
-En el caso general, es posible tener una función, <span class="math notranslate nohighlight">\(F\)</span>, que defina la relación entre <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span>.
-También en estos casos es posible calcular la derivada parcial <span class="math notranslate nohighlight">\(\frac{\partial y}{\partial x}\)</span>. Sólo tenemos que derivar la expresión <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span> utilizando la regla de la cadena como sigue:</p>
+<p>Como ya aprendimos al comienzo de la Sección <a class="reference internal" href="04.PlanoTangente.html#sec-3-4-planotangente"><span class="std std-ref">Plano tangente y recta normal</span></a>, es posible que una función venga dada implícitamente.
+Por ejemplo, la función de una variable <span class="math notranslate nohighlight">\(y = f(x)\)</span> puede venir determinada por la expresión <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>.
+Aunque no conozcamos su expresión explícita podemos fácilmente calcular las derivadas de las variables dependientes en función de las independientes. Os mostramos a continuación cómo hacerlo.</p>
+<ul>
+<li><p><strong>Funciones con una única variable independiente</strong>. Supongamos que existe una única variable independiente, <span class="math notranslate nohighlight">\(x\)</span>, y una variable dependiente, <span class="math notranslate nohighlight">\(y\equiv y(x)\)</span>. En este caso,</p>
 <div class="math notranslate nohighlight">
 \[
-F(x,y) = 0 \stackrel{\frac{\partial}{\partial x}}{\Longrightarrow} 
-\frac{\partial F}{\partial x}(x,y)\frac{\partial x}{\partial x} + \frac{\partial F}{\partial y}(x,y)\frac{\partial y}{\partial x}.
-\]</div>
+    F(x,y) = 0 \stackrel{\frac{\partial}{\partial x}}{\Longrightarrow} 
+    \frac{\partial F}{\partial x}(x,y)\frac{\partial x}{\partial x} + \frac{\partial F}{\partial y}(x,y)\frac{\partial y}{\partial x}.
+    \]</div>
 <p>Despejamos en la anterior expresión, teniendo en cuenta que <span class="math notranslate nohighlight">\(\frac{\partial x}{\partial x}=1\)</span>, y obtenemos:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial y}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y)  } { \frac{\partial F}{\partial y}(x,y) }.
-\]</div>
-<p>Análogamente, si tenemos una relación implícita entre tres variables, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> y <span class="math notranslate nohighlight">\(z\)</span> y queremos conocer, por ejemplo,
-las derivadas de <span class="math notranslate nohighlight">\(z\)</span> respecto <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> (entendemos que, en este caso, <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> son variables independientes),</p>
+    \frac{\partial y}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y)  } { \frac{\partial F}{\partial y}(x,y) }.
+    \]</div>
+</li>
+<li><p><strong>Funciones con dos variables independientes</strong>. Si ahora tenemos una relación implícita entre dos variables independientes, <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, y una variable que depende de las anteriores, <span class="math notranslate nohighlight">\(z \equiv z(x,y)\)</span>, ,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-F(x,y,z) = 0 &amp;\stackrel{\frac{\partial}{\partial x}}{\Longrightarrow}&amp;
-\frac{\partial F}{\partial x}(x,y,z)\frac{\partial x}{\partial x} + \cancel{ \frac{\partial F}{\partial y}(x,y,z)
-{\color{red} \frac{\partial y}{\partial x}} } 
-+ \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial x} = 0 \\
-&amp; \Rightarrow &amp; \frac{\partial z}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) } \\
-F(x,y,z) = 0 &amp;\stackrel{\frac{\partial}{\partial y}}{\Longrightarrow}&amp;
-\cancel{ \frac{\partial F}{\partial y}(x,y,z){\color{red} \frac{\partial x}{\partial y}} } 
-+ \frac{\partial F}{\partial y}(x,y,z) \frac{\partial y}{\partial y} 
-+ \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial y} = 0\\
-&amp; \Rightarrow &amp; \frac{\partial z}{\partial y} = - \frac{ \frac{\partial F}{\partial y}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) }
-\end{eqnarray*}\]</div>
-<div class="proof definition admonition" id="def_rc_2vi">
-<p class="admonition-title"><span>Definition </span> (Regla de la cadena: derivación implícita)</p>
-<section class="definition-content" id="proof-content">
-<p>Si la ecuación <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span> define a <span class="math notranslate nohighlight">\(y\)</span> implícitamente como función derivable de <span class="math notranslate nohighlight">\(x\)</span>, entonces</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)}, \quad F_y(x,y) \neq 0.
-\]</div>
-<p>Si la ecuación <span class="math notranslate nohighlight">\(F(x,y,z) = 0\)</span> define a <span class="math notranslate nohighlight">\(z\)</span> implícitamente como función diferenciable de <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, entonces</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial z}{\partial x} = -\frac{F_x(x,y,z)}{F_z(x,y,z)} \quad \textrm{ y } \quad \frac{\partial z}{\partial y} = -\frac{F_y(x,y,z)}{F_z(x,y,z)}, \quad F_z(x,y,z) \neq 0.
-\]</div>
-</section>
-</div><p>¡A seguir practicando!</p>
+    F(x,y,z) = 0 &amp;\stackrel{\frac{\partial}{\partial x}}{\Longrightarrow}&amp;
+    \frac{\partial F}{\partial x}(x,y,z)\frac{\partial x}{\partial x} + \cancel{ \frac{\partial F}{\partial y}(x,y,z)
+    {\color{red} \frac{\partial y}{\partial x}} } 
+    + \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial x} = 0 \\
+    &amp; \Rightarrow &amp; \frac{\partial z}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) } \\
+    F(x,y,z) = 0 &amp;\stackrel{\frac{\partial}{\partial y}}{\Longrightarrow}&amp;
+    \cancel{ \frac{\partial F}{\partial y}(x,y,z){\color{red} \frac{\partial x}{\partial y}} } 
+    + \frac{\partial F}{\partial y}(x,y,z) \frac{\partial y}{\partial y} 
+    + \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial y} = 0\\
+    &amp; \Rightarrow &amp; \frac{\partial z}{\partial y} = - \frac{ \frac{\partial F}{\partial y}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) }
+    \end{eqnarray*}\]</div>
+</li>
+</ul>
+<p>Veamos algún ejemplo.</p>
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
-<p>Calcular <span class="math notranslate nohighlight">\(\frac{\partial y}{partial x}\)</span> para <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>.</p>
+<p>Calcula <span class="math notranslate nohighlight">\(\dfrac{\partial y}{\partial x}\)</span> a partir de la expresión <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>.</p>
 <p><strong>Solución:</strong></p>
 <p>Tomando <span class="math notranslate nohighlight">\(F\)</span> tal que <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span>, tenemos que</p>
 <div class="math notranslate nohighlight">
@@ -815,25 +799,29 @@ F(x,y) = y^3 + y^2 - 5y - x^2 + 4.
 <p>Entonces</p>
 <div class="math notranslate nohighlight">
 \[
-F_x(x,y) = -2x \quad \textrm{ y } \quad F_y(x,y) = 3y^2 + 2y - 5.
+\frac{\partial F}{\partial x}(x,y) = -2x \quad \textrm{ y } \quad \frac{\partial F}{\partial y}(x,y) = 3y^2 + 2y - 5.
 \]</div>
-<p>Usando el resultado teórico de derivación implícita, obtenemos que</p>
+<p>Entonces</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
 \]</div>
 </section>
-</div><p>Vamos a comprobar que el cálculo es correcto con la ayuda de <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
+</div><p>Vamos a preguntarle a nuestro oráculo, por si nos hemos equivocado.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define la variable simbólica x e y </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 
-<span class="n">F</span> <span class="o">=</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="c1"># define F tal que F(x,y) = 0</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># Aqui está la ec. implícita F(x,y) = 0 </span>
 
-<span class="c1"># Cálculo de la derivada implícita con respecto a x</span>
+<span class="c1"># Cálculo de las derivadas de F respecto x e y</span>
 <span class="n">F_x</span><span class="p">,</span> <span class="n">F_y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> 
+
+<span class="c1"># Utilizamos la fórmula</span>
 <span class="n">y_x</span> <span class="o">=</span> <span class="o">-</span> <span class="n">F_x</span><span class="o">/</span><span class="n">F_y</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada implícita con respecto a x: &#39;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">y_x</span><span class="p">)</span>
 </pre></div>
@@ -847,6 +835,49 @@ F_x(x,y) = -2x \quad \textrm{ y } \quad F_y(x,y) = 3y^2 + 2y - 5.
 </div>
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle \frac{2 x}{3 y^{2} + 2 y - 5}\]</div>
+</div>
+</div>
+<p>Ya por último vamos a resolver directamente con <code class="docutils literal notranslate"><span class="pre">sympy</span></code> un ejemplo con dos variables independientes (te queda como ejercicio comprobar que <code class="docutils literal notranslate"><span class="pre">sympy</span></code> no se equivoca).</p>
+<div class="proof example admonition" id="3.5.Ej2">
+<p class="admonition-title"><span>Example </span></p>
+<section class="example-content" id="proof-content">
+<p>Calcular <span class="math notranslate nohighlight">\(\frac{\partial z}{\partial x}\)</span> y <span class="math notranslate nohighlight">\(\frac{\partial z}{\partial y}\)</span> a partir de la expresión  <span class="math notranslate nohighlight">\(\cos(x^2 z)+\sin(y^2 z) + z^2 = 0\)</span>.</p>
+</section>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># Aqui está la ec. implícita F(x,y) = 0 </span>
+
+<span class="c1"># Cálculo de las derivadas de F respecto x, y, z</span>
+<span class="n">F_x</span><span class="p">,</span> <span class="n">F_y</span><span class="p">,</span> <span class="n">F_z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> 
+
+<span class="c1"># Utilizamos las fórmulas</span>
+<span class="n">z_x</span> <span class="o">=</span> <span class="o">-</span> <span class="n">F_x</span><span class="o">/</span><span class="n">F_z</span>
+<span class="n">z_y</span> <span class="o">=</span> <span class="o">-</span> <span class="n">F_y</span><span class="o">/</span><span class="n">F_z</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada implícita con respecto a x: &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">z_x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Derivada implícita con respecto a y: &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">z_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle z^{2} + \sin{\left(y^{2} z \right)} + \cos{\left(x^{2} z \right)} = 0\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada implícita con respecto a x: 
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{2 x z \sin{\left(x^{2} z \right)}}{- x^{2} \sin{\left(x^{2} z \right)} + y^{2} \cos{\left(y^{2} z \right)} + 2 z}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Derivada implícita con respecto a y: 
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \frac{2 y z \cos{\left(y^{2} z \right)}}{- x^{2} \sin{\left(x^{2} z \right)} + y^{2} \cos{\left(y^{2} z \right)} + 2 z}\]</div>
 </div>
 </div>
 </section>

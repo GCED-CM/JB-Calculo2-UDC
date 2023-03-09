@@ -191,92 +191,74 @@
 # 
 # Again... ¡¡Da lo mismo!! ¡¡GUAU, GUAU, GUAUUUU!!
 
-# ## Composición de funciones con `sympy`
+# ## Jacobiano de la composición de funciones con `sympy`
 # 
-# Retomamos este último ejemplo para resolverlo ayudados por `sympy`. ¡A ver si le da lo mismo! 
+# Retomamos este último ejemplo para resolverlo ayudados por `sympy`. A ver si vuelve a dar lo mismo... aunque ya sería mucha suerte, ¿no? 
 
-# In[2]:
+# In[5]:
 
 
 import sympy as sp
 
-x, y, s, t = sp.symbols('x y s t', real=True) # define las variables simbólicas x, y, s, t 
+x, y, r, t = sp.symbols('x y r t', real=True) 
 
-w = 2*x*y # define w(x,y)
-xx = s**2 + t**2 # define x(s,t)
-yy = s/t # define y(s,t)
+# Definimos las funciones F y G como matrices
+F = sp.Matrix([r*sp.cos(t), r*sp.sin(t)])
+G = sp.Matrix([ x**2 + y**2 ])
 
-# Cálculo de las derivadas parciales de w con respecto a s y t:
-F, G = sp.Matrix([xx, yy]), sp.Matrix([w])
-jac_F, jac_G = F.jacobian([s,t]), G.jacobian([x,y]) # cálculo del jacobiano de F y G
-dw_s, dw_t = sp.simplify(jac_G.subs({x:s**2+t**2,y:s/t})*jac_F)
+# Calculamos (y mostramos) las matrices jacobianas asociadas a F y G
+jac_F = F.jacobian([r,t])
+display(jac_F)
 
-# Cálculo de la derivada de w con respecto a s:
-print('Derivada parcial de w con respecto a s: ')
-display(dw_s)
+jac_G = G.jacobian([x,y])
+display(jac_G)
 
-# Cálculo de la derivada de w con respecto a t:
-print('Derivada parcial de w con respecto a t: ')
-display(dw_t)
+# Calculamos la jacobiana de la composición como producto de matrices
+jac_GoF = jac_G.subs({x:r*sp.cos(t),y:r*sp.sin(t)})*jac_F
+display(sp.simplify(jac_GoF))
 
 
 # ## Derivación implícita
 # 
-# Si queremos calcular las derivadas de una función que depende de una o varias variables no tenemos porque conocer su expresión de forma explícita, puede venir dada implícitamente. Por ejemplo, la función $y = f(x)$ puede venir determinada por la expresión $y^3 + y^2 - 5y - x^2 = -4$. En este caso, no se conoce de forma explícita cuál es la expresión de $f$ en términos de $x$. 
-# En el caso general, es posible tener una función, $F$, que defina la relación entre $x$ e $y$, $F(x,y) = 0$.
-# También en estos casos es posible calcular la derivada parcial $\frac{\partial y}{\partial x}$. Sólo tenemos que derivar la expresión $F(x,y) = 0$ utilizando la regla de la cadena como sigue:
+# Como ya aprendimos al comienzo de la Sección {ref}`sec:3.4.PlanoTangente`, es posible que una función venga dada implícitamente. 
+# Por ejemplo, la función de una variable $y = f(x)$ puede venir determinada por la expresión $y^3 + y^2 - 5y - x^2 = -4$. 
+# Aunque no conozcamos su expresión explícita podemos fácilmente calcular las derivadas de las variables dependientes en función de las independientes. Os mostramos a continuación cómo hacerlo.
 # 
-# $$
-# F(x,y) = 0 \stackrel{\frac{\partial}{\partial x}}{\Longrightarrow} 
-# \frac{\partial F}{\partial x}(x,y)\frac{\partial x}{\partial x} + \frac{\partial F}{\partial y}(x,y)\frac{\partial y}{\partial x}.
-# $$
+# * **Funciones con una única variable independiente**. Supongamos que existe una única variable independiente, $x$, y una variable dependiente, $y\equiv y(x)$. En este caso, 
 # 
-# Despejamos en la anterior expresión, teniendo en cuenta que $\frac{\partial x}{\partial x}=1$, y obtenemos:
+#     $$
+#     F(x,y) = 0 \stackrel{\frac{\partial}{\partial x}}{\Longrightarrow} 
+#     \frac{\partial F}{\partial x}(x,y)\frac{\partial x}{\partial x} + \frac{\partial F}{\partial y}(x,y)\frac{\partial y}{\partial x}.
+#     $$
 # 
-# $$
-# \frac{\partial y}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y)  } { \frac{\partial F}{\partial y}(x,y) }.
-# $$
+#     Despejamos en la anterior expresión, teniendo en cuenta que $\frac{\partial x}{\partial x}=1$, y obtenemos:
 # 
-# Análogamente, si tenemos una relación implícita entre tres variables, $x$, $y$ y $z$ y queremos conocer, por ejemplo, 
-# las derivadas de $z$ respecto $x$ e $y$ (entendemos que, en este caso, $x$ e $y$ son variables independientes),
+#     $$
+#     \frac{\partial y}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y)  } { \frac{\partial F}{\partial y}(x,y) }.
+#     $$
 # 
-# \begin{eqnarray*}
-# F(x,y,z) = 0 &\stackrel{\frac{\partial}{\partial x}}{\Longrightarrow}&
-# \frac{\partial F}{\partial x}(x,y,z)\frac{\partial x}{\partial x} + \cancel{ \frac{\partial F}{\partial y}(x,y,z)
-# {\color{red} \frac{\partial y}{\partial x}} } 
-# + \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial x} = 0 \\
-# & \Rightarrow & \frac{\partial z}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) } \\
-# F(x,y,z) = 0 &\stackrel{\frac{\partial}{\partial y}}{\Longrightarrow}&
-# \cancel{ \frac{\partial F}{\partial y}(x,y,z){\color{red} \frac{\partial x}{\partial y}} } 
-# + \frac{\partial F}{\partial y}(x,y,z) \frac{\partial y}{\partial y} 
-# + \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial y} = 0\\
-# & \Rightarrow & \frac{\partial z}{\partial y} = - \frac{ \frac{\partial F}{\partial y}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) }
-# \end{eqnarray*}
+# * **Funciones con dos variables independientes**. Si ahora tenemos una relación implícita entre dos variables independientes, $x$ e $y$, y una variable que depende de las anteriores, $z \equiv z(x,y)$, ,
 # 
-# ````{prf:definition} Regla de la cadena: derivación implícita
-# :label: def_rc_2vi
-# :nonumber: 
+#     \begin{eqnarray*}
+#     F(x,y,z) = 0 &\stackrel{\frac{\partial}{\partial x}}{\Longrightarrow}&
+#     \frac{\partial F}{\partial x}(x,y,z)\frac{\partial x}{\partial x} + \cancel{ \frac{\partial F}{\partial y}(x,y,z)
+#     {\color{red} \frac{\partial y}{\partial x}} } 
+#     + \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial x} = 0 \\
+#     & \Rightarrow & \frac{\partial z}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) } \\
+#     F(x,y,z) = 0 &\stackrel{\frac{\partial}{\partial y}}{\Longrightarrow}&
+#     \cancel{ \frac{\partial F}{\partial y}(x,y,z){\color{red} \frac{\partial x}{\partial y}} } 
+#     + \frac{\partial F}{\partial y}(x,y,z) \frac{\partial y}{\partial y} 
+#     + \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial y} = 0\\
+#     & \Rightarrow & \frac{\partial z}{\partial y} = - \frac{ \frac{\partial F}{\partial y}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) }
+#     \end{eqnarray*}
 # 
-# Si la ecuación $F(x,y) = 0$ define a $y$ implícitamente como función derivable de $x$, entonces
-# 
-# $$
-# \frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)}, \quad F_y(x,y) \neq 0.
-# $$
-# 
-# Si la ecuación $F(x,y,z) = 0$ define a $z$ implícitamente como función diferenciable de $x$ e $y$, entonces
-# 
-# $$
-# \frac{\partial z}{\partial x} = -\frac{F_x(x,y,z)}{F_z(x,y,z)} \quad \textrm{ y } \quad \frac{\partial z}{\partial y} = -\frac{F_y(x,y,z)}{F_z(x,y,z)}, \quad F_z(x,y,z) \neq 0.
-# $$
-# ````
-# 
-# ¡A seguir practicando!
+# Veamos algún ejemplo.
 # 
 # ````{prf:example}  
 # :label: 3.x._ex
 # :nonumber: 
 # 
-# Calcular $\frac{\partial y}{partial x}$ para $y^3 + y^2 - 5y - x^2 = -4$. 
+# Calcula $\dfrac{\partial y}{\partial x}$ a partir de la expresión $y^3 + y^2 - 5y - x^2 = -4$. 
 # 
 # **Solución:**
 # 
@@ -289,29 +271,64 @@ display(dw_t)
 # Entonces
 # 
 # $$
-# F_x(x,y) = -2x \quad \textrm{ y } \quad F_y(x,y) = 3y^2 + 2y - 5.
+# \frac{\partial F}{\partial x}(x,y) = -2x \quad \textrm{ y } \quad \frac{\partial F}{\partial y}(x,y) = 3y^2 + 2y - 5.
 # $$
 # 
-# Usando el resultado teórico de derivación implícita, obtenemos que
+# Entonces
 # 
 # $$
 # \frac{\partial y}{\partial x} = -\frac{F_x(x,y)}{F_y(x,y)} = - \frac{(-2x)}{3y^2 + 2y - 5} = \frac{2x}{3y^2 + 2y - 5}.
 # $$
 # ````
 # 
-# Vamos a comprobar que el cálculo es correcto con la ayuda de `Python`.
+# Vamos a preguntarle a nuestro oráculo, por si nos hemos equivocado.
 
-# In[3]:
+# In[14]:
 
 
-x, y = sp.symbols('x y', real=True) # define la variable simbólica x e y 
+import sympy as sp
+x, y = sp.symbols('x y', real=True) 
 
-F = y**3 + y**2 - 5*y - x**2 + 4 # define F tal que F(x,y) = 0
-display(sp.Eq(F,0))
+F = y**3 + y**2 - 5*y - x**2 + 4 
+display(sp.Eq(F,0)) # Aqui está la ec. implícita F(x,y) = 0 
 
-# Cálculo de la derivada implícita con respecto a x
+# Cálculo de las derivadas de F respecto x e y
 F_x, F_y = sp.diff(F, x), sp.diff(F, y) 
+
+# Utilizamos la fórmula
 y_x = - F_x/F_y
+
 print('Derivada implícita con respecto a x: ')
 display(y_x)
+
+
+# Ya por último vamos a resolver directamente con `sympy` un ejemplo con dos variables independientes (te queda como ejercicio comprobar que `sympy` no se equivoca).
+# 
+# ````{prf:example}  
+# :label: 3.5.Ej2
+# :nonumber: 
+# 
+# Calcular $\frac{\partial z}{\partial x}$ y $\frac{\partial z}{\partial y}$ a partir de la expresión  $\cos(x^2 z)+\sin(y^2 z) + z^2 = 0$.
+# ````
+
+# In[37]:
+
+
+import sympy as sp
+x, y, z = sp.symbols('x y z', real=True) 
+
+F = sp.cos(x**2 * z) + sp.sin(y**2 * z) + z**2 
+display(sp.Eq(F,0)) # Aqui está la ec. implícita F(x,y) = 0 
+
+# Cálculo de las derivadas de F respecto x, y, z
+F_x, F_y, F_z = sp.diff(F, x), sp.diff(F, y), sp.diff(F,z) 
+
+# Utilizamos las fórmulas
+z_x = - F_x/F_z
+z_y = - F_y/F_z
+
+print('Derivada implícita con respecto a x: ')
+display(z_x)
+print('Derivada implícita con respecto a y: ')
+display(z_y)
 

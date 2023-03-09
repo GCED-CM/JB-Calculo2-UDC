@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# (sec:3.4.PlanoTangente)=
 # # Plano tangente y recta normal
 # 
 # ## ¿$z=f(x,y)$ o $F(x,y,z)=0$?
