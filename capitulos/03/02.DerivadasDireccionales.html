@@ -474,13 +474,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#links-para-ampliar-informacion">
+   3.2.4. Links para ampliar información
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matriz-jacobiana">
-   3.2.4. Matriz jacobiana
+   3.2.5. Matriz jacobiana
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matriz-jacobiana-y-derivada-direccional-con-sympy">
-   3.2.5. Matriz jacobiana y derivada direccional con
+   3.2.6. Matriz jacobiana y derivada direccional con
    <code class="docutils literal notranslate">
     <span class="pre">
      sympy
@@ -523,13 +528,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#links-para-ampliar-informacion">
+   3.2.4. Links para ampliar información
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matriz-jacobiana">
-   3.2.4. Matriz jacobiana
+   3.2.5. Matriz jacobiana
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matriz-jacobiana-y-derivada-direccional-con-sympy">
-   3.2.5. Matriz jacobiana y derivada direccional con
+   3.2.6. Matriz jacobiana y derivada direccional con
    <code class="docutils literal notranslate">
     <span class="pre">
      sympy
@@ -691,8 +701,16 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 </ol>
 </section>
 </div></section>
+<section id="links-para-ampliar-informacion">
+<h2><span class="section-number">3.2.4. </span>Links para ampliar información<a class="headerlink" href="#links-para-ampliar-informacion" title="Permalink to this headline">#</a></h2>
+<p>Si os quedáis con ganas de más, os recomendamos que echéis un vistazo a:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://espanol.libretexts.org/Matematicas/Calculo/Calculo_en_Varias_Variables_(ETS_Ingenieria_de_la_Universidad_de_Sevilla)/1._DERIVADAS_PARCIALES/1.6._Las_derivadas_direccionales_y_las_propiedades_del_gradiente">Capítulo sobre derivadas direccionales y propiedades del gradiente de la ETS de Ingeniería de la Universidad de Sevilla.</a></p></li>
+<li><p><a class="reference external" href="https://openstax.org/books/c%C3%A1lculo-volumen-3/pages/4-6-derivadas-direccionales-y-el-gradiente">Capítulo correspondiente del (magnífico) libro en abierto de G. Strang y E.J. Herman</a></p></li>
+</ul>
+</section>
 <section id="matriz-jacobiana">
-<h2><span class="section-number">3.2.4. </span>Matriz jacobiana<a class="headerlink" href="#matriz-jacobiana" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.5. </span>Matriz jacobiana<a class="headerlink" href="#matriz-jacobiana" title="Permalink to this headline">#</a></h2>
 <p>Por su interés a la hora de calcular el vector gradiente en <code class="docutils literal notranslate"><span class="pre">sympy</span></code> y, también, para su uso futuro en la regla de la cadena de una función de varias variables, vamos a dedicar esta subsección a definir la matriz jacobiana, que debe su nombre al matemático alemán Carl Gustav Jakov Jacobi (<a class="reference external" href="https://es.wikipedia.org/wiki/Carl_Gustav_Jakob_Jacobi">https://es.wikipedia.org/wiki/Carl_Gustav_Jakob_Jacobi</a>).</p>
 <div class="proof definition admonition" id="def_Jacobiana">
 <p class="admonition-title"><span>Definition </span></p>
@@ -729,7 +747,7 @@ ortogonal a la curva de nivel que pasa por <span class="math notranslate nohighl
 </section>
 </div></section>
 <section id="matriz-jacobiana-y-derivada-direccional-con-sympy">
-<h2><span class="section-number">3.2.5. </span>Matriz jacobiana y derivada direccional con <code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#matriz-jacobiana-y-derivada-direccional-con-sympy" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.6. </span>Matriz jacobiana y derivada direccional con <code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#matriz-jacobiana-y-derivada-direccional-con-sympy" title="Permalink to this headline">#</a></h2>
 <p>Vamos a empezar esta subsección mostrando cómo calcular la matriz jacobiana para una función en <code class="docutils literal notranslate"><span class="pre">sympy</span></code>. Para ello, tendremos que definir la función a través de una matriz y, después, utilizar la function <code class="docutils literal notranslate"><span class="pre">jacobian</span></code>, predefinida para estos objetos.</p>
 <p>La sintaxis es muy sencilla:  <code class="docutils literal notranslate"><span class="pre">F.jacobian([x,y,z])</span></code>, por ejemplo, calcula la matriz jacobiana de la función (definida a partir de una matriz) <code class="docutils literal notranslate"><span class="pre">F</span></code>, respecto a las variables x, y, z.</p>
 <div class="cell docutils container">

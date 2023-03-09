@@ -464,8 +464,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-una-variable">
+   3.5.2. Ejemplo una variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-de-dos-variables">
+   3.5.3. Ejemplo de dos variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#composicion-de-funciones-con-sympy">
+   3.5.4. Composición de funciones con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#derivacion-implicita">
-   3.5.2. Derivación implícita
+   3.5.5. Derivación implícita
   </a>
  </li>
 </ul>
@@ -493,8 +513,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-una-variable">
+   3.5.2. Ejemplo una variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-de-dos-variables">
+   3.5.3. Ejemplo de dos variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#composicion-de-funciones-con-sympy">
+   3.5.4. Composición de funciones con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     sympy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#derivacion-implicita">
-   3.5.2. Derivación implícita
+   3.5.5. Derivación implícita
   </a>
  </li>
 </ul>
@@ -518,7 +558,7 @@ title="Print to PDF"
 <p>Sean <span class="math notranslate nohighlight">\(\mathbf{F}: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> y <span class="math notranslate nohighlight">\(G: \mathbb{R}^m \rightarrow \mathbb{R}\)</span> dos funciones tales que <span class="math notranslate nohighlight">\(\mathbf{F}(D) \subset \mathbb{R}^m\)</span>. Sea <span class="math notranslate nohighlight">\(\mathbf{a} \in D\)</span> tal que <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> y <span class="math notranslate nohighlight">\(G\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{F}(\mathbf{a})\)</span>. Entonces la función compuesta <span class="math notranslate nohighlight">\(G \circ \mathbf{F}\)</span> es diferenciable en <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> y a partir de la <strong>regla general de la cadena</strong> se tiene:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = \mathrm{J}G(\mathbf{F}(\mathbf{a}))\mathrm{J}\mathbf{F}(\mathbf{a}),
+\mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = \mathrm{J}G(\mathbf{F}(\mathbf{a})) \; \mathrm{J}\mathbf{F}(\mathbf{a}),
 \]</div>
 <p>donde <span class="math notranslate nohighlight">\(\mathrm{J}G = \left[\frac{\partial G}{\partial \overline{x}_{1}}, \frac{\partial G}{\partial \overline{x}_{2}}, ... , \frac{\partial G}{\partial \overline{x}_{m}}\right]\)</span> es la matriz jacobiana de <span class="math notranslate nohighlight">\(G\)</span>, y</p>
 <div class="math notranslate nohighlight">
@@ -536,38 +576,22 @@ title="Print to PDF"
 </div><p><strong>NOTA 1:</strong> Recuerda que para una función <span class="math notranslate nohighlight">\(G: \mathbb{R}^m \rightarrow \mathbb{R}\)</span>, la matriz jacobiana es igual a la transpuesta del gradiente. Por tanto, a partir de la igualdad anterior, tenemos que</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(\mathbf{a}))\mathrm{J}\mathbf{F}(\mathbf{a}).
+\mathrm{J}(G \circ \mathbf{F}) (\mathbf{a}) = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(\mathbf{a})) \; \mathrm{J}\mathbf{F}(\mathbf{a}).
 \]</div>
 <p><strong>NOTA 2:</strong> La regla de la cadena para el caso multivariable es una generalización de la regla de la cadena para una variable. Si <span class="math notranslate nohighlight">\(n = m = 1\)</span>, tal que <span class="math notranslate nohighlight">\(a \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{F}: D \subset \mathbb{R} \rightarrow \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(G: \mathbb{R} \rightarrow \mathbb{R}\)</span>, entonces</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{J}(G \circ F) (a) = \mathrm{J}G(F(a))\mathrm{J}F(a) = G'(F(a))F'(a).
+\mathrm{J}(G \circ F) (a) = \mathrm{J}G(F(a)) \; \mathrm{J}F(a) = G'(F(a))\; F'(a).
 \]</div>
+<p>Aunque no lo haremos así, os dejamos un par de <em>remarks</em>, por si lo veis en algún libro y os llama la atención:</p>
 <div class="proof remark admonition" id="rc_01_regla_cadena">
 <p class="admonition-title"><span>Remark </span> (Regla de la cadena para una variable independiente)</p>
 <section class="remark-content" id="proof-content">
 <p>Sea <span class="math notranslate nohighlight">\(w = G(x_1,x_2,...,x_m)\)</span>, donde <span class="math notranslate nohighlight">\(G\)</span> es una función diferenciable de las <span class="math notranslate nohighlight">\(m\)</span> variables <span class="math notranslate nohighlight">\(x_1, x_2, ... , x_m\)</span>. Si cada una de las <span class="math notranslate nohighlight">\(x_j = F_j(t)\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(t\)</span>, entonces <span class="math notranslate nohighlight">\(w\)</span> es una función diferenciable de <span class="math notranslate nohighlight">\(t\)</span>, y</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dw}{dt} = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(t))\mathrm{J}\mathbf{F}(t) = \frac{\partial w}{\partial x_1}\frac{dx_1}{dt} + \frac{\partial w}{\partial x_2}\frac{dx_2}{dt} + ... + \frac{\partial w}{\partial x_m}\frac{dx_m}{dt}.
+\frac{dw}{dt} = (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(t)) \; \mathrm{J}\mathbf{F}(t) = \frac{\partial w}{\partial x_1}\frac{dx_1}{dt} + \frac{\partial w}{\partial x_2}\frac{dx_2}{dt} + ... + \frac{\partial w}{\partial x_m}\frac{dx_m}{dt}.
 \]</div>
-</section>
-</div><p>¡A practicar!</p>
-<div class="proof example admonition" id="3.x._ex">
-<p class="admonition-title"><span>Example </span></p>
-<section class="example-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(w = x^2y - y^2\)</span> donde <span class="math notranslate nohighlight">\(x = \sin(t)\)</span> e <span class="math notranslate nohighlight">\(y = e^t\)</span>. Calcular <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial t}\)</span>.</p>
-<p><strong>Solución:</strong></p>
-<p>Por la regla de la cadena para una variable independiente, tenemos que</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*} 
-\begin{split}
-\frac{dw}{dt} &amp; = \frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t} \\
- &amp; = 2xy(\cos(t)) + (x^2 - 2y)e^t \\
- &amp; = 2\color{blue}{\sin(t)}\color{blue}{e^t}\cos(t) + (\color{blue}{\sin}^2\color{blue}{(t)} - 2\color{blue}{e^t})e^t \\
- &amp; = 2e^t\sin(t)\cos(t) + e^t\sin^2(t) - 2e^(2t).
-\end{split}
-\end{equation*}\]</div>
 </section>
 </div><div class="proof remark admonition" id="rc_02_regla_cadena">
 <p class="admonition-title"><span>Remark </span> (Regla de la cadena para dos variables independientes)</p>
@@ -579,59 +603,126 @@ title="Print to PDF"
 \frac{\partial w}{\partial s}\\
 \frac{\partial w}{\partial t}\\
 \end{bmatrix}
-= (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(s,t))\mathrm{J}\mathbf{F}(s,t) = 
+= (\mathbf{\nabla}G)^\mathrm{t} (\mathbf{F}(s,t)) \; \mathrm{J}\mathbf{F}(s,t) = 
 \begin{bmatrix}
 \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial s} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial s} + \ldots + \frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial s}\\
 \frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t} + \frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t} + \ldots + \frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial t}
 \end{bmatrix}
 \end{split}\]</div>
 </section>
-</div><p>¡Sigamos practicando!</p>
-<div class="proof example admonition" id="3.x._ex">
-<p class="admonition-title"><span>Example </span></p>
-<section class="example-content" id="proof-content">
-<p>Utiliza la regla de la cadena para calcular <span class="math notranslate nohighlight">\(\frac{dw}{ds}\)</span> y <span class="math notranslate nohighlight">\(\frac{dw}{dt}\)</span> para <span class="math notranslate nohighlight">\(w = 2xy\)</span> donde <span class="math notranslate nohighlight">\(x = s^2 + t^2\)</span> e <span class="math notranslate nohighlight">\(y = s/t\)</span>.</p>
-<p><strong>Solución:</strong></p>
-<p>Por la regla de la cadena para dos variables independientes, obtenemos que</p>
+</div></section>
+<section id="ejemplo-una-variable">
+<h2><span class="section-number">3.5.2. </span>Ejemplo una variable<a class="headerlink" href="#ejemplo-una-variable" title="Permalink to this headline">#</a></h2>
+<p>Consideramos la composición de funciones:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{bmatrix}
-\frac{\partial w}{\partial s}\\
-\frac{\partial w}{\partial t}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{\partial w}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial s}\\
-\frac{\partial w}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial w}{\partial y} \frac{\partial y}{\partial t}\\
-\end{bmatrix} =
-\begin{bmatrix}
-2y(2s) + 2x\frac{1}{t}\\
-2y(2t) + 2x\frac{-s}{t^2}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-2 \color{blue}{\frac{s}{t}}(2s) + 2(\color{blue}{s^2 + t^2})\frac{1}{t}\\
-2\color{blue}{\frac{s}{t}}(2t) + 2(\color{blue}{s^2 + t^2})\frac{-s}{t^2}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{4s^2}{t} + \frac{2s^2 + 2t^2}{t}\\
-4s - \frac{2s^3 + 2st^2}{t^2}\\
-\end{bmatrix} = 
-\begin{bmatrix}
-\frac{6s^2 + 2t^2}{t}\\
-\frac{2st^2 - 2s^3}{t^2}\\
-\end{bmatrix} 
+\begin{array}{ccccc}
+\mathbb{R} &amp; \stackrel{\mathbf{F}}{\longrightarrow} &amp; \mathbb{R}^{2} &amp; \stackrel{G}{\longrightarrow} &amp; \mathbb{R} \\
+t &amp;\to &amp; \mathbf{F}(t) = \begin{bmatrix} x=\sin(t) \\ y=e^{t} \end{bmatrix} &amp; \to &amp; G(x,y) = x^2y-y^2 
+\end{array}
 \end{split}\]</div>
+<p>Vamos a calcular el jacobiano de esta composición. Recordemos que</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}\left( G\circ\mathbf{F}\right)(t) = \mathrm{J}G(\mathbf{F}(t)) \; \mathrm{J}\mathbf{F}(t).
+\]</div>
+<p>Vamos a calcular cada uno de los factores de este producto:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{J}\mathbf{F}(t) = \begin{bmatrix} \frac{\partial x}{\partial t} (t) \\ \\ \frac{\partial y}{\partial t} (t) \end{bmatrix}
+= \begin{bmatrix} \cos(t) \\ \\ e^t \end{bmatrix}. 
+\end{split}\]</div>
+<p>El segundo factor es:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}G(x,y) = \begin{bmatrix} \dfrac{\partial G}{\partial x} (x,y) &amp; \dfrac{\partial G}{\partial y} (x,y) \end{bmatrix} = 
+\begin{bmatrix} 2xy &amp; x^2-2y\end{bmatrix},
+\]</div>
+<p>entonces:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}G (\mathbf{F}(t)) = \mathrm{J}G \left( \sin(t), e^{t} \right) = \begin{bmatrix} 2\sin(t) e^{t} &amp; \sin^2(t)-2e^{t}\end{bmatrix}.
+\]</div>
+<p>Y, por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{J}\left( G\circ\mathbf{F}\right)(t) = \begin{bmatrix} 2\sin(t) e^{t} &amp; \sin^2(t)-2e^{t}\end{bmatrix} \begin{bmatrix} \cos(t) \\ \\ e^t \end{bmatrix} 
+= 2e^{t}\sin(t)\cos(t) + e^{t}\sin^{2}(t)-2e^{2t}.
+\end{split}\]</div>
+<p>Ya estaría, pero vamos a hacerlo por otro camino: vamos a construir explícitamente la función composición y a derivarla:</p>
+<div class="math notranslate nohighlight">
+\[
+t \stackrel{\mathbf{F}}\longrightarrow \left(\sin(t),e^{t}\right) \stackrel{G}{\longrightarrow} e^{t}\sin^{2}(t)-e^{2t},
+\]</div>
+<p>y, derivando directamente,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}\left( G\circ\mathbf{F}\right)(t) = \frac{d}{dt}\left(e^{t}\sin^{2}(t)-e^{2t}\right) = e^{t}\sin^{2}(t) + 2 e^{t}\sin(t)\cos(t) - 2e^{2t}.
+\]</div>
+<p>¡¡Da lo mismo de las dos maneras!! I can’t believe it!!</p>
 </section>
-</div><p>Vamos ahora a practicar con <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
+<section id="ejemplo-de-dos-variables">
+<h2><span class="section-number">3.5.3. </span>Ejemplo de dos variables<a class="headerlink" href="#ejemplo-de-dos-variables" title="Permalink to this headline">#</a></h2>
+<p>Consideramos la composición de funciones:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccc}
+\mathbb{R}^{2} &amp; \stackrel{\mathbf{F}}{\longrightarrow} &amp; \mathbb{R}^{2} &amp; \stackrel{G}{\longrightarrow} &amp; \mathbb{R} \\
+\begin{bmatrix} r \\ \theta \end{bmatrix} &amp;\to &amp; \mathbf{F}(r,\theta) = \begin{bmatrix} x=r\cos(\theta) \\ y=r\sin(\theta) \end{bmatrix} &amp; \to &amp; G(x,y) = x^2 + y^2 
+\end{array}
+\end{split}\]</div>
+<p>Vamos a calcular el jacobiano de esta composición. Recordemos que</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}\left( G\circ\mathbf{F}\right)(r,\theta) = \mathrm{J}G(\mathbf{F}(r,\theta)) \; \mathrm{J}\mathbf{F}(r,\theta).
+\]</div>
+<p>Vamos a calcular cada uno de los factores de este producto:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{J}\mathbf{F}(r,\theta) = 
+\begin{bmatrix} \dfrac{\partial x}{\partial r} &amp; \dfrac{\partial x}{\partial \theta} \\ \\ \dfrac{\partial y}{\partial r} &amp; \dfrac{\partial y}{\partial \theta} \end{bmatrix}
+= \begin{bmatrix} \cos(\theta) &amp; -r\sin(\theta) \\ \\ \sin(\theta) &amp; r\cos(\theta) \end{bmatrix}.
+\end{split}\]</div>
+<p>El segundo factor es:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}G(x,y) = \begin{bmatrix} \dfrac{\partial G}{\partial x} &amp;  \dfrac{\partial G}{\partial y} \end{bmatrix} = \begin{bmatrix} 2x &amp; 2y \end{bmatrix}.
+\]</div>
+<p>Entonces:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}G (\mathbf{F}(t)) = \mathrm{J}G \left( r\cos(t), r\sin(\theta) \right) = \begin{bmatrix} 2r\cos(\theta) &amp; 2r\sin(\theta) \end{bmatrix}.
+\]</div>
+<p>Y, por lo tanto,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\mathrm{J}\left( G\circ\mathbf{F}\right)(t) &amp;=&amp; \begin{bmatrix} 2r\cos(\theta) &amp; 2r\sin(\theta) \end{bmatrix} 
+\begin{bmatrix} \cos(\theta) &amp; -r\sin(\theta) \\ \\ \sin(\theta) &amp; r\cos(\theta) \end{bmatrix} \\
+\\
+&amp;=&amp; \begin{bmatrix} 2r\cos^{2}(\theta) + 2r\sin^2(\theta) &amp; -2r^2\sin(\theta)\cos(\theta) + 2r^2\sin(\theta)\cos(\theta) \end{bmatrix}
+= \begin{bmatrix} 2r &amp; 0 \end{bmatrix}.
+\end{eqnarray*}\]</div>
+<p>Como en el ejemplo anterior, vamos a construir explícitamente la función composición y a calcular su jacobiano:</p>
+<div class="math notranslate nohighlight">
+\[
+(r,\theta) \stackrel{\mathbf{F}}\longrightarrow \left(r\cos(\theta), r\sin(t)\right) \stackrel{G}{\longrightarrow} r^{2}\cos^{2}(\theta) + r^{2}\sin^{2}(\theta),
+\]</div>
+<p>y, derivando directamente,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{J}\left( G\circ\mathbf{F}\right)(r,\theta) = \begin{bmatrix} \dfrac{(G\circ\mathbf{F})}{\partial r} (r,\theta) &amp; \dfrac{(G\circ\mathbf{F})}{\partial \theta} (r,\theta) \end{bmatrix}
+= \begin{bmatrix} 2r &amp; 0\end{bmatrix}.
+\]</div>
+<p>Again… ¡¡Da lo mismo!! ¡¡GUAU, GUAU, GUAUUUU!!</p>
+</section>
+<section id="composicion-de-funciones-con-sympy">
+<h2><span class="section-number">3.5.4. </span>Composición de funciones con <code class="docutils literal notranslate"><span class="pre">sympy</span></code><a class="headerlink" href="#composicion-de-funciones-con-sympy" title="Permalink to this headline">#</a></h2>
+<p>Retomamos este último ejemplo para resolverlo ayudados por <code class="docutils literal notranslate"><span class="pre">sympy</span></code>. ¡A ver si le da lo mismo!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y s t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y, s, t </span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y s t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y, s, t </span>
 
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="c1"># define w(x,y)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># define x(s,t)</span>
@@ -667,8 +758,35 @@ title="Print to PDF"
 </div>
 </section>
 <section id="derivacion-implicita">
-<h2><span class="section-number">3.5.2. </span>Derivación implícita<a class="headerlink" href="#derivacion-implicita" title="Permalink to this headline">#</a></h2>
-<p>Si queremos calcular las derivadas de una función que depende de una o varias variables no tenemos porque conocer su expresión de forma explícita, puede venir dada implícitamente. Por ejemplo, la función <span class="math notranslate nohighlight">\(y = f(x)\)</span> puede venir determinada por la expresión <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>. En este caso, no se conoce de forma explícita cuál es la expresión de <span class="math notranslate nohighlight">\(f\)</span> en términos de <span class="math notranslate nohighlight">\(x\)</span>. A pesar de ello, es posible calcular la derivada parcial <span class="math notranslate nohighlight">\(\partial f/\partial x\)</span>.</p>
+<h2><span class="section-number">3.5.5. </span>Derivación implícita<a class="headerlink" href="#derivacion-implicita" title="Permalink to this headline">#</a></h2>
+<p>Si queremos calcular las derivadas de una función que depende de una o varias variables no tenemos porque conocer su expresión de forma explícita, puede venir dada implícitamente. Por ejemplo, la función <span class="math notranslate nohighlight">\(y = f(x)\)</span> puede venir determinada por la expresión <span class="math notranslate nohighlight">\(y^3 + y^2 - 5y - x^2 = -4\)</span>. En este caso, no se conoce de forma explícita cuál es la expresión de <span class="math notranslate nohighlight">\(f\)</span> en términos de <span class="math notranslate nohighlight">\(x\)</span>.
+En el caso general, es posible tener una función, <span class="math notranslate nohighlight">\(F\)</span>, que defina la relación entre <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span>.
+También en estos casos es posible calcular la derivada parcial <span class="math notranslate nohighlight">\(\frac{\partial y}{\partial x}\)</span>. Sólo tenemos que derivar la expresión <span class="math notranslate nohighlight">\(F(x,y) = 0\)</span> utilizando la regla de la cadena como sigue:</p>
+<div class="math notranslate nohighlight">
+\[
+F(x,y) = 0 \stackrel{\frac{\partial}{\partial x}}{\Longrightarrow} 
+\frac{\partial F}{\partial x}(x,y)\frac{\partial x}{\partial x} + \frac{\partial F}{\partial y}(x,y)\frac{\partial y}{\partial x}.
+\]</div>
+<p>Despejamos en la anterior expresión, teniendo en cuenta que <span class="math notranslate nohighlight">\(\frac{\partial x}{\partial x}=1\)</span>, y obtenemos:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial y}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y)  } { \frac{\partial F}{\partial y}(x,y) }.
+\]</div>
+<p>Análogamente, si tenemos una relación implícita entre tres variables, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> y <span class="math notranslate nohighlight">\(z\)</span> y queremos conocer, por ejemplo,
+las derivadas de <span class="math notranslate nohighlight">\(z\)</span> respecto <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> (entendemos que, en este caso, <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> son variables independientes),</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+F(x,y,z) = 0 &amp;\stackrel{\frac{\partial}{\partial x}}{\Longrightarrow}&amp;
+\frac{\partial F}{\partial x}(x,y,z)\frac{\partial x}{\partial x} + \cancel{ \frac{\partial F}{\partial y}(x,y,z)
+{\color{red} \frac{\partial y}{\partial x}} } 
++ \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial x} = 0 \\
+&amp; \Rightarrow &amp; \frac{\partial z}{\partial x} = - \frac{ \frac{\partial F}{\partial x}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) } \\
+F(x,y,z) = 0 &amp;\stackrel{\frac{\partial}{\partial y}}{\Longrightarrow}&amp;
+\cancel{ \frac{\partial F}{\partial y}(x,y,z){\color{red} \frac{\partial x}{\partial y}} } 
++ \frac{\partial F}{\partial y}(x,y,z) \frac{\partial y}{\partial y} 
++ \frac{\partial F}{\partial z}(x,y,z)\frac{\partial z}{\partial y} = 0\\
+&amp; \Rightarrow &amp; \frac{\partial z}{\partial y} = - \frac{ \frac{\partial F}{\partial y}(x,y,z)  } { \frac{\partial F}{\partial z}(x,y,z) }
+\end{eqnarray*}\]</div>
 <div class="proof definition admonition" id="def_rc_2vi">
 <p class="admonition-title"><span>Definition </span> (Regla de la cadena: derivación implícita)</p>
 <section class="definition-content" id="proof-content">
