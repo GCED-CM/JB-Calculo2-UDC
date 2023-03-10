@@ -52,12 +52,14 @@ chapters:
       title: Plano tangente
     - file: capitulos/03/05.ReglaCadena
       title: Regla de la cadena
-    - file: capitulos/03/06.Extremos2D
-      title: Extremos en 2D
-    - file: capitulos/03/07.ExtremosAplicaciones
-      title: Extremos. Aplicaciones
-    - file: capitulos/03/08.Multiplicadores
-      title: Multiplicadores de Lagrange
+    - file: capitulos/03/06.ExtremosRelativos
+      title: Extremos relativos en 2D
+    - file: capitulos/03/07.ExtremosAbsolutos
+      title: Extremos absolutos
+    - file: capitulos/03/08.AplicacionesExtremos
+      title: Aplicaciones del cálculo de extremos
+    - file: capitulos/03/09.Boletin
+      title: Boletín de ejercicios del tercer capítulo
       
 - file: capitulos/04/README
   title: Integración
