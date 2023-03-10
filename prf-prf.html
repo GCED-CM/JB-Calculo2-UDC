@@ -246,18 +246,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="capitulos/03/06.Extremos2D.html">
-     3.6. Extremos en 2D
+    <a class="reference internal" href="capitulos/03/06.ExtremosRelativos.html">
+     3.6. Extremos relativos en 2D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="capitulos/03/07.ExtremosAplicaciones.html">
-     3.7. Extremos. Aplicaciones
+    <a class="reference internal" href="capitulos/03/07.ExtremosAbsolutos.html">
+     3.7. Extremos absolutos
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="capitulos/03/08.Multiplicadores.html">
-     3.8. Multiplicadores de Lagrange
+    <a class="reference internal" href="capitulos/03/08.AplicacionesExtremos.html">
+     3.8. Aplicaciones del cálculo de extremos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="capitulos/03/09.Boletin.html">
+     3.9. Boletín de ejercicios del tercer capítulo
     </a>
    </li>
   </ul>
@@ -414,6 +419,9 @@ title="Fullscreen mode"
    <a href="#cap-def_2.1_funcion"><strong>def_2.1_funcion</strong></a> | 
    <a href="#cap-def_2.1_grafica"><strong>def_2.1_grafica</strong></a> | 
    <a href="#cap-def_2.1_polinomios"><strong>def_2.1_polinomios</strong></a> | 
+   <a href="#cap-def_3.6_ExtremosRelativos"><strong>def_3.6_ExtremosRelativos</strong></a> | 
+   <a href="#cap-def_3.6_Hessiana"><strong>def_3.6_Hessiana</strong></a> | 
+   <a href="#cap-def_3.6_PuntoCritico"><strong>def_3.6_PuntoCritico</strong></a> | 
    <a href="#cap-def_DerivDirec"><strong>def_DerivDirec</strong></a> | 
    <a href="#cap-def_DerivParc2D"><strong>def_DerivParc2D</strong></a> | 
    <a href="#cap-def_DerivParc3D"><strong>def_DerivParc3D</strong></a> | 
@@ -441,6 +449,8 @@ title="Fullscreen mode"
    <a href="#cap-prop_02_limites_rectas"><strong>prop_02_limites_rectas</strong></a> | 
    <a href="#cap-prop_1.6_distancia_punto_plano"><strong>prop_1.6_distancia_punto_plano</strong></a> | 
    <a href="#cap-prop_1.7_distancia_punto_recta"><strong>prop_1.7_distancia_punto_recta</strong></a> | 
+   <a href="#cap-prop_3.6_Clasificacion"><strong>prop_3.6_Clasificacion</strong></a> | 
+   <a href="#cap-prop_3.6_ExtremosRelativos"><strong>prop_3.6_ExtremosRelativos</strong></a> | 
    <a href="#cap-prop_CalculoDerDirecc"><strong>prop_CalculoDerDirecc</strong></a> | 
    <a href="#cap-prop_DerivMixtas"><strong>prop_DerivMixtas</strong></a> | 
    <a href="#cap-prop_PropGradiente"><strong>prop_PropGradiente</strong></a> | 
@@ -646,6 +656,30 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="capitulos/02/01.Funciones.html#def_2.1_polinomios"><code class="xref">def_2.1_polinomios</code></a> <em>(capitulos/02/01.Funciones)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_3.6_ExtremosRelativos"><td></td><td>
+       <strong>def_3.6_ExtremosRelativos</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/06.ExtremosRelativos.html#def_3.6_ExtremosRelativos"><code class="xref">def_3.6_ExtremosRelativos</code></a> <em>(capitulos/03/06.ExtremosRelativos)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_3.6_Hessiana"><td></td><td>
+       <strong>def_3.6_Hessiana</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/06.ExtremosRelativos.html#def_3.6_Hessiana"><code class="xref">def_3.6_Hessiana</code></a> <em>(capitulos/03/06.ExtremosRelativos)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_3.6_PuntoCritico"><td></td><td>
+       <strong>def_3.6_PuntoCritico</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/06.ExtremosRelativos.html#def_3.6_PuntoCritico"><code class="xref">def_3.6_PuntoCritico</code></a> <em>(capitulos/03/06.ExtremosRelativos)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_DerivDirec"><td></td><td>
@@ -862,6 +896,22 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="capitulos/01/06.RectasPlanos.html#prop_1.7_distancia_punto_recta"><code class="xref">prop_1.7_distancia_punto_recta</code></a> <em>(capitulos/01/06.RectasPlanos)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_3.6_Clasificacion"><td></td><td>
+       <strong>prop_3.6_Clasificacion</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/06.ExtremosRelativos.html#prop_3.6_Clasificacion"><code class="xref">prop_3.6_Clasificacion</code></a> <em>(capitulos/03/06.ExtremosRelativos)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_3.6_ExtremosRelativos"><td></td><td>
+       <strong>prop_3.6_ExtremosRelativos</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/06.ExtremosRelativos.html#prop_3.6_ExtremosRelativos"><code class="xref">prop_3.6_ExtremosRelativos</code></a> <em>(capitulos/03/06.ExtremosRelativos)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_CalculoDerDirecc"><td></td><td>
