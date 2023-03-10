@@ -34,7 +34,7 @@
 # 
 # Mostramos como ejemplo la siguiente función, con varios máximos relativos (por ejemplo, en el $(0,0)$) y varios mínimos relativos (por ejemplo, en $(\pi,\pi)$).
 
-# In[29]:
+# In[33]:
 
 
 import numpy as np
@@ -139,7 +139,7 @@ plt.show()
 # **Nota:** El nombre *punto silla* (o, mejor, *punto de silla de montar*, porque verás que la gráfica que viene a continuación no se parece nada a la silla en la que te vas a sentar para comer hoy) recibe su nombre del hiperboloide $f(x,y) = y^2 - x^2$, que tiene en el $(0,0)$ un punto de estos.
 # 
 
-# In[30]:
+# In[34]:
 
 
 import numpy as np
@@ -184,7 +184,7 @@ plt.show()
 # 
 # Lo vamos a hacer de una manera un tanto *pedestre*, pero **te planteamos un reto:** escribe una function que clasifique automáticamente los puntos críticos.
 
-# In[31]:
+# In[36]:
 
 
 import sympy as sp
@@ -216,7 +216,7 @@ display('Hessiana del segundo punto crítico: ', H1)
 print("Determinante: ",sp.det(H1), ". Posición (1,1):", H1[0,0])
 
 
-# In[32]:
+# In[37]:
 
 
 # Vamos a dibujar esta función
