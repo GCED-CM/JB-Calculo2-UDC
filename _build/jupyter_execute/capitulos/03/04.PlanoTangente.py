@@ -127,7 +127,7 @@
 # Puesto que el vector $\mathbf{k}$ (es decir, el vector $(0,0,1)$) es normal al plano $XY$, se puede utilizar la fórmula del coseno del ángulo entre dos vectores para concluir que el ángulo de inclinación de un plano con vector normal $\mathbf{n}$ es 
 # 
 # $$
-# \cos \theta=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||||\mathbf{k}||}=\frac{n_{3}}{||\mathbf{n}||},
+# \cos \theta=\frac{|\mathbf{n}\cdot \mathbf{k}|}{||\mathbf{n}||||\mathbf{k}||}=\frac{|n_{3}|}{||\mathbf{n}||},
 # $$
 # 
 # siendo $0\leq \theta \leq \pi/2$.
@@ -164,7 +164,7 @@
 # 
 # Consideramos a continuación el problema de encontrar el plano tangente y la recta normal a la superficie $z=f(x,y)=x^2+y^2+3$ en el punto $(x_0,y_0,z_0)=(1,1/2,f(1,1/2))$, que resolvemos, en `Python`, aplicando los resultados expuestos. En primer lugar, importamos los módulos necesarios teniendo en cuenta que usaremos `Matplotlib` para la representación gráfica. 
 
-# In[46]:
+# In[1]:
 
 
 import sympy as sp
@@ -174,24 +174,30 @@ import matplotlib.pyplot as plt
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[47]:
+# In[2]:
 
 
 x, y, z, t = sp.symbols('x y z t', real=True) # definimos las variables simbólicas
 f = sp.Lambda((x,y), x**2+y**2+3)
-x0 = 1; y0=1/2; z0=f(x0,y0)
+x0 = 1; y0=sp.Rational(1/2); z0=f(x0,y0)
+
 # Cálculo de la ecuación del plano tangente
 F = sp.Matrix([f(x,y)-z])
 grad_F = F.jacobian([x,y,z]).transpose()
 n = grad_F.subs(x,x0).subs(y,y0).subs(z,z0)
 plano_tang = sp.solve(sp.Eq(n[0]*(x-x0)+n[1]*(y-y0)+n[2]*(z-z0),0),z)[0]
+
+display(plano_tang)
+
 # Cálculo de la ecuación vectorial de la recta normal
 recta_norm = sp.Lambda(t,(x0+t*n[0], y0+t*n[1], z0+t*n[2]))
+
+display(recta_norm)
 
 
 # Una vez calculado el plano tangente y la recta normal, se traslada la información del módulo **Sympy** a **Numpy**, para un uso posterior en **Matplotlib**:
 
-# In[48]:
+# In[3]:
 
 
 f_n = sp.lambdify((x,y),f(x,y),"numpy") # función numpy con la expresión de f(x,y)
@@ -201,7 +207,7 @@ Recta_norm = sp.lambdify(t,recta_norm(t),"numpy")
 
 # Ahora se pueden usar las funciones de **Numpy** para la representación gráfica del plano tangente y la recta normal:
 
-# In[49]:
+# In[4]:
 
 
 from mpl_toolkits.mplot3d import axes3d
@@ -236,7 +242,7 @@ plt.show()
 
 # Por último, calculamos el ángulo de inclinación del plano tangente calculado:
 
-# In[50]:
+# In[5]:
 
 
 angulo=sp.acos(sp.Abs(n[2])/sp.sqrt(n.dot(n)))

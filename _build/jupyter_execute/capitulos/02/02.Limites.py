@@ -89,7 +89,7 @@
 # 
 # ````
 # Gráficamente, esta condición implica que el valor de $f(x,y)$ se encuentra entre los planos $z = L-\varepsilon$ y 
-# $z = L+\varepsilon$ para todo punto $(x,y)\neq (x_0,y_0)$ del disco centrado en $(x_0,y_0)$ y de radio $\delta$, como podemos ver en la aplicación de Geogebra de *silvina*, https://www.geogebra.org/m/uebhpsgv: 
+# $z = L+\varepsilon$ para todo punto $(x,y)\neq (x_0,y_0)$ del disco centrado en $(x_0,y_0)$ y de radio $\delta$, como podemos ver en [esta aplicación de Geogebra de *silvina*](https://www.geogebra.org/m/uebhpsgv). 
 # 
 # <img src="../../images/2.2.Limites.jpg" width="800"/>
 # 

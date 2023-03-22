@@ -262,7 +262,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="capitulos/03/09.Boletin.html">
-     3.9. Boletín de ejercicios del tercer capítulo
+     3.9. Ejercicios. Secciones 3.1 - 3.5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="capitulos/03/10.Boletin2.html">
+     3.10. Ejercicios. Secciones 3.6 - 3.8
     </a>
    </li>
   </ul>
@@ -300,6 +305,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="capitulos/05/04.LimitesContinuidad.html">
      5.4. Límites y continuidad con Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="capitulos/05/05.Derivacion.html">
+     5.5. Derivadas con Python
     </a>
    </li>
   </ul>
@@ -422,6 +432,7 @@ title="Fullscreen mode"
    <a href="#cap-def_3.6_ExtremosRelativos"><strong>def_3.6_ExtremosRelativos</strong></a> | 
    <a href="#cap-def_3.6_Hessiana"><strong>def_3.6_Hessiana</strong></a> | 
    <a href="#cap-def_3.6_PuntoCritico"><strong>def_3.6_PuntoCritico</strong></a> | 
+   <a href="#cap-def_3.7_compacto"><strong>def_3.7_compacto</strong></a> | 
    <a href="#cap-def_DerivDirec"><strong>def_DerivDirec</strong></a> | 
    <a href="#cap-def_DerivParc2D"><strong>def_DerivParc2D</strong></a> | 
    <a href="#cap-def_DerivParc3D"><strong>def_DerivParc3D</strong></a> | 
@@ -435,6 +446,8 @@ title="Fullscreen mode"
    <a href="#cap-ex_01_vector"><strong>ex_01_vector</strong></a> | 
    <a href="#cap-ex_02_no_limite"><strong>ex_02_no_limite</strong></a> | 
    <a href="#cap-ex_03_der_cont"><strong>ex_03_der_cont</strong></a> | 
+   <a href="#cap-ex_07_lagrange"><strong>ex_07_lagrange</strong></a> | 
+   <a href="#cap-ex_07_lagrange_cont"><strong>ex_07_lagrange_cont</strong></a> | 
    <a href="#cap-ex_2.1_dominios"><strong>ex_2.1_dominios</strong></a> | 
    <a href="#cap-ex_cont_3v"><strong>ex_cont_3v</strong></a> | 
    <a href="#cap-example-8"><strong>example-8</strong></a> | 
@@ -459,6 +472,7 @@ title="Fullscreen mode"
    <a href="#cap-rem_02_limites"><strong>rem_02_limites</strong></a> | 
    <a href="#cap-rem_04_angulo_inc_tang"><strong>rem_04_angulo_inc_tang</strong></a> | 
    <a href="#cap-rem_04_plano_tang"><strong>rem_04_plano_tang</strong></a> | 
+   <a href="#cap-rem_07_lagrange"><strong>rem_07_lagrange</strong></a> | 
    <a href="#cap-rem_CalculoDerDirecc"><strong>rem_CalculoDerDirecc</strong></a> | 
    <a href="#cap-rem_Jacobiana"><strong>rem_Jacobiana</strong></a> | 
    <a href="#cap-rem_NotacionDerivParc"><strong>rem_NotacionDerivParc</strong></a> | 
@@ -468,8 +482,11 @@ title="Fullscreen mode"
    <a href="#cap-th_03_cont"><strong>th_03_cont</strong></a> | 
    <a href="#cap-th_03_cont_der"><strong>th_03_cont_der</strong></a> | 
    <a href="#cap-th_04_plano_tang"><strong>th_04_plano_tang</strong></a> | 
+   <a href="#cap-th_07_lagrange"><strong>th_07_lagrange</strong></a> | 
+   <a href="#cap-th_07_valor_extr"><strong>th_07_valor_extr</strong></a> | 
    <a href="#cap-th_dif_func_comp"><strong>th_dif_func_comp</strong></a> | 
-   <a href="#cap-th_func_comp_cont"><strong>th_func_comp_cont</strong></a>
+   <a href="#cap-th_func_comp_cont"><strong>th_func_comp_cont</strong></a> | 
+   <a href="#cap-th_recta_regr_mc"><strong>th_recta_regr_mc</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -495,7 +512,7 @@ title="Fullscreen mode"
      <tr>
        <td></td>
        <td>
-       <a href="capitulos/03/05.ReglaCadena.html#3.x._ex"><code class="xref">3.x._ex</code></a> <em>(capitulos/03/05.ReglaCadena)</em></td><td>
+       <a href="capitulos/03/08.AplicacionesExtremos.html#3.x._ex"><code class="xref">3.x._ex</code></a> <em>(capitulos/03/08.AplicacionesExtremos)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_01_angulos_directores"><td></td><td>
@@ -682,6 +699,14 @@ title="Fullscreen mode"
        <a href="capitulos/03/06.ExtremosRelativos.html#def_3.6_PuntoCritico"><code class="xref">def_3.6_PuntoCritico</code></a> <em>(capitulos/03/06.ExtremosRelativos)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_3.7_compacto"><td></td><td>
+       <strong>def_3.7_compacto</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/07.ExtremosAbsolutos.html#def_3.7_compacto"><code class="xref">def_3.7_compacto</code></a> <em>(capitulos/03/07.ExtremosAbsolutos)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_DerivDirec"><td></td><td>
        <strong>def_DerivDirec</strong></td><td></td></tr>
      <tr>
@@ -784,6 +809,22 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="capitulos/03/03.Diferenciabilidad.html#ex_03_der_cont"><code class="xref">ex_03_der_cont</code></a> <em>(capitulos/03/03.Diferenciabilidad)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex_07_lagrange"><td></td><td>
+       <strong>ex_07_lagrange</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/07.ExtremosAbsolutos.html#ex_07_lagrange"><code class="xref">ex_07_lagrange</code></a> <em>(capitulos/03/07.ExtremosAbsolutos)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex_07_lagrange_cont"><td></td><td>
+       <strong>ex_07_lagrange_cont</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/07.ExtremosAbsolutos.html#ex_07_lagrange_cont"><code class="xref">ex_07_lagrange_cont</code></a> <em>(capitulos/03/07.ExtremosAbsolutos)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ex_2.1_dominios"><td></td><td>
@@ -978,6 +1019,14 @@ title="Fullscreen mode"
        <a href="capitulos/03/04.PlanoTangente.html#rem_04_plano_tang"><code class="xref">rem_04_plano_tang</code></a> <em>(capitulos/03/04.PlanoTangente)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_07_lagrange"><td></td><td>
+       <strong>rem_07_lagrange</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/07.ExtremosAbsolutos.html#rem_07_lagrange"><code class="xref">rem_07_lagrange</code></a> <em>(capitulos/03/07.ExtremosAbsolutos)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rem_CalculoDerDirecc"><td></td><td>
        <strong>rem_CalculoDerDirecc</strong></td><td></td></tr>
      <tr>
@@ -1050,6 +1099,22 @@ title="Fullscreen mode"
        <a href="capitulos/03/04.PlanoTangente.html#th_04_plano_tang"><code class="xref">th_04_plano_tang</code></a> <em>(capitulos/03/04.PlanoTangente)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_07_lagrange"><td></td><td>
+       <strong>th_07_lagrange</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/07.ExtremosAbsolutos.html#th_07_lagrange"><code class="xref">th_07_lagrange</code></a> <em>(capitulos/03/07.ExtremosAbsolutos)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_07_valor_extr"><td></td><td>
+       <strong>th_07_valor_extr</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/07.ExtremosAbsolutos.html#th_07_valor_extr"><code class="xref">th_07_valor_extr</code></a> <em>(capitulos/03/07.ExtremosAbsolutos)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-th_dif_func_comp"><td></td><td>
        <strong>th_dif_func_comp</strong></td><td></td></tr>
      <tr>
@@ -1064,6 +1129,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="capitulos/02/03.Continuidad.html#th_func_comp_cont"><code class="xref">th_func_comp_cont</code></a> <em>(capitulos/02/03.Continuidad)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-th_recta_regr_mc"><td></td><td>
+       <strong>th_recta_regr_mc</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="capitulos/03/08.AplicacionesExtremos.html#th_recta_regr_mc"><code class="xref">th_recta_regr_mc</code></a> <em>(capitulos/03/08.AplicacionesExtremos)</em></td><td>
        <em>theorem</em></td></tr>
    </table>
 
