@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5.5. Derivación con Python &#8212; Calculo en varias variables</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="5.4. Límites y continuidad en Python" href="04.LimitesContinuidad.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-148221575-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/udc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Calculo en varias variables</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/README.html">
+   1. Vectores y geometría del espacio
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/01.VectoresPlano.html">
+     1.1. Vectores en el plano
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/02.VectoresEspacio.html">
+     1.2. Vectores en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/03.ProductoEscalar.html">
+     1.3. El producto escalar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/04.ProductoVectorial.html">
+     1.4. El producto vectorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/05.ProductoTriple.html">
+     1.5. El producto triple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/06.RectasPlanos.html">
+     1.6. Rectas y planos en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07.SuperficiesEspacio.html">
+     1.7. Superficies en el espacio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/08.Coordenadas.html">
+     1.8. Coordenadas cilíndricas y esféricas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/09.Boletin.html">
+     1.9. Boletín de ejercicios del primer capítulo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/README.html">
+   2. Límites y continuidad
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/01.Funciones.html">
+     2.1. Funciones de varias variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/02.Limites.html">
+     2.2. Límites
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/03.Continuidad.html">
+     2.3. Continuidad
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/04.Boletin.html">
+     2.4. Boletín de ejercicios del segundo capítulo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/README.html">
+   3. Derivación y extremos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/01.DerivadasParciales.html">
+     3.1. Derivadas parciales
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/02.DerivadasDireccionales.html">
+     3.2. Derivadas direccionales y gradiente
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/03.Diferenciabilidad.html">
+     3.3. Diferenciabilidad
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/04.PlanoTangente.html">
+     3.4. Plano tangente
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/05.ReglaCadena.html">
+     3.5. Regla de la cadena
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/06.ExtremosRelativos.html">
+     3.6. Extremos relativos en 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/07.ExtremosAbsolutos.html">
+     3.7. Extremos absolutos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/08.AplicacionesExtremos.html">
+     3.8. Aplicaciones del cálculo de extremos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/09.Boletin.html">
+     3.9. Ejercicios. Secciones 3.1 - 3.5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/10.Boletin2.html">
+     3.10. Ejercicios. Secciones 3.6 - 3.8
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04/README.html">
+   4. Integración
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   5. Pyhton para cálculo de varias variables
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.IntroduccionSympy.html">
+     5.1. Introducción a SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.IntroduccionNumpy.html">
+     5.2. Introducción a NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.RepresentacionGraficaMatplotlib.html">
+     5.3. Representación Gráfica con Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.LimitesContinuidad.html">
+     5.4. Límites y continuidad con Python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.5. Derivadas con Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/05/05.Derivacion.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/capitulos/05/05.Derivacion.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-funciones-de-dos-variables-con-python">
+   5.5.1. Derivadas parciales para funciones de dos variables con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-funciones-de-tres-o-mas-variables">
+   5.5.2. Derivadas parciales para funciones de tres o más variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-de-orden-superior">
+   5.5.3. Derivadas parciales de orden superior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-del-vector-gradiente">
+   5.5.4. Cálculo del vector gradiente
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivada-direccional">
+   5.5.5. Derivada direccional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#el-vector-gradiente-es-ortogonal-a-las-curvas-de-nivel">
+   5.5.6. El vector gradiente es ortogonal a las curvas de nivel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python">
+   5.5.7. Cálculo y representación del plano tangente y de la recta normal con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Derivación con Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-funciones-de-dos-variables-con-python">
+   5.5.1. Derivadas parciales para funciones de dos variables con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-para-funciones-de-tres-o-mas-variables">
+   5.5.2. Derivadas parciales para funciones de tres o más variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivadas-parciales-de-orden-superior">
+   5.5.3. Derivadas parciales de orden superior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-del-vector-gradiente">
+   5.5.4. Cálculo del vector gradiente
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivada-direccional">
+   5.5.5. Derivada direccional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#el-vector-gradiente-es-ortogonal-a-las-curvas-de-nivel">
+   5.5.6. El vector gradiente es ortogonal a las curvas de nivel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python">
+   5.5.7. Cálculo y representación del plano tangente y de la recta normal con
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="derivacion-con-python">
+<h1><span class="section-number">5.5. </span>Derivación con Python<a class="headerlink" href="#derivacion-con-python" title="Permalink to this headline">#</a></h1>
+<p>Esta sección pretende ser un compendio (esperemos que claro y ordenado) de todo el <code class="docutils literal notranslate"><span class="pre">Python</span></code>
+que hemos ido usando en las cinco primeras secciones del Capítulo 3.</p>
+<p><strong>Objetivos:</strong></p>
+<ul class="simple">
+<li><p>Cálculo de las derivadas parciales y direccionales.</p></li>
+<li><p>Cálculo del vector gradiente.</p></li>
+<li><p>Cálculo del plano tangente y de la recta normal.</p></li>
+<li><p>Regla de la cadena.</p></li>
+</ul>
+<section id="derivadas-parciales-para-funciones-de-dos-variables-con-python">
+<h2><span class="section-number">5.5.1. </span>Derivadas parciales para funciones de dos variables con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#derivadas-parciales-para-funciones-de-dos-variables-con-python" title="Permalink to this headline">#</a></h2>
+<p>Veamos ahora cómo calcular derivadas parciales utilizando sympy.</p>
+<p>La función clave es <code class="docutils literal notranslate"><span class="pre">sp.diff</span></code>. que debe llevar como argumentos la expresión a derivar (o función Lambda, también vale) y, a continuación, la variable respecto a la que queremos hacerlo.</p>
+<p>Veamos un par de ejemplos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">df_x_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x</span>
+<span class="n">df_y_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a y</span>
+
+<span class="n">df_x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">df_x_expr</span><span class="p">)</span>  <span class="c1"># Creamos una función Lambda para la derivada respecto x</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_x_expr</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_y_expr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df_x(1,2): &quot;</span><span class="p">,</span><span class="n">df_x</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># Usamos la función Lambda para evaluar la derivada en un punto</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 15 x^{2} y^{2} + 8 x y^{3}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 10 x^{3} y + 12 x^{2} y^{2}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_x(1,2):  124
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left( \left( x, \  y\right) \mapsto 15 x^{2} y^{2} + 8 x y^{3} \right)\]</div>
+</div>
+</div>
+</section>
+<section id="derivadas-parciales-para-funciones-de-tres-o-mas-variables">
+<h2><span class="section-number">5.5.2. </span>Derivadas parciales para funciones de tres o más variables<a class="headerlink" href="#derivadas-parciales-para-funciones-de-tres-o-mas-variables" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y, z</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">z</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="n">df_x_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x</span>
+<span class="n">df_y_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a y</span>
+<span class="n">df_z_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a z</span>
+
+
+<span class="n">df_x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),</span><span class="n">df_x_expr</span><span class="p">)</span>  <span class="c1"># Creamos una función Lambda para la derivada respecto x</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_x_expr</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_y_expr</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_z_expr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df_x(1,2,3): &quot;</span><span class="p">,</span><span class="n">df_x</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># Usamos la función Lambda para evaluar la derivada en un punto</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 20 x^{3} y^{3} z^{2} + 8 x y^{3} z^{4}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 15 x^{4} y^{2} z^{2} + 12 x^{2} y^{2} z^{4}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 10 x^{4} y^{3} z + 16 x^{2} y^{3} z^{3}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_x(1,2,3):  6624
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left( \left( x, \  y, \  z\right) \mapsto 20 x^{3} y^{3} z^{2} + 8 x y^{3} z^{4} \right)\]</div>
+</div>
+</div>
+</section>
+<section id="derivadas-parciales-de-orden-superior">
+<h2><span class="section-number">5.5.3. </span>Derivadas parciales de orden superior<a class="headerlink" href="#derivadas-parciales-de-orden-superior" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">df_xx_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x dos veces. También se puede escribir sp.diff(f_expr,x,2)</span>
+<span class="n">df_yx_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial primero respecto x, luego respecto y</span>
+<span class="n">df_xy_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># Derivada parcial primero respecto y, luego respecto x</span>
+<span class="n">df_yy_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># Derivada parcial respecto a x dos veces</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_xx_expr</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_yx_expr</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_xy_expr</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_yy_expr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2 y^{2} \cdot \left(15 x + 4 y\right)\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6 x y \left(5 x + 4 y\right)\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6 x y \left(5 x + 4 y\right)\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2 x^{2} \cdot \left(5 x + 12 y\right)\]</div>
+</div>
+</div>
+</section>
+<section id="calculo-del-vector-gradiente">
+<h2><span class="section-number">5.5.4. </span>Cálculo del vector gradiente<a class="headerlink" href="#calculo-del-vector-gradiente" title="Permalink to this headline">#</a></h2>
+<p>Calculamos el vector gradiente como la transpuesta de la matriz jacobiana para funciones de <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> a <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, como se muestra en el siguiente ejemplo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Cálculo del jacobiano de F</span>
+<span class="n">jac_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">jac_F</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="c1"># NOTA: Se puede hacer lo mismo en un único paso:</span>
+<span class="c1"># grad_F = F.jacobian([x,y]).transpose()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}6 x\\- 10 y\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+</section>
+<section id="derivada-direccional">
+<h2><span class="section-number">5.5.5. </span>Derivada direccional<a class="headerlink" href="#derivada-direccional" title="Permalink to this headline">#</a></h2>
+<p>Mostramos a continuación cómo calcular la derivada direccional de la función <span class="math notranslate nohighlight">\(f(x,y) = x\sqrt{y}\)</span>, en un punto cualquiera <span class="math notranslate nohighlight">\((x,y)\)</span>, según la dirección que marca el vector <span class="math notranslate nohighlight">\(\mathbf{u}=(1,2)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span> <span class="n">x</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">])</span>
+
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># Definimos un vector director unitario</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="n">norm_u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="o">/</span><span class="n">norm_u</span>
+<span class="n">display</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="n">df_u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">grad_F</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\sqrt{y}\\\frac{x}{2 \sqrt{y}}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}1\\2\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\frac{\sqrt{5}}{5}\\\frac{2 \sqrt{5}}{5}\end{matrix}\right]\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{\sqrt{5} x}{5 \sqrt{y}} + \frac{\sqrt{5} \sqrt{y}}{5}\]</div>
+</div>
+</div>
+</section>
+<section id="el-vector-gradiente-es-ortogonal-a-las-curvas-de-nivel">
+<h2><span class="section-number">5.5.6. </span>El vector gradiente es ortogonal a las curvas de nivel<a class="headerlink" href="#el-vector-gradiente-es-ortogonal-a-las-curvas-de-nivel" title="Permalink to this headline">#</a></h2>
+<p>Lo mostramos gráficamente sobre un ejemplo sencillo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x, y</span>
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">F_lamb</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+<span class="c1"># display(F_lamb)</span>
+
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">grad_F_lamb</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">[</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">grad_F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span> 
+<span class="c1"># Creamos una función lambdify del gradiente para poder evaluarlo en cualquier punto</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># 50 puntos en cada dirección de los ejes cartesianos para las curvas de nivel</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Values</span> <span class="o">=</span> <span class="n">F_lamb</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="n">Ng</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 10 puntos en cada dirección de los ejes cartesianos para los vectores gradientes</span>
+<span class="n">xg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">Ng</span><span class="p">)</span>
+<span class="n">yg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">Ng</span><span class="p">)</span>
+<span class="n">Xg</span><span class="p">,</span> <span class="n">Yg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">yg</span><span class="p">)</span>
+<span class="n">Values_Grad</span><span class="o">=</span><span class="n">grad_F_lamb</span><span class="p">(</span><span class="n">Xg</span><span class="p">,</span><span class="n">Yg</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Values</span><span class="p">)</span> <span class="c1"># Representación gráfica de las curvas de nivel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># Se añade el valor numérico a cada curva de nivel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">Xg</span><span class="p">,</span> <span class="n">Yg</span><span class="p">,</span> <span class="n">Values_Grad</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Values_Grad</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Representación gráfica del campo de vectores gradiente</span>
+<span class="c1"># plt.quiver(Xg, Yg, Values_Grad) # Representación gráfica del campo de vectores gradiente</span>
+<span class="c1"># Etiquetas de los ejes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/05.Derivacion_12_0.png" src="../../_images/05.Derivacion_12_0.png" />
+</div>
+</div>
+</section>
+<section id="calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python">
+<h2><span class="section-number">5.5.7. </span>Cálculo y representación del plano tangente y de la recta normal con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#calculo-y-representacion-del-plano-tangente-y-de-la-recta-normal-con-python" title="Permalink to this headline">#</a></h2>
+<p>Consideramos a continuación el problema de encontrar el plano tangente y la recta normal a la superficie <span class="math notranslate nohighlight">\(z=f(x,y)=x^2+y^2+3\)</span> en el punto <span class="math notranslate nohighlight">\((x_0,y_0,z_0)=(1,1/2,f(1,1/2))\)</span>, que resolvemos, en <code class="docutils literal notranslate"><span class="pre">Python</span></code>, aplicando los resultados expuestos. En primer lugar, importamos los módulos necesarios teniendo en cuenta que usaremos <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> para la representación gráfica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora vamos a calcular:</p>
+<ol class="simple">
+<li><p>Plano tangente.</p></li>
+<li><p>Ángulo de inclinación de éste.</p></li>
+<li><p>Recta normal.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z t&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y0</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span> <span class="n">z0</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span>
+
+<span class="c1"># Cálculo de la ecuación del plano tangente</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">z</span><span class="p">])</span>
+<span class="n">grad_F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">grad_F</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z0</span><span class="p">)</span>
+<span class="n">plano_tang</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">z0</span><span class="p">),</span><span class="mi">0</span><span class="p">),</span><span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">plano_tang</span><span class="p">)</span>
+
+<span class="c1"># Cálculo de la inclinación del plano tangente</span>
+<span class="n">angulo</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Ángulo de inclinación del plano tangente:&#39;</span><span class="p">,</span><span class="n">angulo</span><span class="p">)</span> 
+
+<span class="c1"># Cálculo de la ecuación vectorial de la recta normal</span>
+<span class="n">recta_norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">t</span><span class="p">,(</span><span class="n">x0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">z0</span><span class="o">+</span><span class="n">t</span><span class="o">*</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">recta_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2 x + y + \frac{7}{4}\]</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Ángulo de inclinación del plano tangente:&#39;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \operatorname{acos}{\left(\frac{\sqrt{6}}{6} \right)}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \left( t \mapsto \left( 2 t + 1, \  t + \frac{1}{2}, \  \frac{17}{4} - t\right) \right)\]</div>
+</div>
+</div>
+<p>Una vez calculado el plano tangente y la recta normal, se traslada la información del módulo <strong>Sympy</strong> a <strong>Numpy</strong>, para un uso posterior en <strong>Matplotlib</strong> y graficamos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_n</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy con la expresión de f(x,y)</span>
+<span class="n">Plano_tang</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">plano_tang</span><span class="p">,</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> 
+<span class="n">Recta_norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">recta_norm</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> 
+
+<span class="c1"># Nube de puntos para representar la superficie y el plano</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">fval</span> <span class="o">=</span> <span class="n">f_n</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">Pval</span> <span class="o">=</span> <span class="n">Plano_tang</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Conjunto de puntos para representar la recta normal</span>
+<span class="n">tvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Rval</span> <span class="o">=</span> <span class="n">Recta_norm</span><span class="p">(</span><span class="n">tvec</span><span class="p">)</span>
+
+<span class="c1"># Creación de la figura 3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+<span class="c1"># Representación de la superficie z=f(x,y), el plano tangente y la recta normal</span>
+<span class="n">surf_F</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">fval</span><span class="p">)</span> 
+<span class="n">surf_Plano</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Pval</span><span class="p">)</span>
+<span class="n">recta</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="o">*</span><span class="n">Rval</span><span class="p">)</span>
+<span class="c1"># Etiquetas de los ejes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="c1"># Punto de vista del observador: elevación, ángulo azimutal</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">auto_scale_xyz</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/05.Derivacion_18_0.png" src="../../_images/05.Derivacion_18_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./capitulos/05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="04.LimitesContinuidad.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.4. </span>Límites y continuidad en Python</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By M. Benítez, L. Hervella, A. Prieto and J. Ráfales<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+Esta obra está bajo una <a href="https://creativecommons.org/licenses/by/4.0/deed.es"> Licencia Creative Commons Atribución 4.0 Internacional </a>
+<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.es_ES"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
