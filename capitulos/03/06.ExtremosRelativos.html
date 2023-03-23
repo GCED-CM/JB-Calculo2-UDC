@@ -1582,8 +1582,8 @@ if (IPython.notebook.kernel !== null) {
 Diremos que el punto <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> es un <strong>punto crítico</strong> de <span class="math notranslate nohighlight">\(f\)</span> si se satisface una de las condiciones siguientes:</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{\nabla}f(x_{0},y_{0}) = \mathbf{0}\)</span>.</p></li>
-<li><p>No existe una de las dos derivadas parciales, <span class="math notranslate nohighlight">\(\not\exists\frac{\partial f}{\partial x}(x_{0},y_{0})\)</span> o
-<span class="math notranslate nohighlight">\(\not\exists\frac{\partial f}{\partial y}(x_{0},y_{0})\)</span>.</p></li>
+<li><p>No existe una de las dos derivadas parciales, <span class="math notranslate nohighlight">\(\not\exists\dfrac{\partial f}{\partial x}(x_{0},y_{0})\)</span> o
+<span class="math notranslate nohighlight">\(\not\exists\dfrac{\partial f}{\partial y}(x_{0},y_{0})\)</span>.</p></li>
 </ol>
 </section>
 </div><p>Fijémenos en la primera de estas condiciones: <span class="math notranslate nohighlight">\(\mathbf{\nabla}f(x_{0},y_{0}) = \mathbf{0}\)</span>. Eso es equivalente a que
@@ -1593,7 +1593,13 @@ el plano tangente sea horizontal (paralelo al plano <span class="math notranslat
 <div class="proof property admonition" id="prop_3.6_ExtremosRelativos">
 <p class="admonition-title"><span>Property </span> (Condición necesaria para extremos relativos )</p>
 <section class="property-content" id="proof-content">
-<p>Si <span class="math notranslate nohighlight">\(f\)</span> tiene un extremos relativo en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span>, un punto que suponemos en el interior del dominio de <span class="math notranslate nohighlight">\(f\)</span>, entonces <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> es un `punto crítico de <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Sea <span class="math notranslate nohighlight">\(f:D\subset\mathbb{R}^{2}\to\mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(\left(x_{0},y_{0}\right)\)</span> un punto en el interior de <span class="math notranslate nohighlight">\(D\)</span>.
+Entonces, si <span class="math notranslate nohighlight">\(\left(x_{0},y_{0}\right)\)</span> es extremo relativo de <span class="math notranslate nohighlight">\(f\)</span>, también tiene que ser punto crítico.</p>
+<p>Dicho de manera esquemática</p>
+<div class="math notranslate nohighlight">
+\[
+\left(x_{0},y_{0}\right)\text{ extremo relativo de } f \Rightarrow \left(x_{0},y_{0}\right)\text{ punto crítico de } f
+\]</div>
 </section>
 </div></section>
 <section id="criterio-de-la-matriz-hessiana">
@@ -1607,8 +1613,8 @@ el plano tangente sea horizontal (paralelo al plano <span class="math notranslat
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathrm{Hess}f(x_{0},y_{0}) = \begin{bmatrix}
-\frac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) &amp; \frac{\partial^{2} f}{\partial x\partial y} (x_{0}, y_{0}) \\
-\frac{\partial^{2} f}{\partial y \partial x} (x_{0}, y_{0}) &amp; \frac{\partial^{2} f}{\partial y^{2}} (x_{0}, y_{0}) 
+\dfrac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) &amp; \dfrac{\partial^{2} f}{\partial x\partial y} (x_{0}, y_{0}) \\
+\dfrac{\partial^{2} f}{\partial y \partial x} (x_{0}, y_{0}) &amp; \dfrac{\partial^{2} f}{\partial y^{2}} (x_{0}, y_{0}) 
 \end{bmatrix}
 \end{split}\]</div>
 </section>
@@ -1619,9 +1625,9 @@ el plano tangente sea horizontal (paralelo al plano <span class="math notranslat
 <section class="property-content" id="proof-content">
 <p>Sea <span class="math notranslate nohighlight">\(f:\mathcal{D}\subset\mathbb{R}^{2} \to \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\((x_{0},y_{0})\in \mathcal{D}\)</span>. Supongamos que se puede definir la matriz hessiana de <span class="math notranslate nohighlight">\(f\)</span> en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span>. Entonces:</p>
 <ol class="simple">
-<li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) &gt; 0\)</span> y <span class="math notranslate nohighlight">\(\frac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) &lt; 0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> un máximo relativo.</p></li>
-<li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) &gt; 0\)</span> y <span class="math notranslate nohighlight">\(\frac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) &gt; 0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> un mínimo relativo.</p></li>
-<li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) &lt; 0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> un punto silla (es decir, un pùnto crítico que no es ni máximo ni mínimo relativo).</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) &gt; 0\)</span> y <span class="math notranslate nohighlight">\(\dfrac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) &lt; 0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> un máximo relativo.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) &gt; 0\)</span> y <span class="math notranslate nohighlight">\(\dfrac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) &gt; 0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> un mínimo relativo.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) &lt; 0\)</span>, entonces <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((x_{0},y_{0})\)</span> un punto silla (es decir, un punto crítico que no es ni máximo ni mínimo relativo).</p></li>
 <li><p>Si <span class="math notranslate nohighlight">\(\det\mathrm{Hess}f(x_{0},y_{0}) = 0\)</span> el criterio no decide.</p></li>
 </ol>
 </section>
@@ -2628,7 +2634,7 @@ if (IPython.notebook.kernel !== null) {
 <h2><span class="section-number">3.6.4. </span>Extremos relativos con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#extremos-relativos-con-python" title="Permalink to this headline">#</a></h2>
 <p>Vamos a continuación a mostrar, sobre un ejemplo, como se localizan los puntos críticos y como se clasifican, con la ayuda de <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 <p>Buscamos los puntos críticos de la función <span class="math notranslate nohighlight">\(f(x,y) = -x^3 + 4xy - 2y^2 +1\)</span> en todo <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
-<p>Lo vamos a hacer de una manera un tanto <em>pedestre</em>, pero <strong>te planteamos un reto:</strong> escribe una function que clasifique automáticamente los puntos críticos.</p>
+<p>Lo vamos a hacer de una manera un tanto <em>pedestre</em>, pero <strong>te planteamos un reto:</strong> escribe una <code class="docutils literal notranslate"><span class="pre">function</span></code> que clasifique automáticamente los puntos críticos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
