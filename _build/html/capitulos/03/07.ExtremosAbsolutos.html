@@ -484,8 +484,22 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-1-calculo-de-extremos-absolutos-sobre-una-restriccion">
+   3.7.3. Ejemplo 1. Cálculo de extremos absolutos sobre una restricción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera">
+   3.7.4. Ejemplo 2. Cálculo de extremos absolutos sobre
+   <span class="math notranslate nohighlight">
+    \(C\)
+   </span>
+   : interior y frontera
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones">
-   3.7.3. Método de los multiplicadores de Lagrange con dos restricciones
+   3.7.5. Método de los multiplicadores de Lagrange con dos restricciones
   </a>
  </li>
 </ul>
@@ -518,8 +532,22 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-1-calculo-de-extremos-absolutos-sobre-una-restriccion">
+   3.7.3. Ejemplo 1. Cálculo de extremos absolutos sobre una restricción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera">
+   3.7.4. Ejemplo 2. Cálculo de extremos absolutos sobre
+   <span class="math notranslate nohighlight">
+    \(C\)
+   </span>
+   : interior y frontera
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones">
-   3.7.3. Método de los multiplicadores de Lagrange con dos restricciones
+   3.7.5. Método de los multiplicadores de Lagrange con dos restricciones
   </a>
  </li>
 </ul>
@@ -535,11 +563,12 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="extremos-absolutos">
 <h1><span class="section-number">3.7. </span>Extremos absolutos<a class="headerlink" href="#extremos-absolutos" title="Permalink to this headline">#</a></h1>
 <p>Vamos a enfrentarnos ahora al equivalente multidimensional a los ejercicios que hacíais en vuestra tierna juventud (o sea: el año pasado) de calcular el máximo y el mínimo absoluto de una función definida en un intervalo cerrado y acotado.</p>
-<p>Lo que en el caso de una variable era simplemente incluir los extremos del intervalo, ahora (se complica y) se enriquece mucho.
-Aparecen las llamadas <strong>restricciones</strong> o <strong>ligaduras</strong> entre variables que nos permiten limitar el conjunto en el que buscamos los extremos a un subconjunto cerrado y acotado del dominio en el que ya podremos buscar los extremos absolutos de la función.</p>
+<p>Lo que en el caso de una variable era simplemente incluir los extremos del intervalo (es decir, evaluar la función en dos puntos, <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span>), ahora se complica y se enriquece mucho.</p>
+<p>Las restricciones (o ligaduras) entre variables nos permiten limitar el conjunto en el que buscamos los extremos a un subconjunto cerrado y acotado del dominio en el que ya podremos buscar los extremos absolutos de la función.</p>
 <a class="reference internal image-reference" href="../../_images/07_ejemplo.png"><img alt="../../_images/07_ejemplo.png" src="../../_images/07_ejemplo.png" style="width: 400px;" /></a>
-<p>Al igual que pasaba en funciones de una variable, en estos casos el máximo (o mínimo) absoluto, puede estar en el interior del dominio o en su frontera. Pero esta frontera, que para funciones de una variable sólo tiene dos puntos (los extremos del intervalo, puntos <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span>), ahora se convierte en un conjunto infinito y, por tanto, tendremos que localizar los candidatos a extremos absolutos.</p>
-<p>En esta sección estudiaremos una ingeniosa técnica que nos permite resolver problemas de optimización sobre las fronteras de regiones cerradas y acotadas, consistente en el llamado método de los <strong>multiplicadores de Lagrange</strong>. Por tanto, en esta sección se aborda el problema de encontrar los extremos absolutos (globales) de una función escalar de varias variables sobre una región cerrada y acotada.</p>
+<p>Al igual que pasaba en funciones de una variable, en estos casos el máximo (o mínimo) absoluto, puede estar en el interior del dominio o en su frontera. En el interior, aplicaremos las técnicas que hemos aprendido en la sección anterior (en general, buscaremos los puntos críticos), pero ¿en la frontera?</p>
+<p>Ahora, esta frontera, que para funciones de una variable sólo tiene dos puntos (los extremos del intervalo), se convierte en un conjunto infinito y, por tanto, es imposible evaluar la función objetivo en todos ellos. Tendremos, en primer lugar, que localizar los candidatos a extremos absolutos en ella.</p>
+<p>En esta sección estudiaremos la técnica que se utiliza en estos casos: el llamado método de los <strong>multiplicadores de Lagrange</strong>.</p>
 <section id="existencia-de-solucion">
 <h2><span class="section-number">3.7.1. </span>Existencia de solución<a class="headerlink" href="#existencia-de-solucion" title="Permalink to this headline">#</a></h2>
 <p>Vamos, antes de nada, a definir correctamente nuestro campo de juego.</p>
@@ -554,21 +583,22 @@ Aparecen las llamadas <strong>restricciones</strong> o <strong>ligaduras</strong
 <a class="reference internal image-reference" href="../../_images/3.7.compacto.png"><img alt="../../_images/3.7.compacto.png" src="../../_images/3.7.compacto.png" style="width: 300px;" /></a>
 </section>
 </div><p><strong>Nota:</strong> Una definición similar nos valdría para <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span>.</p>
-<p>Ahora, nos preguntamos si el problema planteado tiene solución. La respuesta, que es afirmativa, se obtiene aplicando nuestro viejo conocido: el teorema de Weierstrass (en este caso, para funciones de dos variables).</p>
+<p>Ahora, nos preguntamos si el problema de calcular máximo y mínimo absoluto de una función sobre un conjunto <span class="math notranslate nohighlight">\(C\)</span> tiene solución. La respuesta, será afirmativa, si se cumplen dos condiciones, que especifica nuestro viejo conocido: el teorema de Weierstrass (en este caso, para funciones de dos variables).</p>
 <div class="proof theorem admonition" id="th_07_valor_extr">
 <p class="admonition-title"><span>Theorem </span> (Teorema de Weierstrass )</p>
 <section class="theorem-content" id="proof-content">
-<p>Sea <span class="math notranslate nohighlight">\(f\)</span> una función escalar arbitraria definida en una región cerrada y acotada <span class="math notranslate nohighlight">\(C\)</span>. Entonces, <span class="math notranslate nohighlight">\(f\)</span> alcanza en <span class="math notranslate nohighlight">\(C\)</span> su valor máximo y su valor mínimo, es decir,</p>
-<ul class="simple">
-<li><p>Existe por lo menos un punto <span class="math notranslate nohighlight">\(\mathbf{x}_{1}\in C\)</span> en el que <span class="math notranslate nohighlight">\(f\)</span> toma su valor mínimo:</p></li>
-</ul>
+<p>Sea <span class="math notranslate nohighlight">\(f:C\subset\mathbb{R}^{2}\to\mathbb{R}\)</span>.
+Si <span class="math notranslate nohighlight">\(f\)</span> es continua y <span class="math notranslate nohighlight">\(C\)</span> es un conjunto cerrado y acotado, entonces <span class="math notranslate nohighlight">\(f\)</span> alcanza en <span class="math notranslate nohighlight">\(C\)</span> un máximo y un mínimo absoluto, es decir:</p>
+<ul>
+<li><p>Existe, por lo menos, un punto <span class="math notranslate nohighlight">\(\mathbf{x}_{1}\in C\)</span> en el que <span class="math notranslate nohighlight">\(f\)</span> toma su valor mínimo:</p>
 <div class="math notranslate nohighlight">
 \[f(\mathbf{x}_{1})=\min_{\mathbf{x}\in C}f(\mathbf{x}).\]</div>
-<ul class="simple">
-<li><p>Existe por lo menos un punto <span class="math notranslate nohighlight">\(\mathbf{x}_{2}\in C\)</span> en el que <span class="math notranslate nohighlight">\(f\)</span> toma su valor máximo:</p></li>
-</ul>
+</li>
+<li><p>Existe, por lo menos, un punto <span class="math notranslate nohighlight">\(\mathbf{x}_{2}\in C\)</span> en el que <span class="math notranslate nohighlight">\(f\)</span> toma su valor máximo:</p>
 <div class="math notranslate nohighlight">
 \[f(\mathbf{x}_{2})=\max_{\mathbf{x}\in C}f(\mathbf{x}).\]</div>
+</li>
+</ul>
 </section>
 </div></section>
 <section id="metodo-de-los-multiplicadores-de-lagrange-con-una-restriccion">
@@ -576,19 +606,19 @@ Aparecen las llamadas <strong>restricciones</strong> o <strong>ligaduras</strong
 <div class="proof example admonition" id="ex_07_lagrange">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
-<p>Para ver cómo funciona esta técnica, consideramos el problema de encontrar el rectángulo de área máxima que puede estar inscrito en la elipse de ecuación</p>
+<p>Mostraremos cómo funciona esta técnica sobre un problema/ejemplo: Vamos a buscar el rectángulo de área máxima que puede estar inscrito en la elipse de ecuación</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{x^2}{3^2}+\frac{y^2}{4^2}=1.
 \]</div>
-<p>Consideramos un rectángulo arbitrario inscrito en la elipse con <span class="math notranslate nohighlight">\((x,y)\)</span> el vértice que se encuentra en el primer cuadrante, como se muestra en la figura.</p>
+<p>Entonces, consideramos un rectángulo arbitrario inscrito en dicha elipse, con <span class="math notranslate nohighlight">\((x,y)\)</span> el vértice que se encuentra en el primer cuadrante, como se muestra en la siguiente figura.</p>
 <a class="reference internal image-reference" href="../../_images/07_ejemplo2.png"><img alt="../../_images/07_ejemplo2.png" src="../../_images/07_ejemplo2.png" style="width: 400px;" /></a>
-<p>Debido a que el rectángulo tiene lados de longitudes <span class="math notranslate nohighlight">\(2x\)</span> y <span class="math notranslate nohighlight">\(2y\)</span>, su área está dada por</p>
+<p>Debido a que el rectángulo tiene lados de longitudes <span class="math notranslate nohighlight">\(2x\)</span> y <span class="math notranslate nohighlight">\(2y\)</span>, su área será</p>
 <div class="math notranslate nohighlight">
 \[
 \textbf{Función objetivo: }f(x,y)=4xy. 
 \]</div>
-<p>Por otro lado, la elección de <span class="math notranslate nohighlight">\((x, y)\)</span> se limita a los puntos del primer cuadrante que se encuentran en la elipse</p>
+<p>Por otro lado, la elección de <span class="math notranslate nohighlight">\((x, y)\)</span> se limita a los puntos del primer cuadrante que están sobre la elipse</p>
 <div class="math notranslate nohighlight">
 \[
 \textbf{Restricción: }\frac{x^2}{3^2}+\frac{y^2}{4^2}=1.
@@ -615,11 +645,13 @@ f(x,y)=4xy=c.
 </div><div class="proof theorem admonition" id="th_07_lagrange">
 <p class="admonition-title"><span>Theorem </span> (Teorema de Lagrange )</p>
 <section class="theorem-content" id="proof-content">
-<p>Sean <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(g\)</span> dos funciones escalares arbitrarias con derivadas parciales primeras continuas, y <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> un extremo de <span class="math notranslate nohighlight">\(f\)</span> sujeto a <span class="math notranslate nohighlight">\(g(\mathbf{x})=c\)</span>. Si <span class="math notranslate nohighlight">\(\nabla g(\mathbf{x}_0)\neq \mathbf{0}\)</span>, entonces existe un número real <span class="math notranslate nohighlight">\(\lambda\)</span> tal que</p>
+<p>Sean <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(g\)</span> dos funciones escalares arbitrarias. Suponemos que sus primeras derivadas parciales son funciones continuas. Sea <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> un extremo de <span class="math notranslate nohighlight">\(f\)</span> sujeto a la restricción <span class="math notranslate nohighlight">\(g(\mathbf{x})=c\)</span>.</p>
+<p>Entonces, si <span class="math notranslate nohighlight">\(\nabla g(\mathbf{x}_0)\neq \mathbf{0}\)</span>, existe un número real <span class="math notranslate nohighlight">\(\lambda\)</span> tal que</p>
 <div class="math notranslate nohighlight">
 \[
 \nabla f(\mathbf{x}_0)=\lambda \nabla g(\mathbf{x}_0).
 \]</div>
+<p>Denominaremos a <span class="math notranslate nohighlight">\(\lambda\)</span>, <strong>multiplicador de Lagrange</strong>.</p>
 </section>
 </div><p>A continuación, aplicamos este teorema a problemas de optimización en dos variables e indicamos los pasos a seguir para su resolución, resultando inmediata su exensión a más variables.</p>
 <div class="proof remark admonition" id="rem_07_lagrange">
@@ -642,10 +674,28 @@ g(x,y)&amp;=&amp;c.
 <li><p>Evaluamos <span class="math notranslate nohighlight">\(f\)</span> en cada punto solución obtenido en el primer paso. El valor mayor da el máximo de <span class="math notranslate nohighlight">\(f\)</span> sujeto a la restricción <span class="math notranslate nohighlight">\(g(x,y)=c\)</span>, y el valor menor da el mínimo de <span class="math notranslate nohighlight">\(f\)</span> sujeto a la restricción <span class="math notranslate nohighlight">\(g(x,y)=c\)</span>.</p></li>
 </ul>
 </section>
-</div><div class="proof example admonition" id="ex_07_lagrange_cont">
-<p class="admonition-title"><span>Example </span></p>
+</div></section>
+<section id="ejemplo-1-calculo-de-extremos-absolutos-sobre-una-restriccion">
+<h2><span class="section-number">3.7.3. </span>Ejemplo 1. Cálculo de extremos absolutos sobre una restricción<a class="headerlink" href="#ejemplo-1-calculo-de-extremos-absolutos-sobre-una-restriccion" title="Permalink to this headline">#</a></h2>
+<p>Retomamos el ejemplo anterior para mostrar un primer ejemplo del método de los multiplicadores de Lagrange.
+En este primer ejemplo, se trata de calcular los extremos absolutos sobre el conjunto definido por la restricción:
+sobre la piel de la elipse.</p>
+<p>Entonces, se trata de</p>
+<div class="proof example admonition" id="ex_07_lagrange1">
+<p class="admonition-title"><span>Example </span> (Máximo absoluto en la piel de la elipse)</p>
 <section class="example-content" id="proof-content">
-<p>Retomamos el ejemplo anterior para aplicar el método de los multiplicadores de Lagrange. Recordemos que queremos encontrar el valor máximo de f(x,y)=4xy con <span class="math notranslate nohighlight">\(x,y\geq 0\)</span>, sujeto a la restricción <span class="math notranslate nohighlight">\(x^2/3^2+y^2/4^2=1\)</span>. En primer lugar, observamos que dicho problema tiene solución puesto que la función a optimizar es continua y la región de soluciones factibles es cerrada y acotada. Además, se observa que el gradiente de <span class="math notranslate nohighlight">\(g\)</span> no se anula sobre ningún punto factible. A continuación, planteamos y resolvemos el sistema de ecuaciones que tienen que satisfacer los extremos globales.</p>
+<p>Calcular el máximo absoluto de</p>
+<div class="math notranslate nohighlight">
+\[
+f(x,y) = 4xy
+\]</div>
+<p>en el conjunto</p>
+<div class="math notranslate nohighlight">
+\[
+C = \left\{ (x,y) \in\mathbb{R}^{2} : \frac{x^2}{3^2} + \frac{y^2}{4^2} = 1 \right\}.
+\]</div>
+</section>
+</div><p>En primer lugar, observamos que dicho problema tiene solución puesto que la función a optimizar es continua y la región de soluciones factibles es cerrada y acotada. Además, se observa que el gradiente de <span class="math notranslate nohighlight">\(g\)</span> no se anula sobre ningún punto factible. A continuación, planteamos y resolvemos el sistema de ecuaciones que tienen que satisfacer los extremos globales.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \left\{
@@ -676,8 +726,7 @@ y^2=\frac{16}{9}\frac{9}{2}=8 \Leftrightarrow y=\pm 2\sqrt{2}.
 <div class="math notranslate nohighlight">
 \[f\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right)=4\frac{3}{\sqrt{2}}2\sqrt{2}=24.\]</div>
 <p>A continuación, vamos a resolver este ejercicio pero con la ayuda del módulo <code class="docutils literal notranslate"><span class="pre">Sympy</span></code>.</p>
-</section>
-</div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
@@ -689,17 +738,18 @@ y^2=\frac{16}{9}\frac{9}{2}=8 \Leftrightarrow y=\pm 2\sqrt{2}.
 <span class="n">grad_f</span> <span class="o">=</span>  <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
 <span class="n">grad_g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">1</span><span class="p">)),</span> 
-               <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">l</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">l</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sol</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Punto crítico (x,y,lambda)=&#39;</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;; f(x,y)=&#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Punto crítico (x,y,lambda)=&#39;</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;; f(x,y)=&#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">p</span><span class="p">[</span><span class="n">y</span><span class="p">])))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Punto crítico (x,y,lambda)= (-3*sqrt(2)/2, -2*sqrt(2), 24) ; f(x,y)= 24.0000000000000
-Punto crítico (x,y,lambda)= (-3*sqrt(2)/2, 2*sqrt(2), -24) ; f(x,y)= -24.0000000000000
-Punto crítico (x,y,lambda)= (3*sqrt(2)/2, -2*sqrt(2), -24) ; f(x,y)= -24.0000000000000
-Punto crítico (x,y,lambda)= (3*sqrt(2)/2, 2*sqrt(2), 24) ; f(x,y)= 24.0000000000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Punto crítico (x,y,lambda)= {l: -24, x: -3*sqrt(2)/2, y: 2*sqrt(2)} ; f(x,y)= -24.0000000000000
+Punto crítico (x,y,lambda)= {l: -24, x: 3*sqrt(2)/2, y: -2*sqrt(2)} ; f(x,y)= -24.0000000000000
+Punto crítico (x,y,lambda)= {l: 24, x: -3*sqrt(2)/2, y: -2*sqrt(2)} ; f(x,y)= 24.0000000000000
+Punto crítico (x,y,lambda)= {l: 24, x: 3*sqrt(2)/2, y: 2*sqrt(2)} ; f(x,y)= 24.0000000000000
 </pre></div>
 </div>
 </div>
@@ -741,12 +791,92 @@ Punto crítico (x,y,lambda)= (3*sqrt(2)/2, 2*sqrt(2), 24) ; f(x,y)= 24.000000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/07.ExtremosAbsolutos_5_0.png" src="../../_images/07.ExtremosAbsolutos_5_0.png" />
+<img alt="../../_images/07.ExtremosAbsolutos_6_0.png" src="../../_images/07.ExtremosAbsolutos_6_0.png" />
+</div>
+</div>
+</section>
+<section id="ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera">
+<h2><span class="section-number">3.7.4. </span>Ejemplo 2. Cálculo de extremos absolutos sobre <span class="math notranslate nohighlight">\(C\)</span>: interior y frontera<a class="headerlink" href="#ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera" title="Permalink to this headline">#</a></h2>
+<p>Vamos a un problema muy similar… pero no exactamente igual. <strong>Ahora se trata de calcular extremos absolutos en la elipse, incluyendo su interior y su frontera.</strong></p>
+<p>Se trata de</p>
+<div class="proof example admonition" id="ex_07_lagrange1">
+<p class="admonition-title"><span>Example </span> (Máximo absoluto en la elipse: interior + piel)</p>
+<section class="example-content" id="proof-content">
+<p>Calcular el máximo absoluto de</p>
+<div class="math notranslate nohighlight">
+\[
+f(x,y) = 4xy
+\]</div>
+<p>en el conjunto</p>
+<div class="math notranslate nohighlight">
+\[
+C = \left\{ (x,y) \in\mathbb{R}^{2} : \frac{x^2}{3^2} + \frac{y^2}{4^2} \leq 1 \right\}.
+\]</div>
+</section>
+</div><p>Este problema hay que hacerlo en dos pasos:</p>
+<ol class="simple">
+<li><p>Interior de la elipse. Buscaremos los puntos críticos y evaluaremos <span class="math notranslate nohighlight">\(f\)</span> en ellos.</p></li>
+<li><p>Frontera de la elipse. Utilizando los multiplicadores de Lagrange, buscaremos los candidatos a extremos absolutos sobre la piel de la elipse y evaluaremos <span class="math notranslate nohighlight">\(f\)</span> en ellos.</p></li>
+</ol>
+<p>¡Vamos con la <strong>primer paso</strong>!</p>
+<p>La función <span class="math notranslate nohighlight">\(f\)</span> es polinómica, por lo que ya sabemos que será diferencial en todo su dominio. Por lo tanto, los puntos críticos coinciden con los puntos en los que el gradiente de <span class="math notranslate nohighlight">\(f\)</span> es <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>. Entonces:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccc}
+\displaystyle\frac{\partial f}{\partial x} (x,y) = 4y &amp;\Rightarrow&amp; 4y = 0 &amp;\Rightarrow&amp; y=0, \\
+\displaystyle\frac{\partial f}{\partial y} (x,y) = 4x &amp;\Rightarrow&amp; 4x = 0 &amp;\Rightarrow&amp; x=0. \\
+\end{array}
+\end{split}\]</div>
+<p>Por lo tanto, el único punto crítico de <span class="math notranslate nohighlight">\(f\)</span> en el interior de la elipse es el <span class="math notranslate nohighlight">\((0,0)\)</span>.</p>
+<p>Evaluamos <span class="math notranslate nohighlight">\(f\)</span> en ese punto: <span class="math notranslate nohighlight">\(f(0,0) = 0\)</span>.</p>
+<p>Ahora, <strong>el segundo paso</strong>:</p>
+<p>No la vamos a desarrollar ahora, porque ya está completa en el ejemplo anterior.</p>
+<p>Los candidatos, con la correspondiente evaluación de <span class="math notranslate nohighlight">\(f\)</span> son, en este segundo caso:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right) \to f\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right) = 24\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(-\frac{3}{\sqrt{2}},2\sqrt{2}\right) \to f\left(-\frac{3}{\sqrt{2}},2\sqrt{2}\right) = -24\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(\frac{3}{\sqrt{2}},-2\sqrt{2}\right) \to f\left(\frac{3}{\sqrt{2}},-2\sqrt{2}\right) = -24\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(-\frac{3}{\sqrt{2}},-2\sqrt{2}\right) \to f\left(-\frac{3}{\sqrt{2}},-2\sqrt{2}\right) = 24\)</span>.</p></li>
+</ul>
+<p>Entonces, entre los cinco candidatos a extremos absolutos observamos que
+<strong>el máximo absoluto se alcanza en <span class="math notranslate nohighlight">\(\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right)\)</span> y <span class="math notranslate nohighlight">\(\left(-\frac{3}{\sqrt{2}},-2\sqrt{2}\right)\)</span>, alcanzando la función <span class="math notranslate nohighlight">\(f\)</span> en esos puntos un valor de <span class="math notranslate nohighlight">\(24\)</span> unidades</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y l&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas x, y, l</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="c1"># función a optimizar</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span> <span class="c1"># restricción</span>
+
+<span class="c1"># Primer paso: puntos críticos de f en el interior de la elipse</span>
+<span class="n">grad_f</span> <span class="o">=</span>  <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
+<span class="n">sol1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Segundo paso: posibles extremos en la frontera de la elipse</span>
+<span class="n">grad_g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
+<span class="n">sol2</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">1</span><span class="p">)),</span> 
+               <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">l</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sol1</span> <span class="o">+</span> <span class="n">sol2</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sol</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Punto crítico (x,y,lambda)=&#39;</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;; f(x,y)=&#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">p</span><span class="p">[</span><span class="n">y</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Punto crítico (x,y,lambda)= {y: 0, x: 0} ; f(x,y)= 0
+Punto crítico (x,y,lambda)= {l: -24, x: -3*sqrt(2)/2, y: 2*sqrt(2)} ; f(x,y)= -24.0000000000000
+Punto crítico (x,y,lambda)= {l: -24, x: 3*sqrt(2)/2, y: -2*sqrt(2)} ; f(x,y)= -24.0000000000000
+Punto crítico (x,y,lambda)= {l: 24, x: -3*sqrt(2)/2, y: -2*sqrt(2)} ; f(x,y)= 24.0000000000000
+Punto crítico (x,y,lambda)= {l: 24, x: 3*sqrt(2)/2, y: 2*sqrt(2)} ; f(x,y)= 24.0000000000000
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones">
-<h2><span class="section-number">3.7.3. </span>Método de los multiplicadores de Lagrange con dos restricciones<a class="headerlink" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.7.5. </span>Método de los multiplicadores de Lagrange con dos restricciones<a class="headerlink" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones" title="Permalink to this headline">#</a></h2>
 <p>El método anterior se puede extender para problemas de optimización que impliquen dos restricciones,  con funciones asociadas <span class="math notranslate nohighlight">\(g\)</span> y <span class="math notranslate nohighlight">\(h\)</span>. En este caso, debe incluirse un segundo multiplicador de Lagrange, <span class="math notranslate nohighlight">\(\mu\)</span>, que interviene en la ecuación que hay que añadir a las restricciones, y que es la siguiente</p>
 <div class="math notranslate nohighlight">
 \[

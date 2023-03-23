@@ -78,8 +78,8 @@ plt.show()
 # Diremos que el punto $(x_{0},y_{0})$ es un **punto crítico** de $f$ si se satisface una de las condiciones siguientes:
 # 
 # 1. $\mathbf{\nabla}f(x_{0},y_{0}) = \mathbf{0}$.
-# 2. No existe una de las dos derivadas parciales, $\not\exists\frac{\partial f}{\partial x}(x_{0},y_{0})$ o 
-#     $\not\exists\frac{\partial f}{\partial y}(x_{0},y_{0})$.
+# 2. No existe una de las dos derivadas parciales, $\not\exists\dfrac{\partial f}{\partial x}(x_{0},y_{0})$ o 
+#     $\not\exists\dfrac{\partial f}{\partial y}(x_{0},y_{0})$.
 # 
 # ````
 # 
@@ -94,7 +94,14 @@ plt.show()
 # :label: prop_3.6_ExtremosRelativos
 # :nonumber: 
 # 
-# Si $f$ tiene un extremos relativo en $(x_{0},y_{0})$, un punto que suponemos en el interior del dominio de $f$, entonces $(x_{0},y_{0})$ es un `punto crítico de $f$.
+# Sea $f:D\subset\mathbb{R}^{2}\to\mathbb{R}$ y $\left(x_{0},y_{0}\right)$ un punto en el interior de $D$. 
+# Entonces, si $\left(x_{0},y_{0}\right)$ es extremo relativo de $f$, también tiene que ser punto crítico. 
+# 
+# Dicho de manera esquemática
+# 
+# $$
+# \left(x_{0},y_{0}\right)\text{ extremo relativo de } f \Rightarrow \left(x_{0},y_{0}\right)\text{ punto crítico de } f
+# $$
 # 
 # ````
 
@@ -112,8 +119,8 @@ plt.show()
 # 
 # $$
 # \mathrm{Hess}f(x_{0},y_{0}) = \begin{bmatrix}
-# \frac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) & \frac{\partial^{2} f}{\partial x\partial y} (x_{0}, y_{0}) \\
-# \frac{\partial^{2} f}{\partial y \partial x} (x_{0}, y_{0}) & \frac{\partial^{2} f}{\partial y^{2}} (x_{0}, y_{0}) 
+# \dfrac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) & \dfrac{\partial^{2} f}{\partial x\partial y} (x_{0}, y_{0}) \\
+# \dfrac{\partial^{2} f}{\partial y \partial x} (x_{0}, y_{0}) & \dfrac{\partial^{2} f}{\partial y^{2}} (x_{0}, y_{0}) 
 # \end{bmatrix}
 # $$
 # 
@@ -129,9 +136,9 @@ plt.show()
 # 
 # Sea $f:\mathcal{D}\subset\mathbb{R}^{2} \to \mathbb{R}$, $(x_{0},y_{0})\in \mathcal{D}$. Supongamos que se puede definir la matriz hessiana de $f$ en $(x_{0},y_{0})$. Entonces:
 # 
-# 1. Si $\det\mathrm{Hess}f(x_{0},y_{0}) > 0$ y $\frac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) < 0$, entonces $f$ tiene en $(x_{0},y_{0})$ un máximo relativo.
-# 2. Si $\det\mathrm{Hess}f(x_{0},y_{0}) > 0$ y $\frac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) > 0$, entonces $f$ tiene en $(x_{0},y_{0})$ un mínimo relativo.
-# 3. Si $\det\mathrm{Hess}f(x_{0},y_{0}) < 0$, entonces $f$ tiene en $(x_{0},y_{0})$ un punto silla (es decir, un pùnto crítico que no es ni máximo ni mínimo relativo).
+# 1. Si $\det\mathrm{Hess}f(x_{0},y_{0}) > 0$ y $\dfrac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) < 0$, entonces $f$ tiene en $(x_{0},y_{0})$ un máximo relativo.
+# 2. Si $\det\mathrm{Hess}f(x_{0},y_{0}) > 0$ y $\dfrac{\partial^{2} f}{\partial x^{2}} (x_{0}, y_{0}) > 0$, entonces $f$ tiene en $(x_{0},y_{0})$ un mínimo relativo.
+# 3. Si $\det\mathrm{Hess}f(x_{0},y_{0}) < 0$, entonces $f$ tiene en $(x_{0},y_{0})$ un punto silla (es decir, un punto crítico que no es ni máximo ni mínimo relativo).
 # 4. Si $\det\mathrm{Hess}f(x_{0},y_{0}) = 0$ el criterio no decide.
 # 
 # ````
@@ -182,7 +189,7 @@ plt.show()
 # 
 # Buscamos los puntos críticos de la función $f(x,y) = -x^3 + 4xy - 2y^2 +1$ en todo $\mathbb{R}^2$.
 # 
-# Lo vamos a hacer de una manera un tanto *pedestre*, pero **te planteamos un reto:** escribe una function que clasifique automáticamente los puntos críticos.
+# Lo vamos a hacer de una manera un tanto *pedestre*, pero **te planteamos un reto:** escribe una `function` que clasifique automáticamente los puntos críticos.
 
 # In[36]:
 

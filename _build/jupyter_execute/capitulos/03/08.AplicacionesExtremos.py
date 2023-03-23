@@ -3,7 +3,10 @@
 
 # # Aplicaciones del cálculo de extremos
 # 
-# En esta sección, vamos a calcular extremos relativos y absolutos. En primer lugar, obtendremos los extremos relativos de una función, aplicando el criterio de la matriz hessiana. Después, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados. Y, por último, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto. 
+# En esta sección, vamos a practicar un poco estas últimas secciones y, de paso, a ver algunas aplicaciones del cálculo de extremos relativos y absolutos: 
+# 1. En primer lugar, obtendremos los extremos relativos de una función, aplicando el criterio de la matriz hessiana. 
+# 2. Después, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.
+# 3. Y, por último, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto. 
 # 
 # ## Extremos relativos y hessiana 
 # 
@@ -11,35 +14,37 @@
 # :label: 3.x._ex
 # :nonumber: 
 # 
-# Encuentra el extremo relativo de
+# Encuentra y clasifica los extremos relativos de la función $f$ definida como
 # 
 # $$
 # f(x,y) = -x^3 + 4xy - 2y^2 + 1.
 # $$
+# ````
 # 
-# **Solución:**
+# Comenzamos por buscar los puntos críticos de $f$. Puesto que
 # 
-# Comenzamos por encontrar los puntos críticos de $f$. Puesto que
-# 
-# $$
-# \dfrac{\partial f}{\partial x}(x,y) = -3x^2 + 4y \quad \text{ y } \quad \dfrac{\partial f}{\partial y}(x,y) = 4x - 4y,
-# $$
-# 
-# los únicos puntos críticos son aquellos para los que ambas derivadas parciales son $0$.
-# 
-# Para localizar estos puntos, igualamos $\dfrac{\partial f}{\partial x}(x,y)$ y $\dfrac{\partial f}{\partial y}(x,y)$ a $0$:
+# \begin{eqnarray*}
+# \dfrac{\partial f}{\partial x}(x,y) &=& -3x^2 + 4y, \\
+# \dfrac{\partial f}{\partial y}(x,y) &=& 4x - 4y,
+# \end{eqnarray*}
+# y estas funciones existen en todo $\mathbb{R}^{2}$, los únicos puntos críticos son aquellos para los que ambas derivadas parciales son $0$. ¡Vamos a localizarlos!
 # 
 # $$
-# -3x^2 + 4y = 0 \quad \text{ y } \quad 4x - 4y = 0.
+# \left\{ \begin{array}{rcl}
+# -3x^2 + 4y &=& 0 \\  
+# 4x - 4y &=& 0.
+# \end{array}\right.
 # $$
 # 
-# De la segunda ecuación, se obtiene que $x = y$, y, a partir de la primera, se obtiene que 
+# De la segunda ecuación, se obtiene que $x = y$. Sustituyendo esta igualdad en la primera, 
 # 
 # $$
-# y = x = 0 \quad \text{ y } \quad y = x = \frac{4}{3}.
+# -3x^2+4x = 0 \Rightarrow x(-3x + 4) = 0 \Rightarrow x=0 \text{ o } x = \frac{4}{3}.
 # $$
 # 
-# Ahora, podemos aplicar el criterio de la matriz hessiana en el punto crítico $(0,0)$. Como
+# Por lo tanto, los dos puntos críticos serán $\left(0,0\right)$ y $\left(\frac{4}{3}, \frac{4}{3}\right)$.
+# 
+# Vamos a clasificarlos, utilizando el criterio de la matriz hessiana, teniendo en cuenta que, en este caso,
 # 
 # $$
 # \mathrm{Hess}f(x,y) = \begin{bmatrix}
@@ -48,80 +53,78 @@
 # \end{bmatrix},
 # $$
 # 
-# entonces
+# * Punto $\left(0,0\right)$:
 # 
-# $$
-# \det\mathrm{Hess}f(0,0) = \left|
+#     $$
+#     \det\mathrm{Hess}f(0,0) = \begin{vmatrix}
+#     0 & 4\\
+#     4 & -4
+#     \end{vmatrix}
+#     = 0 - 16 < 0,
+#     $$
+#     por lo que podemos concluir que **$f$ tiene en $(0,0)$ un punto silla**.
 # 
-# \begin{ array}{cc}
+# * Punto $\left(\frac{4}{3},\frac{4}{3}\right)$. 
 # 
-# 0 & 4\\
+#     $$
+#     \det\mathrm{Hess}f\left(\frac{4}{3},\frac{4}{3}\right) = \begin{vmatrix}
+#     -8 & 4\\
+#     4 & -4
+#     \end{vmatrix}
+#     = -8(-4) - 16 = 16 > 0.
+#     $$
 # 
-# 4 & -4
-# 
-# \end{array}
-# 
-# \right| = 0 - 16 < 0,
-# $$
-# 
-# por lo que podemos concluir que $f$ tiene en $(0,0)$ un punto silla.
-# 
-# Además, aplicando de nuevo el criterio de la matriz hessiana para el punto crítico $(\frac{4}{3},\frac{4}{3})$. Como
-# 
-# $$
-# $\det\mathrm{Hess}f(\frac{4}{3},\frac{4}{3}) = \left|
-# 
-# \begin{ array}{cc}
-# 
-# -8 & 4\\
-# 
-# 4 & -4
-# 
-# \end{array}
-# 
-# \right| = -8(-4) - 16 = 16 > 0,
-# $$
-# 
-# y $\dfrac{\partial^2 f}{\partial x^2}(\frac{4}{3},\frac{4}{3}) = -8 < 0$, podemos concluir que $f$ tiene un máximo relativo en $(\frac{4}{3},\frac{4}{3})$.
-# ````
+#     Además, $\dfrac{\partial^2 f}{\partial x^2}\left(\frac{4}{3},\frac{4}{3}\right) = -8 < 0$. 
+#     Entonces **$f$ tiene un máximo relativo en $\left(\frac{4}{3},\frac{4}{3}\right)$**.
 
 # ## Método de mínimos cuadrados
 # 
-# Al construir un **modelo matemático** para representar un fenómeno particular, los objetivos son simplicidad y precisión. Existen varias maneras para desarrollar tales modelos, una es la conocida como el **método de mínimos cuadrados**. 
+# Al construir un **modelo matemático** para representar un fenómeno particular, los objetivos son simplicidad y precisión. Existen varias maneras para desarrollar tales modelos, tal vez la más importante sea el **método de mínimos cuadrados**. 
 # 
-# Como medida de lo bien que el modelo $y = f(x)$ se ajusta a la colección de puntos
+# En la [wikipedia puedes ver una descripción completa de este método](https://es.wikipedia.org/wiki/M%C3%ADnimos_cuadrados), desarrollado por Gauss a la avanzada edad de 18 años ([aquí puedes conocer algo más de la vida del GENIO alemán](https://www.bbc.com/mundo/noticias-45207968)). 
+# 
+# La idea es que para saber cuánto se ajusta el modelo $y = f(x)$ a la colección de puntos
 # 
 # $$
 # \{(x_1,y_1),(x_2,y_2),...,(x_n,y_n)\}
 # $$
-# 
 # se puede calcular el cuadrado de la distancia entre los datos de los que se parte y los valores predichos por el modelo para obtener la **suma de los errores al cuadrado** o el **error cuadrático**: 
 # 
 # $$
 # S = \sum_{i = 1}^n [f(x_i) - y_i]^2.
 # $$
 # 
-# En estadística, se llama **recta de regresión** al modelo lineal que minimiza $S$ mediante el **método de mínimos cuadrados**. La prueba de que esta línea, $y = f(x) = ax + b$, en realidad minimiza $S$ implica minimizar una función de dos variables:
+# Esto es en general. De la elección de $f$ que hagamos surgirán distintos métodos de mínimos cuadrados. 
+# Tal vez la elección más habitual es suponer que $f$ es un polinomio de grado $1$ (o sea, una recta). 
+# Aparece entonces la llamada **recta de regresión**, que es la recta que minimiza el error cuadrático para una colección de puntos. [Lee aquí, si quieres saber más cosas de la recta de regresión](https://es.wikipedia.org/wiki/Regresi%C3%B3n_lineal).
+# 
+# Nosotros vamos a calcularla, como aplicación de lo que hemos aprendido en este tema.
+# 
+# Se trata de minimizar el error cuadrático tomando como función $f$ una recta genérica, $f(x) = ax +b$, y buscar los parámetros $a$ y $b$ que minimicen dicho error. Entonces:
 # 
 # $$
 # S(a,b) = \sum_{i = 1}^n [ax_i + b - y_i]^2,
 # $$
-# 
 # donde $a, b \in \mathbb{R}$.
 # 
-# Para obtener los valores de $a$ y $b$ que minimizan $S$, calculamos su gradiente:
+# Para obtener los valores de $a$ y $b$ que minimizan $S$ tenemos que buscar los puntos críticos, es decir, los valores $a$ y $b$ que hacen que las dos derivadas parciales de $S$,
 # 
 # $$
-# \mathbf{\nabla} S(a,b) = \left[2\sum_{i = 1}^n x_i (ax_i + b - y_i), 2\sum_{i = 1}^n (ax_i + b - y_i)\right].
+# \left\{\begin{array}{rcl}
+# \dfrac{\partial S}{\partial a}(a,b) &=& \displaystyle 2\sum_{i = 1}^n x_i (ax_i + b - y_i) \\
+# \dfrac{\partial S}{\partial b}(a,b) &=& \displaystyle 2\sum_{i = 1}^n (ax_i + b - y_i)
+# \end{array}\right.
+# $$
+# valgan $0$:
+# 
+# $$
+# \left\{\begin{array}{rcl}
+# \displaystyle 2\sum_{i = 1}^n x_i (ax_i + b - y_i) &=& 0 \\
+# \displaystyle 2\sum_{i = 1}^n (ax_i + b - y_i) &=& 0
+# \end{array}\right.
 # $$
 # 
-# E igualando a $0$:
-# 
-# $$
-# 2\sum_{i = 1}^n x_i (ax_i + b - y_i) = 0 \quad \text{ y } \quad 2\sum_{i = 1}^n (ax_i + b - y_i) = 0,
-# $$
-# 
-# se obtiene un sistema de dos ecuaciones y dos incógnitas del que se despeja $a$ y $b$.
+# En resumen: hemos obtenido un sistema de dos ecuaciones con dos incógnitas del que se despejan $a$ y $b$ para obtener el siguiente teorema:
 # 
 # ````{prf:theorem}  Recta de regresión de mínimos cuadrados
 # :label: th_recta_regr_mc
@@ -130,7 +133,11 @@
 # La **recta de regresión de mínimos cuadrados** para $\{(x_1,y_1),(x_2,y_2),...,(x_n,y_n)\}$ está dada por $f(x) = ax + b$, donde
 # 
 # $$
-# a = \frac{\displaystyle n \sum_{i=1}^{n}x_iy_i - \sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{\displaystyle n \sum_{i=1}^{n}x_i^2 - \left(\sum_{i=1}^{n}x_i\right)^2} \quad \text{ y } \quad b = \frac{1}{n}\left(\sum_{i=1}^{n}y_i - a\sum_{i=1}^{n}x_i\right).
+# \left\{\begin{array}{rcl}
+# a &=& \frac{\displaystyle n \sum_{i=1}^{n}x_iy_i - \sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{\displaystyle n \sum_{i=1}^{n}x_i^2 - \left(\sum_{i=1}^{n}x_i\right)^2}, \\
+# \\
+# b &=& \displaystyle \frac{1}{n}\left(\sum_{i=1}^{n}y_i - a\sum_{i=1}^{n}x_i\right),
+# \end{array}\right.
 # $$
 # ````
 # Veamos un caso práctico.
@@ -164,15 +171,11 @@
 # 
 # Vamos a preguntarle a nuestro oráculo por si nos hemos equivocado.
 
-# In[1]:
+# In[4]:
 
 
 import sympy as sp
 import numpy as np
-
-
-# In[2]:
-
 
 x, y = sp.symbols('x y', real=True) # define las variables simbólicas x e y
 
@@ -194,7 +197,7 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # :label: 3.x._ex
 # :nonumber: 
 # 
-# Una caja rectangular descansa sobre el plano $xy$ con un vértice en el origen. El vértice opuesto se encuentra en el plano
+# Una caja rectangular descansa sobre el plano $XY$ con un vértice en el origen. El vértice opuesto se encuentra en el plano
 # 
 # $$
 # 6x + 4y + 3z = 24.
@@ -202,11 +205,17 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # 
 # <img src="../../images/3.8.Volumen_maximo.png" width="250"/>
 # 
-# Encuentra el volumen máximo de la caja. 
+# ¿Cuál es el volumen máximo que puede tener la caja? 
+# ````
 # 
 # **Solución:**
 # 
-# Supongamos que $x, y, z$ representan la longitud, anchura y altura de la caja. Debido a que un vértice de la caja se encuentra en el plano $6x + 4y + 3z = 24$, como $z = \frac{1}{3}(24 - 6x - 4y)$, podemos escribir el volumen de la caja, $V = xyz$, en función de dos variables:
+# Supongamos que $x, y, z$ representan la longitud, anchura y altura de la caja. Debido a que un vértice de ella se encuentra en el plano $6x + 4y + 3z = 24$, podemos despejar $z$ de la ecuación de éste, 
+# 
+# $$
+# z = \frac{1}{3}(24 - 6x - 4y),
+# $$
+# para escribir el volumen de la caja, $V = xyz$, en función de sólo dos variables:
 # 
 # $$
 # V(x,y) = x y \left[\frac{1}{3}(24 - 6x - 4y)\right] = \frac{1}{3}(24xy - 6x^2y - 4xy^2).
@@ -240,17 +249,11 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # entonces
 # 
 # $$
-# \det\mathrm{Hess}V\left(\frac{4}{3},2\right) = \left|
-# 
-# \begin{array}{cc}
-# 
+# \det\mathrm{Hess}V\left(\frac{4}{3},2\right) = \begin{vmatrix}
 # -8 & -\frac{8}{3}\\
-# 
 # -\frac{8}{3} & -\frac{32}{9}
-# 
-# \end{array}
-# 
-# \right| = \frac{64}{3} > 0
+# \end{vmatrix} 
+# = \frac{64}{3} > 0,
 # $$
 # 
 # y $\dfrac{\partial^2 V}{\partial {x^2}}(\frac{4}{3},2) = -8 < 0$, por lo que podemos concluir que $V$ tiene un máximo relativo en $\left(\frac{4}{3},2\right)$ y su valor es: 
@@ -262,7 +265,6 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # ¿Hemos terminado? No, porque faltaría comprobar el volumen en los puntos de la frontera del dominio triangular de $V$. Comprueba que el volumen en estos puntos es igual a $0$. 
 # 
 # Ahora sí, podemos concluir que el volumen máximo es $V\left(\frac{4}{3},2\right) = \frac{64}{9}$ unidades cúbicas.
-# ````
 # 
 # Ya por último, vamos a resolver con `Python` el ejercicio propuesto. 
 

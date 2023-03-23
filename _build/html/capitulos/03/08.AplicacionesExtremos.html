@@ -534,35 +534,44 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="aplicaciones-del-calculo-de-extremos">
 <h1><span class="section-number">3.8. </span>Aplicaciones del cálculo de extremos<a class="headerlink" href="#aplicaciones-del-calculo-de-extremos" title="Permalink to this headline">#</a></h1>
-<p>En esta sección, vamos a calcular extremos relativos y absolutos. En primer lugar, obtendremos los extremos relativos de una función, aplicando el criterio de la matriz hessiana. Después, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados. Y, por último, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto.</p>
+<p>En esta sección, vamos a practicar un poco estas últimas secciones y, de paso, a ver algunas aplicaciones del cálculo de extremos relativos y absolutos:</p>
+<ol class="simple">
+<li><p>En primer lugar, obtendremos los extremos relativos de una función, aplicando el criterio de la matriz hessiana.</p></li>
+<li><p>Después, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.</p></li>
+<li><p>Y, por último, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto.</p></li>
+</ol>
 <section id="extremos-relativos-y-hessiana">
 <h2><span class="section-number">3.8.1. </span>Extremos relativos y hessiana<a class="headerlink" href="#extremos-relativos-y-hessiana" title="Permalink to this headline">#</a></h2>
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
-<p>Encuentra el extremo relativo de</p>
+<p>Encuentra y clasifica los extremos relativos de la función <span class="math notranslate nohighlight">\(f\)</span> definida como</p>
 <div class="math notranslate nohighlight">
 \[
 f(x,y) = -x^3 + 4xy - 2y^2 + 1.
 \]</div>
-<p><strong>Solución:</strong></p>
-<p>Comenzamos por encontrar los puntos críticos de <span class="math notranslate nohighlight">\(f\)</span>. Puesto que</p>
+</section>
+</div><p>Comenzamos por buscar los puntos críticos de <span class="math notranslate nohighlight">\(f\)</span>. Puesto que</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\dfrac{\partial f}{\partial x}(x,y) &amp;=&amp; -3x^2 + 4y, \\
+\dfrac{\partial f}{\partial y}(x,y) &amp;=&amp; 4x - 4y,
+\end{eqnarray*}\]</div>
+<p>y estas funciones existen en todo <span class="math notranslate nohighlight">\(\mathbb{R}^{2}\)</span>, los únicos puntos críticos son aquellos para los que ambas derivadas parciales son <span class="math notranslate nohighlight">\(0\)</span>. ¡Vamos a localizarlos!</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left\{ \begin{array}{rcl}
+-3x^2 + 4y &amp;=&amp; 0 \\  
+4x - 4y &amp;=&amp; 0.
+\end{array}\right.
+\end{split}\]</div>
+<p>De la segunda ecuación, se obtiene que <span class="math notranslate nohighlight">\(x = y\)</span>. Sustituyendo esta igualdad en la primera,</p>
 <div class="math notranslate nohighlight">
 \[
-\dfrac{\partial f}{\partial x}(x,y) = -3x^2 + 4y \quad \text{ y } \quad \dfrac{\partial f}{\partial y}(x,y) = 4x - 4y,
+-3x^2+4x = 0 \Rightarrow x(-3x + 4) = 0 \Rightarrow x=0 \text{ o } x = \frac{4}{3}.
 \]</div>
-<p>los únicos puntos críticos son aquellos para los que ambas derivadas parciales son <span class="math notranslate nohighlight">\(0\)</span>.</p>
-<p>Para localizar estos puntos, igualamos <span class="math notranslate nohighlight">\(\dfrac{\partial f}{\partial x}(x,y)\)</span> y <span class="math notranslate nohighlight">\(\dfrac{\partial f}{\partial y}(x,y)\)</span> a <span class="math notranslate nohighlight">\(0\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
--3x^2 + 4y = 0 \quad \text{ y } \quad 4x - 4y = 0.
-\]</div>
-<p>De la segunda ecuación, se obtiene que <span class="math notranslate nohighlight">\(x = y\)</span>, y, a partir de la primera, se obtiene que</p>
-<div class="math notranslate nohighlight">
-\[
-y = x = 0 \quad \text{ y } \quad y = x = \frac{4}{3}.
-\]</div>
-<p>Ahora, podemos aplicar el criterio de la matriz hessiana en el punto crítico <span class="math notranslate nohighlight">\((0,0)\)</span>. Como</p>
+<p>Por lo tanto, los dos puntos críticos serán <span class="math notranslate nohighlight">\(\left(0,0\right)\)</span> y <span class="math notranslate nohighlight">\(\left(\frac{4}{3}, \frac{4}{3}\right)\)</span>.</p>
+<p>Vamos a clasificarlos, utilizando el criterio de la matriz hessiana, teniendo en cuenta que, en este caso,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathrm{Hess}f(x,y) = \begin{bmatrix}
@@ -570,24 +579,37 @@ y = x = 0 \quad \text{ y } \quad y = x = \frac{4}{3}.
 4 &amp; -4 
 \end{bmatrix},
 \end{split}\]</div>
-<p>entonces</p>
+<ul>
+<li><p>Punto <span class="math notranslate nohighlight">\(\left(0,0\right)\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\det\mathrm{Hess}f(0,0) = \left|\\\begin{ array}{cc}\\\begin{split}0 &amp; 4\\\end{split}\\4 &amp; -4\\\end{array}\\\right| = 0 - 16 &lt; 0,
-\end{aligned}\end{align} \]</div>
-<p>por lo que podemos concluir que <span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((0,0)\)</span> un punto silla.</p>
-<p>Además, aplicando de nuevo el criterio de la matriz hessiana para el punto crítico <span class="math notranslate nohighlight">\((\frac{4}{3},\frac{4}{3})\)</span>. Como</p>
+\[\begin{split}
+    \det\mathrm{Hess}f(0,0) = \begin{vmatrix}
+    0 &amp; 4\\
+    4 &amp; -4
+    \end{vmatrix}
+    = 0 - 16 &lt; 0,
+    \end{split}\]</div>
+<p>por lo que podemos concluir que <strong><span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((0,0)\)</span> un punto silla</strong>.</p>
+</li>
+<li><p>Punto <span class="math notranslate nohighlight">\(\left(\frac{4}{3},\frac{4}{3}\right)\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-$\det\mathrm{Hess}f(\frac{4}{3},\frac{4}{3}) = \left|\\\begin{ array}{cc}\\\begin{split}-8 &amp; 4\\\end{split}\\4 &amp; -4\\\end{array}\\\right| = -8(-4) - 16 = 16 &gt; 0,
-\end{aligned}\end{align} \]</div>
-<p>y <span class="math notranslate nohighlight">\(\dfrac{\partial^2 f}{\partial x^2}(\frac{4}{3},\frac{4}{3}) = -8 &lt; 0\)</span>, podemos concluir que <span class="math notranslate nohighlight">\(f\)</span> tiene un máximo relativo en <span class="math notranslate nohighlight">\((\frac{4}{3},\frac{4}{3})\)</span>.</p>
+\[\begin{split}
+    \det\mathrm{Hess}f\left(\frac{4}{3},\frac{4}{3}\right) = \begin{vmatrix}
+    -8 &amp; 4\\
+    4 &amp; -4
+    \end{vmatrix}
+    = -8(-4) - 16 = 16 &gt; 0.
+    \end{split}\]</div>
+<p>Además, <span class="math notranslate nohighlight">\(\dfrac{\partial^2 f}{\partial x^2}\left(\frac{4}{3},\frac{4}{3}\right) = -8 &lt; 0\)</span>.
+Entonces <strong><span class="math notranslate nohighlight">\(f\)</span> tiene un máximo relativo en <span class="math notranslate nohighlight">\(\left(\frac{4}{3},\frac{4}{3}\right)\)</span></strong>.</p>
+</li>
+</ul>
 </section>
-</div></section>
 <section id="metodo-de-minimos-cuadrados">
 <h2><span class="section-number">3.8.2. </span>Método de mínimos cuadrados<a class="headerlink" href="#metodo-de-minimos-cuadrados" title="Permalink to this headline">#</a></h2>
-<p>Al construir un <strong>modelo matemático</strong> para representar un fenómeno particular, los objetivos son simplicidad y precisión. Existen varias maneras para desarrollar tales modelos, una es la conocida como el <strong>método de mínimos cuadrados</strong>.</p>
-<p>Como medida de lo bien que el modelo <span class="math notranslate nohighlight">\(y = f(x)\)</span> se ajusta a la colección de puntos</p>
+<p>Al construir un <strong>modelo matemático</strong> para representar un fenómeno particular, los objetivos son simplicidad y precisión. Existen varias maneras para desarrollar tales modelos, tal vez la más importante sea el <strong>método de mínimos cuadrados</strong>.</p>
+<p>En la <a class="reference external" href="https://es.wikipedia.org/wiki/M%C3%ADnimos_cuadrados">wikipedia puedes ver una descripción completa de este método</a>, desarrollado por Gauss a la avanzada edad de 18 años (<a class="reference external" href="https://www.bbc.com/mundo/noticias-45207968">aquí puedes conocer algo más de la vida del GENIO alemán</a>).</p>
+<p>La idea es que para saber cuánto se ajusta el modelo <span class="math notranslate nohighlight">\(y = f(x)\)</span> a la colección de puntos</p>
 <div class="math notranslate nohighlight">
 \[
 \{(x_1,y_1),(x_2,y_2),...,(x_n,y_n)\}
@@ -597,31 +619,45 @@ $\det\mathrm{Hess}f(\frac{4}{3},\frac{4}{3}) = \left|\\\begin{ array}{cc}\\\begi
 \[
 S = \sum_{i = 1}^n [f(x_i) - y_i]^2.
 \]</div>
-<p>En estadística, se llama <strong>recta de regresión</strong> al modelo lineal que minimiza <span class="math notranslate nohighlight">\(S\)</span> mediante el <strong>método de mínimos cuadrados</strong>. La prueba de que esta línea, <span class="math notranslate nohighlight">\(y = f(x) = ax + b\)</span>, en realidad minimiza <span class="math notranslate nohighlight">\(S\)</span> implica minimizar una función de dos variables:</p>
+<p>Esto es en general. De la elección de <span class="math notranslate nohighlight">\(f\)</span> que hagamos surgirán distintos métodos de mínimos cuadrados.
+Tal vez la elección más habitual es suponer que <span class="math notranslate nohighlight">\(f\)</span> es un polinomio de grado <span class="math notranslate nohighlight">\(1\)</span> (o sea, una recta).
+Aparece entonces la llamada <strong>recta de regresión</strong>, que es la recta que minimiza el error cuadrático para una colección de puntos. <a class="reference external" href="https://es.wikipedia.org/wiki/Regresi%C3%B3n_lineal">Lee aquí, si quieres saber más cosas de la recta de regresión</a>.</p>
+<p>Nosotros vamos a calcularla, como aplicación de lo que hemos aprendido en este tema.</p>
+<p>Se trata de minimizar el error cuadrático tomando como función <span class="math notranslate nohighlight">\(f\)</span> una recta genérica, <span class="math notranslate nohighlight">\(f(x) = ax +b\)</span>, y buscar los parámetros <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> que minimicen dicho error. Entonces:</p>
 <div class="math notranslate nohighlight">
 \[
 S(a,b) = \sum_{i = 1}^n [ax_i + b - y_i]^2,
 \]</div>
 <p>donde <span class="math notranslate nohighlight">\(a, b \in \mathbb{R}\)</span>.</p>
-<p>Para obtener los valores de <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> que minimizan <span class="math notranslate nohighlight">\(S\)</span>, calculamos su gradiente:</p>
+<p>Para obtener los valores de <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> que minimizan <span class="math notranslate nohighlight">\(S\)</span> tenemos que buscar los puntos críticos, es decir, los valores <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> que hacen que las dos derivadas parciales de <span class="math notranslate nohighlight">\(S\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[
-\mathbf{\nabla} S(a,b) = \left[2\sum_{i = 1}^n x_i (ax_i + b - y_i), 2\sum_{i = 1}^n (ax_i + b - y_i)\right].
-\]</div>
-<p>E igualando a <span class="math notranslate nohighlight">\(0\)</span>:</p>
+\[\begin{split}
+\left\{\begin{array}{rcl}
+\dfrac{\partial S}{\partial a}(a,b) &amp;=&amp; \displaystyle 2\sum_{i = 1}^n x_i (ax_i + b - y_i) \\
+\dfrac{\partial S}{\partial b}(a,b) &amp;=&amp; \displaystyle 2\sum_{i = 1}^n (ax_i + b - y_i)
+\end{array}\right.
+\end{split}\]</div>
+<p>valgan <span class="math notranslate nohighlight">\(0\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[
-2\sum_{i = 1}^n x_i (ax_i + b - y_i) = 0 \quad \text{ y } \quad 2\sum_{i = 1}^n (ax_i + b - y_i) = 0,
-\]</div>
-<p>se obtiene un sistema de dos ecuaciones y dos incógnitas del que se despeja <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span>.</p>
+\[\begin{split}
+\left\{\begin{array}{rcl}
+\displaystyle 2\sum_{i = 1}^n x_i (ax_i + b - y_i) &amp;=&amp; 0 \\
+\displaystyle 2\sum_{i = 1}^n (ax_i + b - y_i) &amp;=&amp; 0
+\end{array}\right.
+\end{split}\]</div>
+<p>En resumen: hemos obtenido un sistema de dos ecuaciones con dos incógnitas del que se despejan <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> para obtener el siguiente teorema:</p>
 <div class="proof theorem admonition" id="th_recta_regr_mc">
 <p class="admonition-title"><span>Theorem </span> (Recta de regresión de mínimos cuadrados)</p>
 <section class="theorem-content" id="proof-content">
 <p>La <strong>recta de regresión de mínimos cuadrados</strong> para <span class="math notranslate nohighlight">\(\{(x_1,y_1),(x_2,y_2),...,(x_n,y_n)\}\)</span> está dada por <span class="math notranslate nohighlight">\(f(x) = ax + b\)</span>, donde</p>
 <div class="math notranslate nohighlight">
-\[
-a = \frac{\displaystyle n \sum_{i=1}^{n}x_iy_i - \sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{\displaystyle n \sum_{i=1}^{n}x_i^2 - \left(\sum_{i=1}^{n}x_i\right)^2} \quad \text{ y } \quad b = \frac{1}{n}\left(\sum_{i=1}^{n}y_i - a\sum_{i=1}^{n}x_i\right).
-\]</div>
+\[\begin{split}
+\left\{\begin{array}{rcl}
+a &amp;=&amp; \frac{\displaystyle n \sum_{i=1}^{n}x_iy_i - \sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{\displaystyle n \sum_{i=1}^{n}x_i^2 - \left(\sum_{i=1}^{n}x_i\right)^2}, \\
+\\
+b &amp;=&amp; \displaystyle \frac{1}{n}\left(\sum_{i=1}^{n}y_i - a\sum_{i=1}^{n}x_i\right),
+\end{array}\right.
+\end{split}\]</div>
 </section>
 </div><p>Veamos un caso práctico.</p>
 <div class="proof example admonition" id="3.x._ex">
@@ -650,13 +686,8 @@ f(x) = \frac{8}{13}x + \frac{47}{26}.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x e y</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x e y</span>
 
 <span class="c1"># Datos</span>
 <span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -685,15 +716,21 @@ f(x) = \frac{8}{13}x + \frac{47}{26}.
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span> (Cálculo de volumen máximo )</p>
 <section class="example-content" id="proof-content">
-<p>Una caja rectangular descansa sobre el plano <span class="math notranslate nohighlight">\(xy\)</span> con un vértice en el origen. El vértice opuesto se encuentra en el plano</p>
+<p>Una caja rectangular descansa sobre el plano <span class="math notranslate nohighlight">\(XY\)</span> con un vértice en el origen. El vértice opuesto se encuentra en el plano</p>
 <div class="math notranslate nohighlight">
 \[
 6x + 4y + 3z = 24.
 \]</div>
 <a class="reference internal image-reference" href="../../_images/3.8.Volumen_maximo.png"><img alt="../../_images/3.8.Volumen_maximo.png" src="../../_images/3.8.Volumen_maximo.png" style="width: 250px;" /></a>
-<p>Encuentra el volumen máximo de la caja.</p>
-<p><strong>Solución:</strong></p>
-<p>Supongamos que <span class="math notranslate nohighlight">\(x, y, z\)</span> representan la longitud, anchura y altura de la caja. Debido a que un vértice de la caja se encuentra en el plano <span class="math notranslate nohighlight">\(6x + 4y + 3z = 24\)</span>, como <span class="math notranslate nohighlight">\(z = \frac{1}{3}(24 - 6x - 4y)\)</span>, podemos escribir el volumen de la caja, <span class="math notranslate nohighlight">\(V = xyz\)</span>, en función de dos variables:</p>
+<p>¿Cuál es el volumen máximo que puede tener la caja?</p>
+</section>
+</div><p><strong>Solución:</strong></p>
+<p>Supongamos que <span class="math notranslate nohighlight">\(x, y, z\)</span> representan la longitud, anchura y altura de la caja. Debido a que un vértice de ella se encuentra en el plano <span class="math notranslate nohighlight">\(6x + 4y + 3z = 24\)</span>, podemos despejar <span class="math notranslate nohighlight">\(z\)</span> de la ecuación de éste,</p>
+<div class="math notranslate nohighlight">
+\[
+z = \frac{1}{3}(24 - 6x - 4y),
+\]</div>
+<p>para escribir el volumen de la caja, <span class="math notranslate nohighlight">\(V = xyz\)</span>, en función de sólo dos variables:</p>
 <div class="math notranslate nohighlight">
 \[
 V(x,y) = x y \left[\frac{1}{3}(24 - 6x - 4y)\right] = \frac{1}{3}(24xy - 6x^2y - 4xy^2).
@@ -720,9 +757,13 @@ V(x,y) = x y \left[\frac{1}{3}(24 - 6x - 4y)\right] = \frac{1}{3}(24xy - 6x^2y -
 \end{split}\]</div>
 <p>entonces</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\det\mathrm{Hess}V\left(\frac{4}{3},2\right) = \left|\\\begin{array}{cc}\\\begin{split}-8 &amp; -\frac{8}{3}\\\end{split}\\-\frac{8}{3} &amp; -\frac{32}{9}\\\end{array}\\\right| = \frac{64}{3} &gt; 0
-\end{aligned}\end{align} \]</div>
+\[\begin{split}
+\det\mathrm{Hess}V\left(\frac{4}{3},2\right) = \begin{vmatrix}
+-8 &amp; -\frac{8}{3}\\
+-\frac{8}{3} &amp; -\frac{32}{9}
+\end{vmatrix} 
+= \frac{64}{3} &gt; 0,
+\end{split}\]</div>
 <p>y <span class="math notranslate nohighlight">\(\dfrac{\partial^2 V}{\partial {x^2}}(\frac{4}{3},2) = -8 &lt; 0\)</span>, por lo que podemos concluir que <span class="math notranslate nohighlight">\(V\)</span> tiene un máximo relativo en <span class="math notranslate nohighlight">\(\left(\frac{4}{3},2\right)\)</span> y su valor es:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -730,8 +771,7 @@ V\left(\frac{4}{3},2\right) = \frac{1}{3}\left[24\left(\frac{4}{3}\right)(2) - 6
 \]</div>
 <p>¿Hemos terminado? No, porque faltaría comprobar el volumen en los puntos de la frontera del dominio triangular de <span class="math notranslate nohighlight">\(V\)</span>. Comprueba que el volumen en estos puntos es igual a <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <p>Ahora sí, podemos concluir que el volumen máximo es <span class="math notranslate nohighlight">\(V\left(\frac{4}{3},2\right) = \frac{64}{9}\)</span> unidades cúbicas.</p>
-</section>
-</div><p>Ya por último, vamos a resolver con <code class="docutils literal notranslate"><span class="pre">Python</span></code> el ejercicio propuesto.</p>
+<p>Ya por último, vamos a resolver con <code class="docutils literal notranslate"><span class="pre">Python</span></code> el ejercicio propuesto.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x e y</span>

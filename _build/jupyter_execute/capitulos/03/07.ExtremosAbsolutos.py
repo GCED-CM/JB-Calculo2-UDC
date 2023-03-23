@@ -5,14 +5,17 @@
 # 
 # Vamos a enfrentarnos ahora al equivalente multidimensional a los ejercicios que hacíais en vuestra tierna juventud (o sea: el año pasado) de calcular el máximo y el mínimo absoluto de una función definida en un intervalo cerrado y acotado.
 # 
-# Lo que en el caso de una variable era simplemente incluir los extremos del intervalo, ahora (se complica y) se enriquece mucho.
-# Aparecen las llamadas **restricciones** o **ligaduras** entre variables que nos permiten limitar el conjunto en el que buscamos los extremos a un subconjunto cerrado y acotado del dominio en el que ya podremos buscar los extremos absolutos de la función. 
+# Lo que en el caso de una variable era simplemente incluir los extremos del intervalo (es decir, evaluar la función en dos puntos, $a$ y $b$), ahora se complica y se enriquece mucho.
+# 
+# Las restricciones (o ligaduras) entre variables nos permiten limitar el conjunto en el que buscamos los extremos a un subconjunto cerrado y acotado del dominio en el que ya podremos buscar los extremos absolutos de la función. 
 # 
 # <img src="../../images/07_ejemplo.png" width="400"/>
 # 
-# Al igual que pasaba en funciones de una variable, en estos casos el máximo (o mínimo) absoluto, puede estar en el interior del dominio o en su frontera. Pero esta frontera, que para funciones de una variable sólo tiene dos puntos (los extremos del intervalo, puntos $a$ y $b$), ahora se convierte en un conjunto infinito y, por tanto, tendremos que localizar los candidatos a extremos absolutos. 
+# Al igual que pasaba en funciones de una variable, en estos casos el máximo (o mínimo) absoluto, puede estar en el interior del dominio o en su frontera. En el interior, aplicaremos las técnicas que hemos aprendido en la sección anterior (en general, buscaremos los puntos críticos), pero ¿en la frontera?
 # 
-# En esta sección estudiaremos una ingeniosa técnica que nos permite resolver problemas de optimización sobre las fronteras de regiones cerradas y acotadas, consistente en el llamado método de los **multiplicadores de Lagrange**. Por tanto, en esta sección se aborda el problema de encontrar los extremos absolutos (globales) de una función escalar de varias variables sobre una región cerrada y acotada.   
+# Ahora, esta frontera, que para funciones de una variable sólo tiene dos puntos (los extremos del intervalo), se convierte en un conjunto infinito y, por tanto, es imposible evaluar la función objetivo en todos ellos. Tendremos, en primer lugar, que localizar los candidatos a extremos absolutos en ella. 
+# 
+# En esta sección estudiaremos la técnica que se utiliza en estos casos: el llamado método de los **multiplicadores de Lagrange**.
 
 # ## Existencia de solución 
 # 
@@ -33,20 +36,21 @@
 # 
 # **Nota:** Una definición similar nos valdría para $\mathbb{R}^{3}$.
 # 
-# Ahora, nos preguntamos si el problema planteado tiene solución. La respuesta, que es afirmativa, se obtiene aplicando nuestro viejo conocido: el teorema de Weierstrass (en este caso, para funciones de dos variables).
+# Ahora, nos preguntamos si el problema de calcular máximo y mínimo absoluto de una función sobre un conjunto $C$ tiene solución. La respuesta, será afirmativa, si se cumplen dos condiciones, que especifica nuestro viejo conocido: el teorema de Weierstrass (en este caso, para funciones de dos variables).
 # 
 # ````{prf:theorem} Teorema de Weierstrass 
 # :label: th_07_valor_extr
 # :nonumber: 
-# Sea $f$ una función escalar arbitraria definida en una región cerrada y acotada $C$. Entonces, $f$ alcanza en $C$ su valor máximo y su valor mínimo, es decir,
+# Sea $f:C\subset\mathbb{R}^{2}\to\mathbb{R}$. 
+# Si $f$ es continua y $C$ es un conjunto cerrado y acotado, entonces $f$ alcanza en $C$ un máximo y un mínimo absoluto, es decir:
 # 
-# * Existe por lo menos un punto $\mathbf{x}_{1}\in C$ en el que $f$ toma su valor mínimo: 
+# * Existe, por lo menos, un punto $\mathbf{x}_{1}\in C$ en el que $f$ toma su valor mínimo: 
 # 
-# $$f(\mathbf{x}_{1})=\min_{\mathbf{x}\in C}f(\mathbf{x}).$$
+#     $$f(\mathbf{x}_{1})=\min_{\mathbf{x}\in C}f(\mathbf{x}).$$
 # 
-# * Existe por lo menos un punto $\mathbf{x}_{2}\in C$ en el que $f$ toma su valor máximo: 
+# * Existe, por lo menos, un punto $\mathbf{x}_{2}\in C$ en el que $f$ toma su valor máximo: 
 # 
-# $$f(\mathbf{x}_{2})=\max_{\mathbf{x}\in C}f(\mathbf{x}).$$
+#     $$f(\mathbf{x}_{2})=\max_{\mathbf{x}\in C}f(\mathbf{x}).$$
 # 
 # ````
 
@@ -56,23 +60,23 @@
 # :label: ex_07_lagrange 
 # :nonumber:
 # 
-# Para ver cómo funciona esta técnica, consideramos el problema de encontrar el rectángulo de área máxima que puede estar inscrito en la elipse de ecuación 
+# Mostraremos cómo funciona esta técnica sobre un problema/ejemplo: Vamos a buscar el rectángulo de área máxima que puede estar inscrito en la elipse de ecuación 
 # 
 # $$
 # \frac{x^2}{3^2}+\frac{y^2}{4^2}=1.
 # $$
 # 
-# Consideramos un rectángulo arbitrario inscrito en la elipse con $(x,y)$ el vértice que se encuentra en el primer cuadrante, como se muestra en la figura.
+# Entonces, consideramos un rectángulo arbitrario inscrito en dicha elipse, con $(x,y)$ el vértice que se encuentra en el primer cuadrante, como se muestra en la siguiente figura.
 # 
 # <img src="../../images/07_ejemplo2.png" width="400"/>
 # 
-# Debido a que el rectángulo tiene lados de longitudes $2x$ y $2y$, su área está dada por 
+# Debido a que el rectángulo tiene lados de longitudes $2x$ y $2y$, su área será 
 # 
 # $$
 # \textbf{Función objetivo: }f(x,y)=4xy. 
 # $$
 # 
-# Por otro lado, la elección de $(x, y)$ se limita a los puntos del primer cuadrante que se encuentran en la elipse
+# Por otro lado, la elección de $(x, y)$ se limita a los puntos del primer cuadrante que están sobre la elipse
 # 
 # $$
 # \textbf{Restricción: }\frac{x^2}{3^2}+\frac{y^2}{4^2}=1.
@@ -107,11 +111,14 @@
 # ````{prf:theorem} Teorema de Lagrange 
 # :label: th_07_lagrange
 # :nonumber: 
-# Sean $f$ y $g$ dos funciones escalares arbitrarias con derivadas parciales primeras continuas, y $\mathbf{x}_0$ un extremo de $f$ sujeto a $g(\mathbf{x})=c$. Si $\nabla g(\mathbf{x}_0)\neq \mathbf{0}$, entonces existe un número real $\lambda$ tal que 
+# Sean $f$ y $g$ dos funciones escalares arbitrarias. Suponemos que sus primeras derivadas parciales son funciones continuas. Sea $\mathbf{x}_0$ un extremo de $f$ sujeto a la restricción $g(\mathbf{x})=c$. 
+# 
+# Entonces, si $\nabla g(\mathbf{x}_0)\neq \mathbf{0}$, existe un número real $\lambda$ tal que 
 # 
 # $$
 # \nabla f(\mathbf{x}_0)=\lambda \nabla g(\mathbf{x}_0).
 # $$
+# Denominaremos a $\lambda$, **multiplicador de Lagrange**.
 # ````
 # A continuación, aplicamos este teorema a problemas de optimización en dos variables e indicamos los pasos a seguir para su resolución, resultando inmediata su exensión a más variables.   
 # 
@@ -134,11 +141,32 @@
 # 
 # ````
 # 
-# ````{prf:example}
-# :label: ex_07_lagrange_cont  
-# :nonumber:
 # 
-# Retomamos el ejemplo anterior para aplicar el método de los multiplicadores de Lagrange. Recordemos que queremos encontrar el valor máximo de f(x,y)=4xy con $x,y\geq 0$, sujeto a la restricción $x^2/3^2+y^2/4^2=1$. En primer lugar, observamos que dicho problema tiene solución puesto que la función a optimizar es continua y la región de soluciones factibles es cerrada y acotada. Además, se observa que el gradiente de $g$ no se anula sobre ningún punto factible. A continuación, planteamos y resolvemos el sistema de ecuaciones que tienen que satisfacer los extremos globales.   
+
+# ## Ejemplo 1. Cálculo de extremos absolutos sobre una restricción
+# 
+# Retomamos el ejemplo anterior para mostrar un primer ejemplo del método de los multiplicadores de Lagrange. 
+# En este primer ejemplo, se trata de calcular los extremos absolutos sobre el conjunto definido por la restricción: 
+# sobre la piel de la elipse.
+# 
+# Entonces, se trata de 
+# 
+# ````{prf:example} Máximo absoluto en la piel de la elipse
+# :label: ex_07_lagrange1
+# :nonumber:
+# Calcular el máximo absoluto de
+# 
+# $$
+# f(x,y) = 4xy
+# $$
+# en el conjunto
+# 
+# $$
+# C = \left\{ (x,y) \in\mathbb{R}^{2} : \frac{x^2}{3^2} + \frac{y^2}{4^2} = 1 \right\}.
+# $$
+# ````
+# 
+# En primer lugar, observamos que dicho problema tiene solución puesto que la función a optimizar es continua y la región de soluciones factibles es cerrada y acotada. Además, se observa que el gradiente de $g$ no se anula sobre ningún punto factible. A continuación, planteamos y resolvemos el sistema de ecuaciones que tienen que satisfacer los extremos globales.   
 # 
 # $$
 # \left\{
@@ -175,10 +203,9 @@
 # 
 # A continuación, vamos a resolver este ejercicio pero con la ayuda del módulo `Sympy`.
 # 
-# ````
 # 
 
-# In[1]:
+# In[33]:
 
 
 import sympy as sp
@@ -191,9 +218,10 @@ g = sp.Lambda((x,y), x**2/9 + y**2/16) # restricción
 grad_f =  sp.transpose(sp.Matrix([f(x,y)]).jacobian([x,y]))
 grad_g = sp.transpose(sp.Matrix([g(x,y)]).jacobian([x,y]))
 sol = sp.solve((sp.Eq(grad_f[0],l*grad_g[0]),sp.Eq(grad_f[1],l*grad_g[1]),sp.Eq(g(x,y),1)), 
-               (x,y,l))
+               (x,y,l), dict=True)
+
 for p in sol:
-    print('Punto crítico (x,y,lambda)=',p,'; f(x,y)=', sp.N(f(*p[0:2])))
+    print('Punto crítico (x,y,lambda)=',p,'; f(x,y)=', sp.N(f(p[x],p[y])))
 
 
 # Podemos comprobamos visualmente el tipo de puntos críticos como sigue.
@@ -231,6 +259,86 @@ for p in sol:
     plt.plot(p[0],p[1],'ko')
 
 plt.show()
+
+
+# ## Ejemplo 2. Cálculo de extremos absolutos sobre $C$: interior y frontera
+# 
+# Vamos a un problema muy similar... pero no exactamente igual. **Ahora se trata de calcular extremos absolutos en la elipse, incluyendo su interior y su frontera.**
+# 
+# Se trata de 
+# 
+# ````{prf:example} Máximo absoluto en la elipse: interior + piel
+# :label: ex_07_lagrange1
+# :nonumber:
+# Calcular el máximo absoluto de
+# 
+# $$
+# f(x,y) = 4xy
+# $$
+# en el conjunto
+# 
+# $$
+# C = \left\{ (x,y) \in\mathbb{R}^{2} : \frac{x^2}{3^2} + \frac{y^2}{4^2} \leq 1 \right\}.
+# $$
+# ````
+# 
+# Este problema hay que hacerlo en dos pasos: 
+# 
+# 1. Interior de la elipse. Buscaremos los puntos críticos y evaluaremos $f$ en ellos.
+# 2. Frontera de la elipse. Utilizando los multiplicadores de Lagrange, buscaremos los candidatos a extremos absolutos sobre la piel de la elipse y evaluaremos $f$ en ellos.
+# 
+# ¡Vamos con la **primer paso**!
+# 
+# La función $f$ es polinómica, por lo que ya sabemos que será diferencial en todo su dominio. Por lo tanto, los puntos críticos coinciden con los puntos en los que el gradiente de $f$ es $\mathbf{0}$. Entonces:
+# 
+# $$
+# \begin{array}{ccccc}
+# \displaystyle\frac{\partial f}{\partial x} (x,y) = 4y &\Rightarrow& 4y = 0 &\Rightarrow& y=0, \\
+# \displaystyle\frac{\partial f}{\partial y} (x,y) = 4x &\Rightarrow& 4x = 0 &\Rightarrow& x=0. \\
+# \end{array}
+# $$
+# 
+# Por lo tanto, el único punto crítico de $f$ en el interior de la elipse es el $(0,0)$. 
+# 
+# Evaluamos $f$ en ese punto: $f(0,0) = 0$.
+# 
+# Ahora, **el segundo paso**:
+# 
+# No la vamos a desarrollar ahora, porque ya está completa en el ejemplo anterior. 
+# 
+# Los candidatos, con la correspondiente evaluación de $f$ son, en este segundo caso:
+# 
+# * $\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right) \to f\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right) = 24$.
+# * $\left(-\frac{3}{\sqrt{2}},2\sqrt{2}\right) \to f\left(-\frac{3}{\sqrt{2}},2\sqrt{2}\right) = -24$.
+# * $\left(\frac{3}{\sqrt{2}},-2\sqrt{2}\right) \to f\left(\frac{3}{\sqrt{2}},-2\sqrt{2}\right) = -24$.
+# * $\left(-\frac{3}{\sqrt{2}},-2\sqrt{2}\right) \to f\left(-\frac{3}{\sqrt{2}},-2\sqrt{2}\right) = 24$.
+# 
+# Entonces, entre los cinco candidatos a extremos absolutos observamos que
+# **el máximo absoluto se alcanza en $\left(\frac{3}{\sqrt{2}},2\sqrt{2}\right)$ y $\left(-\frac{3}{\sqrt{2}},-2\sqrt{2}\right)$, alcanzando la función $f$ en esos puntos un valor de $24$ unidades**.
+# 
+
+# In[35]:
+
+
+import sympy as sp
+
+x, y, l = sp.symbols('x y l', real=True) # definimos las variables simbólicas x, y, l
+f = sp.Lambda((x,y), 4*x*y) # función a optimizar
+g = sp.Lambda((x,y), x**2/9 + y**2/16) # restricción
+
+# Primer paso: puntos críticos de f en el interior de la elipse
+grad_f =  sp.transpose(sp.Matrix([f(x,y)]).jacobian([x,y]))
+sol1 = sp.solve((sp.Eq(grad_f[0],0),sp.Eq(grad_f[1],0)),(x,y), dict=True)
+
+# Segundo paso: posibles extremos en la frontera de la elipse
+grad_g = sp.transpose(sp.Matrix([g(x,y)]).jacobian([x,y]))
+sol2= sp.solve((sp.Eq(grad_f[0],l*grad_g[0]),sp.Eq(grad_f[1],l*grad_g[1]),sp.Eq(g(x,y),1)), 
+               (x,y,l), dict=True)
+
+sol = sol1 + sol2
+
+for p in sol:
+    print('Punto crítico (x,y,lambda)=',p,'; f(x,y)=', sp.N(f(p[x],p[y])))
 
 
 # ## Método de los multiplicadores de Lagrange con dos restricciones
