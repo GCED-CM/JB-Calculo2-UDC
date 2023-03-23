@@ -205,7 +205,7 @@
 # 
 # 
 
-# In[33]:
+# In[1]:
 
 
 import sympy as sp
@@ -226,7 +226,7 @@ for p in sol:
 
 # Podemos comprobamos visualmente el tipo de puntos críticos como sigue.
 
-# In[12]:
+# In[2]:
 
 
 import numpy as np
@@ -256,7 +256,7 @@ for c in sol_curve:
 
 # Representación gráfica de los extremos relativos
 for p in sol:
-    plt.plot(p[0],p[1],'ko')
+    plt.plot(p[x],p[y],'ko')
 
 plt.show()
 

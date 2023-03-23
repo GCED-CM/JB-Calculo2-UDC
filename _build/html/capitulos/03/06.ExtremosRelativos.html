@@ -310,6 +310,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.5. Derivadas con Python
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06.Extremos.html">
+     5.6. Extremos (relativos y absolutos) con Python
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -2632,7 +2637,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 <section id="extremos-relativos-con-python">
 <h2><span class="section-number">3.6.4. </span>Extremos relativos con <code class="docutils literal notranslate"><span class="pre">Python</span></code><a class="headerlink" href="#extremos-relativos-con-python" title="Permalink to this headline">#</a></h2>
-<p>Vamos a continuación a mostrar, sobre un ejemplo, como se localizan los puntos críticos y como se clasifican, con la ayuda de <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
+<p>Vamos a continuación a mostrar, sobre un ejemplo, cómo se localizan los puntos críticos y como se clasifican, con la ayuda de <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
 <p>Buscamos los puntos críticos de la función <span class="math notranslate nohighlight">\(f(x,y) = -x^3 + 4xy - 2y^2 +1\)</span> en todo <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
 <p>Lo vamos a hacer de una manera un tanto <em>pedestre</em>, pero <strong>te planteamos un reto:</strong> escribe una <code class="docutils literal notranslate"><span class="pre">function</span></code> que clasifique automáticamente los puntos críticos.</p>
 <div class="cell docutils container">
@@ -2648,7 +2653,7 @@ if (IPython.notebook.kernel !== null) {
 <span class="n">display</span><span class="p">(</span><span class="n">grad_f</span><span class="p">)</span>
 
 <span class="c1"># Buscamos los puntos críticos</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Puntos críticos:&#39;</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>
 
 <span class="c1"># Definimos la hessiana son sp.hessian</span>
@@ -2656,12 +2661,12 @@ if (IPython.notebook.kernel !== null) {
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Matriz hessiana en (x,y): &#39;</span><span class="p">,</span> <span class="n">H</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
 
 <span class="c1"># Clasificación del primer punto crítico</span>
-<span class="n">H0</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">H0</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x</span><span class="p">],</span><span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Hessiana del primer punto crítico: &#39;</span><span class="p">,</span> <span class="n">H0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Determinante: &quot;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">H0</span><span class="p">),</span> <span class="s2">&quot;. Posición (1,1):&quot;</span><span class="p">,</span> <span class="n">H0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1"># Clasificación del segundo punto crítico</span>
-<span class="n">H1</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">H1</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">],</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Hessiana del segundo punto crítico: &#39;</span><span class="p">,</span> <span class="n">H1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Determinante: &quot;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">H1</span><span class="p">),</span> <span class="s2">&quot;. Posición (1,1):&quot;</span><span class="p">,</span> <span class="n">H1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -2673,7 +2678,7 @@ if (IPython.notebook.kernel !== null) {
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Puntos críticos:&#39;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, 0), (4/3, 4/3)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{x: 0, y: 0}, {x: 4/3, y: 4/3}]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Matriz hessiana en (x,y): &#39;

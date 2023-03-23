@@ -146,7 +146,7 @@ plt.show()
 # **Nota:** El nombre *punto silla* (o, mejor, *punto de silla de montar*, porque verás que la gráfica que viene a continuación no se parece nada a la silla en la que te vas a sentar para comer hoy) recibe su nombre del hiperboloide $f(x,y) = y^2 - x^2$, que tiene en el $(0,0)$ un punto de estos.
 # 
 
-# In[34]:
+# In[11]:
 
 
 import numpy as np
@@ -185,13 +185,13 @@ plt.show()
 
 # ## Extremos relativos con `Python`
 # 
-# Vamos a continuación a mostrar, sobre un ejemplo, como se localizan los puntos críticos y como se clasifican, con la ayuda de `Python`.
+# Vamos a continuación a mostrar, sobre un ejemplo, cómo se localizan los puntos críticos y como se clasifican, con la ayuda de `Python`.
 # 
 # Buscamos los puntos críticos de la función $f(x,y) = -x^3 + 4xy - 2y^2 +1$ en todo $\mathbb{R}^2$.
 # 
 # Lo vamos a hacer de una manera un tanto *pedestre*, pero **te planteamos un reto:** escribe una `function` que clasifique automáticamente los puntos críticos.
 
-# In[36]:
+# In[12]:
 
 
 import sympy as sp
@@ -205,7 +205,7 @@ grad_f =  sp.transpose(sp.Matrix([f(x,y)]).jacobian([x,y]))
 display(grad_f)
 
 # Buscamos los puntos críticos
-sol = sp.solve((sp.Eq(grad_f[0],0),sp.Eq(grad_f[1],0)),(x,y))
+sol = sp.solve((sp.Eq(grad_f[0],0),sp.Eq(grad_f[1],0)),(x,y), dict=True)
 display('Puntos críticos:', sol)
 
 # Definimos la hessiana son sp.hessian
@@ -213,17 +213,17 @@ H = sp.Lambda((x,y), sp.hessian(f(x,y), (x,y)))
 display('Matriz hessiana en (x,y): ', H(x,y))
 
 # Clasificación del primer punto crítico
-H0 = H(*sol[0])
+H0 = H(sol[0][x],sol[0][y])
 display('Hessiana del primer punto crítico: ', H0)
 print("Determinante: ",sp.det(H0), ". Posición (1,1):", H0[0,0])
 
 # Clasificación del segundo punto crítico
-H1 = H(*sol[1])
+H1 = H(sol[1][x],sol[1][y])
 display('Hessiana del segundo punto crítico: ', H1)
 print("Determinante: ",sp.det(H1), ". Posición (1,1):", H1[0,0])
 
 
-# In[37]:
+# In[13]:
 
 
 # Vamos a dibujar esta función

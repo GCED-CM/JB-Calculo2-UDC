@@ -310,6 +310,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.5. Derivadas con Python
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06.Extremos.html">
+     5.6. Extremos (relativos y absolutos) con Python
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -474,18 +479,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extremos-relativos-y-hessiana">
-   3.8.1. Extremos relativos y hessiana
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodo-de-minimos-cuadrados">
-   3.8.2. Método de mínimos cuadrados
+   3.8.1. Método de mínimos cuadrados
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extremos-absolutos-en-un-dominio-compacto">
-   3.8.3. Extremos absolutos en un dominio compacto
+   3.8.2. Extremos absolutos en un dominio compacto
   </a>
  </li>
 </ul>
@@ -508,18 +508,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extremos-relativos-y-hessiana">
-   3.8.1. Extremos relativos y hessiana
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodo-de-minimos-cuadrados">
-   3.8.2. Método de mínimos cuadrados
+   3.8.1. Método de mínimos cuadrados
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extremos-absolutos-en-un-dominio-compacto">
-   3.8.3. Extremos absolutos en un dominio compacto
+   3.8.2. Extremos absolutos en un dominio compacto
   </a>
  </li>
 </ul>
@@ -536,77 +531,11 @@ title="Print to PDF"
 <h1><span class="section-number">3.8. </span>Aplicaciones del cálculo de extremos<a class="headerlink" href="#aplicaciones-del-calculo-de-extremos" title="Permalink to this headline">#</a></h1>
 <p>En esta sección, vamos a practicar un poco estas últimas secciones y, de paso, a ver algunas aplicaciones del cálculo de extremos relativos y absolutos:</p>
 <ol class="simple">
-<li><p>En primer lugar, obtendremos los extremos relativos de una función, aplicando el criterio de la matriz hessiana.</p></li>
-<li><p>Después, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.</p></li>
-<li><p>Y, por último, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto.</p></li>
+<li><p>En primer lugar, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.</p></li>
+<li><p>En segundo lugar, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto.</p></li>
 </ol>
-<section id="extremos-relativos-y-hessiana">
-<h2><span class="section-number">3.8.1. </span>Extremos relativos y hessiana<a class="headerlink" href="#extremos-relativos-y-hessiana" title="Permalink to this headline">#</a></h2>
-<div class="proof example admonition" id="3.x._ex">
-<p class="admonition-title"><span>Example </span></p>
-<section class="example-content" id="proof-content">
-<p>Encuentra y clasifica los extremos relativos de la función <span class="math notranslate nohighlight">\(f\)</span> definida como</p>
-<div class="math notranslate nohighlight">
-\[
-f(x,y) = -x^3 + 4xy - 2y^2 + 1.
-\]</div>
-</section>
-</div><p>Comenzamos por buscar los puntos críticos de <span class="math notranslate nohighlight">\(f\)</span>. Puesto que</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\dfrac{\partial f}{\partial x}(x,y) &amp;=&amp; -3x^2 + 4y, \\
-\dfrac{\partial f}{\partial y}(x,y) &amp;=&amp; 4x - 4y,
-\end{eqnarray*}\]</div>
-<p>y estas funciones existen en todo <span class="math notranslate nohighlight">\(\mathbb{R}^{2}\)</span>, los únicos puntos críticos son aquellos para los que ambas derivadas parciales son <span class="math notranslate nohighlight">\(0\)</span>. ¡Vamos a localizarlos!</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\left\{ \begin{array}{rcl}
--3x^2 + 4y &amp;=&amp; 0 \\  
-4x - 4y &amp;=&amp; 0.
-\end{array}\right.
-\end{split}\]</div>
-<p>De la segunda ecuación, se obtiene que <span class="math notranslate nohighlight">\(x = y\)</span>. Sustituyendo esta igualdad en la primera,</p>
-<div class="math notranslate nohighlight">
-\[
--3x^2+4x = 0 \Rightarrow x(-3x + 4) = 0 \Rightarrow x=0 \text{ o } x = \frac{4}{3}.
-\]</div>
-<p>Por lo tanto, los dos puntos críticos serán <span class="math notranslate nohighlight">\(\left(0,0\right)\)</span> y <span class="math notranslate nohighlight">\(\left(\frac{4}{3}, \frac{4}{3}\right)\)</span>.</p>
-<p>Vamos a clasificarlos, utilizando el criterio de la matriz hessiana, teniendo en cuenta que, en este caso,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathrm{Hess}f(x,y) = \begin{bmatrix}
--6x &amp; 4 \\
-4 &amp; -4 
-\end{bmatrix},
-\end{split}\]</div>
-<ul>
-<li><p>Punto <span class="math notranslate nohighlight">\(\left(0,0\right)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    \det\mathrm{Hess}f(0,0) = \begin{vmatrix}
-    0 &amp; 4\\
-    4 &amp; -4
-    \end{vmatrix}
-    = 0 - 16 &lt; 0,
-    \end{split}\]</div>
-<p>por lo que podemos concluir que <strong><span class="math notranslate nohighlight">\(f\)</span> tiene en <span class="math notranslate nohighlight">\((0,0)\)</span> un punto silla</strong>.</p>
-</li>
-<li><p>Punto <span class="math notranslate nohighlight">\(\left(\frac{4}{3},\frac{4}{3}\right)\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    \det\mathrm{Hess}f\left(\frac{4}{3},\frac{4}{3}\right) = \begin{vmatrix}
-    -8 &amp; 4\\
-    4 &amp; -4
-    \end{vmatrix}
-    = -8(-4) - 16 = 16 &gt; 0.
-    \end{split}\]</div>
-<p>Además, <span class="math notranslate nohighlight">\(\dfrac{\partial^2 f}{\partial x^2}\left(\frac{4}{3},\frac{4}{3}\right) = -8 &lt; 0\)</span>.
-Entonces <strong><span class="math notranslate nohighlight">\(f\)</span> tiene un máximo relativo en <span class="math notranslate nohighlight">\(\left(\frac{4}{3},\frac{4}{3}\right)\)</span></strong>.</p>
-</li>
-</ul>
-</section>
 <section id="metodo-de-minimos-cuadrados">
-<h2><span class="section-number">3.8.2. </span>Método de mínimos cuadrados<a class="headerlink" href="#metodo-de-minimos-cuadrados" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.8.1. </span>Método de mínimos cuadrados<a class="headerlink" href="#metodo-de-minimos-cuadrados" title="Permalink to this headline">#</a></h2>
 <p>Al construir un <strong>modelo matemático</strong> para representar un fenómeno particular, los objetivos son simplicidad y precisión. Existen varias maneras para desarrollar tales modelos, tal vez la más importante sea el <strong>método de mínimos cuadrados</strong>.</p>
 <p>En la <a class="reference external" href="https://es.wikipedia.org/wiki/M%C3%ADnimos_cuadrados">wikipedia puedes ver una descripción completa de este método</a>, desarrollado por Gauss a la avanzada edad de 18 años (<a class="reference external" href="https://www.bbc.com/mundo/noticias-45207968">aquí puedes conocer algo más de la vida del GENIO alemán</a>).</p>
 <p>La idea es que para saber cuánto se ajusta el modelo <span class="math notranslate nohighlight">\(y = f(x)\)</span> a la colección de puntos</p>
@@ -643,6 +572,11 @@ S(a,b) = \sum_{i = 1}^n [ax_i + b - y_i]^2,
 \left\{\begin{array}{rcl}
 \displaystyle 2\sum_{i = 1}^n x_i (ax_i + b - y_i) &amp;=&amp; 0 \\
 \displaystyle 2\sum_{i = 1}^n (ax_i + b - y_i) &amp;=&amp; 0
+\end{array}\right. \Longrightarrow
+\left\{\begin{array}{ccccccl}
+\displaystyle a\sum_{i = 1}^n x_i^2 &amp;+&amp; \displaystyle b \sum_{i = 1}^n x_i &amp;-&amp; 
+\displaystyle\sum_{i = 1}^n x_i y_i &amp;=&amp; 0 \\
+\displaystyle a\sum_{i = 1}^n x_i &amp;+&amp; b n &amp;-&amp; \displaystyle\sum_{i = 1}^n y_i &amp;=&amp; 0
 \end{array}\right.
 \end{split}\]</div>
 <p>En resumen: hemos obtenido un sistema de dos ecuaciones con dos incógnitas del que se despejan <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> para obtener el siguiente teorema:</p>
@@ -712,7 +646,7 @@ f(x) = \frac{8}{13}x + \frac{47}{26}.
 </div>
 </section>
 <section id="extremos-absolutos-en-un-dominio-compacto">
-<h2><span class="section-number">3.8.3. </span>Extremos absolutos en un dominio compacto<a class="headerlink" href="#extremos-absolutos-en-un-dominio-compacto" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.8.2. </span>Extremos absolutos en un dominio compacto<a class="headerlink" href="#extremos-absolutos-en-un-dominio-compacto" title="Permalink to this headline">#</a></h2>
 <div class="proof example admonition" id="3.x._ex">
 <p class="admonition-title"><span>Example </span> (Cálculo de volumen máximo )</p>
 <section class="example-content" id="proof-content">
@@ -733,18 +667,22 @@ z = \frac{1}{3}(24 - 6x - 4y),
 <p>para escribir el volumen de la caja, <span class="math notranslate nohighlight">\(V = xyz\)</span>, en función de sólo dos variables:</p>
 <div class="math notranslate nohighlight">
 \[
-V(x,y) = x y \left[\frac{1}{3}(24 - 6x - 4y)\right] = \frac{1}{3}(24xy - 6x^2y - 4xy^2).
+V(x,y) = x y \left(\frac{1}{3}\left(24 - 6x - 4y\right)\right) = \frac{1}{3}\left( 24xy - 6x^2y - 4xy^2\right).
 \]</div>
 <p>A continuación, calculamos el gradiente de <span class="math notranslate nohighlight">\(V\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[
-\mathbf{\nabla} V (x,y) = \left[\frac{1}{3}(24y - 12xy - 4y^2), \frac{1}{3}(24x - 6x^2 - 8xy)\right] = \left[\frac{y}{3}(24 - 12x - 4y), \frac{x}{3}(24 - 6x - 8y)\right].
-\]</div>
-<p>E igualando a <span class="math notranslate nohighlight">\(0\)</span>:</p>
+\[\begin{split}
+\mathbf{\nabla} V (x,y) = \frac{1}{3} \begin{bmatrix} 24y - 12xy - 4y^2 \\ \\ 24x - 6x^2 - 8xy\end{bmatrix}
+= \frac{2}{3}\begin{bmatrix} y(12 - 6x - 2y) \\ \\ x(12 - 3x - 4y)\end{bmatrix} .
+\end{split}\]</div>
+<p>E igualamos a <span class="math notranslate nohighlight">\(0\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[
-\frac{y}{3}(24 - 12x - 4y) = 0 \quad \text{ y } \quad \frac{x}{3}(24 - 6x - 8y) = 0, 
-\]</div>
+\[\begin{split}
+\left\{\begin{array}{rcl}
+y \left(12 - 6x - 2y\right) &amp;=&amp; 0 \\ \\ 
+x \left(12 - 3x - 4y \right) &amp;=&amp; 0, 
+\end{array}\right.
+\end{split}\]</div>
 <p>se obtienen los puntos críticos <span class="math notranslate nohighlight">\((0,0), (4,0), (0,6)\)</span> y <span class="math notranslate nohighlight">\(\left(\frac{4}{3},2\right)\)</span>.</p>
 <p>En <span class="math notranslate nohighlight">\((0,0), (4,0)\)</span> y <span class="math notranslate nohighlight">\((0,6)\)</span>, el volumen es <span class="math notranslate nohighlight">\(0\)</span>, por lo que esos puntos no producen un volumen máximo.</p>
 <p>En el punto <span class="math notranslate nohighlight">\(\left(\frac{4}{3},2\right)\)</span>, se puede aplicar el criterio de la matriz hessiana. Como</p>
@@ -774,7 +712,9 @@ V\left(\frac{4}{3},2\right) = \frac{1}{3}\left[24\left(\frac{4}{3}\right)(2) - 6
 <p>Ya por último, vamos a resolver con <code class="docutils literal notranslate"><span class="pre">Python</span></code> el ejercicio propuesto.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x e y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define las variables simbólicas x e y</span>
 <span class="n">V</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span><span class="mi">4</span> <span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># Calculamos el gradiente de f</span>
@@ -782,7 +722,7 @@ V\left(\frac{4}{3},2\right) = \frac{1}{3}\left[24\left(\frac{4}{3}\right)(2) - 6
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Gradiente en (x,y): &#39;</span><span class="p">,</span> <span class="n">grad_V</span><span class="p">)</span>
 
 <span class="c1"># Buscamos los puntos críticos</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_V</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_V</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_V</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_V</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Puntos críticos:&#39;</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>
 
 <span class="c1"># V en (0,0), (4,0), (0,6) es igual a 0</span>
@@ -793,12 +733,12 @@ V\left(\frac{4}{3},2\right) = \frac{1}{3}\left[24\left(\frac{4}{3}\right)(2) - 6
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Matriz hessiana en (x,y): &#39;</span><span class="p">,</span> <span class="n">H</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
 
 <span class="c1"># Clasificación del punto crítico (4/3,2)</span>
-<span class="n">H0</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">H0</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">x</span><span class="p">],</span><span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Hessiana del punto crítico (4/3,2): &#39;</span><span class="p">,</span> <span class="n">H0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Determinante: &quot;</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">H0</span><span class="p">),</span> <span class="s2">&quot;. Posición (1,1):&quot;</span><span class="p">,</span> <span class="n">H0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1"># V en (4/3,2) es igual a 64/9</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">El volumen máximo de la caja es: </span><span class="se">\n\n</span><span class="s1"> V(4/3,2) =&#39;</span><span class="p">,</span> <span class="n">V</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">El volumen máximo de la caja es: </span><span class="se">\n\n</span><span class="s1"> V(4/3,2) =&#39;</span><span class="p">,</span> <span class="n">V</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">x</span><span class="p">],</span><span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">y</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -811,10 +751,10 @@ V\left(\frac{4}{3},2\right) = \frac{1}{3}\left[24\left(\frac{4}{3}\right)(2) - 6
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Puntos críticos:&#39;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, 0), (0, 6), (4/3, 2), (4, 0)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{x: 0, y: 0}, {x: 0, y: 6}, {x: 4/3, y: 2}, {x: 4, y: 0}]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>V(0,0) = 0 , V(4,0) = 0 , V(0,6) = 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>V(0,0) = -2*x**2*y - 4*x*y**2/3 + 8*x*y , V(4,0) = -2*x**2*y - 4*x*y**2/3 + 8*x*y , V(0,6) = -2*x**2*y - 4*x*y**2/3 + 8*x*y
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Matriz hessiana en (x,y): &#39;

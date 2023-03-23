@@ -79,4 +79,6 @@ chapters:
      title: Límites y continuidad con Python
    - file: capitulos/05/05.Derivacion
      title: Derivadas con Python
+   - file: capitulos/05/06.Extremos
+     title: Extremos (relativos y absolutos) con Python
      

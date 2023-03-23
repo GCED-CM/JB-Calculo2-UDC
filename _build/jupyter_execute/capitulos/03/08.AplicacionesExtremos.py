@@ -4,78 +4,9 @@
 # # Aplicaciones del cálculo de extremos
 # 
 # En esta sección, vamos a practicar un poco estas últimas secciones y, de paso, a ver algunas aplicaciones del cálculo de extremos relativos y absolutos: 
-# 1. En primer lugar, obtendremos los extremos relativos de una función, aplicando el criterio de la matriz hessiana. 
-# 2. Después, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.
-# 3. Y, por último, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto. 
 # 
-# ## Extremos relativos y hessiana 
-# 
-# ````{prf:example} 
-# :label: 3.x._ex
-# :nonumber: 
-# 
-# Encuentra y clasifica los extremos relativos de la función $f$ definida como
-# 
-# $$
-# f(x,y) = -x^3 + 4xy - 2y^2 + 1.
-# $$
-# ````
-# 
-# Comenzamos por buscar los puntos críticos de $f$. Puesto que
-# 
-# \begin{eqnarray*}
-# \dfrac{\partial f}{\partial x}(x,y) &=& -3x^2 + 4y, \\
-# \dfrac{\partial f}{\partial y}(x,y) &=& 4x - 4y,
-# \end{eqnarray*}
-# y estas funciones existen en todo $\mathbb{R}^{2}$, los únicos puntos críticos son aquellos para los que ambas derivadas parciales son $0$. ¡Vamos a localizarlos!
-# 
-# $$
-# \left\{ \begin{array}{rcl}
-# -3x^2 + 4y &=& 0 \\  
-# 4x - 4y &=& 0.
-# \end{array}\right.
-# $$
-# 
-# De la segunda ecuación, se obtiene que $x = y$. Sustituyendo esta igualdad en la primera, 
-# 
-# $$
-# -3x^2+4x = 0 \Rightarrow x(-3x + 4) = 0 \Rightarrow x=0 \text{ o } x = \frac{4}{3}.
-# $$
-# 
-# Por lo tanto, los dos puntos críticos serán $\left(0,0\right)$ y $\left(\frac{4}{3}, \frac{4}{3}\right)$.
-# 
-# Vamos a clasificarlos, utilizando el criterio de la matriz hessiana, teniendo en cuenta que, en este caso,
-# 
-# $$
-# \mathrm{Hess}f(x,y) = \begin{bmatrix}
-# -6x & 4 \\
-# 4 & -4 
-# \end{bmatrix},
-# $$
-# 
-# * Punto $\left(0,0\right)$:
-# 
-#     $$
-#     \det\mathrm{Hess}f(0,0) = \begin{vmatrix}
-#     0 & 4\\
-#     4 & -4
-#     \end{vmatrix}
-#     = 0 - 16 < 0,
-#     $$
-#     por lo que podemos concluir que **$f$ tiene en $(0,0)$ un punto silla**.
-# 
-# * Punto $\left(\frac{4}{3},\frac{4}{3}\right)$. 
-# 
-#     $$
-#     \det\mathrm{Hess}f\left(\frac{4}{3},\frac{4}{3}\right) = \begin{vmatrix}
-#     -8 & 4\\
-#     4 & -4
-#     \end{vmatrix}
-#     = -8(-4) - 16 = 16 > 0.
-#     $$
-# 
-#     Además, $\dfrac{\partial^2 f}{\partial x^2}\left(\frac{4}{3},\frac{4}{3}\right) = -8 < 0$. 
-#     Entonces **$f$ tiene un máximo relativo en $\left(\frac{4}{3},\frac{4}{3}\right)$**.
+# 1. En primer lugar, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.
+# 2. En segundo lugar, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto. 
 
 # ## Método de mínimos cuadrados
 # 
@@ -121,6 +52,11 @@
 # \left\{\begin{array}{rcl}
 # \displaystyle 2\sum_{i = 1}^n x_i (ax_i + b - y_i) &=& 0 \\
 # \displaystyle 2\sum_{i = 1}^n (ax_i + b - y_i) &=& 0
+# \end{array}\right. \Longrightarrow
+# \left\{\begin{array}{ccccccl}
+# \displaystyle a\sum_{i = 1}^n x_i^2 &+& \displaystyle b \sum_{i = 1}^n x_i &-& 
+# \displaystyle\sum_{i = 1}^n x_i y_i &=& 0 \\
+# \displaystyle a\sum_{i = 1}^n x_i &+& b n &-& \displaystyle\sum_{i = 1}^n y_i &=& 0
 # \end{array}\right.
 # $$
 # 
@@ -218,19 +154,23 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # para escribir el volumen de la caja, $V = xyz$, en función de sólo dos variables:
 # 
 # $$
-# V(x,y) = x y \left[\frac{1}{3}(24 - 6x - 4y)\right] = \frac{1}{3}(24xy - 6x^2y - 4xy^2).
+# V(x,y) = x y \left(\frac{1}{3}\left(24 - 6x - 4y\right)\right) = \frac{1}{3}\left( 24xy - 6x^2y - 4xy^2\right).
 # $$
 # 
 # A continuación, calculamos el gradiente de $V$:
 # 
 # $$
-# \mathbf{\nabla} V (x,y) = \left[\frac{1}{3}(24y - 12xy - 4y^2), \frac{1}{3}(24x - 6x^2 - 8xy)\right] = \left[\frac{y}{3}(24 - 12x - 4y), \frac{x}{3}(24 - 6x - 8y)\right].
+# \mathbf{\nabla} V (x,y) = \frac{1}{3} \begin{bmatrix} 24y - 12xy - 4y^2 \\ \\ 24x - 6x^2 - 8xy\end{bmatrix}
+# = \frac{2}{3}\begin{bmatrix} y(12 - 6x - 2y) \\ \\ x(12 - 3x - 4y)\end{bmatrix} .
 # $$
 # 
-# E igualando a $0$:
+# E igualamos a $0$:
 # 
 # $$
-# \frac{y}{3}(24 - 12x - 4y) = 0 \quad \text{ y } \quad \frac{x}{3}(24 - 6x - 8y) = 0, 
+# \left\{\begin{array}{rcl}
+# y \left(12 - 6x - 2y\right) &=& 0 \\ \\ 
+# x \left(12 - 3x - 4y \right) &=& 0, 
+# \end{array}\right.
 # $$
 # 
 # se obtienen los puntos críticos $(0,0), (4,0), (0,6)$ y $\left(\frac{4}{3},2\right)$. 
@@ -271,6 +211,8 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # In[3]:
 
 
+import sympy as sp
+import numpy as np
 x, y = sp.symbols('x y', real=True) # define las variables simbólicas x e y
 V = sp.Lambda((x,y), (24*x*y - 6*x**2*y -4 *x*y**2)/3)
 
@@ -279,7 +221,7 @@ grad_V =  sp.transpose(sp.Matrix([V(x,y)]).jacobian([x,y]))
 display('Gradiente en (x,y): ', grad_V)
 
 # Buscamos los puntos críticos
-sol = sp.solve((sp.Eq(grad_V[0],0),sp.Eq(grad_V[1],0)),(x,y))
+sol = sp.solve((sp.Eq(grad_V[0],0),sp.Eq(grad_V[1],0)),(x,y), dict = True)
 display('Puntos críticos:', sol)
 
 # V en (0,0), (4,0), (0,6) es igual a 0
@@ -290,10 +232,10 @@ H = sp.Lambda((x,y), sp.hessian(V(x,y), (x,y)))
 display('Matriz hessiana en (x,y): ', H(x,y))
 
 # Clasificación del punto crítico (4/3,2)
-H0 = H(*sol[2])
+H0 = H(sol[2][x],sol[2][y])
 display('Hessiana del punto crítico (4/3,2): ', H0)
 print("Determinante: ",sp.det(H0), ". Posición (1,1):", H0[0,0])
 
 # V en (4/3,2) es igual a 64/9
-print('\nEl volumen máximo de la caja es: \n\n V(4/3,2) =', V(*sol[2]))
+print('\nEl volumen máximo de la caja es: \n\n V(4/3,2) =', V(sol[2][x],sol[2][y]))
 
