@@ -208,7 +208,7 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # 
 # Ya por último, vamos a resolver con `Python` el ejercicio propuesto. 
 
-# In[3]:
+# In[5]:
 
 
 import sympy as sp
@@ -225,7 +225,8 @@ sol = sp.solve((sp.Eq(grad_V[0],0),sp.Eq(grad_V[1],0)),(x,y), dict = True)
 display('Puntos críticos:', sol)
 
 # V en (0,0), (4,0), (0,6) es igual a 0
-print('V(0,0) =', V(*sol[0]), ', V(4,0) =', V(*sol[3]), ', V(0,6) =', V(*sol[1]))
+print('V(0,0) =', V(sol[0][x],sol[0][y]), ', V(4,0) =', V(sol[3][x],sol[3][y]), 
+      ', V(0,6) =', V(sol[1][x],sol[1][y]))
 
 # Definimos la hessiana con sp.hessian
 H = sp.Lambda((x,y), sp.hessian(V(x,y), (x,y)))
