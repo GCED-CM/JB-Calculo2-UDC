@@ -494,17 +494,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera">
-   3.7.4. Ejemplo 2. Cálculo de extremos absolutos sobre
-   <span class="math notranslate nohighlight">
-    \(C\)
-   </span>
-   : interior y frontera
+  <a class="reference internal nav-link" href="#ejemplos-2-extremos-absolutos-en-elipse-interior-y-frontera">
+   3.7.4. Ejemplos 2. Extremos absolutos en elipse: interior y frontera
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-3-extremos-absolutos-en-un-dominio-con-frontera-compuesta">
+   3.7.5. Ejemplo 3: extremos absolutos en un dominio con frontera compuesta
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones">
-   3.7.5. Método de los multiplicadores de Lagrange con dos restricciones
+   3.7.6. Método de los multiplicadores de Lagrange con dos restricciones
   </a>
  </li>
 </ul>
@@ -542,17 +543,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera">
-   3.7.4. Ejemplo 2. Cálculo de extremos absolutos sobre
-   <span class="math notranslate nohighlight">
-    \(C\)
-   </span>
-   : interior y frontera
+  <a class="reference internal nav-link" href="#ejemplos-2-extremos-absolutos-en-elipse-interior-y-frontera">
+   3.7.4. Ejemplos 2. Extremos absolutos en elipse: interior y frontera
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-3-extremos-absolutos-en-un-dominio-con-frontera-compuesta">
+   3.7.5. Ejemplo 3: extremos absolutos en un dominio con frontera compuesta
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones">
-   3.7.5. Método de los multiplicadores de Lagrange con dos restricciones
+   3.7.6. Método de los multiplicadores de Lagrange con dos restricciones
   </a>
  </li>
 </ul>
@@ -800,8 +802,8 @@ Punto crítico (x,y,lambda)= {l: 24, x: 3*sqrt(2)/2, y: 2*sqrt(2)} ; f(x,y)= 24.
 </div>
 </div>
 </section>
-<section id="ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera">
-<h2><span class="section-number">3.7.4. </span>Ejemplo 2. Cálculo de extremos absolutos sobre <span class="math notranslate nohighlight">\(C\)</span>: interior y frontera<a class="headerlink" href="#ejemplo-2-calculo-de-extremos-absolutos-sobre-c-interior-y-frontera" title="Permalink to this headline">#</a></h2>
+<section id="ejemplos-2-extremos-absolutos-en-elipse-interior-y-frontera">
+<h2><span class="section-number">3.7.4. </span>Ejemplos 2. Extremos absolutos en elipse: interior y frontera<a class="headerlink" href="#ejemplos-2-extremos-absolutos-en-elipse-interior-y-frontera" title="Permalink to this headline">#</a></h2>
 <p>Vamos a un problema muy similar… pero no exactamente igual. <strong>Ahora se trata de calcular extremos absolutos en la elipse, incluyendo su interior y su frontera.</strong></p>
 <p>Se trata de</p>
 <div class="proof example admonition" id="ex_07_lagrange1">
@@ -880,8 +882,75 @@ Punto crítico (x,y,lambda)= {l: 24, x: 3*sqrt(2)/2, y: 2*sqrt(2)} ; f(x,y)= 24.
 </div>
 </div>
 </section>
+<section id="ejemplo-3-extremos-absolutos-en-un-dominio-con-frontera-compuesta">
+<h2><span class="section-number">3.7.5. </span>Ejemplo 3: extremos absolutos en un dominio con frontera compuesta<a class="headerlink" href="#ejemplo-3-extremos-absolutos-en-un-dominio-con-frontera-compuesta" title="Permalink to this headline">#</a></h2>
+<p>Seguimos con el mismo tipo de problema para nuestro tercer ejemplo, pero ahora consideramos un dominio con dos trozos de frontera diferenciados.</p>
+<p>Se trata de encontrar el máximo y mínimo absoluto de la función</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = x^2 + xy+\frac{y}{2}
+\]</div>
+<p>en</p>
+<div class="math notranslate nohighlight">
+\[
+C = \left\{ (x,y)\in\mathbb{R}^2 : \; y-x^2\geq 0,\text{ e }y\leq 2\right\}. 
+\]</div>
+<p>Mostramos este dominio en la siguiente imagen:</p>
+<a class="reference internal image-reference" href="../../_images/3.7.Ejemplo_dos_restricciones.png"><img alt="../../_images/3.7.Ejemplo_dos_restricciones.png" src="../../_images/3.7.Ejemplo_dos_restricciones.png" style="width: 300px;" /></a>
+<p>En este caso el ejercicio debe hacerse en 4 pasos:</p>
+<ol class="simple">
+<li><p>Cálculo de puntos críticos en el interior de <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p>Multiplicadores de Lagrange en la arista curva (definida por la restricción <span class="math notranslate nohighlight">\(y-x^2=0\)</span>, en verde en la imagen).</p></li>
+<li><p>Multiplicadores de Lagrange en la arista recta (definida por la restricción <span class="math notranslate nohighlight">\(y=2\)</span>, en negro en la imagen).</p></li>
+<li><p>Puntos de intersección entre los dos trozos de la frontera: vértices <span class="math notranslate nohighlight">\((\pm\sqrt{2},2)\)</span>, marcados en azul en la imagen.</p></li>
+</ol>
+<p>Lo resolvemos a continuación con la ayuda de <code class="docutils literal notranslate"><span class="pre">sympy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y l&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas x, y, l</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">+</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># función a optimizar</span>
+<span class="n">g1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># restricción 1</span>
+<span class="n">g2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># restricción 2</span>
+
+<span class="c1"># Primer paso: puntos críticos de f en el interior de la elipse</span>
+<span class="n">grad_f</span> <span class="o">=</span>  <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
+<span class="n">sol1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Segundo paso: posibles extremos en la frontera curva</span>
+<span class="n">grad_g1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">g1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
+<span class="n">sol2</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g1</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g1</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">g1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">0</span><span class="p">)),</span> 
+               <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">l</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Tercer paso: posibles extremos en la frontera recta</span>
+<span class="n">grad_g2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">g2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]))</span>
+<span class="n">sol3</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g2</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g2</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">g2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">2</span><span class="p">)),</span> 
+               <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">l</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Cuarto paso: intersección de las dos fronteras</span>
+<span class="n">sol4</span><span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sol1</span> <span class="o">+</span> <span class="n">sol2</span> <span class="o">+</span> <span class="n">sol3</span> <span class="o">+</span> <span class="n">sol4</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sol</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Punto crítico (x,y,lambda)=&#39;</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;; f(x,y)=&#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">p</span><span class="p">[</span><span class="n">y</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Punto crítico (x,y,lambda)= {x: -1/2, y: 1} ; f(x,y)= 0.250000000000000
+Punto crítico (x,y,lambda)= {l: -1/2, x: -1, y: 1} ; f(x,y)= 0.500000000000000
+Punto crítico (x,y,lambda)= {l: 1/2, x: 0, y: 0} ; f(x,y)= 0
+Punto crítico (x,y,lambda)= {x: -1, y: 2, l: -1/2} ; f(x,y)= 0
+Punto crítico (x,y,lambda)= {x: -sqrt(2), y: 2} ; f(x,y)= 0.171572875253810
+Punto crítico (x,y,lambda)= {x: sqrt(2), y: 2} ; f(x,y)= 5.82842712474619
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones">
-<h2><span class="section-number">3.7.5. </span>Método de los multiplicadores de Lagrange con dos restricciones<a class="headerlink" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.7.6. </span>Método de los multiplicadores de Lagrange con dos restricciones<a class="headerlink" href="#metodo-de-los-multiplicadores-de-lagrange-con-dos-restricciones" title="Permalink to this headline">#</a></h2>
 <p>El método anterior se puede extender para problemas de optimización que impliquen dos restricciones,  con funciones asociadas <span class="math notranslate nohighlight">\(g\)</span> y <span class="math notranslate nohighlight">\(h\)</span>. En este caso, debe incluirse un segundo multiplicador de Lagrange, <span class="math notranslate nohighlight">\(\mu\)</span>, que interviene en la ecuación que hay que añadir a las restricciones, y que es la siguiente</p>
 <div class="math notranslate nohighlight">
 \[

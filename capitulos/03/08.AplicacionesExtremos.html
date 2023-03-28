@@ -488,6 +488,11 @@ title="Print to PDF"
    3.8.2. Extremos absolutos en un dominio compacto
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distancia-de-un-punto-a-una-superficie">
+   3.8.3. Distancia de un punto a una superficie
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -517,6 +522,11 @@ title="Print to PDF"
    3.8.2. Extremos absolutos en un dominio compacto
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distancia-de-un-punto-a-una-superficie">
+   3.8.3. Distancia de un punto a una superficie
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -533,6 +543,7 @@ title="Print to PDF"
 <ol class="simple">
 <li><p>En primer lugar, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.</p></li>
 <li><p>En segundo lugar, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto.</p></li>
+<li><p>Distancia de un punto a una superficie.</p></li>
 </ol>
 <section id="metodo-de-minimos-cuadrados">
 <h2><span class="section-number">3.8.1. </span>Método de mínimos cuadrados<a class="headerlink" href="#metodo-de-minimos-cuadrados" title="Permalink to this headline">#</a></h2>
@@ -647,7 +658,7 @@ f(x) = \frac{8}{13}x + \frac{47}{26}.
 </section>
 <section id="extremos-absolutos-en-un-dominio-compacto">
 <h2><span class="section-number">3.8.2. </span>Extremos absolutos en un dominio compacto<a class="headerlink" href="#extremos-absolutos-en-un-dominio-compacto" title="Permalink to this headline">#</a></h2>
-<div class="proof example admonition" id="3.x._ex">
+<div class="proof example admonition" id="3.x._ex_2">
 <p class="admonition-title"><span>Example </span> (Cálculo de volumen máximo )</p>
 <section class="example-content" id="proof-content">
 <p>Una caja rectangular descansa sobre el plano <span class="math notranslate nohighlight">\(XY\)</span> con un vértice en el origen. El vértice opuesto se encuentra en el plano</p>
@@ -773,6 +784,67 @@ V\left(\frac{4}{3},2\right) = \frac{1}{3}\left[24\left(\frac{4}{3}\right)(2) - 6
 El volumen máximo de la caja es: 
 
  V(4/3,2) = 64/9
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distancia-de-un-punto-a-una-superficie">
+<h2><span class="section-number">3.8.3. </span>Distancia de un punto a una superficie<a class="headerlink" href="#distancia-de-un-punto-a-una-superficie" title="Permalink to this headline">#</a></h2>
+<p>Vamos a calcular la distancia desde un punto <span class="math notranslate nohighlight">\((a,b,c)\)</span> a una superficie definida mediante la ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+g(x,y,z) = 0.
+\]</div>
+<p>La distancia desde un punto fijo, <span class="math notranslate nohighlight">\((a,b,c)\)</span>, a uno genérico <span class="math notranslate nohighlight">\((x,y,z)\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+d((a,b,c),(x,y,z)) = \sqrt{(x-a)^2+(y-b)^2+(z-c)^2}.
+\]</div>
+<p>Ahora bien, a la hora de buscar el mínimo, es más sencillo considerar la función <span class="math notranslate nohighlight">\(d^2\)</span> y así evitaremos la raíz cuadrada… y, sobre todo, sus derivadas que nos traerían una raíz cuadrada en el denominador. Pero, ¿podemos elegir <span class="math notranslate nohighlight">\(d^2\)</span> en vez de <span class="math notranslate nohighlight">\(d\)</span> sin modificar el problema (es decir, el mínimo está en el mismo sitio)?</p>
+<p>La respuesta es sí, porque <em>elevar al cuadrado</em>, dentro de los números positivos, es una función estrictamente creciente y, por lo tanto, no altera el lugar en el que se alcanza el mínimo.</p>
+<p>Por tanto, el problema puede escribirse como:</p>
+<div class="proof example admonition" id="3.x._ex_3">
+<p class="admonition-title"><span>Example </span> (Distancia de un punto a una superficie )</p>
+<section class="example-content" id="proof-content">
+<p>Minimizar la función</p>
+<div class="math notranslate nohighlight">
+\[
+f(x,y,z) = (x-a)^2 + (y-b)^2 + (z-c)^2
+\]</div>
+<p>sujeta a la restricción</p>
+<div class="math notranslate nohighlight">
+\[
+g(x,y,z) = 0.
+\]</div>
+</section>
+</div><p>Veámoslo, con <code class="docutils literal notranslate"><span class="pre">sympy</span></code>, sobre un ejemplo: vamos a calcular la distancia desde el punto <span class="math notranslate nohighlight">\(\left(1,\frac{1}{2},\frac{1}{2}\right)\)</span>
+al cono <span class="math notranslate nohighlight">\(\dfrac{z^2}{5^2}-\dfrac{x^2}{2^2}-\dfrac{y^2}{3^2} = 0\)</span>.</p>
+<a class="reference internal image-reference" href="../../_images/3.8.Distancia.png"><img alt="../../_images/3.8.Distancia.png" src="../../_images/3.8.Distancia.png" style="width: 800px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y z l&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos las variables simbólicas x, y, l</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># función a optimizar</span>
+<span class="n">g_expr</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">5</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),</span> <span class="n">g_expr</span><span class="p">)</span> <span class="c1"># restricción</span>
+
+<span class="c1"># Cálculo de puntos críticos (posibles extremos globales)</span>
+<span class="n">grad_f</span> <span class="o">=</span>  <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]))</span>
+<span class="n">grad_g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)])</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]))</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">grad_f</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">l</span><span class="o">*</span><span class="n">grad_g</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> 
+               <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">),</span><span class="mi">0</span><span class="p">)),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">l</span><span class="p">),</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sol</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Punto crítico (x,y,lambda)=&#39;</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;; distancia=&#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">p</span><span class="p">[</span><span class="n">y</span><span class="p">],</span><span class="n">p</span><span class="p">[</span><span class="n">z</span><span class="p">]))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Punto crítico (x,y,lambda)= {l: 9.84374016275345, x: 0.288939257236422, y: 0.238806094816288, z: 0.824741732738127} ; distancia= 0.824188588240805
 </pre></div>
 </div>
 </div>
