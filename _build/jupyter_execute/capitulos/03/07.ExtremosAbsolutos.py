@@ -261,7 +261,7 @@ for p in sol:
 plt.show()
 
 
-# ## Ejemplo 2. Cálculo de extremos absolutos sobre $C$: interior y frontera
+# ## Ejemplos 2. Extremos absolutos en elipse: interior y frontera
 # 
 # Vamos a un problema muy similar... pero no exactamente igual. **Ahora se trata de calcular extremos absolutos en la elipse, incluyendo su interior y su frontera.**
 # 
@@ -336,6 +336,69 @@ sol2= sp.solve((sp.Eq(grad_f[0],l*grad_g[0]),sp.Eq(grad_f[1],l*grad_g[1]),sp.Eq(
                (x,y,l), dict=True)
 
 sol = sol1 + sol2
+
+for p in sol:
+    print('Punto crítico (x,y,lambda)=',p,'; f(x,y)=', sp.N(f(p[x],p[y])))
+
+
+# ## Ejemplo 3: extremos absolutos en un dominio con frontera compuesta
+# 
+# Seguimos con el mismo tipo de problema para nuestro tercer ejemplo, pero ahora consideramos un dominio con dos trozos de frontera diferenciados. 
+# 
+# Se trata de encontrar el máximo y mínimo absoluto de la función 
+# 
+# $$
+# 
+# f(x,y) = x^2 + xy+\frac{y}{2}
+# $$
+# en
+# 
+# $$
+# C = \left\{ (x,y)\in\mathbb{R}^2 : \; y-x^2\geq 0,\text{ e }y\leq 2\right\}. 
+# $$
+# 
+# Mostramos este dominio en la siguiente imagen:
+# 
+# <img src="../../images/3.7.Ejemplo_dos_restricciones.png" width="300"/>
+# 
+# En este caso el ejercicio debe hacerse en 4 pasos:
+# 
+# 1. Cálculo de puntos críticos en el interior de $C$.
+# 2. Multiplicadores de Lagrange en la arista curva (definida por la restricción $y-x^2=0$, en verde en la imagen).
+# 3. Multiplicadores de Lagrange en la arista recta (definida por la restricción $y=2$, en negro en la imagen).
+# 4. Puntos de intersección entre los dos trozos de la frontera: vértices $(\pm\sqrt{2},2)$, marcados en azul en la imagen.
+# 
+# Lo resolvemos a continuación con la ayuda de `sympy`.
+# 
+
+# In[1]:
+
+
+import sympy as sp
+
+x, y, l = sp.symbols('x y l', real=True) # definimos las variables simbólicas x, y, l
+f = sp.Lambda((x,y), x**2+x*y+y/2) # función a optimizar
+g1 = sp.Lambda((x,y), y - x**2) # restricción 1
+g2 = sp.Lambda((x,y), y) # restricción 2
+
+# Primer paso: puntos críticos de f en el interior de la elipse
+grad_f =  sp.transpose(sp.Matrix([f(x,y)]).jacobian([x,y]))
+sol1 = sp.solve((sp.Eq(grad_f[0],0),sp.Eq(grad_f[1],0)),(x,y), dict=True)
+
+# Segundo paso: posibles extremos en la frontera curva
+grad_g1 = sp.transpose(sp.Matrix([g1(x,y)]).jacobian([x,y]))
+sol2= sp.solve((sp.Eq(grad_f[0],l*grad_g1[0]),sp.Eq(grad_f[1],l*grad_g1[1]),sp.Eq(g1(x,y),0)), 
+               (x,y,l), dict=True)
+
+# Tercer paso: posibles extremos en la frontera recta
+grad_g2 = sp.transpose(sp.Matrix([g2(x,y)]).jacobian([x,y]))
+sol3= sp.solve((sp.Eq(grad_f[0],l*grad_g2[0]),sp.Eq(grad_f[1],l*grad_g2[1]),sp.Eq(g2(x,y),2)), 
+               (x,y,l), dict=True)
+
+# Cuarto paso: intersección de las dos fronteras
+sol4= sp.solve((sp.Eq(y-x**2,0),sp.Eq(y,2)), (x,y), dict=True)
+
+sol = sol1 + sol2 + sol3 + sol4
 
 for p in sol:
     print('Punto crítico (x,y,lambda)=',p,'; f(x,y)=', sp.N(f(p[x],p[y])))

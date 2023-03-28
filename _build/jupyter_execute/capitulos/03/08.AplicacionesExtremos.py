@@ -7,6 +7,7 @@
 # 
 # 1. En primer lugar, trataremos de obtener un modelo lineal que ajuste una colección de datos, mediante el método de mínimos cuadrados.
 # 2. En segundo lugar, resolveremos un problema de optimización, calculando extremos absolutos en un dominio compacto. 
+# 3. Distancia de un punto a una superficie.
 
 # ## Método de mínimos cuadrados
 # 
@@ -130,7 +131,7 @@ print('Recta de regresión: \n\n', y, ' = ', a*x + b)
 # ## Extremos absolutos en un dominio compacto 
 # 
 # ````{prf:example} Cálculo de volumen máximo 
-# :label: 3.x._ex
+# :label: 3.x._ex_2
 # :nonumber: 
 # 
 # Una caja rectangular descansa sobre el plano $XY$ con un vértice en el origen. El vértice opuesto se encuentra en el plano
@@ -239,4 +240,67 @@ print("Determinante: ",sp.det(H0), ". Posición (1,1):", H0[0,0])
 
 # V en (4/3,2) es igual a 64/9
 print('\nEl volumen máximo de la caja es: \n\n V(4/3,2) =', V(sol[2][x],sol[2][y]))
+
+
+# ## Distancia de un punto a una superficie
+# 
+# Vamos a calcular la distancia desde un punto $(a,b,c)$ a una superficie definida mediante la ecuación 
+# 
+# $$
+# g(x,y,z) = 0.
+# $$
+# 
+# La distancia desde un punto fijo, $(a,b,c)$, a uno genérico $(x,y,z)$ es
+# 
+# $$
+# d((a,b,c),(x,y,z)) = \sqrt{(x-a)^2+(y-b)^2+(z-c)^2}.
+# $$
+# Ahora bien, a la hora de buscar el mínimo, es más sencillo considerar la función $d^2$ y así evitaremos la raíz cuadrada... y, sobre todo, sus derivadas que nos traerían una raíz cuadrada en el denominador. Pero, ¿podemos elegir $d^2$ en vez de $d$ sin modificar el problema (es decir, el mínimo está en el mismo sitio)?
+# 
+# La respuesta es sí, porque *elevar al cuadrado*, dentro de los números positivos, es una función estrictamente creciente y, por lo tanto, no altera el lugar en el que se alcanza el mínimo. 
+# 
+# Por tanto, el problema puede escribirse como:
+# 
+# ````{prf:example} Distancia de un punto a una superficie 
+# :label: 3.x._ex_3
+# :nonumber: 
+# 
+# Minimizar la función 
+# 
+# $$
+# f(x,y,z) = (x-a)^2 + (y-b)^2 + (z-c)^2
+# $$
+# sujeta a la restricción 
+# 
+# $$
+# g(x,y,z) = 0.
+# $$
+# ````
+# 
+# Veámoslo, con `sympy`, sobre un ejemplo: vamos a calcular la distancia desde el punto $\left(1,\frac{1}{2},\frac{1}{2}\right)$ 
+# al cono $\dfrac{z^2}{5^2}-\dfrac{x^2}{2^2}-\dfrac{y^2}{3^2} = 0$.
+# 
+# <img src="../../images/3.8.Distancia.png" width="800"/>
+# 
+
+# In[13]:
+
+
+import sympy as sp
+
+x, y, z, l = sp.symbols('x y z l', real=True) # definimos las variables simbólicas x, y, l
+
+a = 1; b = 0.5; c = 0.5
+f = sp.Lambda((x,y,z), (x-a)**2+(y-b)**2+(z-c)**2) # función a optimizar
+g_expr = z**2/5**2-x**2/2**2 - y**2/3**2
+g = sp.Lambda((x,y,z), g_expr) # restricción
+
+# Cálculo de puntos críticos (posibles extremos globales)
+grad_f =  sp.transpose(sp.Matrix([f(x,y,z)]).jacobian([x,y,z]))
+grad_g = sp.transpose(sp.Matrix([g(x,y,z)]).jacobian([x,y,z]))
+sol = sp.solve((sp.Eq(grad_f[0],l*grad_g[0]),sp.Eq(grad_f[1],l*grad_g[1]),sp.Eq(grad_f[2],l*grad_g[2]), 
+               sp.Eq(g(x,y,z),0)),(x,y,z,l), dict=True)
+
+for p in sol:
+    print('Punto crítico (x,y,lambda)=',p,'; distancia=', sp.N(sp.sqrt(f(p[x],p[y],p[z]))))
 
