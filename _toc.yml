@@ -82,3 +82,8 @@ chapters:
    - file: capitulos/05/06.Extremos
      title: Extremos (relativos y absolutos) con Python
      
+- file: capitulos/06/README
+  title: Exámenes
+  sections:
+    - file: capitulos/06/marzo_23
+      title: Examen tipo, 3 primeros temas
