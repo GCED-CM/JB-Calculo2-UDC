@@ -65,6 +65,19 @@ chapters:
       
 - file: capitulos/04/README
   title: Integración
+  sections:
+    - file: capitulos/04/01.Revision
+      title: Revisión una variable
+    - file: capitulos/04/02.Integracion2D
+      title: Integración 2D
+    - file: capitulos/04/03.IntegralesDobles
+      title: Integrales dobles
+    - file: capitulos/04/04.CambioVariable
+      title: Cambio de variable
+    - file: capitulos/04/05.IntegralesTriples
+      title: Integrales triples
+    - file: capitulos/04/06.Boletin
+      title: Boletín de ejercicios del cuarto capítulo
   
 - file: capitulos/05/README
   title: Pyhton para cálculo de varias variables
