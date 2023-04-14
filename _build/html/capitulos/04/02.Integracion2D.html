@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4.3. Integrales dobles" href="03.IntegralesDobles.html" />
@@ -508,12 +510,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integrales-iteradas">
+   4.2.1. Integrales iteradas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aplicacion-calculo-del-area-de-una-region-del-plano">
+   4.2.2. Aplicación: cálculo del área de una región del plano
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-calculo-de-integrales-iteradas">
+   4.2.3. Python. Cálculo de integrales iteradas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#para-seguir-practicando">
+   4.2.4. Para seguir practicando
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -525,6 +566,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integrales-iteradas">
+   4.2.1. Integrales iteradas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aplicacion-calculo-del-area-de-una-region-del-plano">
+   4.2.2. Aplicación: cálculo del área de una región del plano
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-calculo-de-integrales-iteradas">
+   4.2.3. Python. Cálculo de integrales iteradas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#para-seguir-practicando">
+   4.2.4. Para seguir practicando
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -534,6 +603,147 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="integracion-2d">
 <h1><span class="section-number">4.2. </span>Integración 2D<a class="headerlink" href="#integracion-2d" title="Permalink to this headline">#</a></h1>
+<p>Para comenzar este tema, recomendamos encarecidamente la lectura de:</p>
+<ul class="simple">
+<li><p>En este mismo Jupyter Book, la sección anterior, Sección <a class="reference internal" href="01.Revision.html#sec-4-1-revision"><span class="std std-ref">Revisión una variable: cálculo de primitivas</span></a>.</p></li>
+<li><p>En el Jupyter Book de Cálculo en una variable, la <a class="reference external" href="https://luishervella.github.io/JB_Calculo1_UDC/capitulos/04/01.IntegracionIndefinida.html">sección de cálculo de primitivas</a>.</p></li>
+</ul>
+<section id="integrales-iteradas">
+<h2><span class="section-number">4.2.1. </span>Integrales iteradas<a class="headerlink" href="#integrales-iteradas" title="Permalink to this headline">#</a></h2>
+<p>Consideramos una función <span class="math notranslate nohighlight">\(f:D\subset\mathbb{R}^2 \to \mathbb{R}\)</span>. Supongamos que conocemos</p>
+<ul class="simple">
+<li><p>una primitiva de esta función respecto a <span class="math notranslate nohighlight">\(x\)</span> (es decir, considerando <span class="math notranslate nohighlight">\(y\)</span> como una constante), que denotamos <span class="math notranslate nohighlight">\(F_{x}(x,y)\)</span>,</p></li>
+<li><p>y/o una primitiva respecto a <span class="math notranslate nohighlight">\(y\)</span>, que denotaremos por <span class="math notranslate nohighlight">\(F_{y}(x,y)\)</span>.</p></li>
+</ul>
+<p>Si ahora queremos realizar una integral en una región que sólo dependa de <span class="math notranslate nohighlight">\(x\)</span> o de <span class="math notranslate nohighlight">\(y\)</span> tendremos:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+    \int_{h_{1}(y)}^{h_{2}(y)} f(x,y)dx &amp;=&amp; F_{x}(x,y)\Big]_{x=h_{1}(y)}^{x=h_{2}(y)} = 
+        F_{x}\left(h_{2}(y),y\right)- F_{x}\left(h_{1}(y),y\right), \\
+    \int_{g_{1}(x)}^{g_{2}(x)} f(x,y)dx &amp;=&amp; F_{y}(x,y)\Big]_{y=g_{1}(x)}^{y=g_{2}(x)} = 
+        F_{y}\left(x,g_{2}(x)\right)- F_{y}\left(x,g_{1}(x)\right). 
+\end{eqnarray*}\]</div>
+<div class="proof example admonition" id="ej_4.2_Ejemplo1">
+<p class="admonition-title"><span>Example </span> (Ejemplo 1 )</p>
+<section class="example-content" id="proof-content">
+<p>Evaluar <span class="math notranslate nohighlight">\(\displaystyle \int_{1}^{x}\left(2xy + 3y^2\right) dy\)</span>.</p>
+<p><strong>SOLUCIÓN:</strong></p>
+<p>En este caso, considerando <span class="math notranslate nohighlight">\(x\)</span> constante e integrando con respecto a <span class="math notranslate nohighlight">\(y\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \int_{1}^{x}\left(2xy + 3y^2\right) dy = \Big[ xy^2 + y^3 \Big]_{y=1}^{y=x}
+    = (2x^3) - (x+1) = 2x^3 - x - 1.
+\]</div>
+</section>
+</div><div class="proof example admonition" id="ej_4.2_Ejemplo2">
+<p class="admonition-title"><span>Example </span> (Ejemplo 2 )</p>
+<section class="example-content" id="proof-content">
+<p>Evaluar <span class="math notranslate nohighlight">\(\displaystyle \int_{1}^{2}\left[\int_{1}^{x} (2xy + 3y^2)dy \right] dx\)</span>.</p>
+<p><strong>SOLUCIÓN:</strong></p>
+<p>Ahora, usando lo que acabamos de hacer en el ejemplo anterior,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+   \int_{1}^{2}\left[\int_{1}^{x} (2xy + 3y^2)dy \right] dx &amp;=&amp; \int_{1}^{2} \left(2x^3-x-1\right) dx \\
+   &amp;=&amp; \Big[ \frac{x^4}{2}-\frac{x^2}{2}-x\Big]_{x=1}^{x=2} = 4 - (-1) = 5.
+\end{eqnarray*}\]</div>
+</section>
+</div><p>Este último ejemplo corresponde a una <strong>integral iterada</strong>.</p>
+<p>Normalmente, los corchetes que utilizamos en él no se escriben explícitamente y aparecen directamente expresiones como</p>
+<div class="math notranslate nohighlight">
+\[
+  \int_{a}^{b}\int_{g_{1}(x)}^{g_{2}(x)} f(x,y) \, dy \, dx \quad\text{o}\quad 
+  \int_{c}^{d}\int_{h_{1}(y)}^{h_{2}(y)} f(x,y) \, dx \, dy. 
+\]</div>
+<p>Los límites interiores de integración pueden ser variables con respecto a la variable externa de integración. Sin embargo, los límites exteriores de integración deben ser constantes con respecto a ambas variables de integración. Es importante tener esto en cuenta a la hora de definir el dominio sobre el que integraremos.</p>
+<p>Después de realizar la integración interna se obtiene una integral <em>estándar</em> definida. La segunda integración produce un número real.</p>
+<p>Pensemos un momento el dominio sobre el que estamos realizando la integración en este segundo ejemnplo:</p>
+<ol class="simple">
+<li><p>En el eje vertical, <span class="math notranslate nohighlight">\(y\)</span> varía desde la recta horizontal <span class="math notranslate nohighlight">\(y=1\)</span> hasta la recta bisectriz del primer cuadrante, <span class="math notranslate nohighlight">\(y=x\)</span>. ¿Dónde pasa esto? Pues…</p></li>
+<li><p>Cuando <span class="math notranslate nohighlight">\(x\)</span> varía entre <span class="math notranslate nohighlight">\(1\)</span> y <span class="math notranslate nohighlight">\(2\)</span>.</p></li>
+</ol>
+<p>Es decir, estamos integrando en el dominio que mostramos, sombreado, en la siguiente figura:</p>
+<a class="reference internal image-reference" href="../../_images/4.2.Ejemplo2.png"><img alt="../../_images/4.2.Ejemplo2.png" src="../../_images/4.2.Ejemplo2.png" style="width: 400px;" /></a>
+</section>
+<section id="aplicacion-calculo-del-area-de-una-region-del-plano">
+<h2><span class="section-number">4.2.2. </span>Aplicación: cálculo del área de una región del plano<a class="headerlink" href="#aplicacion-calculo-del-area-de-una-region-del-plano" title="Permalink to this headline">#</a></h2>
+<p>Vamos a ver una primera aplicación de las integrales iteradas.</p>
+<p>En cursos pasados aprendiste (o eso esperamos…) a calcular áreas debajo de una curva o entre dos curvas con integrales de una variable. Vamos a hacer algo muy parecido con integración doble. Adelanto (o, con esa horrible palabra, <em>spoiler</em>): basta definir correctamente el dominio e integrar en él la función unidad (<span class="math notranslate nohighlight">\(f(x,y) = 1\)</span>).</p>
+<div class="proof definition admonition" id="def_4.2_Area">
+<p class="admonition-title"><span>Definition </span> (Área de una región del plano )</p>
+<section class="definition-content" id="proof-content">
+<ol>
+<li><p>Si <span class="math notranslate nohighlight">\(R\)</span> está definida por <span class="math notranslate nohighlight">\(a\leq x \leq b\)</span> y <span class="math notranslate nohighlight">\(g_{1}(x)\leq y \leq g_{2}(x)\)</span>, donde <span class="math notranslate nohighlight">\(g_{1}\)</span> y <span class="math notranslate nohighlight">\(g_{2}\)</span> son funciones continuas en <span class="math notranslate nohighlight">\([a,b]\)</span>, el áre de <span class="math notranslate nohighlight">\(R\)</span> será</p>
+<div class="math notranslate nohighlight">
+\[
+      A = \int_{a}^{b}\int_{g_{1}(x)}^{g_{2}(x)} dy \, dx. 
+    \]</div>
+<a class="reference internal image-reference" href="../../_images/4.2.Region1.png"><img alt="../../_images/4.2.Region1.png" src="../../_images/4.2.Region1.png" style="width: 400px;" /></a>
+</li>
+<li><p>Si <span class="math notranslate nohighlight">\(R\)</span> está definida por <span class="math notranslate nohighlight">\(c\leq y \leq d\)</span> y <span class="math notranslate nohighlight">\(h_{1}(y)\leq x \leq h_{2}(y)\)</span>, donde <span class="math notranslate nohighlight">\(h_{1}\)</span> y <span class="math notranslate nohighlight">\(h_{2}\)</span> son funciones continuas en <span class="math notranslate nohighlight">\([a,b]\)</span>, el áre de <span class="math notranslate nohighlight">\(R\)</span> será</p>
+<div class="math notranslate nohighlight">
+\[
+      A = \int_{c}^{d}\int_{h_{1}(y)}^{h_{2}(y)} dx \, dy.
+    \]</div>
+<a class="reference internal image-reference" href="../../_images/4.2.Region2.png"><img alt="../../_images/4.2.Region2.png" src="../../_images/4.2.Region2.png" style="width: 400px;" /></a>
+</li>
+</ol>
+</section>
+</div><p>Te dejamos como ejercicio que calcules (a mano) el área de las dos regiones que se muestran en las figuras de la anterior definición. ¡Ánimo! Con lo que aparece en la próxima subsección podrás comprobar con Python si tus cálculos han sido correctos.</p>
+</section>
+<section id="python-calculo-de-integrales-iteradas">
+<h2><span class="section-number">4.2.3. </span>Python. Cálculo de integrales iteradas<a class="headerlink" href="#python-calculo-de-integrales-iteradas" title="Permalink to this headline">#</a></h2>
+<p>Con la ayuda de <code class="docutils literal notranslate"><span class="pre">Sympy</span></code> es muy sencillo calcular una integral iterada.
+La orden fundamental es <code class="docutils literal notranslate"><span class="pre">sp.integrate</span></code>, que actúa sobre una expresión o una función Lambda (en el siguiente ejemplo mostramos ambos casos para que puedas ver que el resultado es idéntico). Hay que indicar la variable respecto a la que queremos integrar, el límite inferior y el superior.
+Eso sí, en cada paso sólo es capaz de integrar respecto a una variable, por lo que el proceso en el ordenador es prácticamente igual al que hacemos a mano: primero calculamos la integral interior y a su valor le calculamos la integral exterior. <strong>El orden, en este caso, es esencial</strong>.</p>
+<p>Veámoslo sobre el ejemplo 2, que resolvimos manualmente hace un rato:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define as variables simbólicas x, y</span>
+
+<span class="n">f_expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">f_expr</span><span class="p">)</span>
+
+<span class="n">res1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">f_expr</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">res1</span><span class="p">)</span>
+<span class="n">res2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 5\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 5\]</div>
+</div>
+</div>
+<p>Podemos emplear este comando para calcular el área de una región, como hacemos a continuación con el área de la primera región en la última definición:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define as variables simbólicas x, y</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle - \sin{\left(2 \right)} - \cos{\left(2 \right)} + \cos{\left(1 \right)} + \sin{\left(1 \right)}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 0.888622700397497\]</div>
+</div>
+</div>
+</section>
+<section id="para-seguir-practicando">
+<h2><span class="section-number">4.2.4. </span>Para seguir practicando<a class="headerlink" href="#para-seguir-practicando" title="Permalink to this headline">#</a></h2>
+<p>En la <a class="reference external" href="http://www.unsj.edu.ar/unsjVirtual/calculo2analisis2/wp-content/uploads/2020/04/Ejercicios_Resueltos_ID.pdf">página que vas a encontrar si pulsas este enlace</a>, de la Universidad Nacional de San Juan, en Argentina, vas a encontrar algunos ejercicios resueltos y otros propuestos para practicar el cálculo de área de regiones mediante integración iterada. Eso sí: refrena tu ímpetu de momento y deja para más tarde las integrales que impliquen cambio de variable, que aún no lo hemos explicado.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
