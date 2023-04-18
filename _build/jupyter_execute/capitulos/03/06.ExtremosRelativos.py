@@ -19,13 +19,13 @@
 # 1. Diremos que $f$ tiene un **máximo relativo** en $(x_{0},y_{0})$ si
 #     
 #     $$
-#     \exists\delta>0\text{ tal que } f(x_{0},y_{0})\leq f(x,y),\qquad \forall(x,y)\in D_\delta(x_0,y_0).
+#     \exists\delta>0\text{ tal que } f(x_{0},y_{0})\geq f(x,y),\qquad \forall(x,y)\in D_\delta(x_0,y_0).
 #     $$
 # 
 # 2. Diremos que $f$ tiene un **mínimo relativo** en $(x_{0},y_{0})$ si
 #     
 #     $$
-#     \exists\delta>0\text{ tal que } f(x_{0},y_{0})\geq f(x,y),\qquad \forall(x,y)\in D_\delta(x_0,y_0).
+#     \exists\delta>0\text{ tal que } f(x_{0},y_{0})\leq f(x,y),\qquad \forall(x,y)\in D_\delta(x_0,y_0).
 #     $$
 # 
 # 
