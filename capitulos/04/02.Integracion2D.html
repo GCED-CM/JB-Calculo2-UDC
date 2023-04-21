@@ -620,7 +620,7 @@ title="Print to PDF"
 \[\begin{eqnarray*}
     \int_{h_{1}(y)}^{h_{2}(y)} f(x,y)dx &amp;=&amp; F_{x}(x,y)\Big]_{x=h_{1}(y)}^{x=h_{2}(y)} = 
         F_{x}\left(h_{2}(y),y\right)- F_{x}\left(h_{1}(y),y\right), \\
-    \int_{g_{1}(x)}^{g_{2}(x)} f(x,y)dx &amp;=&amp; F_{y}(x,y)\Big]_{y=g_{1}(x)}^{y=g_{2}(x)} = 
+    \int_{g_{1}(x)}^{g_{2}(x)} f(x,y)dy &amp;=&amp; F_{y}(x,y)\Big]_{y=g_{1}(x)}^{y=g_{2}(x)} = 
         F_{y}\left(x,g_{2}(x)\right)- F_{y}\left(x,g_{1}(x)\right). 
 \end{eqnarray*}\]</div>
 <div class="proof example admonition" id="ej_4.2_Ejemplo1">
@@ -667,7 +667,7 @@ title="Print to PDF"
 <section id="aplicacion-calculo-del-area-de-una-region-del-plano">
 <h2><span class="section-number">4.2.2. </span>Aplicación: cálculo del área de una región del plano<a class="headerlink" href="#aplicacion-calculo-del-area-de-una-region-del-plano" title="Permalink to this headline">#</a></h2>
 <p>Vamos a ver una primera aplicación de las integrales iteradas.</p>
-<p>En cursos pasados aprendiste (o eso esperamos…) a calcular áreas debajo de una curva o entre dos curvas con integrales de una variable. Vamos a hacer algo muy parecido con integración doble. Adelanto (o, con esa horrible palabra, <em>spoiler</em>): basta definir correctamente el dominio e integrar en él la función unidad (<span class="math notranslate nohighlight">\(f(x,y) = 1\)</span>).</p>
+<p>En cursos pasados aprendisteis (o eso esperamos…) a calcular áreas debajo de una curva o entre dos curvas con integrales de una variable. Vamos a hacer algo muy parecido con integración doble. Adelanto (o, con esa horrible palabra, <em>spoiler</em>): basta definir correctamente el dominio e integrar en él la función unidad (<span class="math notranslate nohighlight">\(f(x,y) = 1\)</span>).</p>
 <div class="proof definition admonition" id="def_4.2_Area">
 <p class="admonition-title"><span>Definition </span> (Área de una región del plano )</p>
 <section class="definition-content" id="proof-content">
@@ -726,7 +726,8 @@ Eso sí, en cada paso sólo es capaz de integrar respecto a una variable, por lo
 
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># define as variables simbólicas x, y</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="c1"># res = sp.integrate(1, (y, sp.cos(x), sp.sin(x)), (x, 1, 2))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">display</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
 </pre></div>
