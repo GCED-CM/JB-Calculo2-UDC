@@ -22,7 +22,7 @@
 # \begin{eqnarray*}
 #     \int_{h_{1}(y)}^{h_{2}(y)} f(x,y)dx &=& F_{x}(x,y)\Big]_{x=h_{1}(y)}^{x=h_{2}(y)} = 
 #         F_{x}\left(h_{2}(y),y\right)- F_{x}\left(h_{1}(y),y\right), \\
-#     \int_{g_{1}(x)}^{g_{2}(x)} f(x,y)dx &=& F_{y}(x,y)\Big]_{y=g_{1}(x)}^{y=g_{2}(x)} = 
+#     \int_{g_{1}(x)}^{g_{2}(x)} f(x,y)dy &=& F_{y}(x,y)\Big]_{y=g_{1}(x)}^{y=g_{2}(x)} = 
 #         F_{y}\left(x,g_{2}(x)\right)- F_{y}\left(x,g_{1}(x)\right). 
 # \end{eqnarray*}
 # 
@@ -85,7 +85,7 @@
 # 
 # Vamos a ver una primera aplicación de las integrales iteradas.
 # 
-# En cursos pasados aprendiste (o eso esperamos...) a calcular áreas debajo de una curva o entre dos curvas con integrales de una variable. Vamos a hacer algo muy parecido con integración doble. Adelanto (o, con esa horrible palabra, *spoiler*): basta definir correctamente el dominio e integrar en él la función unidad ($f(x,y) = 1$).
+# En cursos pasados aprendisteis (o eso esperamos...) a calcular áreas debajo de una curva o entre dos curvas con integrales de una variable. Vamos a hacer algo muy parecido con integración doble. Adelanto (o, con esa horrible palabra, *spoiler*): basta definir correctamente el dominio e integrar en él la función unidad ($f(x,y) = 1$).
 # 
 # ````{prf:definition} Área de una región del plano 
 # :label: def_4.2_Area
@@ -144,7 +144,8 @@ import sympy as sp
 
 x, y = sp.symbols('x y', real=True) # define as variables simbólicas x, y
 
-res = sp.integrate(1, (y, sp.cos(x), sp.sin(x)), (x, 1, 2))
+# res = sp.integrate(1, (y, sp.cos(x), sp.sin(x)), (x, 1, 2))
+res = sp.integrate(1, (y, 0, sp.sin(x)), (x, 1, 2))
 display(res)
 display(sp.N(res))
 
