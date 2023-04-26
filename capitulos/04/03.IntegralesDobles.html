@@ -352,6 +352,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.6. Extremos (relativos y absolutos) con Python
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/07.Integracion.html">
+     5.7. Integracion con Python
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -705,10 +710,14 @@ y aditividad respecto al intervalo de integración. En concreto,</p>
 <span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">2</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
 <span class="n">volumen</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">display</span><span class="p">(</span><span class="n">volumen</span><span class="p">)</span>
+<span class="n">volumen2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">volumen2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{2}{3}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\displaystyle \frac{2}{3}\]</div>
 </div>
@@ -764,7 +773,7 @@ y aditividad respecto al intervalo de integración. En concreto,</p>
 <p class="admonition-title"><span>Example </span></p>
 <section class="example-content" id="proof-content">
 <p>Calculamos a continuación el valor medio de <span class="math notranslate nohighlight">\(f(x,y)=\dfrac{1}{2}xy\)</span> sobre la región del plano <span class="math notranslate nohighlight">\(R\)</span> dada por un rectángulo con vértices <span class="math notranslate nohighlight">\((0,0)\)</span>, <span class="math notranslate nohighlight">\((4,0)\)</span>, <span class="math notranslate nohighlight">\((4,3)\)</span> y <span class="math notranslate nohighlight">\((0,3)\)</span>. Para ello, observamos que el área de la región rectangular <span class="math notranslate nohighlight">\(R\)</span> es <span class="math notranslate nohighlight">\(4\times 3=12\)</span>, y que los límites para <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> son <span class="math notranslate nohighlight">\(0\leq x\leq 4\)</span> e <span class="math notranslate nohighlight">\(0\leq y\leq 3\)</span>, como se muestra en la figura</p>
-<a class="reference internal image-reference" href="../../_images/05_valor_medio.png"><img alt="../../_images/05_valor_medio.png" src="../../_images/05_valor_medio.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../../_images/05_valor_medio.png"><img alt="../../_images/05_valor_medio.png" src="../../_images/05_valor_medio.png" style="width: 350px;" /></a>
 <p>Por tanto, el valor medio es</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
