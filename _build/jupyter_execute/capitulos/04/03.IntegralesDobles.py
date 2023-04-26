@@ -150,7 +150,7 @@
 # A continuación, vamos a calcular esta integral pero con la ayuda de la librería `Sympy`.
 # ````
 
-# In[2]:
+# In[6]:
 
 
 import sympy as sp
@@ -158,6 +158,8 @@ x, y = sp.symbols('x y', real=True)
 f = sp.Lambda((x,y),2-x-2*y)
 volumen = sp.integrate(f(x,y), (y, 0, (2-x)/2), (x, 0, 2))
 display(volumen)
+volumen2 = sp.integrate(f(x,y), (x, 0, 2-2*y), (y, 0, 1))
+display(volumen2)
 
 
 # ````{prf:example}
@@ -179,7 +181,7 @@ display(volumen)
 # A continuación, calculamos esta integral pero con la ayuda de la librería `Sympy`.
 # ````
 
-# In[6]:
+# In[7]:
 
 
 import sympy as sp
@@ -216,7 +218,7 @@ display(res)
 #         
 # Calculamos a continuación el valor medio de $f(x,y)=\dfrac{1}{2}xy$ sobre la región del plano $R$ dada por un rectángulo con vértices $(0,0)$, $(4,0)$, $(4,3)$ y $(0,3)$. Para ello, observamos que el área de la región rectangular $R$ es $4\times 3=12$, y que los límites para $x$ e $y$ son $0\leq x\leq 4$ e $0\leq y\leq 3$, como se muestra en la figura 
 # 
-# <img src="../../images/05_valor_medio.png" width="250"/>
+# <img src="../../images/05_valor_medio.png" width="350"/>
 # 
 # Por tanto, el valor medio es
 # 

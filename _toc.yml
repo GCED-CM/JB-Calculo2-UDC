@@ -94,6 +94,8 @@ chapters:
      title: Derivadas con Python
    - file: capitulos/05/06.Extremos
      title: Extremos (relativos y absolutos) con Python
+   - file: capitulos/05/07.Integracion
+     title: Integracion con Python
      
 - file: capitulos/06/README
   title: Exámenes
