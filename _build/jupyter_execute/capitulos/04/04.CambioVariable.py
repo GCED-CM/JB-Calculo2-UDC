@@ -75,7 +75,7 @@
 # 
 # \begin{equation*}
 # \begin{split}
-# \displaystyle \int_{R} \int 9xy \, dA & = \int_{S} \int 9 \left[\frac{1}{3}(2u + v)\frac{1}{3}(u - v)\right] \left|-\frac{4}{9}\right| \, dv \, du \\
+# \displaystyle \int_{R} \int 9xy \, dA & = \int_{S} \int 9 \left[\frac{1}{3}(2u + v)\frac{1}{3}(u - v)\right] \left|-\frac{1}{3}\right| \, dv \, du \\
 #  & = \int_1^4 \int_{-4}^0 \frac{1}{3} (2u^2 - uv - v^2) \, dv \, du \\
 #  & = \frac{1}{3} \int_1^4 \left[2u^2v - \frac{uv^2}{2} - \frac{v^3}{3}\right]_{-4}^0 \, du \\
 #  & = \frac{1}{3} \int_1^4 \left(8u^2 + 8u - \frac{64}{3}\right) \, du \\
@@ -125,6 +125,19 @@ display(sp.simplify(res[0]))
 # &=& \int_{\alpha}^{\beta} \int_{g_1(\theta)}^{g_2(\theta)} G(r\cos(\theta),r\sin(\theta)) r \, dr \, d\theta.
 # \end{eqnarray*}
 # ````
+# 
+# Fíjate que, en este caso, como la aplicación $F$ es $\mathbf{F}(r,\theta) = (r\cos(\theta),r\sin(\theta)) \subset R$,
+# su matriz jacobiana será
+# 
+# $$
+# F(r,\theta) = \begin{bmatrix} \cos\theta & -r\sin\theta \\ \sin\theta & r\cos\theta\end{bmatrix}
+# $$
+# y, por tanto, el valor absoluto del determinante de esta matriz será
+# 
+# $$
+# \left| \det\mathrm{J}\mathbf{F}(r,\theta) \right| = \left| r\cos^2\theta + r\sin^2\theta \right| = \left| r\right | = r.
+# $$
+# 
 # 
 # ````{prf:example} 
 # :label: 4.x._ex
