@@ -673,6 +673,7 @@ v &amp;=&amp; x - 2y
 
 <span class="c1"># Calculamos el determinante de la matriz jacobiana asociada a F</span>
 <span class="n">det_jac_F</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">det</span><span class="p">(</span> <span class="n">F</span><span class="o">.</span><span class="n">jacobian</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">])</span> <span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">det_jac_F</span><span class="p">)</span>
 
 <span class="c1"># Calculamos la integral sobre la nueva región de integración</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">GoF_expr</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">det_jac_F</span><span class="p">),</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -682,6 +683,8 @@ v &amp;=&amp; x - 2y
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle -0.333333333333333\]</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Valor de la integral: &#39;
 </pre></div>
 </div>
@@ -703,8 +706,7 @@ v &amp;=&amp; x - 2y
 &amp;=&amp; \int_{\alpha}^{\beta} \int_{g_1(\theta)}^{g_2(\theta)} G(r\cos(\theta),r\sin(\theta)) r \, dr \, d\theta.
 \end{eqnarray*}\]</div>
 </section>
-</div><p>Fíjate que, en este caso, como la aplicación <span class="math notranslate nohighlight">\(F\)</span> es <span class="math notranslate nohighlight">\(\mathbf{F}(r,\theta) = (r\cos(\theta),r\sin(\theta)) \subset R\)</span>,
-su matriz jacobiana será</p>
+</div><p>Fíjate que, en este caso, como la aplicación que define el cambio de variable es <span class="math notranslate nohighlight">\(\mathbf{F}(r,\theta) = (r\cos(\theta),r\sin(\theta)) \subset R\)</span>, su matriz jacobiana será</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 F(r,\theta) = \begin{bmatrix} \cos\theta &amp; -r\sin\theta \\ \sin\theta &amp; r\cos\theta\end{bmatrix}
