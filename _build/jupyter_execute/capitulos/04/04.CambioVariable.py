@@ -87,7 +87,7 @@
 # 
 # Podemos usar `Sympy` para que nos confirme lo bien que trabajamos:
 
-# In[13]:
+# In[1]:
 
 
 import sympy as sp
@@ -103,6 +103,7 @@ GoF_expr = G.subs(x,1/3*(2*u+v)).subs(y,1/3*(u-v))
 
 # Calculamos el determinante de la matriz jacobiana asociada a F
 det_jac_F = sp.det( F.jacobian([u,v]) )
+display(det_jac_F)
 
 # Calculamos la integral sobre la nueva región de integración
 res = sp.integrate(GoF_expr*abs(det_jac_F), (v, -4, 0), (u, 1, 4))
@@ -126,8 +127,7 @@ display(sp.simplify(res[0]))
 # \end{eqnarray*}
 # ````
 # 
-# Fíjate que, en este caso, como la aplicación $F$ es $\mathbf{F}(r,\theta) = (r\cos(\theta),r\sin(\theta)) \subset R$,
-# su matriz jacobiana será
+# Fíjate que, en este caso, como la aplicación que define el cambio de variable es $\mathbf{F}(r,\theta) = (r\cos(\theta),r\sin(\theta)) \subset R$, su matriz jacobiana será
 # 
 # $$
 # F(r,\theta) = \begin{bmatrix} \cos\theta & -r\sin\theta \\ \sin\theta & r\cos\theta\end{bmatrix}

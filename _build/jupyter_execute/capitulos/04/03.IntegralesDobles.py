@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# (sec:4.3.IntegralesDobles)=
 # # Integrales dobles
 # 
 # Empezaremos esta sección introduciendo el concepto de **integral doble** de una función de dos variables sobre una región plana. Para ello, se muestra su relación con el **volumen** de una región sólida utilizando un proceso de paso al límite. Tras esta definición formal de integral doble, nos centraremos en su cálculo práctico mediante las **integrales iteradas**, para lo que se enuncia el teorema de Fubini. Por último, se muestra la aplicación de la integral doble para el cálculo del valor medio de una función de dos variables sobre una región plana.   
