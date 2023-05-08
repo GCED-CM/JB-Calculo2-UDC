@@ -191,7 +191,7 @@ display(sp.simplify(res[0]))
 # 
 # Vamos a hacer que trabaje un poco nuestro oráculo de confianza. Con la ayuda de `Sympy`, vamos a comprobar que los cálculos realizados en el ejemplo anterior son correctos:
 
-# In[2]:
+# In[5]:
 
 
 import sympy as sp
@@ -210,6 +210,8 @@ det_jac_F = sp.det( F.jacobian([r,th]) )
 
 # Calculamos la integral sobre la nueva región de integración
 res = sp.integrate(GoF_expr*abs(det_jac_F), (r, 1, sp.sqrt(5)), (th, 0, 2*sp.pi))
+# res = sp.integrate(GoF_expr[0]*abs(det_jac_F), (r, 1, sp.sqrt(5)), (th, 0, 2*sp.pi))
 display('Valor de la integral: ')
 display(sp.simplify(res[0]))
+# display(sp.simplify(res))
 
