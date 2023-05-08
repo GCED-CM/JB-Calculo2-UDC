@@ -374,6 +374,11 @@ const thebe_selector_output = ".output, .cell_output"
      6.1. Examen tipo, 3 primeros temas
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/mayo_23.html">
+     6.2. Examen tipo, cuarto tema
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -777,8 +782,10 @@ x^2 + y^2 &amp;=&amp; 5.
 
 <span class="c1"># Calculamos la integral sobre la nueva región de integración</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">GoF_expr</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">det_jac_F</span><span class="p">),</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span> <span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+<span class="c1"># res = sp.integrate(GoF_expr[0]*abs(det_jac_F), (r, 1, sp.sqrt(5)), (th, 0, 2*sp.pi))</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Valor de la integral: &#39;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="c1"># display(sp.simplify(res))</span>
 </pre></div>
 </div>
 </div>
