@@ -1,7 +1,7 @@
 #######################################################################################
 # Book settings
 title: Calculo en varias variables
-author: M. Benítez, L. Hervella, A. Prieto and J. Ráfales  
+author: L. Hervella*, M. Benítez, A. Prieto and J. Ráfales  
 email: ''
 logo                        : "udc_logo.png"  # A path to the book logo
 exclude_patterns            : ["README.md"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
