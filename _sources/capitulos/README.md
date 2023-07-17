@@ -7,10 +7,13 @@
 
 Este material ha sido creado por (en orden alfabético):
 
+- Luis Hervella Nieto*,
 - Marta Benítez García, 
 - Luis Hervella Nieto, 
 - Andrés Prieto Aneiros y 
 - Jonatan Ráfales Pérez.
+
+**NOTA:** Luis Hervella Nieto es el coordinador del presente Jupyter Book.
 
 Esta obra está bajo una
 [Licencia Creative Commons Atribución 4.0 Internacional][cc-by].
