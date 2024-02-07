@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.9. Boletín de ejercicios del primer capítulo &#8212; Calculo en varias variables</title>
+    <title>1.9. Boletín 1: Vectores y geometría del espacio &#8212; Calculo en varias variables</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. Límites y continuidad" href="../02/README.html" />
@@ -440,6 +442,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/LuisHervella/JB_Calculo2_UDC/main?urlpath=lab/tree/capitulos/01/09.Boletin.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -462,7 +493,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/capitulos/01/09.Boletin.md"
+        <a href="../../_sources/capitulos/01/09.Boletin.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -473,7 +504,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -511,7 +542,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Boletín de ejercicios del primer capítulo</h1>
+                <h1>Boletín 1: Vectores y geometría del espacio</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -523,10 +554,56 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="boletin-de-ejercicios-del-primer-capitulo">
-<h1><span class="section-number">1.9. </span>Boletín de ejercicios del primer capítulo<a class="headerlink" href="#boletin-de-ejercicios-del-primer-capitulo" title="Permalink to this headline">#</a></h1>
-<a class="reference internal image-reference" href="../../_images/1.9.Boletin_1.png"><img alt="../../_images/1.9.Boletin_1.png" src="../../_images/1.9.Boletin_1.png" style="width: 900px;" /></a>
-<a class="reference internal image-reference" href="../../_images/1.9.Boletin_2.png"><img alt="../../_images/1.9.Boletin_2.png" src="../../_images/1.9.Boletin_2.png" style="width: 900px;" /></a>
+  <section class="tex2jax_ignore mathjax_ignore" id="boletin-1-vectores-y-geometria-del-espacio">
+<h1><span class="section-number">1.9. </span>Boletín 1: Vectores y geometría del espacio<a class="headerlink" href="#boletin-1-vectores-y-geometria-del-espacio" title="Permalink to this headline">#</a></h1>
+<p>Este boletín contiene una selección modificada de los problemas que aparecen en el capítulo 11 (pág. 829-830) del libro de R. Larson y B.H. Edwards, <em>Cálculo de 2 variables</em>, 10a, McGraw-Hill, 2016.</p>
+<p><strong><FONT SIZE=4>[1]</font></strong> Determina si <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> son ortogonales, paralelos o ninguna de las dos cosas en los siguientes casos:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (7,-2, 3)^{t}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}=(-1,4,5)^{t}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (-4,3, -6)^{t}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}=(16,-12,24)^{t}\)</span>.</p></li>
+</ol>
+<p><strong><FONT SIZE=4>[2]</font></strong> Sean <span class="math notranslate nohighlight">\(\mathbf{u} = (-3,2,0)\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v} = (2,1,0)\)</span>. Comprueba, utilizando <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, si te hace falta, que la suma de los cuadrados de las longitudes de las diagonales del paralelogramo determinado por los vectores <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> es igual a la suma de los cuadrados de las longitudes de los cuatro lados. Demuestra que esta propiedad es cierta en general (para cualquier par de vectores <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>).</p>
+<p><strong><FONT SIZE=4>[3]</font></strong> Sean <span class="math notranslate nohighlight">\(\mathbf{u} = \vec{PQ}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v} = \vec{PR}\)</span>. Calcula las componentes de <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}\cdot\mathbf{v}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}\cdot\mathbf{v}\)</span>, el ángulo que forman <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> y <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, los vectores unitarios en estas direcciones, un vector unitario ortogonal a esos dos vectores y las proyecciones de <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> sobre <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> y de <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> sobre <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> en los siguientes casos:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(P=(5,0,0)\)</span>, <span class="math notranslate nohighlight">\(Q=(4,4,0)\)</span>, <span class="math notranslate nohighlight">\(R=(2,0,6)\)</span> (coordenadas cartesianas).</p></li>
+<li><p><span class="math notranslate nohighlight">\(P=(2,-1,3)\)</span>, <span class="math notranslate nohighlight">\(Q=(0,5,1)\)</span>, <span class="math notranslate nohighlight">\(R=(5,5,0)\)</span> (coordenadas cartesianas).</p></li>
+</ol>
+<p><strong><FONT SIZE=4>[4]</font></strong> Calcula el volumen del paralelepípedo que tiene por vértices los puntos <span class="math notranslate nohighlight">\(P=(2,0,3)\)</span>, <span class="math notranslate nohighlight">\(Q=(4,1,3)\)</span>, <span class="math notranslate nohighlight">\(R=(4,0,4)\)</span> y <span class="math notranslate nohighlight">\(S=(2,-1,5)\)</span>, en coordenadas cartesianas, siendo <span class="math notranslate nohighlight">\(\vec{PQ}\)</span>, <span class="math notranslate nohighlight">\(\vec{PR}\)</span> y <span class="math notranslate nohighlight">\(\vec{PS}\)</span> tres de sus aristas.</p>
+<p>Construye una <em>function</em> en <code class="docutils literal notranslate"><span class="pre">numpy</span></code> que reciba cuatro puntos en coordenadas cartesianas arbitrarias, <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(R\)</span> y <span class="math notranslate nohighlight">\(S\)</span>, y calcule el volumen de tal paralelepípedo. Pruébala con el ejemplo anterior.</p>
+<p><strong><FONT SIZE=4>[5]</font></strong> Convierte los siguientes puntos y expresiones al sistema de coordenadas que se indique:</p>
+<ol class="simple">
+<li><p>El punto de coordenadas cartesianas <span class="math notranslate nohighlight">\((-2\sqrt{2}, 2\sqrt{2}, 2)\)</span> en coordenadas cilíndricas y esféricas.</p></li>
+<li><p>El punto de coordenadas cilíndricas <span class="math notranslate nohighlight">\((100, -\pi/6, 50)\)</span> en coordenadas esféricas y cartesianas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(x^2 - y^2 = 2z\)</span> en coordenadas cilíndricas y esféricas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(x^2 + y^2 + z^2 = 16\)</span> en coordenadas cilíndricas y esféricas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(x^2 -x + y^2 - y = 0\)</span> en coordenadas cilíndricas y esféricas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(r = 5\cos\theta\)</span> en coordenadas cartesianas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(\theta = \pi/4\)</span> en coordenadas cartesianas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(\rho = 3\cos\phi\)</span> en coordenadas cartesianas.</p></li>
+<li><p>La expresión <span class="math notranslate nohighlight">\(r = \frac{2}{1-\cos\theta}\)</span> en coordenadas cartesianas.</p></li>
+</ol>
+<p><strong><FONT SIZE=4>[6]</font></strong> Calcula la ecuación cartesiana de las siguientes esferas. Pasa estas ecuaciones a coordenadas esféricas, ayudándote de <code class="docutils literal notranslate"><span class="pre">sympy</span></code>.</p>
+<ol class="simple">
+<li><p>Centro <span class="math notranslate nohighlight">\((3,-2,6)\)</span> y diámetro <span class="math notranslate nohighlight">\(15\)</span>.</p></li>
+<li><p>La esfera que incluye un diámetro con extremos en <span class="math notranslate nohighlight">\((0,0,4)\)</span> y <span class="math notranslate nohighlight">\((4,6,0)\)</span>.</p></li>
+</ol>
+<p><strong><FONT SIZE=4>[7]</font></strong> Pasa las siguientes ecuaciones de esferas a su forma estándar (completando el cuadrado) para obtener su radio y su centro:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(x^2 + y^2 + z^2 - 4x - 6y + 4 = 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 + y^2 + z^2 - 10x + 6y - 4z + 34 = 0\)</span>.</p></li>
+</ol>
+<p><strong><FONT SIZE=4>[8]</font></strong> Encuentra dos curvas generadoras diferentes de las siguientes superficies de revolución:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(y^2 + z^2 - 4x = 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 + 2y^2 + z^2 = 3y\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 + y^2 = 4z^2\)</span>.</p></li>
+</ol>
+<p><strong><FONT SIZE=4>[9]</font></strong> Determina la ecuación de la superficie de revolución generada al rotar</p>
+<ol class="simple">
+<li><p>La curva <span class="math notranslate nohighlight">\(z^2 = 2y\)</span> en el plano <span class="math notranslate nohighlight">\(YZ\)</span> alrededor del eje <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>La curva <span class="math notranslate nohighlight">\(2x + 3z = 1\)</span> en el plano <span class="math notranslate nohighlight">\(XZ\)</span> alrededor del eje <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>La curva <span class="math notranslate nohighlight">\(y^2 + (z-1)^2 = 1\)</span> en el plano <span class="math notranslate nohighlight">\(YZ\)</span> alrededor del eje <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
