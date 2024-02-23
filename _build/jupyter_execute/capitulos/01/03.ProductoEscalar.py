@@ -188,7 +188,7 @@ display('Ángulo entre u y v: ', theta1)
 # * $\beta$, el ángulo que forma $\mathbf{v}$ con el vector canónico $\mathbf{j}$.
 # * $\gamma$, el ángulo que forma $\mathbf{v}$ con el vector canónico $\mathbf{k}$.
 # 
-# Los vectores de estos ángulos se llaman **cosenos directores**. 
+# Los cosenos de estos ángulos se llaman **cosenos directores**. 
 # ````
 # 
 # Podemos calcular los cosenos directores con la última propiedad enunciada:
