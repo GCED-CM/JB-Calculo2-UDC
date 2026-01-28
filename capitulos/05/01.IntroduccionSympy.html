@@ -471,10 +471,10 @@
 <li><p>Utilizar <a class="reference external" href="https://jupyter.org/try-jupyter/lab/">JupyterLite, la versión on-line libre de Jupyter</a>.
 Ahí podemos almacenar nuestros Notebooks y ejecutarlos sobre cualquier navegador sin instalar nada.<br />
 Es muy cómodo… pero algo lento (aún así, para lo que necesitamos en Cálculo, es más que suficiente).</p></li>
-<li><p>Instalar directamente la última versión de Python (<a class="reference external" href="https://www.python.org/downloads/">puedes hacerlo en este link</a>). Una vez hecho esto, debes instalar <em>Jupyter Notebook</em>, tecleando, en la ventana de comandos de tu sistema operativo,</p>
-<p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter</span></code></p>
+<li><p>Instalar directamente la última versión de Python (<a class="reference external" href="https://www.python.org/downloads/">puedes hacerlo en este link</a>). Una vez hecho esto, debes instalar <em>Jupyter Lab</em>, tecleando, en la ventana de comandos de tu sistema operativo,</p>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span></code></p>
 <p>Finalmente, para abrir la aplicación, debes ejecutar, desde la ventana de comandos de tu sistema operativo,</p>
-<p><code class="docutils literal notranslate"><span class="pre">&gt;jupyter</span> <span class="pre">notebook</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;jupyterlab</span></code></p>
 </li>
 <li><p><a class="reference external" href="https://code.visualstudio.com/download">Instalar Visual Studio</a>, y, desde esta aplicación, instalar las extensiones para Python y para Jupyter.</p></li>
 </ol>
@@ -513,18 +513,18 @@ Para poder hacer estas operaciones, habituales y necesarias en un curso de Cálc
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="c1"># define la variable simbólica x</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="c1"># define la variable simbólica y</span>
-<span class="n">f_exp</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="c1"># ahora tenemos definida la expresion simbólica f_exp</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f_exp</span><span class="p">)</span>
+<span class="n">expr_f</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="c1"># ahora tenemos definida la expresion simbólica f_exp</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expr_f: &#39;</span><span class="p">,</span> <span class="n">expr_f</span><span class="p">)</span>
 
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a:c&#39;</span><span class="p">)</span> <span class="c1"># define como simbólicas las variables a, b, c</span>
 <span class="n">expresion</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">expresion</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expresion: &#39;</span><span class="p">,</span> <span class="n">expresion</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3*x + 5*y
-a**3 + b**2 + c
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>expr_f:  3*x + 5*y
+expresion:  a**3 + b**2 + c
 </pre></div>
 </div>
 </div>
@@ -533,13 +533,13 @@ a**3 + b**2 + c
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:  x
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;x&#39;
@@ -555,26 +555,26 @@ a**3 + b**2 + c
 <span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">sp</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d: &#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de a: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de b: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de c: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de d: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/3
-1/3
-0.3333333333333333
-0.3333333333333333
-&lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
-&lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
-&lt;class &#39;float&#39;&gt;
-&lt;class &#39;float&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:  1/3
+b:  1/3
+c:  0.3333333333333333
+d:  0.3333333333333333
+type de a:  &lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
+type de b:  &lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
+type de c:  &lt;class &#39;float&#39;&gt;
+type de d:  &lt;class &#39;float&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -587,26 +587,26 @@ a**3 + b**2 + c
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="n">e</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.15f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de a: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de b: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de c: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de d: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type de e: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c: &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d: &#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;e, especificando su formato de salida: &#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{0:.15f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sympy.core.numbers.Integer&#39;&gt;
-&lt;class &#39;sympy.core.numbers.Integer&#39;&gt;
-&lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
-&lt;class &#39;sympy.core.numbers.Float&#39;&gt;
-&lt;class &#39;float&#39;&gt;
-1/3
-0.333333333333333
-0.333333333333333
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type de a:  &lt;class &#39;sympy.core.numbers.Integer&#39;&gt;
+type de b:  &lt;class &#39;sympy.core.numbers.Integer&#39;&gt;
+type de c:  &lt;class &#39;sympy.core.numbers.Rational&#39;&gt;
+type de d:  &lt;class &#39;sympy.core.numbers.Float&#39;&gt;
+type de e:  &lt;class &#39;float&#39;&gt;
+c:  1/3
+d:  0.333333333333333
+e, especificando su formato de salida:  0.333333333333333
 </pre></div>
 </div>
 </div>
@@ -615,16 +615,16 @@ a**3 + b**2 + c
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># definición de la constante pi</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coseno de pi: &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 
 <span class="n">e</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">E</span> <span class="c1"># definición del número e</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Logaritmo NEPERIANO de e, sp.log(e): &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1
-1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coseno de pi:  -1
+Logaritmo NEPERIANO de e, sp.log(e):  1
 </pre></div>
 </div>
 </div>
@@ -637,27 +637,27 @@ a**3 + b**2 + c
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">nonnegative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># La raíz cuadrada de un número no negativo es real</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y es real: &#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># La potencia de un número entero es entera</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">is_integer</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y es entero: &#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">is_integer</span><span class="p">)</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b es real: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">is_real</span><span class="p">)</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="n">sp</span><span class="o">.</span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">is_integer</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b es entero: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">is_integer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-True
-None
-None
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y es real:  True
+y es entero:  True
+b es real:  None
+b es entero:  None
 </pre></div>
 </div>
 </div>
@@ -670,14 +670,14 @@ None
 <span class="n">q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span> <span class="c1"># El valor absoluto</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">q</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y es mayor que 0: &#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;z es mayor que 0: &#39;</span><span class="p">,</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-q + Abs(x) &gt; 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y es mayor que 0:  True
+z es mayor que 0:  q + Abs(x) &gt; 0
 </pre></div>
 </div>
 </div>
@@ -692,29 +692,29 @@ q + Abs(x) &gt; 0
 <span class="n">expr</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">expr_long</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="c1"># Expandir expresión</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">expr_long</span><span class="p">)</span> <span class="c1"># Imprimir de forma estándar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expr_long: &#39;</span><span class="p">,</span> <span class="n">expr_long</span><span class="p">)</span> <span class="c1"># Imprimir de forma estándar</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr_long</span><span class="p">)</span> <span class="c1"># Imprimir de forma semejante a con lápiz y papel</span>
 
 <span class="n">expr_short</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">expr_short</span><span class="p">)</span> <span class="c1"># Factorizar expresión</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expr factorizado: &#39;</span><span class="p">,</span> <span class="n">expr_short</span><span class="p">)</span> <span class="c1"># Factorizar expresión</span>
 
 <span class="n">expr</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">9</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">expr_simple</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="c1"># Simplificar expresión</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">expr_simple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expr simplifiacado: &#39;</span><span class="p">,</span> <span class="n">expr_simple</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x**3*y - 2*x**3 - 9*x**2*y + 18*x**2 + 27*x*y - 54*x - 27*y + 54
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>expr_long:  x**3*y - 2*x**3 - 9*x**2*y + 18*x**2 + 27*x*y - 54*x - 27*y + 54
  3        3      2         2                            
 x ⋅y - 2⋅x  - 9⋅x ⋅y + 18⋅x  + 27⋅x⋅y - 54⋅x - 27⋅y + 54
-(x - 3)**3*(y - 2)
+expr factorizado:  (x - 3)**3*(y - 2)
       2          
      x  - 6⋅x + 9
 -3 + ────────────
         x - 3    
-x - 6
+expr simplifiacado:  x - 6
 </pre></div>
 </div>
 </div>
@@ -725,19 +725,19 @@ x - 6
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x,y&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">expr</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span> <span class="c1"># Sustitutición de las variables simbólicas por constantes</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;res: &#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
 
 <span class="n">expr_sub</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">})</span> <span class="c1"># Sustitución de la variable simbólica por una expresión</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr_sub</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr_sub</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expr_sub simplificado: &#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">expr_sub</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>res:  9
  2                        2
 y  + 2⋅y⋅(1 - y) + (1 - y) 
-1
+expr_sub simplificado:  1
 </pre></div>
 </div>
 </div>
@@ -751,12 +751,12 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">expr</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="c1"># Resolución de la ecuación respecto a x</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sol: &#39;</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sol:  [-1, 1]
 </pre></div>
 </div>
 </div>
@@ -766,8 +766,8 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x:z&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">expr</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">z</span>
-<span class="n">f_exp</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">f_exp</span><span class="p">)</span>
+<span class="n">expr_f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">expr_f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -783,7 +783,7 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 </section>
 <section id="ejercicio">
 <h3><span class="section-number">5.1.4.5. </span><strong>Ejercicio</strong><a class="headerlink" href="#ejercicio" title="Link to this heading">#</a></h3>
-<p>Convierte en coordenadas cilíndricas y esféricas las siguientes ecuaciones:</p>
+<p>Convierte en coordenadas cilíndricas y esféricas (puedes mirar las fórmulas en la Sección 1.8 de este <em>Jupyter Book</em>) las siguientes ecuaciones:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x^2 + y^2 + z^2 = 4\)</span> (esfera).</p></li>
 <li><p><span class="math notranslate nohighlight">\(y^2 + z^2 = 4x\)</span> (superficie de revolución).</p></li>
@@ -854,20 +854,33 @@ y  + 2⋅y⋅(1 - y) + (1 - y)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x:y&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">f_exp</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">f_exp</span><span class="p">)</span> <span class="c1"># Creamos la función </span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f(2,0) =&#39;</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># Evaluamos la función en el punto (2,0)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="n">f_exp</span><span class="p">)</span>
+<span class="n">expr_f</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">expr_f</span> <span class="p">)</span> <span class="c1"># Creamos la función </span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;f(2,0) =&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># Evaluamos la función en el punto (2,0)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;¿f(x,y) = expr_f? &#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="n">expr_f</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(2,0) = 4
-True
+¿f(x,y) = expr_f?  True
 </pre></div>
 </div>
 </div>
 </div>
+<p>¡Cuidado! Es <strong>muy</strong> importante no confundir una <strong>expresión</strong> con una <strong>función</strong>. Las funciones se definen a partir de expresiones. Es decir, el valor de una función, <span class="math notranslate nohighlight">\(f\)</span>, en un punto <span class="math notranslate nohighlight">\((x,y)\)</span> es una expresión. Por ejemplo:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x,y)=x^2+xy.
+\]</div>
+<p>Pero una función es algo más amplio: la aplicación de un dominio en una imagen. Pensemos en</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{array}{rccc}
+    \displaystyle f: &amp;\mathbb{R}^2 &amp; \rightarrow &amp; \mathbb{R} \\
+    \displaystyle &amp; (x,y) &amp; \to &amp; f(x,y) = x^2 + xy.
+    \end{array}
+\end{split}\]</div>
 <section id="funciones-definidas-a-trozos">
 <h3><span class="section-number">5.1.6.1. </span>Funciones definidas a trozos<a class="headerlink" href="#funciones-definidas-a-trozos" title="Link to this heading">#</a></h3>
 <p>Las funciones también pueden venir definidas a partir de expresiones <strong>a trozos</strong>. Para definir estas expresiones, condicionadas por el valor que toman las variables, utilizaremos la orden <code class="docutils literal notranslate"><span class="pre">sp.Piecewise</span></code>. Por ejemplo, veamos como definir la siguiente función:</p>
@@ -882,8 +895,8 @@ g(x,y)=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x:y&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">g_exp</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">g_exp</span><span class="p">)</span> <span class="c1"># Creamos la función</span>
+<span class="n">expr_g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Piecewise</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">expr_g</span> <span class="p">)</span> <span class="c1"># Creamos la función</span>
 <span class="n">display</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(2,2) =&#39;</span><span class="p">,</span><span class="n">g</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Evaluamos la función en el punto (2,2)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(-2,2) =&#39;</span><span class="p">,</span><span class="n">g</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Evaluamos la función en el punto (-2,2)</span>

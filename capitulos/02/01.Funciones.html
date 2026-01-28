@@ -472,9 +472,9 @@ de la siguiente aplicación de Allan Avendaño en Geogebra: <a class="reference 
 <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="n">f_exp</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">9</span> <span class="p">)</span><span class="o">/</span><span class="n">x</span>
+<span class="n">expr_f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">9</span> <span class="p">)</span><span class="o">/</span><span class="n">x</span>
 
-<span class="n">f</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">f_exp</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">expr_f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Singularidades respecto x: &quot;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">calculus</span><span class="o">.</span><span class="n">singularities</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Singularidades respecto y: &quot;</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">calculus</span><span class="o">.</span><span class="n">singularities</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">y</span><span class="p">))</span>
 
@@ -578,12 +578,12 @@ En general, se mostrarán distintas curvas, <span class="math notranslate nohigh
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
 
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">f_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">expr_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="c1"># Va a dar un warning porque hay puntos en la malla (por ej., el (-2,4)) </span>
 <span class="c1"># que ocasionan un negativo en la raíz</span>
 
 <span class="c1"># Curvas de nivel</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">f_exp</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">expr_f</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># Añade el valor numérico de cada curva de nivel</span>
 <span class="c1"># Etiquetas de los ejes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -594,7 +594,7 @@ En general, se mostrarán distintas curvas, <span class="math notranslate nohigh
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Colores sobre el dominio</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">f_exp</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">expr_f</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>  <span class="c1"># Añade la barra de colores con los valores asociados</span>
 <span class="c1"># Etiquetas de los ejes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -607,12 +607,12 @@ En general, se mostrarán distintas curvas, <span class="math notranslate nohigh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Luis Hervella\AppData\Local\Temp\ipykernel_31716\2573029777.py:10: RuntimeWarning: invalid value encountered in sqrt
-  f_exp = np.sqrt(16 - 4*X**2 - Y**2)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\LuisHervella\AppData\Local\Temp\ipykernel_18940\1826874332.py:10: RuntimeWarning: invalid value encountered in sqrt
+  expr_f = np.sqrt(16 - 4*X**2 - Y**2)
 </pre></div>
 </div>
-<img alt="../../_images/f75560619a1e06493222297db08fb9c7a61e9d3413206107756449dc5d0b4ecf.png" src="../../_images/f75560619a1e06493222297db08fb9c7a61e9d3413206107756449dc5d0b4ecf.png" />
-<img alt="../../_images/7bf94436e186cca08e047b214d2505fbaa207661a4deeaed47b776578779b0a6.png" src="../../_images/7bf94436e186cca08e047b214d2505fbaa207661a4deeaed47b776578779b0a6.png" />
+<img alt="../../_images/70146163f43e42de5e44efeed44c653596495511faecc363e1fe0791c9feebc9.png" src="../../_images/70146163f43e42de5e44efeed44c653596495511faecc363e1fe0791c9feebc9.png" />
+<img alt="../../_images/fc6f17f9073fdd015e7a4c7ff8aeb2793290ef4861789f5dc6070b3c1e048e6e.png" src="../../_images/fc6f17f9073fdd015e7a4c7ff8aeb2793290ef4861789f5dc6070b3c1e048e6e.png" />
 </div>
 </div>
 <p>Os dejamos propuesto un ejercicio, para el que podéis utilizar <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>

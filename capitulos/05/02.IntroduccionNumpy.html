@@ -498,14 +498,14 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">6.4</span><span class="p">;</span> <span class="n">b</span><span class="o">=</span><span class="mf">5.3</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="fm">__gt__</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;¿a es mayor que b? &#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="fm">__gt__</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;¿a es mayor que b? &#39;</span><span class="p">,</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>¿a es mayor que b?  True
+¿a es mayor que b?  True
 </pre></div>
 </div>
 </div>
@@ -514,21 +514,16 @@ True
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mf">3.4</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">is_integer</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="fm">__int__</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;¿a es entero? &#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">is_integer</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Parte entera de a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="fm">__int__</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Parte entera de a: &#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-3
-3
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-81-9c54d346766f&gt;:4: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
-Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-  print(np.int(a))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>¿a es entero?  False
+Parte entera de a:  3
+Parte entera de a:  3
 </pre></div>
 </div>
 </div>
@@ -549,18 +544,18 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#creamos un vector Numpy de longitud 10 de ceros</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#creamos un vector Numpy de longitud 5 de unos</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1">#creamos un vector Numpy de longitud 6 con valores aleatorios</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">),</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u: &#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;v: &#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;r: &#39;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tipos de u, v y r, resp.: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">),</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-[1. 1. 1. 1. 1.]
-[0.2504582  0.65345129 0.05754834 0.43993261 0.53599724 0.43962971]
-&lt;class &#39;numpy.ndarray&#39;&gt; &lt;class &#39;numpy.ndarray&#39;&gt; &lt;class &#39;numpy.ndarray&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u:  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+v:  [1. 1. 1. 1. 1.]
+r:  [0.25132336 0.93794359 0.84993809 0.43969617 0.70333942 0.35982056]
+Tipos de u, v y r, resp.:  &lt;class &#39;numpy.ndarray&#39;&gt; &lt;class &#39;numpy.ndarray&#39;&gt; &lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -568,35 +563,30 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <p>El tipo por defecto de los números que contienen los vectores en <strong>Numpy</strong> es <code class="docutils literal notranslate"><span class="pre">float64</span></code> (que es el tipo guardado en <code class="docutils literal notranslate"><span class="pre">np.float</span></code>). Si queremos usar otros tipos, tendríamos que utilizar el argumento opcional <code class="docutils literal notranslate"><span class="pre">dtype</span></code>. Se puede comprobar el tipo de los números de un vector accediendo al atributo <code class="docutils literal notranslate"><span class="pre">dtype</span></code> de los vectores <strong>Numpy</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">r</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> <span class="c1"># Implícitamente se hace una conversión de tipo de int64 a float64 </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># ERROR: Los vectores non tienen el mismo tamaño!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dtype de u, v y r, resp: &#39;</span><span class="p">,</span><span class="n">u</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="n">r</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;w: &#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tipo de w: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dtype de w: &#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u + w: &#39;</span><span class="p">,</span> <span class="n">u</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> <span class="c1"># Implícitamente se hace una conversión de tipo de int64 a float64 </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u + v: &#39;</span><span class="p">,</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># ERROR: Los vectores non tienen el mismo tamaño!</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float64 float64 float64
-[0 0 0 0 0 0 0 0 0 0]
-&lt;class &#39;numpy.ndarray&#39;&gt;
-int32
-[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-83-9289ed7b784d&gt;:2: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
-Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-  w = np.zeros(10, dtype=np.int)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype de u, v y r, resp:  float64 float64 float64
+w:  [0 0 0 0 0 0 0 0 0 0]
+Tipo de w:  &lt;class &#39;numpy.ndarray&#39;&gt;
+dtype de w:  int64
+u + w:  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">83</span><span class="o">-</span><span class="mi">9289</span><span class="n">ed7b784d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> <span class="c1"># Implícitamente se hace una conversión de tipo de int64 a float64</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># ERROR: Los vectores non tienen el mismo tamaño!</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dtype de w: &#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u + w: &#39;</span><span class="p">,</span> <span class="n">u</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> <span class="c1"># Implícitamente se hace una conversión de tipo de int64 a float64 </span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u + v: &#39;</span><span class="p">,</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span> <span class="c1"># ERROR: Los vectores non tienen el mismo tamaño!</span>
 
 <span class="ne">ValueError</span>: operands could not be broadcast together with shapes (10,) (5,) 
 </pre></div>
@@ -606,39 +596,37 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <p>Podemos cambiar los coeficientes de un vector utilizando la indexación,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u: &#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
 <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span>
 <span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.3</span>
 <span class="n">u</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u modificado: &#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-[10.   0.   0.  -4.3  0.   0.   0.   0.   0.   1. ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u:  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+u modificado:  [10.   0.   0.  -4.3  0.   0.   0.   0.   0.   1. ]
 </pre></div>
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>**NOTA IMPORTANTE **: Hai que recordar que en Python los valores de los índices empiezan en cero!</p>
-</div></blockquote>
+<p><strong>NOTA IMPORTANTE</strong>: ¡Hay que recordar que en Python los valores de los índices empiezan en cero!</p>
 <p>Evidentemente, existen otras maneras de crear vectores de números de tipo <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>, como, por ejemplo, aplicando la función <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> a una lista Python de números:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">11.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">]</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;v: &#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tipo de u: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tipo de v: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 4.  8.  9. 11. -2.]
-&lt;class &#39;list&#39;&gt;
-&lt;class &#39;numpy.ndarray&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v:  [ 4.  8.  9. 11. -2.]
+Tipo de u:  &lt;class &#39;list&#39;&gt;
+Tipo de v:  &lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -652,16 +640,16 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u: &#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tipo de u: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dtype de u: &#39;</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2 3 4 5]
-&lt;class &#39;numpy.ndarray&#39;&gt;
-int32
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u:  [0 1 2 3 4 5]
+Tipo de u:  &lt;class &#39;numpy.ndarray&#39;&gt;
+dtype de u:  int64
 </pre></div>
 </div>
 </div>
@@ -670,12 +658,12 @@ int32
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u recortada: &#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 3 4 5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u recortada:  [2 3 4 5]
 </pre></div>
 </div>
 </div>
@@ -684,14 +672,14 @@ int32
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;w: &#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dtype de w: &#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0.  20.  40.  60.  80. 100.]
-float64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w:  [  0.  20.  40.  60.  80. 100.]
+dtype de w:  float64
 </pre></div>
 </div>
 </div>
@@ -699,14 +687,14 @@ float64
 <p>Para comprobar el tamaño de un vector, se puede usar la función <code class="docutils literal notranslate"><span class="pre">len</span></code>, aunque una forma más general de comprobar la dimensión del vector w es usar <code class="docutils literal notranslate"><span class="pre">w.shape</span></code>, que nos devuelve una tupla con las dimensiones del vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tamaño de w: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape de w: &#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
-(6,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tamaño de w:  6
+shape de w:  (6,)
 </pre></div>
 </div>
 </div>
@@ -714,21 +702,16 @@ float64
 <p><code class="docutils literal notranslate"><span class="pre">shape</span></code> nos informa sobre el tamaño del vector en <em>cada</em> dirección. En el caso de los vectores, hay una única dirección, mientras que en conjuntos de datos con múltiples índices (matrices, o tensores <span class="math notranslate nohighlight">\(n\)</span>-dimensionales) <code class="docutils literal notranslate"><span class="pre">shape</span></code> nos informaría del tamaño de estas estructuras de datos en cada dirección. Por ejemplo, creamos a continuación una matriz de ceros de tipo entero de tamaño <span class="math notranslate nohighlight">\(2\times 3\)</span> y comprobamos su tamaño:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Matriz A: &#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tamaño de A: &#39;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 0]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz A:  [[0 0 0]
  [0 0 0]]
-(2, 3)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-88-755cab7bd294&gt;:1: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
-Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-  A =  np.zeros((2,3), dtype=np.int)
+Tamaño de A:  (2, 3)
 </pre></div>
 </div>
 </div>
@@ -770,20 +753,18 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.40824542 0.56540931 0.86805103 0.02612602 0.21546124]
-Troceado usando &#39;[:]&#39; [0.40824542 0.56540931 0.86805103 0.02612602 0.21546124]
-Troceado usando &#39;[1:3]&#39;: [0.56540931 0.86805103]
-Troceado usando &#39;[2:-1]&#39;: [0.86805103 0.02612602]
-Troceado usando &#39;[2:-2]&#39;: [0.86805103]
-Troceado usando &#39;[:3]&#39;: [0.40824542 0.56540931 0.86805103]
-Troceado usando &#39;[4:]&#39;: [0.21546124]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.67412902 0.30354039 0.8468838  0.2729812  0.19667288]
+Troceado usando &#39;[:]&#39; [0.67412902 0.30354039 0.8468838  0.2729812  0.19667288]
+Troceado usando &#39;[1:3]&#39;: [0.30354039 0.8468838 ]
+Troceado usando &#39;[2:-1]&#39;: [0.8468838 0.2729812]
+Troceado usando &#39;[2:-2]&#39;: [0.8468838]
+Troceado usando &#39;[:3]&#39;: [0.67412902 0.30354039 0.8468838 ]
+Troceado usando &#39;[4:]&#39;: [0.19667288]
 </pre></div>
 </div>
 </div>
 </div>
-<blockquote>
-<div><p><strong>NOTA</strong>: el uso del índice <code class="docutils literal notranslate"><span class="pre">-1</span></code>, se asocia con el último elemento del vector. Del mismo modo, el índice <code class="docutils literal notranslate"><span class="pre">-2</span></code> está vinculado al segundo elemento empezando por el final, etc. Este convenio de referenciar índices desde el final de un vector es muy útil ya que con el uso de estos índices negativos se puede hacer referencia a los últimos coeficientes de un vector sin tener que hacer referencia expresa a su tamaño.</p>
-</div></blockquote>
+<p><strong>NOTA</strong>: el uso del índice <code class="docutils literal notranslate"><span class="pre">-1</span></code>, se asocia con el último elemento del vector. Del mismo modo, el índice <code class="docutils literal notranslate"><span class="pre">-2</span></code> está vinculado al segundo elemento empezando por el final, etc. Este convenio de referenciar índices desde el final de un vector es muy útil ya que con el uso de estos índices negativos se puede hacer referencia a los últimos coeficientes de un vector sin tener que hacer referencia expresa a su tamaño.</p>
 <p>El troceado también se puede aplicar a matrices:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,19 +773,19 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 
 <span class="c1"># Extraer la segunda fila</span>
 <span class="n">row</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fila 1 (es decir, la segunda): &#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
 
 <span class="c1"># Extraer la primera columna (almacenada en un vector fila)</span>
 <span class="n">col</span> <span class="o">=</span> <span class="n">B</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Columna 0 (es decir, la primera): &#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.3 0. ]
  [0.  2. ]]
-[0. 2.]
-[1.3 0. ]
+Fila 1 (es decir, la segunda):  [0. 2.]
+Columna 0 (es decir, la primera):  [1.3 0. ]
 </pre></div>
 </div>
 </div>
@@ -818,19 +799,19 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b: &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
 <span class="c1"># Suma de a y b</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a + b: &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.  0.2 1.2]
-[2.  0.1 2.1]
-[3.  0.3 3.3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:  [1.  0.2 1.2]
+b:  [2.  0.1 2.1]
+a + b:  [3.  0.3 3.3]
 </pre></div>
 </div>
 </div>
@@ -839,12 +820,12 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">*</span><span class="n">a</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Componentes de a multiplicadas por 10: &#39;</span><span class="p">,</span><span class="n">c</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.  2. 12.]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Componentes de a multiplicadas por 10:  [10.  2. 12.]
 </pre></div>
 </div>
 </div>
@@ -853,12 +834,12 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Componentes de a al cuadrado: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 4  9 16]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Componentes de a al cuadrado:  [ 4  9 16]
 </pre></div>
 </div>
 </div>
@@ -868,17 +849,17 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear el vector [0, π/2, π, 3π/2]</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vector a: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># Calcular el seno de cada componente del vector</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Seno de cada componente de a: &#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.         1.57079633 3.14159265 4.71238898]
-[ 0.0000000e+00  1.0000000e+00  1.2246468e-16 -1.0000000e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector a:  [0.         1.57079633 3.14159265 4.71238898]
+Seno de cada componente de a:  [ 0.0000000e+00  1.0000000e+00  1.2246468e-16 -1.0000000e+00]
 </pre></div>
 </div>
 </div>
@@ -890,12 +871,12 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
     <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Seno de cada componente de a, con bucle: &#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.0000000e+00  1.0000000e+00  1.2246468e-16 -1.0000000e+00]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seno de cada componente de a, con bucle:  [ 0.0000000e+00  1.0000000e+00  1.2246468e-16 -1.0000000e+00]
 </pre></div>
 </div>
 </div>
@@ -907,22 +888,22 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># definimos la variable simbólica x</span>
 
 <span class="c1"># Ejemplo con una expresión simbólica </span>
-<span class="n">expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="c1"># definimos la expresión simbólica</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">expr</span><span class="p">,</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy de la expresión simbólica expr</span>
+<span class="n">expr_f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="c1"># definimos la expresión simbólica</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">expr_f</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy de la expresión simbólica expr</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># Calculamos el coseno del ángulo doble de cada componente del vector a</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f(a): &#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 
 <span class="c1"># Ejemplo con una función simbólica  </span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># definimos la función simbólica</span>
-<span class="n">fn</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy de la expresión simbólica f(x)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># Aplicamos la función fn a cada componente del vector a</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># definimos la función simbólica</span>
+<span class="n">gn</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span> <span class="c1"># función numpy de la expresión simbólica g(x)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">gn</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># Aplicamos la función gn a cada componente del vector a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(a): &#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1. -1.  1. -1.]
-[ 1.  1. -1. -1.]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.41614684  0.92106099 -0.73739372]
+[1.38177329 1.17873591 1.29439684]
 </pre></div>
 </div>
 </div>
@@ -972,9 +953,7 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 </div>
 </div>
 <p>El tiempo de cálculo que nos interesa es el que aparece bajo la etiqueta ‘<code class="docutils literal notranslate"><span class="pre">Wall</span> <span class="pre">time</span></code>’.</p>
-<blockquote>
-<div><p>** NOTA **: Los detalles de cómo la etiqueta <code class="docutils literal notranslate"><span class="pre">%time</span></code> trabaja en este guión non son de importancia en este curso. Debemos indicar que esta forma de proceder es únicamente válida para consolas o ficheros que se ejecuten bajo [I]Python y entornos de servidores Jupyter. Esta forma de trabajar es muy compacta y conveniente para medir el tiempo que se requiere para completar la ejecución de una línea de código.</p>
-</div></blockquote>
+<p><strong>NOTA</strong>: Los detalles de cómo la etiqueta <code class="docutils literal notranslate"><span class="pre">%time</span></code> trabaja en este guión non son de importancia en este curso. Debemos indicar que esta forma de proceder es únicamente válida para consolas o ficheros que se ejecuten bajo [I]Python y entornos de servidores Jupyter. Esta forma de trabajar es muy compacta y conveniente para medir el tiempo que se requiere para completar la ejecución de una línea de código.</p>
 <section id="ejercicio-1">
 <h3><span class="section-number">5.2.8.1. </span><strong>Ejercicio 1</strong><a class="headerlink" href="#ejercicio-1" title="Link to this heading">#</a></h3>
 <p>Usando la misma implementación basada en un bucle, accede a cada elemento del vector por su índice comenzando desde el primero hasta el último. Haz lo mismo con un bucle que acceda en orden inverso, desde el último hasta el primero.</p>
@@ -996,9 +975,7 @@ Troceado usando &#39;[4:]&#39;: [0.21546124]
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>** NOTA **: La función <code class="docutils literal notranslate"><span class="pre">np.dot(,)</span></code> permite calcular el producto interior de dos vectores.</p>
-</div></blockquote>
+<p><strong>NOTA</strong>: La función <code class="docutils literal notranslate"><span class="pre">np.dot(,)</span></code> permite calcular el producto interior de dos vectores.</p>
 </section>
 <section id="ejercicio-3">
 <h3><span class="section-number">5.2.8.3. </span><strong>Ejercicio 3</strong><a class="headerlink" href="#ejercicio-3" title="Link to this heading">#</a></h3>
